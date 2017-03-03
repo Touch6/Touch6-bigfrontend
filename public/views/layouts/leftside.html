@@ -1,0 +1,140 @@
+<script>
+    jQuery(document).ready(function(){
+        //sidebar dropdown menu
+        jQuery('#sidebar .sub-menu > a').click(function () {
+            var last = jQuery('.sub-menu.open', jQuery('#sidebar'));
+            jQuery('.menu-arrow').removeClass('arrow_carrot-right');
+            jQuery('.sub', last).slideUp(400);
+            var sub = jQuery(this).next();
+            if (sub.is(":visible")) {
+                jQuery('.menu-arrow').addClass('arrow_carrot-right');
+                sub.slideUp(400);
+            } else {
+                jQuery('.menu-arrow').addClass('arrow_carrot-down');
+                sub.slideDown(400);
+            }
+            var o = (jQuery(this).offset());
+            diff = 200 - o.top;
+            if(diff>0)
+                jQuery("#sidebar").scrollTo("-="+Math.abs(diff),500);
+            else
+                jQuery("#sidebar").scrollTo("+="+Math.abs(diff),500);
+        });
+    })
+</script>
+<!--header end-->
+<!--sidebar start-->
+<aside>
+    <div id="sidebar"  class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+            <!------**********************************我的主页************************************------>
+            <li class="active">
+                <a class="" href="#">
+                    <i class="icon_house_alt"></i>
+                    <span>我的主页</span>
+                </a>
+            </li>
+            <!------**********************************蜜语墙************************************------>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>蜜语墙</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" ui-sref="home.truelove">有话大胆说</a></li>
+                    <li><a class="" ui-sref="home.whisper">匿名悄悄话</a></li>
+                </ul>
+            </li>
+            <!------**********************************我的文章************************************------>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_desktop"></i>
+                    <span>我的文章</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" ui-sref="home.blog">博客</a></li>
+                    <li><a class="" ui-sref="home.essay">随笔</a></li>
+                    <li><a class="" ui-sref="home.drain">宣泄</a></li>
+                    <li><a class="" ui-sref="home.wish">许愿</a></li>
+                </ul>
+            </li>
+            <!------**********************************我的相册************************************------>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_desktop"></i>
+                    <span>我的相册</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" ui-sref="home.photoManagement">管理</a></li>
+                    <li><a class="" ui-sref="home.photoEssay">生活随笔</a></li>
+                    <li><a class="" ui-sref="home.photoTourism">旅游</a></li>
+                </ul>
+            </li>
+            <!------**********************************我的视频************************************------>
+            <li class="sub-menu">
+                <a class="" href="javascript:;">
+                    <i class="icon_table"></i>
+                    <span>我的视频</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" ui-sref="home.videoManagement">管理                                                          </a></li>
+                    <li><a class="" ui-sref="home.videoRelease">我发布的</a></li>
+                    <li><a class="" ui-sref="home.videoCollection">我收藏的</a></li>
+                </ul>
+            </li>
+            <!------**********************************我的音乐************************************------>
+            <li class="sub-menu">
+                <a class="" href="javascript:;">
+                    <i class="icon_table"></i>
+                    <span>我的音乐</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" ui-sref="home.musicManagement">管理</a></li>
+                    <li><a class="" ui-sref="home.musicPlayer">播放器</a></li>
+                    <li><a class="" ui-sref="home.musicRelease">我发布的</a></li>
+                    <li><a class="" ui-sref="home.musicCollection">我收藏的</a></li>
+                </ul>
+
+            </li>
+            <!------**********************************音乐广场************************************------>
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_table"></i>
+                    <span>音乐广场</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" ui-sref="home.musicSquareFind">淘音乐</a></li>
+                    <li><a class="" ui-sref="home.musicSquareClassify">分类</a></li>
+                    <li><a class="" ui-sref="home.musicSquareSinger">歌手</a></li>
+                    <li><a class="" ui-sref="home.musicSquareHot">热歌榜</a></li>
+                </ul>
+            </li>
+            <!------**********************************视频广场************************************------>
+
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_documents_alt"></i>
+                    <span>视频广场</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" ui-sref="home.videoSquareMM">萌萌区</a></li>
+                    <li><a class="" ui-sref="home.videoSquareDrama"><span>剧情区</span></a></li>
+                    <li><a class="" ui-sref="home.videoSquareFilm">电影区</a></li>
+                    <li><a class="" ui-sref="home.videoSquareAnime">动漫区</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->

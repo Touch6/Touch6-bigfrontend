@@ -1,0 +1,102 @@
+<div class="content">
+    <div ui-view="">
+    <!-- container section start -->
+    <section id="container" class="">
+    <!--overview start-->
+
+    <!------********************************************内容区*********************************************------>
+
+    <!--main content start-->
+    <section id="main-content">
+
+    <section class="wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header"><i class="fa fa-laptop"></i> Dashboard</h3>
+            <ol class="breadcrumb">
+                <li><i class="fa fa-home"></i><a href="index.html">主页</a></li>
+                <li><i class="fa fa-laptop"></i>Dashboard</li>
+
+                <li><i class="fa fa-laptop"></i>首页公共内容区</li>
+            </ol>
+        </div>
+    </div>
+    <!------**********************************分享数************************************------>
+
+    <!--/.row-->
+
+    <!------**********************************地图************************************------>
+
+
+
+
+    <!-- Today status end -->
+
+
+
+    <!-- statics end -->
+
+
+    <!-- project team & activity start -->
+
+    <!-- project team & activity end -->
+
+    </section>
+    </section>
+    <!--main content end-->
+    </section>
+    <!-- container section start -->
+
+    <!-- javascripts -->
+    <!--<script src="../../dist/outer/js/jquery.js"></script>-->
+    <script>
+
+        //knob
+        $(function () {
+            $(".knob").knob({
+                'draw': function () {
+                    $(this.i).val(this.cv + '%')
+                }
+            })
+        });
+
+        //carousel
+        $(document).ready(function () {
+            $("#owl-slider").owlCarousel({
+                navigation: true,
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true
+
+            });
+        });
+
+        //custom select box
+
+        $(function () {
+            $('select.styled').customSelect();
+        });
+
+        /* ---------- Map ---------- */
+        $(function () {
+            $('#map').vectorMap({
+                map: 'world_mill_en',
+                series: {
+                    regions: [{
+                        values: gdpData,
+                        scale: ['#000', '#000'],
+                        normalizeFunction: 'polynomial'
+                    }]
+                },
+                backgroundColor: '#eef3f7',
+                onLabelShow: function (e, el, code) {
+                    el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+                }
+            });
+        });
+
+
+    </script>
+
+    </div>
+</div>
