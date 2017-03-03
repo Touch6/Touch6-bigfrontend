@@ -1,0 +1,46 @@
+.account_box{width:360px;height:auto;overflow:hidden;min-height:488px;position:relative;top:50px;padding:30px 20px 20px 20px;margin:0  auto;background-color: #fff;border:1px solid #ccc;}
+.account_box>h2{padding:10px 0 50px 0;font-size: 18px;font-weight: 400;}
+.form-group{margin-bottom:0;}
+.form-signin>.form-group{border-bottom: 1px solid #CCCCCC;margin-bottom:28px;}
+.form-signin>.form-group>input{border-style: none;border:0;outline: none;margin-bottom:5px;font-size: 16px;/* display: block; */width: 100%;}
+.form-signin>.form-group>.ccap{display: inline;}
+.form-signin>.form-group>.ccap>img,.form-signin>.form-group>.ccap>a{display: block;}
+.form-signin>.form-group>.ccap>a{text-align: right;}
+.form-signin>.form-group>input#verifyCode{width:75px;line-height: 120px;height:68px;}
+.form-signin>.remember>label>input[type='checkbox']{vertical-align: -3px;}
+.form-signin>.remember>label{font-size: 12px;font-weight: 400;}
+.form-signin>.loginBtn{border:0;width:327px;height:37px;background-color: #009999;border-radius: 4px;color:#fff;margin:30px 0 20px 0;}
+.tip>a,.form-signin>.tip>a:hover,.tip>a:link,.tip>a:active{color:#00CCFF;text-decoration: none;}
+.tip>a:hover{text-decoration: underline;}
+.form-signin>p.description{font-size: 12px;margin-bottom:20px;}
+
+.safeLine{height:50px;line-height: 50px;}
+.safeTerm>.termTit{font-size: 18px;}
+.basicInfo>.safeLine{position: relative;}
+.basicInfo>.safeLine>.safeTerm,.basicInfo>.safeLine>.safeOperate{position: absolute;}
+.basicInfo>.safeLine>.safeTerm{left:0;}
+.basicInfo>.safeLine>.safeOperate{right:0;}
+.basicInfo>.safeLine>.safeTerm>.line{padding:0 15px;color:#ccc;}
+.basicInfo>.safeLine>.safeTerm>.termStatus{margin-right:10px;font-size:18px; }
+.basicInfo>.safeLine>.safeOperate>a,.basicInfo>.safeLine>.safeOperate>a:hover,.basicInfo>.safeLine>.safeOperate:active{color:#00CCFF;text-decoration: none;outline: none;}
+.basicInfo>.safeLine>.safeOperate>a:hover{text-decoration: underline;}
+
+.changePwd-modal-dialog{width:400px;}
+.modal-content{border-radius: 0;background-color: #F2F2F2;}
+.modal-footer>.cancel,.modal-footer>.submit{width:120px;height:36px;border-radius: 4px;border:0;outline: none;}
+.modal-footer>.cancel{background-color: #fff;color:#666666;}
+.modal-footer>.submit{background-color: #00CCCC;color:#fff;}
+.modal-body>.form-group{margin-bottom:20px;}
+.modal-body>.form-group>label,.modal-body>.form-group>input{display: block;font-size: 14px;font-weight: 400;width:340px;}
+.modal-body>.form-group>label>span{color:#CC0000;}
+.modal-body>.form-group>input{border:1px solid #ccc;height:30px;line-height: 30px;}
+.next,.next:hover,.next:active,.next:link{padding:0;width:120px;height:40px;line-height: 40px;color:#fff;border:0;background-color: #00CCCC;margin:30px 0 0 60px;border-radius: 0;}
+.changeEmailform{margin:40px 0 40px 10px;}
+.changeEmailform>.form-group{margin-bottom:20px;}
+.changeEmailform>.form-group>label,.changeEmailform>.form-group>span,.changeEmailform>.form-group>input{display: inline-block;}
+.changeEmailform>.form-group>label,.changeEmailform>.form-group>span{width: 120px;margin-right:5px;font-weight: 400;}
+.changeEmailform>.form-group>input{width:324px;height:40px;line-height: 40px;border:1px solid #ccc;}
+.changeEmailform>.form-group>input.verifyCode{width:226px;}
+.modal-body>.inline>label{display: inline;font-weight: 400;}
+.modal-footer>label>input[type='checkbox']{vertical-align: -3px;}
+

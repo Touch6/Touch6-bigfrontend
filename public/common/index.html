@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html ng-app="consoleApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no"/>
+    <title>开源之美</title>
+    <link rel="shortcut icon" href="http://niu8.qiniudn.com/handinhand.jpg">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css"/>
+    <link href="../dist/outer/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
+    <link href="https://wcs.chinanetcenter.com:443/styles/uploadify.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="../dist/alert/css/sweet-alert.css" type="text/css"/>
+
+    <!-- font icon -->
+    <link href="../dist/outer/css/elegant-icons-style.css" rel="stylesheet" type="text/css"/>
+    <link href="../dist/outer/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <!-- full calendar css-->
+    <link href="../dist/outer/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="../dist/outer/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+    <link href="../dist/outer/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet"
+          type="text/css"/>
+    <link href="../dist/outer/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css"/>
+    <!-- easy pie chart-->
+    <link href="../dist/outer/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css"
+          media="screen"/>
+    <!-- owl carousel -->
+    <link href="../dist/outer/css/owl.carousel.css" rel="stylesheet" type="text/css"/>
+    <link href="../dist/outer/css/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css"/>
+    <!-- Custom styles -->
+    <link href="../dist/outer/css/widgets.css" rel="stylesheet" type="text/css"/>
+    <link href="../dist/outer/css/xcharts.min.css" rel=" stylesheet" type="text/css"/>
+    <link href="../dist/outer/css/jquery-ui-1.10.4.min.css" rel="stylesheet" type="text/css"/>
+
+
+    <!---------------angularjs------------------------>
+    <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+
+    <!--------bootstrap----------->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/angular.js/1.3.9/angular.min.js"></script>
+    <script src="../libs/ng-proxy.js"></script>
+    <!-----分页------>
+    <script src="../src/pagination/tm.pagination.js"></script>
+    <script src="../libs/angular/angular-ui-router.min.js"></script>
+    <!--AngularJS 提供了很好的 $cookie 和 $cookieStore API 用来处理 cookies 。-->
+    <script src="http://cdn.bootcss.com/angular.js/1.3.9/angular-cookies.min.js"></script>
+
+    <!--一句话说明区别：ui-bootstrap-tpls.min.js == (ui-bootstrap.min.js + html templates)-->
+    <script src="http://cdn.bootcss.com/angular-ui-bootstrap/0.12.1/ui-bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+
+
+    <script src="../src/controller/MainController.js"></script>
+    <script src="../src/service/MainService.js"></script>
+    <script src="../src/directive/directives.js"></script>
+    <script src="../angularRoute.js"></script>
+    <script src="../dist/js/util.js"></script>
+
+    <!--------------------------------------------------->
+    <script src="../libs/base64/base64.min.js" type="text/javascript"></script>
+    <!--JQuery.uploadify 上传文件插件-->
+    <script src="../libs/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+
+    <!---------错误提示框-------------->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+    <script src="../dist/outer/js/html5shiv.js"></script>
+    <script src="../dist/outer/js/respond.min.js"></script>
+    <script src="../dist/outer/js/lte-ie7.js"></script>
+    <![endif]-->
+
+
+    <!--SweetAlert-js超酷消息警告框插件-->
+    <script src="../dist/alert/js/sweet-alert.min.js"></script>
+    <script src="../dist/outer/js/jquery-ui-1.10.4.min.js"></script>
+    <!-- bootstrap -->
+    <!-- nice scroll -->
+    <!--jquery scrollTo 页面滚动插件 展示 jquery.scrollTo-min.js源代码-->
+    <script src="../dist/outer/js/jquery.scrollTo.min.js"></script>
+    <!--jquery.nicescroll是一个非常时尚的滚动条，用来美化，兼容所有的浏览器。-->
+    <script src="../dist/outer/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <!-- charts scripts -->
+    <!--knob.js进度插件-->
+    <script src="../dist/outer/js/jquery.knob.js"></script>
+    <!--jquery画小图插件-jquery.sparkline.js-->
+    <script src="../dist/outer/js/jquery.sparkline.js" type="text/javascript"></script>
+    <!--此插件主要是用来统计新的访问、跳出率、服务器负载、使用的RAM等，功能很强大，带有HTML5的动画效果，效果非常炫，看效果吧easyPieChart一款新型的EASY饼图数据统计Jquery插件截图：-->
+    <script src="../dist/outer/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+    <!--强大实用的jQuery幻灯片插件Owl Carousel-->
+    <script src="../dist/outer/js/owl.carousel.js"></script>
+    <!-- jQuery full calendar -->
+    <script src="../dist/outer/js/fullcalendar.min.js"></script>
+    <!-- Full Google Calendar - Calendar -->
+    <!--jQuery插件实战之fullcalendar（日历插件）Demo-->
+    <script src="../dist/outer/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+    <!--script for this page only-->
+    <script src="../dist/outer/js/calendar-custom.js"></script>
+    <script src="../dist/outer/js/jquery.rateit.min.js"></script>
+    <!-- custom select -->
+    <script src="../dist/outer/js/jquery.customSelect.min.js"></script>
+
+    <!--是一个简单、面向对象、为设计者和开发者准备的图表绘制工具库。-->
+    <script src="../dist/outer/assets/chart-master/Chart.js"></script>
+
+
+
+    <!-- custom script for this page-->
+    <!--jquery画小图插件-jquery.sparkline.js-->
+    <script src="../dist/outer/js/sparkline-chart.js"></script>
+
+    <!--EASY PIE CHART是一个轻量级的jQuery插件，主要用来渲染和制作漂亮的饼图及动画效果，基于与HTML5的canvas元素-->
+    <script src="../dist/outer/js/easy-pie-chart.js"></script>
+
+
+    <script src="../dist/outer/js/jquery-jvectormap-1.2.2.min.js"></script>
+
+    <!--jQuery的jVectorMap矢量地图用法（部分功能实现）-->
+    <script src="../dist/outer/js/jquery-jvectormap-world-mill-en.js"></script>
+
+    <!--xCharts 是一个使用 D3.js 来构建漂亮的可定制的数据驱动的 JavaScript 图表库，他使用HTML，CSS，SVG实现图表，xCharts 被设计为一个动态的、流畅的、开放的和可定制化的库。-->
+    <script src="../dist/outer/js/xcharts.min.js"></script>
+
+    <!--jquery.slimscroll.min.js - 基于bootstrap的UI-->
+    <script src="../dist/outer/js/jquery.autosize.min.js"></script>
+
+    <!--现在都是HTML5时代了，所有的浏览器都支持placeholder，唯独IE不支持。现在我们有了这款插件，IE下终于可以支持了！-->
+    <script src="../dist/outer/js/jquery.placeholder.min.js"></script>
+
+    <!--JS持久层框架 - Data.js - OPEN 开发经验库-->
+    <script src="../dist/outer/js/gdp-data.js"></script>
+
+    <!--Morris.js 是一个轻量级的 JS 库，使用 jQuery 和 Raphaël 来生成各种时序图-->
+    <script src="../dist/outer/js/morris.min.js"></script>
+
+    <!--jQuery统计走势图表特效插件Sparklines-->
+    <script src="../dist/outer/js/sparklines.js"></script>
+
+    <!--JS Charts 是一个免费的javascript 基础图表生成器。不需要在服务器端安装插件， 只需在客户端加入javascript代码。JS Charts 支持XML 和 JSON 数据。-->
+    <script src="../dist/outer/js/charts.js"></script>
+
+    <!--jQuery滚动条特效插件jQuery slimScroll-->
+    <script src="../dist/outer/js/jquery.slimscroll.min.js"></script>
+
+    <!--custome script for all page-->
+    <script src="../dist/outer/js/scripts.js"></script>
+</head>
+<body ng-controller="indexController" class="">
+<div  ng-include="'../views/layouts/header.html'"></div>
+<div  ng-include="'../views/layouts/leftside.html'"></div>
+
+<div class="content" >
+    <div ui-view=""></div>
+</div>
+<div ng-include="'../views/layouts/footer.html'"></div>
+</body>
+</html>

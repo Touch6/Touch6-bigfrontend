@@ -1,0 +1,67 @@
+.introduce{height:auto;margin-top:20px;}
+.introduce>.box{display: inline-block;background-color:#fff;border:1px solid #ccc;float: left;width:360px;text-align: center;padding:20px 10px 5px 10px;}
+.introduce>.midBox{margin:0 60px;}
+
+/************应用控制台样式****************/
+.box{width:100%;height:auto;overflow: hidden;zoom:1;border:1px solid #ccc;}
+.box>.left-menu,.box>.menu-con{display: inline-block;}
+.left-menu{padding:10px;border-right:1px solid #ccc;height:100%;}
+.menu-con{height:auto;}
+.appProcess{margin:20px 0 20px 20px;}
+.appProcess>.appProcessLink,.appProcess>.appProcessBtn{display:inline-block;height:30px;line-height: 30px;text-align: center;}
+.needToDo{height:40px;background: lightyellow;border:1px solid #ccc;margin-left:40px;}
+.appData{margin:100px 20px;}
+.appData>.dailyActive,.appData>.currentInstall{display: inline-block;margin-right:20px;}
+
+.appProcessLink>a,.appProcessLink>a:hover,.appProcessLink>a:active,.appProcessLink>a:link{color:#666;}
+.create,.develop,.verify,.deploy{display: inline-block;width: 110px;height:40px;line-height:40px;margin-right: 7px;font-size: 12px;text-align: center;}
+.appProcessLink>a.one-create,.appProcessLink>a.one-create:hover,
+.appProcessLink>a.one-develop,.appProcessLink>a.one-develop:hover,
+.appProcessLink>a.one-finish,.appProcessLink>a.one-finish:hover{color:#fff;}
+
+.one-create,.one-develop,.one-finish{background: #00CCFF;color:#fff;position: relative;}
+.one-create:before{content: "";width:0;height:0; border-style:solid;border-color:transparent transparent #00CCFF #00CCFF;border-width: 0 0 40px 10px; position: absolute; top: 0;left: -9px;}
+.one-create:after,.one-develop:after{content:"";display:inline-block;width:0;height:0;border-top: 20px solid transparent;border-right:0;border-bottom: 20px solid transparent;border-left: 10px solid #00CCFF;position: absolute;top:0;right:-10px;}
+.one-develop:before,.one-verify:before,.one-deploy:before,.one-finish:before{display: inline-block;content: "";width:0;height:0;border-style: solid;border-width: 20px 0 20px 10px;border-color:transparent transparent transparent #fff;position: absolute;left:0;top:0;}
+.one-verify,.one-deploy{background: #E4E4E4;position: relative;color:#666666;}
+.one-verify:after{content:"";display:inline-block;width:0;height:0;border-top: 20px solid transparent;border-right:0;border-bottom: 20px solid transparent;border-left:10px solid #E4E4E4;position: absolute;top:0;right:-10px;}
+
+
+
+
+/***********************应用基本信息*****************************/
+.basicTit{background: #EAECEC;border-bottom: 1px solid #ccc;}
+.basicInfo{padding:30px;}
+.basicInfo>.infoLine{padding:5px 0;}
+.infoLine>label,.infoLine>span{display: inline-block;vertical-align: top;}
+.infoLine>label{width:100px;margin-right:40px;}
+.infoLine>p.line{height:1px;border-bottom:1px solid #ccc;}
+.infoLine>.iconImg{display: block;}
+/************************用户授权*******************************/
+.userLevelTit{height:50px;}
+/**************************用户管理*************************************/
+.basicInfo>.transApp>.sender,.basicInfo>.transApp>.AppBirdge,.basicInfo>.transApp>.receiver{/* display: inline-block; */float: left;}
+/*******************************账号安全****************************************/
+.safeLine{height:30px;}
+.indexNav{width:100%;height:474px;background: url("../img/banner1920.jpg") no-repeat top center;background-size: cover;}
+/*.nav{width:100%;height:474px;background: url("../img/nav.jpg") no-repeat top center;background-size: 1024px auto;}*/
+.banner-txt{text-align: center;position: relative;top:50%;}
+.join-btn{width:260px;height:50px;border:0;border-radius: 4px;background-color: #5cc8c1;color:#fff;font-size: 24px;}
+.join-txt{color:#7e7e7e;font-size: 20px;margin-top:18px;font-family: "宋体";}
+.imgField{width:100%;height:165px;}
+.lightAppImg{background: url("../../dist/img/demo1.jpg") no-repeat top center;}
+.mobileAppImg{background: url("../../dist/img/demo2.jpg") no-repeat top center;}
+.dataImg{background: url("../../dist/img/demo3.jpg") no-repeat center;}
+.appTit{color:#8B8B8B;font-size: 24px;text-align: center;}
+.appDes{margin:32px 45px;color:#C2C2C2;font-size: 18px;}
+.appLink{margin-bottom:40px;}
+.appLink>a,.appLink>a:hover,.appLink>a:link,.appLink>a:active{color:#1cbbd3;font-size:20px;}
+.appLink>a{text-decoration: none;}
+.appLink>a:hover{text-decoration: underline;}
+/*开关按钮*/
+.checkbox { display: none; }
+.trigger {cursor: pointer;position: relative;width: 40px; height: 20px;background: #cac6c6;border:1px solid #c5c3c3;border-radius:10px;overflow: hidden;-webkit-transition: background .15s linear;}
+.checkbox[checked="checked"] + .trigger { background: #009966;border:0;border-radius: 10px; }
+.trigger:before {content: '';position: absolute;top: 0; left: 0; bottom: 0;width: 19px; height: 18px;margin: auto;-webkit-transition: left .15s linear;background: #fff;border-radius: 50%;}
+.checkbox[checked="checked"] + .trigger:before { left: 19px; }
+/*开关按钮*/

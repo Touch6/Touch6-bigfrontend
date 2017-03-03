@@ -1,0 +1,6 @@
+h1,h2,h3,h4,h5,h6,ul,li,ol,dl,dt,dd,p,div,em,img,input,select,body{margin:0;padding:0;outline: 0;}
+body{font-size: 14px;color:#000;}
+a,a:hover,a:active,a:link,a:visited{cursor:pointer;text-decoration: none;}
+ul,ol,dl,li{list-style: none;}
+body{font-family: 'microsoft yahei';background-color: #f7f7f7;width:100%;height:auto;overflow-y: scroll;}
+button,input{outline:none;}
