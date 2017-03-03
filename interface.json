@@ -1,0 +1,24 @@
+{
+    "title": "接口地址配置文件",
+    "version": "1.0.0",
+    "engine": "mockjs",
+    "rulebase": "./interfaceRules/",
+    "status": "develop",
+    "interfaces": [
+        {
+            "name": "用户登录",
+            "id": "user.login",
+            "urls": {
+                "develop": "http://127.0.0.1:8080/api/v1/user/login"
+            },
+            "method": "post",
+            "contentType": "application/json"
+        }
+    ],
+    "combo": {
+        "getMyData": [
+            "Cart.getCart",
+            "Search.suggest"
+        ]
+    }
+}
