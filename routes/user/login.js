@@ -7,8 +7,9 @@ userModel = ModelProxy.create("user.*");
 
 /*****************登录验证**********************/
 router.post("/",function(req,res){
+    //真正请求后台接口的路由
     req.session={};
-    console.info("登陆名" + JSON.stringify(req.body.user)+"/"+req.body.user.loginName+"/"+req.body.user.passWord);
+    console.log("登陆名" + JSON.stringify(req.body.user)+"/"+req.body.user.loginName+"/"+req.body.user.password);
     var loginUser={
         "userId":"",
         "loginName":"",
@@ -17,7 +18,8 @@ router.post("/",function(req,res){
         "uuid":"",
         "emailVerified":""
     }
-    userModel.login(req.body.user,{}).done(function(data){
+    userModel.login(req.body.user,{})
+        .done(function(data){
         console.log(data.id+"data="+JSON.stringify(data));
 //        loginUser.userId=data.id;
 //        loginUser.loginName=data.loginName;
@@ -31,7 +33,7 @@ router.post("/",function(req,res){
 //        console.log("session中:"+JSON.stringify(req.session.user));
 //      console.log(JSON.stringify(res.cookie["user"]));
 //      res.send(loginUser);
-        data.plainPassword=req.body.user.passWord;
+        data.plainPassword=req.body.user.password;
         res.cookie["user"]=data;
         req.session.user = data;
         res.send(data);

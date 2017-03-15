@@ -19,7 +19,7 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
                     $cookies.user = JSON.stringify(data);
                     return deferred.resolve(data);
                 } else {
-                    //swal("", "用户名或密码错误!", "error");
+                    swal("", "用户名或密码错误!", "error");
                     return deferred.reject(data);
                 }
             }).error(function (error) {
