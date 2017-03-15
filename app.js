@@ -1,7 +1,7 @@
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
-var logger = require('morgan');
+// var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
@@ -24,7 +24,25 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
+var log4js = require('log4js');
+log4js.configure({
+    appenders: [
+        { type: 'console' }, //控制台输出
+        {
+            type: 'file', //文件输出
+            filename: 'logs/access.log',
+            maxLogSize: 1024,
+            backups:3,
+            category: 'normal'
+        }
+    ],
+    replaceConsole: true
+});
+var logger = log4js.getLogger('normal');
+logger.setLevel('debug');
+app.use(log4js.connectLogger(logger, {level:log4js.levels.DEBUG, format:':method :url'}));
+
+// app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -77,6 +95,4 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
 module.exports = app;
