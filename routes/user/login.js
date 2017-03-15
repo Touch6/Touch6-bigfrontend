@@ -11,35 +11,27 @@ router.post("/",function(req,res){
     req.session={};
     console.log("登陆名" + JSON.stringify(req.body.user)+"/"+req.body.user.loginName+"/"+req.body.user.password);
     var loginUser={
-        "userId":"",
-        "loginName":"",
-        "passWord":"",
+        "uid":"",
+        "name":"",
+        "nickname":"",
+        "gender":"",
+        "birth":"",
+        "age":"",
+        "nation":"",
+        "qq":"",
+        "weixin":"",
+        "mobile":"",
         "email":"",
-        "uuid":"",
-        "emailVerified":""
+        "idcard":""
     }
-    userModel.login(req.body.user,{})
-        .done(function(data){
-        console.log(data.id+"data="+JSON.stringify(data));
-//        loginUser.userId=data.id;
-//        loginUser.loginName=data.loginName;
-//        loginUser.passWord=req.body.user.passWord;
-//        loginUser.email=data.email;
-//        loginUser.uuid=data.uuid;
-//        loginUser.emailVerified=data.emailVerified;
-////        console.log("要存的user为："+JSON.stringify(loginUser)+"-----id="+loginUser.userId);
-//      res.cookie["user"]=loginUser;
-//      req.session.user = loginUser;
-//        console.log("session中:"+JSON.stringify(req.session.user));
-//      console.log(JSON.stringify(res.cookie["user"]));
-//      res.send(loginUser);
-        data.plainPassword=req.body.user.password;
-        res.cookie["user"]=data;
-        req.session.user = data;
-        res.send(data);
+    userModel.login(req.body.user,{}).done(function(user){
+        console.log("登录成功,后端返回数据>>>"+JSON.stringify(user));
+        // data.plainPassword=req.body.user.password;
+        res.cookie["user"]=user;
+        req.session.user = user;
+        res.send(user);
   }).fail(function(error){
         console.log("error"+ error);
-        logger.
         res.send(error);
     });
 });

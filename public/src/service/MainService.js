@@ -15,7 +15,7 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
             deferred = $q.defer();
             //验证验证码；
             $http.post('/login', {user: user}).success(function (data) {
-                if (data.id) {
+                if (data) {
                     $cookies.user = JSON.stringify(data);
                     return deferred.resolve(data);
                 } else {
