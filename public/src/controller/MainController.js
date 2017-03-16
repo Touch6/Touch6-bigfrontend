@@ -8,6 +8,9 @@ var consoleApp = angular.module("consoleApp.controllers", [
 
 /**********************************整体body模块**************************************/
 consoleApp.controller("indexController", function ($rootScope,$scope, $window, $cookies) {
+    $scope.toRegister = function () {
+        $window.location = "/#/register";
+    }
     $rootScope.backclass="login-img-body";
     if($cookies.user==null){
         console.log("你还未登录");
