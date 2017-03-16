@@ -70,33 +70,33 @@ consoleApp.controller("LoginOutCtrl", function ($scope, $cookies, $window) {
 });
 /***************************************注册模块*********************************************/
 consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user) {
-    changeCode();//改变验证码；
+    // changeCode();//改变验证码；
     $scope.toLogin = function () {
         $window.location = "/#/login";
     }
-    $scope.registerUser = {
-        "loginName": "",
-        "plainPassword": "",
-        "email": "",
-        "roles": "TOUCHC"
+    $scope.register = {
+        "mobile": "",
+        "code": "",
+        "password":"",
+        "confirmPassword":""
     }
     $scope.verifyCode = "";
-    $scope.registerSubmit = function () {
+    $scope.register = function () {
         var activeEmailCode = "";
 //        console.log("从页面拿取的registerUser为："+JSON.stringify($scope.registerUser)+"/"+$scope.verifyCode);
-        user.registerAccount($scope.registerUser, $scope.verifyCode).then(function (data) {
-//            console.log("注册完成返回的结果"+JSON.stringify(data));
-            activeEmailCode = data.activationCode;
+        user.registerAccount($scope.register).then(function (data) {
+           console.log("注册完成返回的结果"+JSON.stringify(data));
+            // activeEmailCode = data.activationCode;
             //注册成功后，发邮件；
-            user.sendActiveEmail($scope.registerUser, activeEmailCode).then(function (data) {
-//                 console.log(data);
-//                 console.log("邮件发送成功");
-                changeCode();//改变验证码;
-                angular.element("#registerSuccess").modal("show");
-            }, function (err) {
-                swal("", "用户激活邮件发送失败!", "error");
-//                 console.log("用户激活邮件发送失败"+err);
-            })
+//             user.sendActiveEmail($scope.registerUser, activeEmailCode).then(function (data) {
+// //                 console.log(data);
+// //                 console.log("邮件发送成功");
+//                 changeCode();//改变验证码;
+//                 angular.element("#registerSuccess").modal("show");
+//             }, function (err) {
+//                 swal("", "用户激活邮件发送失败!", "error");
+// //                 console.log("用户激活邮件发送失败"+err);
+//             })
         }, function (err) {
             console.log(err);
         });

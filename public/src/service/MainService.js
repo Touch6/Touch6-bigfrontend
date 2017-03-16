@@ -28,17 +28,17 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
             return deferred.promise;
         },
         /**********注册**********************************************************/
-        registerAccount: function (registerUser, verifyCode) {
+        registerAccount: function (register) {
 //            console.log("从controller拿取的注册用户为"+JSON.stringify(registerUser));
             var deferred;
             deferred = $q.defer();
             //先验证验证码，成功后再注册；
-            $http.get("/ccap/checkCode", {params: {upperCode: verifyCode.toUpperCase()}}).success(function (data) {
+            // $http.get("/ccap/checkCode", {params: {upperCode: verifyCode.toUpperCase()}}).success(function (data) {
 //                console.log("注册时经过ccap后返回的data为："+data);
-                if (data) {
+//                 if (data) {
 //                    console.log(checkRegisterForm(registerUser));
-                    if (checkRegisterForm(registerUser)) {
-                        $http.post('/register', {user: registerUser}).success(function (data) {
+//                     if (checkRegisterForm(registerUser)) {
+                        $http.post('/register', {user: register}).success(function (data) {
 //                            console.log("service注册成功返回"+JSON.stringify(data));
                             return deferred.resolve(data);
                         }).error(function (data) {
@@ -46,18 +46,18 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
                             changeCode();
                             return deferred.reject(data);
                         });
-                    }
+                    // }
 
-                } else {
-                    swal("", "验证码错误！", "error");
-                    changeCode();
-                    return deferred.reject(data);
-                }
-            }).error(function (data) {
-                swal("", "验证码验证失败！", "error");
-                changeCode();
-                return deferred.reject(data);
-            });
+                // } else {
+                //     swal("", "验证码错误！", "error");
+                //     changeCode();
+                //     return deferred.reject(data);
+                // }
+            // }).error(function (data) {
+            //     swal("", "验证码验证失败！", "error");
+            //     changeCode();
+            //     return deferred.reject(data);
+            // });
             return deferred.promise;
         },
         /************************给用户发送普通信息邮件--主要用于转让*********************************/

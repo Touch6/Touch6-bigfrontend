@@ -6,13 +6,13 @@ userModel = ModelProxy.create("user.*");
 
 router.post('/',function(req,res){
 
-  console.log("register中user为："+req.body.user.loginName+"/"+req.body.user.plainPassword+"/"+req.body.user.email);
+  console.log("register中user为："+req.body.user.mobile+"/"+req.body.user.password+"/"+req.body.user.code);
     console.log("拿到的注册user"+JSON.stringify(req.body.user));
-    userModel.register({loginName:req.body.user.loginName,plainPassword:req.body.user.plainPassword,email:req.body.user.email},{}).done(function(data){
-        console.log(data);
+    userModel.register({mobile:req.body.user.mobile,password:req.body.user.confirmPassword,email:req.body.user.code},{}).done(function(data){
+        console.log("调用后台注册接口成功返回信息>>>"+data);
         res.send(data);
     }).error(function(data){
-        console.log(data);
+        console.log("调用后台注册接口成功返回信息>>>"+data);
     });
 });
 

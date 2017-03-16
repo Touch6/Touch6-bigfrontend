@@ -24,12 +24,17 @@ consoleApp.run(function ($rootScope, $state, $stateParams) {
  * @return {[type]}
  */
 consoleApp.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/index');
+    $urlRouterProvider.otherwise('/index2');
     $stateProvider
         .state('index', {
             url: '/index',
             templateUrl: 'views/user/login.html',
             controller: 'LoginCtrl'
+        })
+        .state('index2', {
+            url: '/index2',
+            templateUrl: 'views/user/register.html',
+            controller: 'RegisterCtrl'
         })
         .state('home', {
             url: '/home',

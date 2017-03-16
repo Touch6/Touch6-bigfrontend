@@ -1,0 +1,33 @@
+<div class="">
+
+    <div class="container">
+
+        <form class="login-form" ng-submit="register()">
+            <div class="login-wrap">
+                <p class="login-img"><i class="icon_lock_alt"></i></p>
+
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_profile"></i></span>
+                    <input type="text" id="mobile" name="mobile" ng-model="register.mobile" required class="form-control" placeholder="请输入手机号码" autofocus/>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                    <input type="text" id="code"  name="code" ng-model="register.code" class="form-control" placeholder="请输入验证码" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                    <input type="password" id="password"  name="password" ng-model="register.password" class="form-control" placeholder="请输入密码" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                    <input type="password" id="confirmPassword"  name="confirmPassword" ng-model="register.confirmPassword" class="form-control" placeholder="请输入确认密码" required>
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" type="submit">注册</button>
+                <div style="margin-top: 30px;">
+                    <span class="pull-right"> 已有账号，<a ng-click="toLogin()"> 直接登录</a></span>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
