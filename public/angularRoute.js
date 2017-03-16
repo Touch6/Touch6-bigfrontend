@@ -31,8 +31,8 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/user/login.html',
             controller: 'LoginCtrl'
         })
-        .state('index2', {
-            url: '/index2',
+        .state('register', {
+            url: '/register',
             templateUrl: 'views/user/register.html',
             controller: 'RegisterCtrl'
         })
