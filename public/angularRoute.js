@@ -24,7 +24,7 @@ consoleApp.run(function ($rootScope, $state, $stateParams) {
  * @return {[type]}
  */
 consoleApp.config(function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/index2');
+    $urlRouterProvider.otherwise('/index');
     $stateProvider
         .state('index', {
             url: '/index',
@@ -171,11 +171,6 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('loginOut', {
             url: '/loginOut',
             controller: 'LoginOutCtrl'
-        })
-        .state('register', {
-            url: '/register',
-            templateUrl: 'views/user/register.html',
-            controller:"RegisterCtrl"
         })
         .state('activeAccount', {
             url: '/activeAccount',
