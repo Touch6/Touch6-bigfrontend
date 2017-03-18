@@ -5,13 +5,30 @@ var consoleApp = angular.module('consoleApp.services', [
 consoleApp.factory("mobile", function ($http, $q, $cookies) {
 
     return {
-        /*******************登录******************************************************/
+        /*******************检测手机号是否已注册******************************************************/
+        check: function (mobile) {
+            console.log("time:"+new Date().getMilliseconds()+"(2)mobile>>"+mobile);
+            var deferred;
+            deferred = $q.defer();
+            //验证验证码；
+            $http.post('/mobile/check', {mobile: mobile}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        /*******************生成验证码******************************************************/
         generateCode: function (mobile) {
             console.log("(2)mobile>>"+mobile);
             var deferred;
             deferred = $q.defer();
             //验证验证码；
-            $http.get('/code', {params:{mobile: mobile}}).success(function (data) {
+            $http.get('/mobile/code', {params:{mobile: mobile}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {

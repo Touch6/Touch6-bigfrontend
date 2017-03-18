@@ -7,29 +7,29 @@ var consoleApp = angular.module("consoleApp.controllers", [
 
 
 /**********************************整体body模块**************************************/
-consoleApp.controller("indexController", function ($rootScope,$scope, $window, $cookies) {
+consoleApp.controller("indexController", function ($rootScope, $scope, $window, $cookies) {
     $scope.toRegister = function () {
         $window.location = "/#/register";
     }
-    $rootScope.backclass="login-img-body";
-    if($cookies.user==null){
+    $rootScope.backclass = "main-img-body";
+    if ($cookies.user == null) {
         console.log("你还未登录");
-        $window.location="/#/login";
+        $window.location = "/#/login";
     }
 });
 /************************************登录模块*************************************************/
-consoleApp.controller("LoginCtrl", function ($rootScope,$scope, $window, user, $cookies, $location) {
+consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, $cookies, $location) {
     //alert("LoginCtrl");
     //初始化登录参数
-    if($cookies.user==null){
+    if ($cookies.user == null) {
         console.log("你还未登录");
-        $window.location="/#/login";
+        $window.location = "/#/login";
     }
     $scope.login = {
         "loginName": "",
         "password": ""
     }
-    $scope.loginError="";
+    $scope.loginError = "";
     //登录提交表单时，对表单进行验证；
     $scope.loginSubmit = function () {
         //$scope.login为表单已填充后的数据
@@ -37,15 +37,15 @@ consoleApp.controller("LoginCtrl", function ($rootScope,$scope, $window, user, $
             .then(function (data) {
                 //登录成功跳转到home页面
                 console.log("登录成功");
-                $rootScope.userInfo=data;//将用户信息存入$rootScope，在页面获取
-                $rootScope.backclass="";
-                console.log("data:"+JSON.stringify(data));
+                $rootScope.userInfo = data;//将用户信息存入$rootScope，在页面获取
+                $rootScope.backclass = "";
+                console.log("data:" + JSON.stringify(data));
                 console.log(JSON.stringify($scope.userInfo));
                 $window.location = "/#/home";
             }, function (err) {
                 //alert("登录失败"+JSON.stringify(err));
                 //登录失败，停止在登陆页
-                $scope.loginError="*用户名或密码错误!";
+                $scope.loginError = "*用户名或密码错误!";
                 console.log($scope.loginError);
                 $window.location = "/#/login";
             });
@@ -56,29 +56,57 @@ consoleApp.controller("LoginCtrl", function ($rootScope,$scope, $window, user, $
 consoleApp.controller("HomeCtrl", function ($scope, $window, user, $cookies, $location) {
     //alert("LoginCtrl");
     //初始化登录参数
-    if($cookies.user==null){
+    if ($cookies.user == null) {
         console.log("你还未登录");
-        $window.location="/#/login";
+        $window.location = "/#/login";
     }
 });
 /***********************************登出模块********************************************/
 consoleApp.controller("LoginOutCtrl", function ($scope, $cookies, $window) {
-    console.log("退出登录前:"+JSON.stringify($cookies.user));
-    $scope.logout=function(){
+    console.log("退出登录前:" + JSON.stringify($cookies.user));
+    $scope.logout = function () {
         $scope.user = null;
         delete $cookies.user;
         $window.location = '/#/login';
     };
-    console.log("退出登录后:"+JSON.stringify($cookies.user));
+    console.log("退出登录后:" + JSON.stringify($cookies.user));
 });
 /***************************************注册模块*********************************************/
-consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user,mobile) {
-    // changeCode();//改变验证码；
-    //生成手机验证码
-    $scope.generateCode=function () {
-        console.log("(1)页面输入手机号:"+$scope.register.mobile);
+consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user, mobile) {
+    //1检测手机是否已注册
+    $scope.checkMobile = function () {
+        console.log("time:"+new Date().getMilliseconds()+"(1)页面输入手机号:" + $scope.register.mobile);
+        $scope.mobileIsChecking=true;
+        mobile.check($scope.register.mobile).then(function (data) {
+            if(data.statusCode==400){
+                console.log("检测手机号是否注册返回结果statusCode>>>" + data.statusCode);
+                console.log("检测手机号是否注册返回结果responseText>>>" + JSON.stringify(data.responseText));
+                //后台返回错误信息
+                var json=JSON.parse(data.responseText);
+                if(json.code='200100'){
+                    //手机号码已被注册
+                    $scope.mobileIsRegistered=true;
+                    $scope.mobileIsChecking=false;
+                    $scope.mobileIsNotRegistered=false;
+                }
+            }else if(data.code=200){
+                //后台返回成功
+                $scope.mobileIsRegistered=false;
+                $scope.mobileIsChecking=false;
+                $scope.mobileIsNotRegistered=true;
+            }
+
+        }, function (err) {
+            console.log(err);
+        });
+
+    }
+    //2生成手机验证码
+    $scope.generateCode = function () {
+        console.log("(1)页面输入手机号:" + $scope.register.mobile);
+        //校验手机号码是否合法
         mobile.generateCode($scope.register.mobile).then(function (data) {
-            console.log("生成验证码返回结果>>>"+JSON.stringify(data));
+            console.log("生成验证码返回结果>>>" + JSON.stringify(data));
         }, function (err) {
             console.log(err);
         });
@@ -89,13 +117,13 @@ consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user,
     $scope.register = {
         "mobile": "",
         "code": "",
-        "password":"",
-        "confirmPassword":""
+        "password": "",
+        "confirmPassword": ""
     }
     $scope.verifyCode = "";
     $scope.register = function () {
         user.registerAccount($scope.register).then(function (data) {
-           console.log("注册完成返回的结果"+JSON.stringify(data));
+            console.log("注册完成返回的结果" + JSON.stringify(data));
             // activeEmailCode = data.activationCode;
             //注册成功后，发邮件；
 //             user.sendActiveEmail($scope.registerUser, activeEmailCode).then(function (data) {

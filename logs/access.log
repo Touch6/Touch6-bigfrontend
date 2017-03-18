@@ -1,6 +1,8 @@
-[2017-03-18 12:20:30.294] [DEBUG] normal - GET /views/layouts/footer.html
-[2017-03-18 12:20:30.322] [DEBUG] normal - GET /dist/outer/img/bg-1.jpg
-[2017-03-18 12:20:33.869] [DEBUG] normal - GET /views/user/register.html
-[2017-03-18 12:20:41.749] [DEBUG] normal - GET /code?mobile=13880298929
-[2017-03-18 12:22:37.129] [DEBUG] normal - GET /code?mobile=13880298929
-[2017-03-18 12:25:59.324] [DEBUG] normal - GET /code?mobile=13880298929
+[2017-03-18 14:49:12.894] [DEBUG] normal - GET /views/layouts/footer.html
+[2017-03-18 14:49:12.895] [DEBUG] normal - GET /dist/outer/img/bg-1.jpg
+[2017-03-18 14:49:14.092] [DEBUG] normal - GET /views/user/register.html
+[2017-03-18 14:49:16.759] [DEBUG] normal - POST /mobile/check
+[2017-03-18 14:49:21.896] [DEBUG] normal - POST /mobile/check
+[2017-03-18 14:49:43.656] [DEBUG] normal - POST /mobile/check
+[2017-03-18 14:49:48.152] [DEBUG] normal - POST /mobile/check
+[2017-03-18 14:50:12.572] [DEBUG] normal - POST /mobile/check

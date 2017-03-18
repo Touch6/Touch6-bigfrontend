@@ -57,7 +57,7 @@ app.use('/home',home);
 app.use('/ccap',ccap);
 app.use('/login',login);
 app.use('/register',register);
-app.use('/code',mobile);
+app.use('/mobile',mobile);
 app.use('/sendEmail',sendEmail);
 app.use('/touchcApp',touchcApp);
 app.use('/uptoken',uptoken);

@@ -88,7 +88,7 @@ table tr th {
     background-color: #f1f2f7;
 }
 
-.login-img-body {
+.main-img-body {
     background: url('../img/bg-1.jpg') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -113,24 +113,30 @@ table tr th {
 }
 
 
-.login-img-body .login-form {
+.main-img-body .login-form{
     max-width: 350px;
     margin: 150px auto 50px auto;
     background: rgba(213, 215, 222, 0.4);
     border: 1px solid #B0B6BE;
 }
+.main-img-body .register-form {
+     max-width: 450px;
+     margin: 150px auto 50px auto;
+     background: rgba(213, 215, 222, 0.4);
+     border: 1px solid #B0B6BE;
+ }
 
-.login-img2-body .login-form {
-    border: 1px solid #B0B6BE;
-    background: rgba(213, 215, 222, 0.7);
-}
+/*.login-img2-body .login-form {*/
+    /*border: 1px solid #B0B6BE;*/
+    /*background: rgba(213, 215, 222, 0.7);*/
+/*}*/
 
-.login-img3-body .login-form {
-    border: 1px solid #B0B6BE;
-    background: rgba(213, 215, 222, 0.9);
-}
+/*.login-img3-body .login-form {*/
+    /*border: 1px solid #B0B6BE;*/
+    /*background: rgba(213, 215, 222, 0.9);*/
+/*}*/
 
-.login-form a {
+.login-form a,.register-form a {
     color: navajowhite !important;
 }
 
@@ -158,7 +164,7 @@ table tr th {
     font-family: 'Lato', sans-serif;
 }
 
-.login-form .form-control {
+.login-form .form-control,.register-form .form-control {
     position: relative;
     font-size: 16px;
     height: auto;
@@ -168,20 +174,20 @@ table tr th {
     box-sizing: border-box;
 }
 
-.login-form .form-control:focus {
+.login-form .form-control:focus,.register-form .form-control:focus {
     z-index: 2;
 }
 
-.login-form .login-img {
+.login-form .login-img,.register-form .login-img {
     font-size: 50px;
     font-weight: 300;
 }
 
-.login-form .input-group {
+.login-form .input-group,.register-form .input-group {
     padding-bottom: 15px;
 }
 
-.login-form .input-group-addon {
+.login-form .input-group-addon,.register-form .input-group-addon {
     padding: 6px 12px;
     font-size: 16px;
     color: #8b9199;
@@ -193,14 +199,14 @@ table tr th {
     border-radius: 0;
 }
 
-.login-form input[type="text"], .login-form input[type="password"] {
+.login-form input[type="text"], .login-form input[type="password"],.register-form input[type="text"], ..register-form input[type="password"] {
     border: none;
     box-shadow: none;
     font-size: 16px;
     border-radius: 0;
 }
 
-.login-form .btn {
+.login-form .btn,.register-form .btn {
     border-radius: 0;
 }
 
@@ -225,11 +231,11 @@ table tr th {
     color: #34aadc;
 }
 
-.login-form a {
+.login-form a ,.register-form a{
     color: #b6b6b6;
 }
 
-.login-form a:hover {
+.login-form a:hover ,.register-form a:hover{
     color: #34aadc;
 }
 
@@ -2977,7 +2983,6 @@ ul.ft-link li a i {
 
 /*weather widget 2*/
 .weather-bg-img {
-    background: url(../img/backgrounds/bg-14-small.jpg) no-repeat center center;
     color: #fff;
     text-shadow: 0px 1px 5px #fed189;
     text-align: center;
@@ -4722,22 +4727,6 @@ table.sliders tr td {
     padding-left: 34px;
 }
 
-.has-js .label_radio {
-    background: url(../img/checkbox/radio-off.png) no-repeat;
-}
-
-.has-js .label_check {
-    background: url(../img/checkbox/check-off.png) no-repeat;
-}
-
-.has-js label.c_on {
-    background: url(../img/checkbox/check-on.png) no-repeat;
-}
-
-.has-js label.r_on {
-    background: url(../img/checkbox/radio-on.png) no-repeat;
-}
-
 .has-js .label_check input,
 .has-js .label_radio input {
     position: absolute;
@@ -4798,9 +4787,6 @@ table.sliders tr td {
 
 .cke_top, .cke_bottom {
     background: #F5F5F5 !important;
-    background: -moz-linear-gradient(center top, #F5F5F5, #F5F5F5) repeat scroll 0 0 #F5F5F5 !important;
-    background: -webkit-linear-gradient(center top, #F5F5F5, #F5F5F5) repeat scroll 0 0 #F5F5F5 !important;
-    background: -o-linear-gradient(center top, #F5F5F5, #F5F5F5) repeat scroll 0 0 #F5F5F5 !important;
     box-shadow: none;
     padding: 6px 8px 2px;
 }

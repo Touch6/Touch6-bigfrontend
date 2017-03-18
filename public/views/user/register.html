@@ -2,13 +2,16 @@
 
     <div class="container">
 
-        <form class="login-form" ng-submit="register()" role="form">
+        <form class="register-form" ng-submit="register()" role="form">
             <div class="login-wrap">
                 <p class="login-img"><i class="fa fa-user-circle"></i></p>
 
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                    <input type="text" id="mobile" name="mobile" ng-model="register.mobile" required class="form-control" maxlength="11" placeholder="请输入手机号码" autofocus/>
+                    <input type="text" id="mobile" name="mobile" ng-model="register.mobile" required class="form-control" maxlength="11" placeholder="请输入手机号码" autofocus ng-blur="checkMobile()"/>
+                    <span class="input-group-addon" ng-show="mobileIsChecking"><i class="fa fa-spinner fa-pulse" ></i>检测中...</span>
+                    <span class="input-group-addon" ng-show="mobileIsNotRegistered"><i class="" ></i>恭喜您!手机号码未注册</span>
+                    <span class="input-group-addon" ng-show="mobileIsRegistered"><i class="" ></i>该手机号已被注册</span>
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
