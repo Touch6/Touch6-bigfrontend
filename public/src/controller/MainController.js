@@ -72,8 +72,17 @@ consoleApp.controller("LoginOutCtrl", function ($scope, $cookies, $window) {
     console.log("退出登录后:"+JSON.stringify($cookies.user));
 });
 /***************************************注册模块*********************************************/
-consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user) {
+consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user,mobile) {
     // changeCode();//改变验证码；
+    //生成手机验证码
+    $scope.generateCode=function () {
+        console.log("(1)页面输入手机号:"+$scope.register.mobile);
+        mobile.generateCode($scope.register.mobile).then(function (data) {
+            console.log("生成验证码返回结果>>>"+JSON.stringify(data));
+        }, function (err) {
+            console.log(err);
+        });
+    }
     $scope.toLogin = function () {
         $window.location = "/#/login";
     }
@@ -85,8 +94,6 @@ consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user)
     }
     $scope.verifyCode = "";
     $scope.register = function () {
-        var activeEmailCode = "";
-//        console.log("从页面拿取的registerUser为："+JSON.stringify($scope.registerUser)+"/"+$scope.verifyCode);
         user.registerAccount($scope.register).then(function (data) {
            console.log("注册完成返回的结果"+JSON.stringify(data));
             // activeEmailCode = data.activationCode;

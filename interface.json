@@ -20,8 +20,7 @@
             "urls": {
                 "develop": "http://localhost:8090/api/v1/mobile/code"
             },
-            "method": "post",
-            "contentType": "application/json"
+            "method": "get"
         },
         {
             "name": "验证手机验证码是否正确",

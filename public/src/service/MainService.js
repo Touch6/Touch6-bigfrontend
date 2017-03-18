@@ -1,7 +1,30 @@
 var consoleApp = angular.module('consoleApp.services', [
     'ngCookies'
 ]);
+/********************mobile模块****************************/
+consoleApp.factory("mobile", function ($http, $q, $cookies) {
 
+    return {
+        /*******************登录******************************************************/
+        generateCode: function (mobile) {
+            console.log("(2)mobile>>"+mobile);
+            var deferred;
+            deferred = $q.defer();
+            //验证验证码；
+            $http.get('/code', {params:{mobile: mobile}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
 /********************user模块****************************/
 consoleApp.factory("user", function ($http, $q, $cookies) {
     var emailActiveCode = "";//邮箱激活码；
