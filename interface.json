@@ -18,7 +18,7 @@
             "name": "生成手机验证码",
             "id": "mobile.generateCode",
             "urls": {
-                "develop": "http://localhost:8090/api/v1/mobile/code"
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/mobile/code"
             },
             "method": "get"
         },
@@ -26,7 +26,7 @@
             "name": "验证手机验证码是否正确",
             "id": "mobile.verify",
             "urls": {
-                "develop": "http://localhost:8090/api/v1/mobile/verify"
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/mobile/verify"
             },
             "method": "post",
             "contentType": "application/json"
@@ -35,7 +35,7 @@
             "name": "用户注册",
             "id": "user.register",
             "urls": {
-                "develop": "http://localhost:8090/api/v1/user/register"
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/user/register"
             },
             "method": "post",
             "contentType": "application/json"
@@ -44,7 +44,7 @@
             "name": "用户登录",
             "id": "user.login",
             "urls": {
-                "develop": "http://localhost:8090/api/v1/user/login"
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/user/login"
             },
             "method": "post",
             "contentType": "application/json"
@@ -53,7 +53,7 @@
             "name": "完善信息",
             "id": "user.perfect",
             "urls": {
-                "develop": "http://localhost:8090/api/v1/user/perfect"
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/user/perfect"
             },
             "method": "post",
             "contentType": "application/json"
