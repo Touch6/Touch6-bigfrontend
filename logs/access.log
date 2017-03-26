@@ -1,1 +1,5 @@
-[2017-03-26 14:02:23.961] [DEBUG] normal - GET /images/logo.png
+[2017-03-26 14:14:29.032] [DEBUG] normal - GET /views/index.html
+[2017-03-26 14:14:29.102] [DEBUG] normal - GET /img/profile-widget-avatar.jpg
+[2017-03-26 14:14:29.112] [DEBUG] normal - GET /img/chat-avatar.jpg
+[2017-03-26 14:14:29.113] [DEBUG] normal - GET /images/logo.png
+[2017-03-26 14:14:29.113] [DEBUG] normal - GET /dist/outer/img/icons/search-line-icon.png
