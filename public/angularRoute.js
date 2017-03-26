@@ -28,7 +28,7 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('index', {
             url: '/index',
-            templateUrl: 'views/user/login.html',
+            templateUrl: 'views/index.html',
             controller: 'LoginCtrl'
         })
         .state('register', {

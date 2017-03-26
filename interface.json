@@ -9,7 +9,7 @@
             "name": "检测手机号码是否已注册",
             "id": "mobile.check",
             "urls": {
-                "develop": "http://localhost:8090/api/v1/mobile/check"
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/mobile/check"
             },
             "method": "post",
             "contentType": "application/json"

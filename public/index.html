@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no"/>
     <title>开源之美</title>
-    <!--<link rel="shortcut icon" href="http://niu8.qiniudn.com/handinhand.jpg">-->
+    <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css"/>
     <link href="dist/outer/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
     <link href="https://wcs.chinanetcenter.com:443/styles/uploadify.css" type="text/css" rel="stylesheet"/>
@@ -145,10 +145,8 @@
     <!--custome script for all page-->
     <script src="dist/outer/js/scripts.js"></script>
 </head>
-<body ng-controller="indexController" class="{{backclass}}">
-<div ng-if="userInfo!=null" ng-include="'views/layouts/header.html'"></div>
-<div ng-if="userInfo!=null" ng-include="'views/layouts/leftside.html'"></div>
-
+<body ng-controller="indexController" class="">
+<div ng-include="'views/layouts/header.html'"></div>
 <div class="content" >
     <div ui-view=""></div>
 </div>

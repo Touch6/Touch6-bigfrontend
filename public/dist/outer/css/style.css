@@ -612,7 +612,7 @@ a.logo span {
 
 .search-row {
     float: left;
-    margin-top: 15px;
+    margin-top: 7px;
     margin-left: 16px;
 }
 
@@ -621,7 +621,9 @@ a.logo span {
     margin-top: 15px;
     margin-left: 65px;
 }
-
+.header-separator{
+    margin-top: 17px;
+}
 #task_notificatoin_bar, #mail_notificatoin_bar, #alert_notificatoin_bar {
     margin-top: 7px;
 }
