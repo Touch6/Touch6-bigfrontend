@@ -690,7 +690,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .navbar-form .form-control {
     width: 100px;
     height: 25px;
-    transition:width 1s;
+    transition:width 0.5s;
     background: white url('../img/icons/search-line-icon.png') no-repeat 3px;
     padding-left: 24px;
     margin-top: 1px;

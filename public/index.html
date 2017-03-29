@@ -145,11 +145,11 @@
     <!--custome script for all page-->
     <script src="dist/outer/js/scripts.js"></script>
 </head>
-<body ng-controller="indexController" class="" style="overflow-y: auto">
+<body ng-controller="indexController" class="" style="position:absolute;width:100%;min-height:100%;">
 <div ng-include="'views/layouts/header.html'"></div>
-<div class="content" >
+<div class="content" style="padding-bottom: 60px;">
     <div ui-view=""></div>
 </div>
-<div ng-include="'views/layouts/footer.html'"></div>
+<div ng-include="'views/layouts/footer.html'" style="height: 60px;"></div>
 </body>
 </html>
