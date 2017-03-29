@@ -616,7 +616,10 @@ a.logo span {
     margin-left: 65px;
 }
 .header-title{
-    margin-top: 7px;
+    margin-top: -7px;
+}
+.header-title:hover{
+    cursor: pointer;
 }
 .header-separator{
     margin-top: 15px;

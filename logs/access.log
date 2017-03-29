@@ -1,5 +1,4 @@
-[2017-03-26 14:24:54.483] [DEBUG] normal - GET /views/index.html
-[2017-03-26 14:24:54.580] [DEBUG] normal - GET /img/profile-widget-avatar.jpg
-[2017-03-26 14:24:54.589] [DEBUG] normal - GET /img/chat-avatar.jpg
-[2017-03-26 14:24:54.590] [DEBUG] normal - GET /dist/outer/img/icons/search-line-icon.png
-[2017-03-26 14:24:54.652] [DEBUG] normal - GET /images/logo.png
+[2017-03-28 21:40:02.029] [DEBUG] normal - GET /views/layouts/footer.html
+[2017-03-28 21:40:02.031] [DEBUG] normal - GET /views/navi.html
+[2017-03-28 21:40:02.032] [DEBUG] normal - GET /views/toutiao/toutiao_navi.html
+[2017-03-28 21:40:02.137] [DEBUG] normal - GET /dist/outer/img/icons/search-line-icon.png

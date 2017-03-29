@@ -8,14 +8,18 @@ var consoleApp = angular.module("consoleApp.controllers", [
 
 /**********************************整体body模块**************************************/
 consoleApp.controller("indexController", function ($rootScope, $scope, $window, $cookies) {
-    $scope.toRegister = function () {
-        $window.location = "/#/register";
-    }
-    $rootScope.backclass = "main-img-body";
-    if ($cookies.user == null) {
-        console.log("你还未登录");
-        $window.location = "/#/login";
-    }
+    // $scope.toRegister = function () {
+    //     $window.location = "/#/register";
+    // }
+    // $rootScope.backclass = "main-img-body";
+    // if ($cookies.user == null) {
+    //     console.log("你还未登录");
+    //     $window.location = "/#/login";
+    // }
+});
+/**********************************整体body模块**************************************/
+consoleApp.controller("naviController", function ($rootScope, $scope, $window, $cookies) {
+    console.log("naviController")
 });
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, $cookies, $location) {
@@ -56,10 +60,10 @@ consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, 
 consoleApp.controller("HomeCtrl", function ($scope, $window, user, $cookies, $location) {
     //alert("LoginCtrl");
     //初始化登录参数
-    if ($cookies.user == null) {
-        console.log("你还未登录");
-        $window.location = "/#/login";
-    }
+    // if ($cookies.user == null) {
+    //     console.log("你还未登录");
+    //     $window.location = "/#/login";
+    // }
 });
 /***********************************登出模块********************************************/
 consoleApp.controller("LoginOutCtrl", function ($scope, $cookies, $window) {
