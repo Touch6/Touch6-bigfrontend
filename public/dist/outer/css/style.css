@@ -11,10 +11,13 @@ Website: http://geekslabs.com/
 body {
     color: #797979;
     background: #eeeeee;
-    font-family: 'Lato', sans-serif;
+    font-family: '微软雅黑', "Helvetica Neue", Helvetica, Arial, sans-serif
     padding: 0px !important;
     margin: 0px !important;
     font-size: 14px !important;
+}
+*{
+    font-family: '微软雅黑', "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
 h1, h2, h3, h4, h5 {
@@ -5248,4 +5251,24 @@ span.customSelect.changed {
 
 .customSelectInner {
     background: url(../img/customSelect-arrow.gif) no-repeat center right;
+}
+.title-navi a{
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 10px;
+    background-color: #28323c;
+    width:150px;
+    height:40px;
+    color: antiquewhite;
+    cursor: pointer;
+}
+.title-navi a:hover{
+    background-color: #69b10b;
+}
+.title-navi img{
+    width:50%;
+    height:50%;
+}
+.doing{
+    background-color: slategrey !important;
 }
