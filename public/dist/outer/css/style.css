@@ -5270,7 +5270,7 @@ span.customSelect.changed {
     height:50%;
 }
 .title-navi-all{
-    background-color: beige !important;
+    background: none;
 }
 .arrows-up{
     margin-top: 200px;
