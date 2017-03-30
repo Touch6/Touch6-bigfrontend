@@ -17,32 +17,31 @@
             <li class="dropdown header-separator">|</li>
             <li class="dropdown header-title">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-
-                    <a ui-sref="navi.article" class="title-word" tag="title-word-article">技术文章</a>
+                    <a ui-sref-="navi.article" class="title-word" tag="title-word-article">技术文章</a>
                 </a>
             </li>
             <li class="dropdown header-separator">|</li>
             <li class="dropdown header-title">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref="navi.tool">实用工具</a>
+                    <a ui-sref-="navi.tool" class="title-word" tag="title-word-tool">实用工具</a>
                 </a>
             </li>
             <li class="dropdown header-separator">|</li>
             <li class="dropdown header-title">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref="navi.emotion">情感咨询</a>
+                    <a ui-sref-="navi.emotion" class="title-word" tag="title-word-emotion">情感咨询</a>
                 </a>
             </li>
             <li class="dropdown header-separator">|</li>
             <li class="dropdown header-title">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref="navi.aboutme">关于我们</a>
+                    <a ui-sref-="navi.aboutme" class="title-word" tag="title-word-aboutme">关于我们</a>
                 </a>
             </li>
             <li class="dropdown header-separator">|</li>
             <li class="dropdown header-title">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref="navi.login">登录</a>
+                    <a ui-sref="navi.login" >登录</a>
                 </a>
             </li>
             <li class="dropdown header-separator">|</li>
@@ -67,6 +66,7 @@
             <li data-value="3">汽车新闻</li>
             <li data-value="4">房产新闻</li>
             <li data-value="5">国际头条</li>
+            <li data-value="6" class="arrows-up" style="padding-left: 50%;cursor: pointer"><img src="../../images/arrows_up.png"/></li>
         </ul>
         <ul style="width: 100%" class="title-navi" id="title-word-article">
             <li data-value="1">代码段欣赏</li>
@@ -74,6 +74,31 @@
             <li data-value="3">论坛讨论</li>
             <li data-value="4">每日精选</li>
             <li data-value="5">分布式</li>
+            <li data-value="6" class="arrows-up" style="padding-left: 50%;cursor: pointer"><img src="../../images/arrows_up.png"/></li>
+        </ul>
+        <ul style="width: 100%" class="title-navi" id="title-word-tool">
+            <li data-value="1">时间工具</li>
+            <li data-value="2">编码解码</li>
+            <li data-value="3">加密解密</li>
+            <li data-value="4">二维码</li>
+            <li data-value="5">网址短连接</li>
+            <li data-value="6" class="arrows-up" style="padding-left: 50%;cursor: pointer"><img src="../../images/arrows_up.png"/></li>
+        </ul>
+        <ul style="width: 100%" class="title-navi" id="title-word-emotion">
+            <li data-value="1">大众情感</li>
+            <li data-value="2">情感咨询</li>
+            <li data-value="3">专家专栏</li>
+            <li data-value="4">情感节目</li>
+            <li data-value="5">我的求助</li>
+            <li data-value="6" class="arrows-up" style="padding-left: 50%;cursor: pointer"><img src="../../images/arrows_up.png"/></li>
+        </ul>
+        <ul style="width: 100%" class="title-navi" id="title-word-aboutme">
+            <li data-value="1">CSDN博客</li>
+            <li data-value="2">新浪微博</li>
+            <li data-value="3">联系邮箱</li>
+            <li data-value="4">QQ</li>
+            <li data-value="5">微信</li>
+            <li data-value="6" class="arrows-up" style="padding-left: 50%;cursor: pointer"><img src="../../images/arrows_up.png"/></li>
         </ul>
     </div>
 </header>
@@ -90,6 +115,9 @@
                 }
             }
             $("#"+tag).slideToggle(1000);
+        });
+        $(".arrows-up").click(function () {
+            $(this).parent().slideToggle(500);
         })
     })
 </script>
