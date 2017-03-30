@@ -5255,7 +5255,7 @@ span.customSelect.changed {
 .title-navi a{
     text-align: center;
     padding-top: 10px;
-    margin-top: 10px;
+    margin-top: 12px;
     background-color: #28323c;
     width:150px;
     height:40px;
@@ -5268,6 +5268,12 @@ span.customSelect.changed {
 .title-navi img{
     width:50%;
     height:50%;
+}
+.title-navi-all{
+    background-color: beige !important;
+}
+.arrows-up{
+    margin-top: 200px;
 }
 .doing{
     background-color: slategrey !important;
