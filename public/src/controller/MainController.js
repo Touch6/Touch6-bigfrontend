@@ -7,7 +7,7 @@ var consoleApp = angular.module("consoleApp.controllers", [
 
 
 /**********************************整体body模块**************************************/
-consoleApp.controller("indexController", function ($rootScope, $scope, $window, $cookies) {
+consoleApp.controller("MainController", function ($rootScope, $scope, $window, $cookies) {
     // $scope.toRegister = function () {
     //     $window.location = "/#/register";
     // }
@@ -16,6 +16,10 @@ consoleApp.controller("indexController", function ($rootScope, $scope, $window, 
     //     console.log("你还未登录");
     //     $window.location = "/#/login";
     // }
+});
+/**********************************整体body模块**************************************/
+consoleApp.controller("IndexController", function ($rootScope, $scope, $window, $cookies) {
+    $scope.welcome='欢迎进入首页!';
 });
 /**********************************整体body模块**************************************/
 consoleApp.controller("naviController", function ($rootScope, $scope, $window, $cookies) {
@@ -27,7 +31,7 @@ consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, 
     //初始化登录参数
     if ($cookies.user == null) {
         console.log("你还未登录");
-        $window.location = "/#/login";
+        // $window.location = "/#/login";
     }
     $scope.login = {
         "loginName": "",

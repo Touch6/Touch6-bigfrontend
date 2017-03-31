@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no"/>
-    <title>开源之美</title>
+    <title>知行云网</title>
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css"/>
     <link href="dist/outer/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
@@ -145,10 +145,11 @@
     <!--custome script for all page-->
     <script src="dist/outer/js/scripts.js"></script>
 </head>
-<body ng-controller="indexController" class="" style="position:absolute;width:100%;min-height:100%;">
-<div ng-include="'views/layouts/header.html'"></div>
+<body ng-controller="MainController" class="" style="position:absolute;width:100%;min-height:100%;">
+<div ng-include="'views/layouts/header.html'" style="padding-bottom: 60px;"></div>
 <div class="content" style="padding-bottom: 60px;">
-    <div ui-view=""></div>
+    <div ui-view="">
+    </div>
 </div>
 <div ng-include="'views/layouts/footer.html'" style="height: 60px;"></div>
 </body>

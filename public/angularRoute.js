@@ -29,7 +29,7 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('index', {
             url: '/index',
             templateUrl: 'views/index.html',
-            controller: 'LoginCtrl'
+            controller: 'IndexController'
         })
         .state('register', {
             url: '/register',
