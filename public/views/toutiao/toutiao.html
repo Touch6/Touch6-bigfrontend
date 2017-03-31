@@ -60,9 +60,20 @@
                                         <div class="act-time">
                                             <div class="activity-body act-in">
                                                 <div class="text">
-                                                    <p>{{tt.title}}</p>
-                                                    <p>{{tt.authorName}}</p>
-                                                    <p>{{tt.date}}</p>
+                                                    <div class="col-lg-2">
+                                                        <img src="{{tt.thumbnailPicS}}" style="width: 60%;height: 60%;"/>
+                                                    </div>
+                                                    <div class="col-lg-8">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                标题：<a href="{{tt.url}}" target="_blank" style="text-decoration: underline;color:#4874be">{{tt.title}}</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="position: relative;bottom: -60px;">
+                                                            <div class="col-lg-4">来自：{{tt.authorName}}</div>
+                                                            <div class="col-lg-6">发布于：{{tt.date}}</div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

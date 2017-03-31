@@ -4959,44 +4959,8 @@ table.sliders tr td {
     width: 2px;
 }
 
-/*.profile-activity:before, .act-time:before, .act-time .text:before {
-    content: "";
-    left: 60px;
-    position: absolute;
-    top: -2px;
-}*/
-.profile-activity, .act-time, .profile-activity .act-in, .profile-activity .act-out {
+.profile-activity, .act-time, .profile-activity .act-in {
     position: relative;
-}
-
-.profile-activity .act-in .arrow {
-    /*border-right: 8px solid #F4F4F4 !important;*/
-}
-
-.profile-activity .act-in .arrow {
-    border-bottom: 8px solid transparent;
-    border-top: 8px solid transparent;
-    display: block;
-    height: 0;
-    left: -8px;
-    position: absolute;
-    top: 13px;
-    width: 0;
-}
-
-.profile-activity .act-out .arrow {
-    /*border-right: 8px solid #34aadc !important;*/
-}
-
-.profile-activity .act-out .arrow {
-    border-bottom: 8px solid transparent;
-    border-top: 8px solid transparent;
-    display: block;
-    height: 0;
-    left: -8px;
-    position: absolute;
-    top: 13px;
-    width: 0;
 }
 
 .act-time:first-child:before {
@@ -5039,14 +5003,8 @@ table.sliders tr td {
 }
 
 .act-time .act-in .text {
-    border: 1px solid #e3e6ed;
-    padding: 10px;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-}
-
-.act-time .act-out .text {
-    border: 1px solid #e3e6ed;
+    min-height: 120px;
+    border: 1px solid #c5d509;
     padding: 10px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -5071,16 +5029,6 @@ table.sliders tr td {
     text-decoration: none;
     border-radius: 50%;
     -webkit-border-radius: 50%;
-    margin-right: 10px;
-    font-weight: 400;
-    font-size: 13px;
-}
-
-.act-out a, .act-out a:hover {
-    color: #288f98;
-    text-decoration: none;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
     margin-right: 10px;
     font-weight: 400;
     font-size: 13px;
