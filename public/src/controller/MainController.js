@@ -31,8 +31,7 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
     toutiao.overview(1,30)
         .then(function (data) {
             console.log("头条加载成功");
-            $rootScope.overview = data;
-            console.log("data:" + JSON.stringify(data));
+            $rootScope.overview = data.object;
         }, function (err) {
             console.log("头条加载失败"+err);
         });

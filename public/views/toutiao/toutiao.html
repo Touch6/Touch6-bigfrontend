@@ -56,22 +56,17 @@
                         <div class="tab-content">
                             <div id="recent-activity" class="tab-pane active">
                                 <div class="profile-activity">
-
-                                    <div class="act-time">
-                                        <div class="activity-body act-in">
-                                            <div class="text">
-                                                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+                                    <div ng-repeat="tt in overview">
+                                        <div class="act-time">
+                                            <div class="activity-body act-in">
+                                                <div class="text">
+                                                    <p>{{tt.title}}</p>
+                                                    <p>{{tt.authorName}}</p>
+                                                    <p>{{tt.date}}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="act-time">
-                                        <div class="activity-body act-in">
-                                            <div class="text">
-                                                <p>{{overview}}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
