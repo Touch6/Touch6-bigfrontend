@@ -275,6 +275,27 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
         }
     }
 });
+/********************toutiao模块****************************/
+consoleApp.factory("toutiao", function ($http, $q, $cookies) {
+    return {
+        overview: function (pageNo,pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            //验证验证码；get 传参：{params:{pageNo: pageNo,pageSize:pageSize}}
+            $http.get('/toutiao/overview', {params:{pageNo: pageNo,pageSize:pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    swal("", "获取头条信息失败!", "error");
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+});
 /***************************账户模块******************************/
 consoleApp.factory("account", function ($http, $q, $cookies) {
     return {

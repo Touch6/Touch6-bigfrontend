@@ -141,16 +141,16 @@
 
     <!--jQuery滚动条特效插件jQuery slimScroll-->
     <script src="dist/outer/js/jquery.slimscroll.min.js"></script>
-
+    <script src="//cdn.bootcss.com/owl-carousel/1.32/owl.carousel.js"></script>
     <!--custome script for all page-->
     <script src="dist/outer/js/scripts.js"></script>
 </head>
 <body ng-controller="MainController" class="" style="position:absolute;width:100%;min-height:100%;">
-<div ng-include="'views/layouts/header.html'" style="padding-bottom: 60px;"></div>
-<div class="content" style="padding-bottom: 60px;">
+<div ng-include="'views/layouts/header.html'"></div>
+<div class="content" style="padding-bottom: 60px;margin-top: 60px;">
     <div ui-view="">
     </div>
 </div>
-<div ng-include="'views/layouts/footer.html'" style="height: 60px;"></div>
+<div ng-include="'views/layouts/footer.html'" style="position:relative;left: 0;right:0;bottom:0;height: 60px;"></div>
 </body>
 </html>

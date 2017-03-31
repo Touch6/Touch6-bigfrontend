@@ -17,13 +17,25 @@ consoleApp.controller("MainController", function ($rootScope, $scope, $window, $
     //     $window.location = "/#/login";
     // }
 });
-/**********************************整体body模块**************************************/
+/**********************************系统首页**************************************/
 consoleApp.controller("IndexController", function ($rootScope, $scope, $window, $cookies) {
     $scope.welcome='欢迎进入首页!';
 });
-/**********************************整体body模块**************************************/
-consoleApp.controller("naviController", function ($rootScope, $scope, $window, $cookies) {
-    console.log("naviController")
+/**********************************导航总路由**************************************/
+consoleApp.controller("NaviController", function ($rootScope, $scope, $window, $cookies) {
+    console.log("NaviController")
+});
+/**********************************头条路由**************************************/
+consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window,toutiao, $cookies) {
+    //自动获取头条标题信息
+    toutiao.overview(1,30)
+        .then(function (data) {
+            console.log("头条加载成功");
+            $rootScope.overview = data;
+            console.log("data:" + JSON.stringify(data));
+        }, function (err) {
+            console.log("头条加载失败"+err);
+        });
 });
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, $cookies, $location) {

@@ -57,6 +57,14 @@
             },
             "method": "post",
             "contentType": "application/json"
+        },
+        {
+            "name": "自动获取头条标题列表",
+            "id": "toutiao.overview",
+            "urls": {
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/toutiao/overview"
+            },
+            "method": "get"
         }
     ],
     "combo": {

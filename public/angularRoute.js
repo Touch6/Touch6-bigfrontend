@@ -36,15 +36,15 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/user/register.html',
             controller: 'RegisterCtrl'
         })//头条新闻路由
-        .state('navi', {
+        .state('navi', {//导航总路由
             url: '/navi',
             templateUrl: 'views/navi.html',
-            controller: 'naviController'
+            controller: 'NaviController'
         })
         .state('navi.toutiao', {
             url: '/toutiao',
-            templateUrl: 'views/toutiao/toutiao_navi.html',
-            controller: 'naviController'
+            templateUrl: 'views/toutiao/toutiao.html',
+            controller: 'ToutiaoController'
         })
         .state('home', {
             url: '/home',
