@@ -37,8 +37,28 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
         });
 });
 /**********************************工具路由**************************************/
-consoleApp.controller("DateToolsController", function ($rootScope, $scope, $window,toutiao, $cookies) {
+consoleApp.controller("DateToolsController", function ($rootScope, $scope, $window,tools, $cookies) {
 
+    //定义变量
+    $scope.date='';
+    $scope.format='0';
+    $scope.dateFormat=function () {
+        var date=$scope.date;
+        var format=$scope.format;
+        console.log(date);
+        console.log(format);
+        if('0'==format){
+            swal('','请选择目标转换格式','error');
+            return;
+        }
+        tools.dateFormat(date,format)
+            .then(function (data) {
+                console.log("格式转换成功");
+                $rootScope.formated = data.object;
+            }, function (err) {
+                console.log("格式转换失败"+err);
+            });
+    }
 });
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, $cookies, $location) {

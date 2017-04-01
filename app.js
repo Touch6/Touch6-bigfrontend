@@ -14,6 +14,8 @@ var login=require('./routes/user/login');
 var register=require('./routes/user/register');
 var mobile=require('./routes/user/mobile');
 var toutiao=require('./routes/toutiao/toutiao');
+var tools=require('./routes/tools/tools');
+
 var sendEmail=require('./routes/email');
 var touchcApp=require('./routes/touchcApp/touchcApp');
 var uptoken=require('./routes/uptoken');
@@ -60,6 +62,7 @@ app.use('/login',login);
 app.use('/register',register);
 app.use('/mobile',mobile);
 app.use('/toutiao',toutiao);
+app.use('/tools',tools);
 app.use('/sendEmail',sendEmail);
 app.use('/touchcApp',touchcApp);
 app.use('/uptoken',uptoken);

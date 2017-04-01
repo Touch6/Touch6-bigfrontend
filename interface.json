@@ -65,6 +65,14 @@
                 "develop": "http://120.77.172.143:28081/touch6/api/v1/toutiao/overview"
             },
             "method": "get"
+        },
+        {
+            "name": "日期格式转换",
+            "id": "tools.dateFormat",
+            "urls": {
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/tools/dateformat"
+            },
+            "method": "get"
         }
     ],
     "combo": {

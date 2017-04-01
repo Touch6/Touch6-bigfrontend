@@ -1,22 +1,23 @@
+<form ng-submit="dateFormat()">
 <div class="row">
     <div style="padding: 10px 20px 0px 20px;">
-        <textarea style="width: 100%;height:150px;border: 1px solid;border-radius: 5px;"></textarea>
+        <textarea ng-model="date" style="width: 100%;height:150px;border: 1px solid;border-radius: 5px;"></textarea>
     </div>
 </div>
 <div class="row">
     <div style="padding: 10px 20px 0px 20px;">
-        <a class="btn btn-lg btn-block" style="background: rgba(54, 66, 74, 0.9);color:whitesmoke;">转换为</a>
-        <select class="form-control">
+        <button type="submit" class="btn btn-lg btn-block" style="background: rgba(54, 66, 74, 0.9);color:whitesmoke;">转换为</button>
+        <select class="form-control" ng-model="format">
             <option value="0">--请选择目标格式--</option>
-            <option value="1">yyyy-MM-dd</option>
-            <option value="2">yyyy-MM-dd HH:mm</option>
-            <option value="3">yyyy-MM-dd HH:mm:ss</option>
-            <option value="4">yyyy年MM月dd日</option>
-            <option value="5">yyyy年MM月dd日HH时mm分</option>
-            <option value="6">yyyy年MM月dd日HH时mm分ss秒</option>
-            <option value="7">yyyy/MM/dd</option>
-            <option value="8">yyyy/MM/dd/HH/mm</option>
-            <option value="9">yyyy/MM/dd/HH/mm/ss</option>
+            <option value="yyyy-MM-dd">yyyy-MM-dd</option>
+            <option value="yyyy-MM-dd HH:mm">yyyy-MM-dd HH:mm</option>
+            <option value="yyyy-MM-dd HH:mm:ss">yyyy-MM-dd HH:mm:ss</option>
+            <option value="yyyy年MM月dd日">yyyy年MM月dd日</option>
+            <option value="yyyy年MM月dd日HH时mm分">yyyy年MM月dd日HH时mm分</option>
+            <option value="yyyy年MM月dd日HH时mm分ss秒">yyyy年MM月dd日HH时mm分ss秒</option>
+            <option value="yyyy/MM/dd">yyyy/MM/dd</option>
+            <option value="yyyy/MM/dd/HH/m">yyyy/MM/dd/HH/mm</option>
+            <option value="yyyy/MM/dd/HH/mm/ss">yyyy/MM/dd/HH/mm/ss</option>
         </select>
     </div>
 </div>
@@ -26,3 +27,4 @@
 
     </div>
 </div>
+</form>

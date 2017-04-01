@@ -296,6 +296,27 @@ consoleApp.factory("toutiao", function ($http, $q, $cookies) {
         }
     }
 });
+/********************tools模块****************************/
+consoleApp.factory("tools", function ($http, $q, $cookies) {
+    return {
+        dateFormat: function (date,format) {
+            var deferred;
+            deferred = $q.defer();
+            //验证验证码；get 传参：{params:{pageNo: pageNo,pageSize:pageSize}}
+            $http.get('/tools/format', {params:{date: date,format:format}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    swal("", "转换失败!", "error");
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+});
 /***************************账户模块******************************/
 consoleApp.factory("account", function ($http, $q, $cookies) {
     return {
