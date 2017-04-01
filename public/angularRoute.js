@@ -46,10 +46,10 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/toutiao/toutiao.html',
             controller: 'ToutiaoController'
         })
-        .state('home', {
-            url: '/home',
-            templateUrl: 'views/home/home.html',
-            controller: 'HomeCtrl'
+        .state('navi.dateTools', {
+            url: '/tools',
+            templateUrl: 'views/tools/date_tools.html',
+            controller: 'DateToolsController'
         })
         .state('home.truelove', {
             url: '/truelove',

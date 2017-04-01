@@ -36,6 +36,10 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
             console.log("头条加载失败"+err);
         });
 });
+/**********************************工具路由**************************************/
+consoleApp.controller("DateToolsController", function ($rootScope, $scope, $window,toutiao, $cookies) {
+
+});
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, $cookies, $location) {
     //alert("LoginCtrl");
