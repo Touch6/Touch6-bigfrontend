@@ -299,11 +299,10 @@ consoleApp.factory("toutiao", function ($http, $q, $cookies) {
 /********************tools模块****************************/
 consoleApp.factory("tools", function ($http, $q, $cookies) {
     return {
-        dateFormat: function (date,format) {
+        dateFormat: function (src,format,dst,type) {
             var deferred;
             deferred = $q.defer();
-            //验证验证码；get 传参：{params:{pageNo: pageNo,pageSize:pageSize}}
-            $http.get('/tools/format', {params:{date: date,format:format}}).success(function (data) {
+            $http.get('/tools/format', {params:{src: src,format:format,dst:dst,type:type}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {

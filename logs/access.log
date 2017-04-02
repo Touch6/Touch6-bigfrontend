@@ -1,9 +1,1 @@
-[2017-04-01 16:36:57.315] [DEBUG] normal - GET /images/advertisement/flower.jpg
-[2017-04-01 16:36:57.317] [DEBUG] normal - GET /images/advertisement/fengjing.jpg
-[2017-04-01 16:36:57.320] [DEBUG] normal - GET /images/advertisement/city.jpg
-[2017-04-01 16:36:57.402] [DEBUG] normal - GET /dist/outer/app/fonts/glyphicons-halflings-regular.woff
-[2017-04-01 16:36:57.436] [DEBUG] normal - GET /%7B%7Btt.thumbnailPicS%7D%7D
-[2017-04-01 16:36:57.507] [DEBUG] normal - GET /toutiao/overview?pageNo=1&pageSize=30
-[2017-04-01 16:36:57.814] [DEBUG] normal - GET /dist/outer/app/fonts/glyphicons-halflings-regular.ttf
-[2017-04-01 16:36:58.394] [DEBUG] normal - GET /images/logo.png
-[2017-04-01 16:37:56.922] [DEBUG] normal - GET /views/tools/date_tools.html
+[2017-04-02 18:22:15.050] [DEBUG] normal - GET /tools/format?dst=&format=yyyy%E5%B9%B4MM%E6%9C%88dd%E6%97%A5HH%E6%97%B6mm%E5%88%86ss%E7%A7%92&src=16516516516&type=1

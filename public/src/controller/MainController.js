@@ -19,44 +19,53 @@ consoleApp.controller("MainController", function ($rootScope, $scope, $window, $
 });
 /**********************************系统首页**************************************/
 consoleApp.controller("IndexController", function ($rootScope, $scope, $window, $cookies) {
-    $scope.welcome='欢迎进入首页!';
+    $scope.welcome = '欢迎进入首页!';
 });
 /**********************************导航总路由**************************************/
 consoleApp.controller("NaviController", function ($rootScope, $scope, $window, $cookies) {
     console.log("NaviController")
 });
 /**********************************头条路由**************************************/
-consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window,toutiao, $cookies) {
+consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window, toutiao, $cookies) {
     //自动获取头条标题信息
-    toutiao.overview(1,30)
+    toutiao.overview(1, 30)
         .then(function (data) {
             console.log("头条加载成功");
             $rootScope.overview = data.object;
         }, function (err) {
-            console.log("头条加载失败"+err);
+            console.log("头条加载失败" + err);
         });
 });
 /**********************************工具路由**************************************/
-consoleApp.controller("DateToolsController", function ($rootScope, $scope, $window,tools, $cookies) {
+consoleApp.controller("DateToolsController", function ($rootScope, $scope, $window, tools, $cookies) {
 
     //定义变量
-    $scope.date='';
-    $scope.format='0';
-    $scope.dateFormat=function () {
-        var date=$scope.date;
-        var format=$scope.format;
-        console.log(date);
+    $scope.src = '';
+    $scope.format = '0';
+    $scope.dst = '';
+    $scope.type = '';
+    $scope.dateFormat = function (type) {
+        var  src= $scope.src;
+        var format = $scope.format;
+        var dst = $scope.dst;
+        console.log(src);
         console.log(format);
-        if('0'==format){
-            swal('','请选择目标转换格式','error');
+        console.log(dst);
+        console.log(type);
+        if ('0' == format) {
+            if(type=='1'){
+                swal('', '请选择目标转换格式', 'error');
+            }else if(type=='-1'){
+                swal('', '请选择源格式', 'error');
+            }
             return;
         }
-        tools.dateFormat(date,format)
+        tools.dateFormat(src, format,dst,type)
             .then(function (data) {
-                console.log("格式转换成功");
-                $rootScope.formated = data.object;
+                console.log("格式转换成功:"+data.object);
+                $rootScope.dst = data.object;
             }, function (err) {
-                console.log("格式转换失败"+err);
+                console.log("格式转换失败" + err);
             });
     }
 });
@@ -118,25 +127,25 @@ consoleApp.controller("LoginOutCtrl", function ($scope, $cookies, $window) {
 consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user, mobile) {
     //1检测手机是否已注册
     $scope.checkMobile = function () {
-        console.log("time:"+new Date().getMilliseconds()+"(1)页面输入手机号:" + $scope.register.mobile);
-        $scope.mobileIsChecking=true;
+        console.log("time:" + new Date().getMilliseconds() + "(1)页面输入手机号:" + $scope.register.mobile);
+        $scope.mobileIsChecking = true;
         mobile.check($scope.register.mobile).then(function (data) {
-            if(data.statusCode==400){
+            if (data.statusCode == 400) {
                 console.log("检测手机号是否注册返回结果statusCode>>>" + data.statusCode);
                 console.log("检测手机号是否注册返回结果responseText>>>" + JSON.stringify(data.responseText));
                 //后台返回错误信息
-                var json=JSON.parse(data.responseText);
-                if(json.code='200100'){
+                var json = JSON.parse(data.responseText);
+                if (json.code = '200100') {
                     //手机号码已被注册
-                    $scope.mobileIsRegistered=true;
-                    $scope.mobileIsChecking=false;
-                    $scope.mobileIsNotRegistered=false;
+                    $scope.mobileIsRegistered = true;
+                    $scope.mobileIsChecking = false;
+                    $scope.mobileIsNotRegistered = false;
                 }
-            }else if(data.code=200){
+            } else if (data.code = 200) {
                 //后台返回成功
-                $scope.mobileIsRegistered=false;
-                $scope.mobileIsChecking=false;
-                $scope.mobileIsNotRegistered=true;
+                $scope.mobileIsRegistered = false;
+                $scope.mobileIsChecking = false;
+                $scope.mobileIsNotRegistered = true;
             }
 
         }, function (err) {
