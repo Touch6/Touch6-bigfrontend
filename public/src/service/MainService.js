@@ -299,10 +299,10 @@ consoleApp.factory("toutiao", function ($http, $q, $cookies) {
 /********************tools模块****************************/
 consoleApp.factory("tools", function ($http, $q, $cookies) {
     return {
-        dateFormat: function (src,format,dst,type) {
+        dateFormat: function (src,format,type) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/tools/format', {params:{src: src,format:format,dst:dst,type:type}}).success(function (data) {
+            $http.get('/tools/format', {params:{src: src,format:format,type:type}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {

@@ -1,1 +1,9 @@
-[2017-04-02 18:22:15.050] [DEBUG] normal - GET /tools/format?dst=&format=yyyy%E5%B9%B4MM%E6%9C%88dd%E6%97%A5HH%E6%97%B6mm%E5%88%86ss%E7%A7%92&src=16516516516&type=1
+[2017-04-02 22:31:34.210] [DEBUG] normal - GET /dist/outer/js/scripts.js
+[2017-04-02 22:31:36.388] [DEBUG] normal - GET /views/layouts/header.html
+[2017-04-02 22:31:36.389] [DEBUG] normal - GET /views/layouts/footer.html
+[2017-04-02 22:31:36.392] [DEBUG] normal - GET /views/navi.html
+[2017-04-02 22:31:36.393] [DEBUG] normal - GET /views/tools/date_tools.html
+[2017-04-02 22:31:36.434] [DEBUG] normal - GET /images/arrows_up.png
+[2017-04-02 22:31:36.438] [DEBUG] normal - GET /dist/outer/img/icons/search-line-icon.png
+[2017-04-02 22:31:36.526] [DEBUG] normal - GET /images/logo.png
+[2017-04-02 22:31:40.278] [DEBUG] normal - GET /views/codec/codec.html

@@ -51,10 +51,10 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/tools/date_tools.html',
             controller: 'DateToolsController'
         })
-        .state('home.truelove', {
-            url: '/truelove',
-            templateUrl: 'views/sweet/truelove.html',
-            controller: 'HomeCtrl'
+        .state('navi.codec', {
+            url: '/codec',
+            templateUrl: 'views/codec/codec.html',
+            controller: 'CodecController'
         })
         .state('home.whisper', {
             url: '/whisper',

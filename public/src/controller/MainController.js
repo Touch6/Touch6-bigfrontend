@@ -47,10 +47,8 @@ consoleApp.controller("DateToolsController", function ($rootScope, $scope, $wind
     $scope.dateFormat = function (type) {
         var  src= $scope.src;
         var format = $scope.format;
-        var dst = $scope.dst;
         console.log(src);
         console.log(format);
-        console.log(dst);
         console.log(type);
         if ('0' == format) {
             if(type=='1'){
@@ -60,15 +58,47 @@ consoleApp.controller("DateToolsController", function ($rootScope, $scope, $wind
             }
             return;
         }
-        tools.dateFormat(src, format,dst,type)
+        tools.dateFormat(src,format,type)
             .then(function (data) {
                 console.log("格式转换成功:"+data.object);
-                $rootScope.dst = data.object;
+                $rootScope.formated = data.object;
             }, function (err) {
                 console.log("格式转换失败" + err);
             });
     }
 });
+/**********************************工具路由**************************************/
+consoleApp.controller("CodecController", function ($rootScope, $scope, $window, codec, $cookies) {
+
+    //定义变量
+    $scope.src = '';
+    $scope.format = '0';
+    $scope.dst = '';
+    $scope.type = '';
+    $scope.dateFormat = function (type) {
+        var  src= $scope.src;
+        var format = $scope.format;
+        console.log(src);
+        console.log(format);
+        console.log(type);
+        if ('0' == format) {
+            if(type=='1'){
+                swal('', '请选择目标转换格式', 'error');
+            }else if(type=='-1'){
+                swal('', '请选择源格式', 'error');
+            }
+            return;
+        }
+        tools.dateFormat(src,format,type)
+            .then(function (data) {
+                console.log("格式转换成功:"+data.object);
+                $rootScope.formated = data.object;
+            }, function (err) {
+                console.log("格式转换失败" + err);
+            });
+    }
+});
+
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, $cookies, $location) {
     //alert("LoginCtrl");
