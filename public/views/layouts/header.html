@@ -43,13 +43,13 @@
             <li class="dropdown header-separator">|</li>
             <li class="dropdown header-title">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref="navi.login">登录</a>
+                    <a ui-sref-="navi.login" class="title-word" tag="title-word-login">登录</a>
                 </a>
             </li>
             <li class="dropdown header-separator">|</li>
             <li class="dropdown header-title">
                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref="navi.register">注册</a>
+                    <a ui-sref-="navi.register" class="title-word" tag="title-word-register">注册</a>
                 </a>
             </li>
             <!--检索框-->
@@ -263,6 +263,30 @@
                 </div>
                 <div class="col-lg-2">
                     <a data-value="6" class="pull-left doing">其他(正在挖掘...)</a>
+                </div>
+            </div>
+            <div class="row">
+                <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
+                    <img src="../../images/arrows_up.png"/>
+                </span>
+            </div>
+        </ul>
+        <ul style="width: 100%" class="title-navi pull-right" id="title-word-login">
+            <div class="row" >
+                <div class="col-lg-12">
+                    <div ng-include="'views/user/login.html'"></div>
+                </div>
+            </div>
+            <div class="row">
+                <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
+                    <img src="../../images/arrows_up.png"/>
+                </span>
+            </div>
+        </ul>
+        <ul style="width: 100%" class="title-navi pull-right" id="title-word-register">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div ng-include="'views/user/register.html'"></div>
                 </div>
             </div>
             <div class="row">

@@ -5136,3 +5136,6 @@ span.customSelect.changed {
 .advertise{
     padding-top: 20px;
 }
+#title-word-login .arrows-up,#title-word-register .arrows-up{
+    margin-top: 400px !important;
+}

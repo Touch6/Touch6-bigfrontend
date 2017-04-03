@@ -56,11 +56,6 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/codec/codec.html',
             controller: 'CodecController'
         })
-        .state('home.whisper', {
-            url: '/whisper',
-            templateUrl: 'views/sweet/whisper.html',
-            controller: 'HomeCtrl'
-        })
         .state('home.blog', {
             url: '/blog',
             templateUrl: 'views/article/blog.html',
