@@ -19,4 +19,17 @@ router.get("/format", function (req, res) {
         res.send(error);
     });
 });
+router.get("/codec", function (req, res) {
+    //真正请求后台接口的路由
+    req.session = {};
+    console.log("node端接收参数:src>>>"+req.query.src);
+    console.log("node端接收参数:type>>>"+req.query.type);
+    toolsModel.codec({src:req.query.src,type:req.query.type}).done(function (data) {
+        console.log("node后端编解码成功>>>" + JSON.stringify(data));
+        res.send(data);
+    }).fail(function (error) {
+        console.log("error>>" + error);
+        res.send(error);
+    });
+});
 module.exports = router;

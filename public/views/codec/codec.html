@@ -1,41 +1,28 @@
 <form>
     <div class="row">
         <div style="padding: 10px 20px 0px 20px;">
-            <textarea ng-model="src" style="width: 100%;height:150px;border: 1px solid;border-radius: 5px;"></textarea>
+            <textarea ng-model="src" placeholder="请输入需要编解码的字符串" required style="width: 100%;height:150px;border: 1px solid;border-radius: 5px;"></textarea>
         </div>
     </div>
     <div>
         <div class="row" style="padding: 10px 20px 0px 20px;">
-            <select class="form-control" ng-model="format">
-                <option value="0">--请选择目标格式--</option>
-                <option value="yyyy-MM-dd">yyyy-MM-dd</option>
-                <option value="yyyy-MM-dd HH:mm">yyyy-MM-dd HH:mm</option>
-                <option value="yyyy-MM-dd HH:mm:ss">yyyy-MM-dd HH:mm:ss</option>
-                <option value="yyyy年MM月dd日">yyyy年MM月dd日</option>
-                <option value="yyyy年MM月dd日HH时mm分">yyyy年MM月dd日HH时mm分</option>
-                <option value="yyyy年MM月dd日HH时mm分ss秒">yyyy年MM月dd日HH时mm分ss秒</option>
-                <option value="yyyy/MM/dd">yyyy/MM/dd</option>
-                <option value="yyyy/MM/dd/HH/m">yyyy/MM/dd/HH/mm</option>
-                <option value="yyyy/MM/dd/HH/mm/ss">yyyy/MM/dd/HH/mm/ss</option>
-            </select>
+            <label><input type="radio" name="type" ng-model="type" value="1"/>URL编码(UTF-8)</label>
+            <label><input type="radio" name="type" ng-model="type" value="2"/>URL解码(UTF-8)</label>
+            <label><input type="radio" name="type" ng-model="type" value="3"/>URL编码(GBK)</label>
+            <label><input type="radio" name="type" ng-model="type" value="4"/>URL解码(GBK)</label>
         </div>
 
         <div class="row" style="padding: 10px 4px 10px 4px;">
             <div class="col-lg-6">
-                <button type="submit" class="btn btn-lg btn-block " ng-click="dateFormat(1)"
-                        style="background: rgba(54, 66, 74, 0.9);color:whitesmoke;">转换
-                </button>
-            </div>
-            <div class="col-lg-6">
-                <button type="submit" class="btn btn-lg btn-block " ng-click="dateFormat(-1)"
-                        style="background: rgba(54, 66, 74, 0.9);color:whitesmoke;">反转为时间戳
+                <button type="submit" class="btn btn-lg btn-block " ng-click="codec()"
+                        style="background: rgba(54, 66, 74, 0.9);color:whitesmoke;">编码/解码
                 </button>
             </div>
         </div>
     </div>
     <div class="row">
         <div style="padding: 0px 20px 20px 20px;">
-            <textarea style="width: 100%;height:150px; border: 1px solid;border-radius: 5px;" readonly disabled>{{formated}}</textarea>
+            <textarea style="width: 100%;height:150px; border: 1px solid;border-radius: 5px;" placeholder="编解码结果" ng-bind="result" readonly disabled></textarea>
 
         </div>
     </div>

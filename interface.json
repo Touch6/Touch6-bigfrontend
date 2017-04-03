@@ -73,6 +73,14 @@
                 "develop": "http://120.77.172.143:28081/touch6/api/v1/tools/dateformat"
             },
             "method": "get"
+        },
+        {
+            "name": "编解码",
+            "id": "tools.codec",
+            "urls": {
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/tools/codec"
+            },
+            "method": "get"
         }
     ],
     "combo": {

@@ -7,7 +7,7 @@ consoleApp.factory("mobile", function ($http, $q, $cookies) {
     return {
         /*******************检测手机号是否已注册******************************************************/
         check: function (mobile) {
-            console.log("time:"+new Date().getMilliseconds()+"(2)mobile>>"+mobile);
+            console.log("time:" + new Date().getMilliseconds() + "(2)mobile>>" + mobile);
             var deferred;
             deferred = $q.defer();
             //验证验证码；
@@ -24,11 +24,11 @@ consoleApp.factory("mobile", function ($http, $q, $cookies) {
         },
         /*******************生成验证码******************************************************/
         generateCode: function (mobile) {
-            console.log("(2)mobile>>"+mobile);
+            console.log("(2)mobile>>" + mobile);
             var deferred;
             deferred = $q.defer();
             //验证验证码；
-            $http.get('/mobile/code', {params:{mobile: mobile}}).success(function (data) {
+            $http.get('/mobile/code', {params: {mobile: mobile}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -78,21 +78,21 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
 //                 if (data) {
 //                    console.log(checkRegisterForm(registerUser));
 //                     if (checkRegisterForm(registerUser)) {
-                        $http.post('/register', {user: register}).success(function (data) {
+            $http.post('/register', {user: register}).success(function (data) {
 //                            console.log("service注册成功返回"+JSON.stringify(data));
-                            return deferred.resolve(data);
-                        }).error(function (data) {
-                            swal("", "注册失败，请重新尝试！", "error");
-                            changeCode();
-                            return deferred.reject(data);
-                        });
-                    // }
+                return deferred.resolve(data);
+            }).error(function (data) {
+                swal("", "注册失败，请重新尝试！", "error");
+                changeCode();
+                return deferred.reject(data);
+            });
+            // }
 
-                // } else {
-                //     swal("", "验证码错误！", "error");
-                //     changeCode();
-                //     return deferred.reject(data);
-                // }
+            // } else {
+            //     swal("", "验证码错误！", "error");
+            //     changeCode();
+            //     return deferred.reject(data);
+            // }
             // }).error(function (data) {
             //     swal("", "验证码验证失败！", "error");
             //     changeCode();
@@ -278,11 +278,11 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
 /********************toutiao模块****************************/
 consoleApp.factory("toutiao", function ($http, $q, $cookies) {
     return {
-        overview: function (pageNo,pageSize) {
+        overview: function (pageNo, pageSize) {
             var deferred;
             deferred = $q.defer();
             //验证验证码；get 传参：{params:{pageNo: pageNo,pageSize:pageSize}}
-            $http.get('/toutiao/overview', {params:{pageNo: pageNo,pageSize:pageSize}}).success(function (data) {
+            $http.get('/toutiao/overview', {params: {pageNo: pageNo, pageSize: pageSize}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -299,14 +299,29 @@ consoleApp.factory("toutiao", function ($http, $q, $cookies) {
 /********************tools模块****************************/
 consoleApp.factory("tools", function ($http, $q, $cookies) {
     return {
-        dateFormat: function (src,format,type) {
+        dateFormat: function (src, format, type) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/tools/format', {params:{src: src,format:format,type:type}}).success(function (data) {
+            $http.get('/tools/format', {params: {src: src, format: format, type: type}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
                     swal("", "转换失败!", "error");
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        codec: function (src, type) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/tools/codec', {params: {src: src, type: type}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    swal("", "编解码失败!", "error");
                     return deferred.reject(data);
                 }
             }).error(function (error) {

@@ -45,22 +45,22 @@ consoleApp.controller("DateToolsController", function ($rootScope, $scope, $wind
     $scope.dst = '';
     $scope.type = '';
     $scope.dateFormat = function (type) {
-        var  src= $scope.src;
+        var src = $scope.src;
         var format = $scope.format;
         console.log(src);
         console.log(format);
         console.log(type);
         if ('0' == format) {
-            if(type=='1'){
+            if (type == '1') {
                 swal('', '请选择目标转换格式', 'error');
-            }else if(type=='-1'){
+            } else if (type == '-1') {
                 swal('', '请选择源格式', 'error');
             }
             return;
         }
-        tools.dateFormat(src,format,type)
+        tools.dateFormat(src, format, type)
             .then(function (data) {
-                console.log("格式转换成功:"+data.object);
+                console.log("格式转换成功:" + data.object);
                 $rootScope.formated = data.object;
             }, function (err) {
                 console.log("格式转换失败" + err);
@@ -68,33 +68,26 @@ consoleApp.controller("DateToolsController", function ($rootScope, $scope, $wind
     }
 });
 /**********************************工具路由**************************************/
-consoleApp.controller("CodecController", function ($rootScope, $scope, $window, codec, $cookies) {
+consoleApp.controller("CodecController", function ($rootScope, $scope, $window, tools, $cookies) {
 
     //定义变量
     $scope.src = '';
-    $scope.format = '0';
-    $scope.dst = '';
     $scope.type = '';
-    $scope.dateFormat = function (type) {
-        var  src= $scope.src;
-        var format = $scope.format;
+    $scope.codec = function () {
+        var src = $scope.src;
+        var type = $scope.type;
         console.log(src);
-        console.log(format);
         console.log(type);
-        if ('0' == format) {
-            if(type=='1'){
-                swal('', '请选择目标转换格式', 'error');
-            }else if(type=='-1'){
-                swal('', '请选择源格式', 'error');
-            }
+        if(!type){
+            swal('', '请选择编解码方式', 'error');
             return;
         }
-        tools.dateFormat(src,format,type)
+        tools.codec(src, type)
             .then(function (data) {
-                console.log("格式转换成功:"+data.object);
-                $rootScope.formated = data.object;
+                console.log("编解码成功:" + data.object);
+                $rootScope.result = data.object;
             }, function (err) {
-                console.log("格式转换失败" + err);
+                console.log("编解码失败" + err);
             });
     }
 });
