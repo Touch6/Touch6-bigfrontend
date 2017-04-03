@@ -147,12 +147,13 @@ consoleApp.controller("LoginOutCtrl", function ($scope, $cookies, $window) {
     console.log("退出登录后:" + JSON.stringify($cookies.user));
 });
 /***************************************注册模块*********************************************/
-consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user, mobile) {
+consoleApp.controller("RegisterController", function ($scope, $cookies, $window, user, phone) {
+    console.log("注册");
     //1检测手机是否已注册
     $scope.checkMobile = function () {
-        console.log("time:" + new Date().getMilliseconds() + "(1)页面输入手机号:" + $scope.register.mobile);
+        console.log("time:" + new Date().getMilliseconds() + "(1)页面输入手机号:" + $scope.register.phone);
         $scope.mobileIsChecking = true;
-        mobile.check($scope.register.mobile).then(function (data) {
+        phone.check($scope.register.phone).then(function (data) {
             if (data.statusCode == 400) {
                 console.log("检测手机号是否注册返回结果statusCode>>>" + data.statusCode);
                 console.log("检测手机号是否注册返回结果responseText>>>" + JSON.stringify(data.responseText));
@@ -178,9 +179,9 @@ consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user,
     }
     //2生成手机验证码
     $scope.generateCode = function () {
-        console.log("(1)页面输入手机号:" + $scope.register.mobile);
+        console.log("(1)页面输入手机号:" + $scope.register.phone);
         //校验手机号码是否合法
-        mobile.generateCode($scope.register.mobile).then(function (data) {
+        phone.generateCode($scope.register.phone).then(function (data) {
             console.log("生成验证码返回结果>>>" + JSON.stringify(data));
         }, function (err) {
             console.log(err);
@@ -190,13 +191,13 @@ consoleApp.controller("RegisterCtrl", function ($scope, $cookies, $window, user,
         $window.location = "/#/login";
     }
     $scope.register = {
-        "mobile": "",
+        "phone": "",
         "code": "",
         "password": "",
         "confirmPassword": ""
     }
     $scope.verifyCode = "";
-    $scope.register = function () {
+    $scope.registerAccount = function () {
         user.registerAccount($scope.register).then(function (data) {
             console.log("注册完成返回的结果" + JSON.stringify(data));
             // activeEmailCode = data.activationCode;

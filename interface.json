@@ -7,26 +7,26 @@
     "interfaces": [
         {
             "name": "检测手机号码是否已注册",
-            "id": "mobile.check",
+            "id": "phone.check",
             "urls": {
-                "develop": "http://120.77.172.143:28081/touch6/api/v1/mobile/check"
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/phone/check"
             },
             "method": "post",
             "contentType": "application/json"
         },
         {
             "name": "生成手机验证码",
-            "id": "mobile.generateCode",
+            "id": "phone.generateCode",
             "urls": {
-                "develop": "http://120.77.172.143:28081/touch6/api/v1/mobile/code"
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/phone/code"
             },
             "method": "get"
         },
         {
             "name": "验证手机验证码是否正确",
-            "id": "mobile.verify",
+            "id": "phone.verify",
             "urls": {
-                "develop": "http://120.77.172.143:28081/touch6/api/v1/mobile/verify"
+                "develop": "http://120.77.172.143:28081/touch6/api/v1/phone/verify"
             },
             "method": "post",
             "contentType": "application/json"

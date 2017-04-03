@@ -2,16 +2,16 @@ var consoleApp = angular.module('consoleApp.services', [
     'ngCookies'
 ]);
 /********************mobile模块****************************/
-consoleApp.factory("mobile", function ($http, $q, $cookies) {
+consoleApp.factory("phone", function ($http, $q, $cookies) {
 
     return {
         /*******************检测手机号是否已注册******************************************************/
-        check: function (mobile) {
-            console.log("time:" + new Date().getMilliseconds() + "(2)mobile>>" + mobile);
+        check: function (phone) {
+            console.log("time:" + new Date().getMilliseconds() + "(2)phone>>" + phone);
             var deferred;
             deferred = $q.defer();
             //验证验证码；
-            $http.post('/mobile/check', {mobile: mobile}).success(function (data) {
+            $http.post('/phone/check', {phone: phone}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -23,12 +23,12 @@ consoleApp.factory("mobile", function ($http, $q, $cookies) {
             return deferred.promise;
         },
         /*******************生成验证码******************************************************/
-        generateCode: function (mobile) {
-            console.log("(2)mobile>>" + mobile);
+        generateCode: function (phone) {
+            console.log("(2)phone>>" + phone);
             var deferred;
             deferred = $q.defer();
             //验证验证码；
-            $http.get('/mobile/code', {params: {mobile: mobile}}).success(function (data) {
+            $http.get('/phone/code', {params: {phone: phone}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -69,7 +69,7 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
         },
         /**********注册**********************************************************/
         registerAccount: function (register) {
-//            console.log("从controller拿取的注册用户为"+JSON.stringify(registerUser));
+           console.log("从controller拿取的注册用户为"+JSON.stringify(register));
             var deferred;
             deferred = $q.defer();
             //先验证验证码，成功后再注册；

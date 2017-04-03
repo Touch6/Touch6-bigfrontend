@@ -4,19 +4,22 @@ var ModelProxy, userModel;
 ModelProxy = require('./../../proxy/DataProxy').DataProxy;
 userModel = ModelProxy.create("user.*");
 
-router.post('/',function(req,res){
+router.post('/', function (req, res) {
 
-  console.log("register中user为："+req.body.user.mobile+"/"+req.body.user.password+"/"+req.body.user.code);
-    console.log("拿到的注册user"+JSON.stringify(req.body.user));
-    userModel.register({mobile:req.body.user.mobile,password:req.body.user.confirmPassword,email:req.body.user.code},{}).done(function(data){
-        console.log("调用后台注册接口成功返回信息>>>"+data);
+    console.log("register中user为：" + req.body.user.phone + "/" + req.body.user.password + "/" + req.body.user.code);
+    console.log("拿到的注册user" + JSON.stringify(req.body.user));
+    userModel.register({
+        phone: req.body.user.phone,
+        password: req.body.user.password,
+        confirmPassword: req.body.user.confirmPassword,
+        code: req.body.user.code
+    }, {}).done(function (data) {
+        console.log("调用后台注册接口成功返回信息>>>" + data);
         res.send(data);
-    }).error(function(data){
-        console.log("调用后台注册接口成功返回信息>>>"+data);
+    }).error(function (data) {
+        console.log("调用后台注册接口成功返回信息>>>" + data);
     });
 });
-
-
 
 
 module.exports = router;

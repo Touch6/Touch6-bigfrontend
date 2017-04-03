@@ -2,7 +2,8 @@
     <div class="col-lg-8">
         <!-- profile-widget -->
         <div class="profile-widget profile-widget-info advertise" style="padding: 20px 10px 10px 10px;">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" align="center" style="height:600px;">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" align="center"
+                 style="height:600px;">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -48,25 +49,25 @@
             </div>
         </div>
     </div>
-    <form class="col-lg-4 register-form" ng-submit="register()" role="form">
+    <form class="col-lg-4 register-form" ng-submit="registerAccount()" role="form">
         <div class="login-wrap">
             <p class="login-img"><i class="fa fa-user-circle">注册</i></p>
 
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                <input type="text" id="mobile" name="mobile" ng-model="register.mobile" required class="form-control"
+                <input type="text" id="phone" name="phone" ng-model="register.phone" ng-required="true" class="form-control"
                        maxlength="11" placeholder="请输入手机号码" autofocus ng-blur="checkMobile()"/>
-                <span class="input-group-addon" ng-show="mobileIsChecking"><i class="fa fa-spinner fa-pulse"></i>检测中...</span>
-                <span class="input-group-addon" ng-show="mobileIsNotRegistered"><i class=""></i>恭喜您!手机号码未注册</span>
-                <span class="input-group-addon" ng-show="mobileIsRegistered"><i class=""></i>该手机号已被注册</span>
+                <span class="input-group-addon" ng-show="mobileIsChecking"><i class="fa fa-spinner fa-pulse"></i><span style="font-size: 12px;">检测中...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
+                <span class="input-group-addon" ng-show="mobileIsNotRegistered"><i class=""></i><span style="font-size: 12px;">手机号码未注册</span></span>
+                <span class="input-group-addon" ng-show="mobileIsRegistered"><i class=""></i><span style="font-size: 12px;">手机号码已注册</span></span>
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-comment-o"></i></span>
-                <input type="text" id="code" name="code" ng-model="register.code" class="form-control"
-                       placeholder="请输入验证码" required>
+                <input type="text" id="code" name="code" required ng-model="register.code" class="form-control"
+                       placeholder="请输入验证码">
                 <span class="input-group-addon">
                         <button class="btn btn-success btn-sm" ng-click="generateCode()">获取验证码</button>
-                    </span>
+                </span>
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>

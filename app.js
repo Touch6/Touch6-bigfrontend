@@ -12,7 +12,7 @@ var home=require('./routes/user/home');
 var ccap=require('./routes/ccap');
 var login=require('./routes/user/login');
 var register=require('./routes/user/register');
-var mobile=require('./routes/user/mobile');
+var phone=require('./routes/user/phone');
 var toutiao=require('./routes/toutiao/toutiao');
 var tools=require('./routes/tools/tools');
 
@@ -60,7 +60,7 @@ app.use('/home',home);
 app.use('/ccap',ccap);
 app.use('/login',login);
 app.use('/register',register);
-app.use('/mobile',mobile);
+app.use('/phone',phone);
 app.use('/toutiao',toutiao);
 app.use('/tools',tools);
 app.use('/sendEmail',sendEmail);

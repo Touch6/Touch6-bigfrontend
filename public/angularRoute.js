@@ -34,7 +34,7 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
         .state('register', {
             url: '/register',
             templateUrl: 'views/user/register.html',
-            controller: 'RegisterCtrl'
+            controller: 'RegisterController'
         })//头条新闻路由
         .state('navi', {//导航总路由
             url: '/navi',
