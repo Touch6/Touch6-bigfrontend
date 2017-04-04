@@ -8,14 +8,13 @@ var consoleApp = angular.module("consoleApp.controllers", [
 
 /**********************************整体body模块**************************************/
 consoleApp.controller("MainController", function ($rootScope, $scope, $window, $cookies) {
-    // $scope.toRegister = function () {
-    //     $window.location = "/#/register";
-    // }
-    // $rootScope.backclass = "main-img-body";
-    // if ($cookies.user == null) {
-    //     console.log("你还未登录");
-    //     $window.location = "/#/login";
-    // }
+    console.log("MainController");
+    console.log("MainController->$scope.loginUser:"+$rootScope.loginUser);
+    if ($rootScope.loginUser) {
+        $rootScope.notLogin = false;
+    }else{
+        $rootScope.notLogin = true;
+    }
 });
 /**********************************系统首页**************************************/
 consoleApp.controller("IndexController", function ($rootScope, $scope, $window, $cookies) {
@@ -78,7 +77,7 @@ consoleApp.controller("CodecController", function ($rootScope, $scope, $window, 
         var type = $scope.type;
         console.log(src);
         console.log(type);
-        if(!type){
+        if (!type) {
             swal('', '请选择编解码方式', 'error');
             return;
         }
@@ -99,13 +98,7 @@ consoleApp.controller("RegexController", function ($rootScope, $scope, $window, 
 });
 
 /************************************登录模块*************************************************/
-consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, $cookies, $location) {
-    //alert("LoginCtrl");
-    //初始化登录参数
-    if ($cookies.user == null) {
-        console.log("你还未登录");
-        // $window.location = "/#/login";
-    }
+consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $location) {
     $scope.login = {
         "loginName": "",
         "password": ""
@@ -118,17 +111,15 @@ consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, 
             .then(function (data) {
                 //登录成功跳转到home页面
                 console.log("登录成功");
-                $rootScope.userInfo = data;//将用户信息存入$rootScope，在页面获取
-                $rootScope.backclass = "";
+                $rootScope.loginUser = data;//将用户信息存入$rootScope，在页面获取
                 console.log("data:" + JSON.stringify(data));
-                console.log(JSON.stringify($scope.userInfo));
-                $window.location = "/#/home";
+                console.log(JSON.stringify($scope.loginUser));
+                $rootScope.notLogin = false;
             }, function (err) {
-                //alert("登录失败"+JSON.stringify(err));
+                alert("登录失败" + JSON.stringify(err));
                 //登录失败，停止在登陆页
                 $scope.loginError = "*用户名或密码错误!";
                 console.log($scope.loginError);
-                $window.location = "/#/login";
             });
     }
 });
