@@ -56,10 +56,10 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider) {
             templateUrl: 'views/codec/codec.html',
             controller: 'CodecController'
         })
-        .state('home.blog', {
-            url: '/blog',
-            templateUrl: 'views/article/blog.html',
-            controller: 'HomeCtrl'
+        .state('navi.regex', {
+            url: '/regex',
+            templateUrl: 'views/tools/regex.html',
+            controller: 'RegexController'
         })
         .state('home.drain', {
             url: '/drain',

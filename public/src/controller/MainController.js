@@ -92,6 +92,12 @@ consoleApp.controller("CodecController", function ($rootScope, $scope, $window, 
     }
 });
 
+/**********************************工具路由**************************************/
+consoleApp.controller("RegexController", function ($rootScope, $scope, $window, tools, $cookies) {
+
+
+});
+
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginCtrl", function ($rootScope, $scope, $window, user, $cookies, $location) {
     //alert("LoginCtrl");
