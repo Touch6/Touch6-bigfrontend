@@ -9,8 +9,8 @@ var consoleApp = angular.module("consoleApp.controllers", [
 /**********************************整体body模块**************************************/
 consoleApp.controller("MainController", function ($rootScope, $scope, $window, $cookies) {
     console.log("MainController");
-    console.log("MainController->$scope.loginUser:"+$rootScope.loginUser);
-    if ($rootScope.loginUser) {
+    console.log("MainController->$scope.loginUser:"+$cookies.user);
+    if ($cookies.user) {
         $rootScope.notLogin = false;
     }else{
         $rootScope.notLogin = true;
@@ -112,6 +112,7 @@ consoleApp.controller("LoginController", function ($rootScope, $scope, $window, 
                 //登录成功跳转到home页面
                 console.log("登录成功");
                 $rootScope.loginUser = data;//将用户信息存入$rootScope，在页面获取
+                $cookies.user=data;
                 console.log("data:" + JSON.stringify(data));
                 console.log(JSON.stringify($scope.loginUser));
                 $rootScope.notLogin = false;
