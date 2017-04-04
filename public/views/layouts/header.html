@@ -1,57 +1,14 @@
 <header class="header">
     <div class="row dark-bg" style="padding-bottom: 10px;">
 
-    <div class="toggle-nav">
-        <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-    </div>
+        <div class="toggle-nav">
+            <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
+        </div>
 
-    <!--logo start-->
-    <a href="#" class="logo">知行 <span class="lite">云网</span></a>
-    <!--logo end-->
-
-    <div class="top-nav notification-row">
-        <ul class="nav pull-right top-menu">
-            <li class="dropdown header-title">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref-="navi.toutiao" class="title-word" tag="title-word-toutiao">头条新闻</a>
-                </a>
-            </li>
-            <li class="dropdown header-separator">|</li>
-            <li class="dropdown header-title">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref-="navi.article" class="title-word" tag="title-word-article">技术文章</a>
-                </a>
-            </li>
-            <li class="dropdown header-separator">|</li>
-            <li class="dropdown header-title">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref-="navi.tool" class="title-word" tag="title-word-tool">实用工具</a>
-                </a>
-            </li>
-            <li class="dropdown header-separator">|</li>
-            <li class="dropdown header-title">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref-="navi.emotion" class="title-word" tag="title-word-emotion">情感咨询</a>
-                </a>
-            </li>
-            <li class="dropdown header-separator">|</li>
-            <li class="dropdown header-title">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref-="navi.aboutme" class="title-word" tag="title-word-aboutme">关于我们</a>
-                </a>
-            </li>
-            <li class="dropdown header-separator">|</li>
-            <li class="dropdown header-title" ng-show="notLogin">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref-="navi.login" class="title-word" tag="title-word-login">登录</a>
-                </a>
-            </li>
-            <li class="dropdown header-separator" ng-show="notLogin">|</li>
-            <li class="dropdown header-title">
-                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                    <a ui-sref-="navi.register" class="title-word" tag="title-word-register">注册</a>
-                </a>
-            </li>
+        <!--logo start-->
+        <a href="#" class="logo">知行 <span class="lite">云网</span></a>
+        <!--logo end-->
+        <ul class="nav pull-left">
             <!--检索框-->
             <li class="dropdown header-search">
                 <form class="navbar-form">
@@ -59,243 +16,295 @@
                 </form>
             </li>
         </ul>
-    </div>
+        <div class="top-nav notification-row">
+            <ul class="nav pull-right top-menu">
+
+                <li class="dropdown header-title">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a ui-sref-="navi.toutiao" class="title-word" tag="title-word-toutiao">头条新闻</a>
+                    </a>
+                </li>
+                <li class="dropdown header-separator">|</li>
+                <li class="dropdown header-title">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a ui-sref-="navi.article" class="title-word" tag="title-word-article">技术文章</a>
+                    </a>
+                </li>
+                <li class="dropdown header-separator">|</li>
+                <li class="dropdown header-title">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a ui-sref-="navi.tool" class="title-word" tag="title-word-tool">实用工具</a>
+                    </a>
+                </li>
+                <li class="dropdown header-separator">|</li>
+                <li class="dropdown header-title">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a ui-sref-="navi.emotion" class="title-word" tag="title-word-emotion">情感咨询</a>
+                    </a>
+                </li>
+                <li class="dropdown header-separator">|</li>
+                <li class="dropdown header-title">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a ui-sref-="navi.aboutme" class="title-word" tag="title-word-aboutme">关于我们</a>
+                    </a>
+                </li>
+                <li class="dropdown header-separator">|</li>
+                <li class="dropdown header-title" ng-show="notLogin">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a ui-sref-="navi.login" class="title-word" tag="title-word-login">登录</a>
+                    </a>
+                </li>
+                <li class="dropdown header-separator" ng-show="notLogin">|</li>
+                <li class="dropdown header-title">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a ui-sref-="navi.register" class="title-word" tag="title-word-register">注册</a>
+                    </a>
+                </li>
+                <li class="dropdown header-separator">|</li>
+                <li class="dropdown header-title">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <a ui-sref-="navi.register" class="title-word" tag="title-word-usercenter">我的</a>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="row dark-bg title-navi-header">
 
-    <div>
-        <!--导航-->
-        <ul style="width: 100%" class="title-navi pull-right" id="title-word-toutiao">
-            <div class="row">
-                <div class="col-lg-2">
-                    <a data-value="1" ui-sref="navi.toutiao" class="pull-left padding-left">头条新闻</a>
+        <div>
+            <!--导航-->
+            <ul style="width: 100%" class="title-navi pull-right" id="title-word-toutiao">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" ui-sref="navi.toutiao" class="pull-left padding-left">头条新闻</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="5" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="6" class="pull-left doing">正在挖掘...</a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="2" class="pull-left doing">正在挖掘...</a>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="5" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="6" class="pull-left doing">正在挖掘...</a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="3" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="4" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="5" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="6" class="pull-left doing">正在挖掘...</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <a data-value="1" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="2" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="3" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="4" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="5" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="6" class="pull-left doing">正在挖掘...</a>
-                </div>
-            </div>
-            <div class="row">
+                <div class="row">
                 <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
                     <img src="../../images/arrows_up.png"/>
                 </span>
-            </div>
-        </ul>
-        <ul style="width: 100%" class="title-navi pull-right" id="title-word-article">
-            <div class="row">
-                <div class="col-lg-2">
-                    <a data-value="1" class="pull-left padding-left doing">正在挖掘...</a>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="2" class="pull-left doing">正在挖掘...</a>
+            </ul>
+            <ul style="width: 100%" class="title-navi pull-right" id="title-word-article">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" class="pull-left padding-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" class="pull-left doing">分布式(正在挖掘...)</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="5" class="pull-left doing">大数据(正在挖掘...)</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="6" class="pull-left doing">云计算(正在挖掘...)</a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="3" class="pull-left doing">正在挖掘...</a>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" class="pull-left padding-left doing">缓存之策(正在挖掘...)</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" class="pull-left doing">集群部署(正在挖掘...)</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" class="pull-left doing">产品运维(正在挖掘...)</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="5" class="pull-left doing">正在挖掘...</a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="4" class="pull-left doing">分布式(正在挖掘...)</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="5" class="pull-left doing">大数据(正在挖掘...)</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="6" class="pull-left doing">云计算(正在挖掘...)</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <a data-value="1" class="pull-left padding-left doing">缓存之策(正在挖掘...)</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="2" class="pull-left doing">集群部署(正在挖掘...)</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="3" class="pull-left doing">产品运维(正在挖掘...)</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="4" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="5" class="pull-left doing">正在挖掘...</a>
-                </div>
-            </div>
-            <div class="row">
+                <div class="row">
                 <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
                     <img src="../../images/arrows_up.png"/>
                 </span>
-            </div>
-        </ul>
-        <ul style="width: 100%" class="title-navi pull-right" id="title-word-tool">
-            <div class="row">
-                <div class="col-lg-2">
-                    <a data-value="1" ui-sref="navi.dateTools" class="pull-left padding-left">时间处理</a>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="2" class="pull-left doing">cron表达式</a>
+            </ul>
+            <ul style="width: 100%" class="title-navi pull-right" id="title-word-tool">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" ui-sref="navi.dateTools" class="pull-left padding-left">时间处理</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" class="pull-left doing">cron表达式</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" ui-sref="navi.codec" class="pull-left">编码解码</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" class="pull-left">加密解密</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="5" class="pull-left">二维码生成</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="6" class="pull-left">短网址链接</a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="3" ui-sref="navi.codec" class="pull-left">编码解码</a>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" class="pull-left padding-left">JSON格式化</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" class="pull-left">图片Base64编码</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" ui-sref="navi.regex" class="pull-left">JS正则表达式</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" class="pull-left doing">号码归属地</a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="4" class="pull-left">加密解密</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="5" class="pull-left">二维码生成</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="6" class="pull-left">短网址链接</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <a data-value="1" class="pull-left padding-left">JSON格式化</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="2" class="pull-left">图片Base64编码</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="3" ui-sref="navi.regex" class="pull-left">JS正则表达式</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="4" class="pull-left doing">号码归属地</a>
-                </div>
-            </div>
-            <div class="row">
+                <div class="row">
                 <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
                     <img src="../../images/arrows_up.png"/>
                 </span>
-            </div>
-        </ul>
-        <ul style="width: 100%" class="title-navi pull-right" id="title-word-emotion">
-            <div class="row">
-                <div class="col-lg-2">
-                    <a data-value="1" class="pull-left padding-left doing">情感天地</a>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="2" class="pull-left doing">情感咨询</a>
+            </ul>
+            <ul style="width: 100%" class="title-navi pull-right" id="title-word-emotion">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" class="pull-left padding-left doing">情感天地</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" class="pull-left doing">情感咨询</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" class="pull-left doing">专家专栏</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" class="pull-left doing">会员专栏</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="5" class="pull-left doing">我的求助</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="6" class="pull-left doing">论坛热议</a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="3" class="pull-left doing">专家专栏</a>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" class="pull-left doing">家庭类(正在挖掘...)</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" class="pull-left doing">职场类(正在挖掘...)</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" class="pull-left doing">情侣类(正在挖掘...)</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" class="pull-left doing">陌生类(正在挖掘...)</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="5" class="pull-left doing">正在挖掘...</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="6" class="pull-left doing">正在挖掘...</a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="4" class="pull-left doing">会员专栏</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="5" class="pull-left doing">我的求助</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="6" class="pull-left doing">论坛热议</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-2">
-                    <a data-value="1" class="pull-left doing">家庭类(正在挖掘...)</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="2" class="pull-left doing">职场类(正在挖掘...)</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="3" class="pull-left doing">情侣类(正在挖掘...)</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="4" class="pull-left doing">陌生类(正在挖掘...)</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="5" class="pull-left doing">正在挖掘...</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="6" class="pull-left doing">正在挖掘...</a>
-                </div>
-            </div>
-            <div class="row">
+                <div class="row">
                 <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
                     <img src="../../images/arrows_up.png"/>
                 </span>
-            </div>
-        </ul>
-        <ul style="width: 100%" class="title-navi pull-right" id="title-word-aboutme">
-            <div class="row">
-                <div class="col-lg-2">
-                    <a data-value="1" class="pull-left">CSDN博客</a>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="2" class="pull-left">新浪微博</a>
+            </ul>
+            <ul style="width: 100%" class="title-navi pull-right" id="title-word-aboutme">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" class="pull-left">CSDN博客</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" class="pull-left">新浪微博</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" class="pull-left">联系邮箱</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" class="pull-left">QQ</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="5" class="pull-left">微信</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="6" class="pull-left doing">其他(正在挖掘...)</a>
+                    </div>
                 </div>
-                <div class="col-lg-2">
-                    <a data-value="3" class="pull-left">联系邮箱</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="4" class="pull-left">QQ</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="5" class="pull-left">微信</a>
-                </div>
-                <div class="col-lg-2">
-                    <a data-value="6" class="pull-left doing">其他(正在挖掘...)</a>
-                </div>
-            </div>
-            <div class="row">
+                <div class="row">
                 <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
                     <img src="../../images/arrows_up.png"/>
                 </span>
-            </div>
-        </ul>
-        <ul style="width: 100%" class="title-navi pull-right" id="title-word-login" ng-controller="LoginController">
-            <div class="row" >
-                <div class="col-lg-12">
-                    <div ng-include="'views/user/login.html'"></div>
                 </div>
-            </div>
-            <div class="row">
+            </ul>
+            <ul style="width: 100%" class="title-navi pull-right" id="title-word-login" ng-controller="LoginController">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div ng-include="'views/user/login.html'"></div>
+                    </div>
+                </div>
+                <div class="row">
                 <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
                     <img src="../../images/arrows_up.png"/>
                 </span>
-            </div>
-        </ul>
-        <ul style="width: 100%" class="title-navi pull-right" id="title-word-register" ng-controller="RegisterController">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div ng-include="'views/user/register.html'"></div>
                 </div>
-            </div>
-            <div class="row">
+            </ul>
+            <ul style="width: 100%" class="title-navi pull-right" id="title-word-register"
+                ng-controller="RegisterController">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div ng-include="'views/user/register.html'"></div>
+                    </div>
+                </div>
+                <div class="row">
                 <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
                     <img src="../../images/arrows_up.png"/>
                 </span>
-            </div>
-        </ul>
-    </div>
+                </div>
+            </ul>
+        </div>
     </div>
 </header>
 <script>
