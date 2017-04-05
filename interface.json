@@ -3,14 +3,14 @@
     "version": "1.0.0",
     "engine": "mockjs",
     "rulebase": "./interfaceRules/",
-    "status": "test",
+    "status": "development",
     "interfaces": [
         {
             "name": "检测手机号码是否已注册",
             "id": "phone.check",
             "urls": {
-                "development": "http://120.77.172.143:28081/touch6/api/v1/phone/check",
-                "test": "http://120.77.172.143:28081/touch6/api/v1/phone/check"
+                "development": "http://120.77.172.143:28081/t6/api/v1/phone/check",
+                "test": "http://localhost:28081/api/v1/phone/check"
             },
             "method": "post",
             "contentType": "application/json"
@@ -19,8 +19,8 @@
             "name": "生成手机验证码",
             "id": "phone.generateCode",
             "urls": {
-                "development": "http://120.77.172.143:28081/touch6/api/v1/phone/code",
-                "test": "http://120.77.172.143:28081/touch6/api/v1/phone/code"
+                "development": "http://120.77.172.143:28081/t6/api/v1/phone/code",
+                "test": "http://localhost:28081/api/v1/phone/code"
             },
             "method": "get"
         },
@@ -28,8 +28,8 @@
             "name": "验证手机验证码是否正确",
             "id": "phone.verify",
             "urls": {
-                "development": "http://120.77.172.143:28081/touch6/api/v1/phone/verify",
-                "test": "http://120.77.172.143:28081/touch6/api/v1/phone/verify"
+                "development": "http://120.77.172.143:28081/t6/api/v1/phone/verify",
+                "test": "http://localhost:28081/api/v1/phone/verify"
             },
             "method": "post",
             "contentType": "application/json"
@@ -38,8 +38,8 @@
             "name": "用户注册",
             "id": "user.register",
             "urls": {
-                "development": "http://120.77.172.143:28081/touch6/api/v1/user/register",
-                "test": "http://120.77.172.143:28081/touch6/api/v1/user/register"
+                "development": "http://120.77.172.143:28081/t6/api/v1/user/register",
+                "test": "http://localhost:28081/api/v1/user/register"
             },
             "method": "post",
             "contentType": "application/json"
@@ -48,8 +48,8 @@
             "name": "用户登录",
             "id": "user.login",
             "urls": {
-                "development": "http://120.77.172.143:28081/touch6/api/v1/user/login",
-                "test": "http://120.77.172.143:28081/touch6/api/v1/user/login"
+                "development": "http://120.77.172.143:28081/t6/api/v1/user/login",
+                "test": "http://localhost:28081/api/v1/user/login"
             },
             "method": "post",
             "contentType": "application/json"
@@ -58,8 +58,8 @@
             "name": "完善信息",
             "id": "user.perfect",
             "urls": {
-                "development": "http://120.77.172.143:28081/touch6/api/v1/user/perfect",
-                "test": "http://120.77.172.143:28081/touch6/api/v1/user/perfect"
+                "development": "http://120.77.172.143:28081/t6/api/v1/user/perfect",
+                "test": "http://localhost:28081/api/v1/user/perfect"
             },
             "method": "post",
             "contentType": "application/json"
@@ -68,8 +68,8 @@
             "name": "自动获取头条标题列表",
             "id": "toutiao.overview",
             "urls": {
-                "development": "http://120.77.172.143:28081/touch6/api/v1/toutiao/overview",
-                "test": "http://120.77.172.143:28081/touch6/api/v1/toutiao/overview"
+                "development": "http://120.77.172.143:28081/t6/api/v1/toutiao/overview",
+                "test": "http://localhost:28081/api/v1/toutiao/overview"
             },
             "method": "get"
         },
@@ -77,8 +77,8 @@
             "name": "日期格式转换",
             "id": "tools.dateFormat",
             "urls": {
-                "development": "http://120.77.172.143:28081/touch6/api/v1/tools/dateformat",
-                "test": "http://120.77.172.143:28081/touch6/api/v1/tools/dateformat"
+                "development": "http://120.77.172.143:28081/t6/api/v1/tools/dateformat",
+                "test": "http://localhost:28081/api/v1/tools/dateformat"
             },
             "method": "get"
         },
@@ -86,8 +86,8 @@
             "name": "编解码",
             "id": "tools.codec",
             "urls": {
-                "development": "http://120.77.172.143:28081/touch6/api/v1/tools/codec",
-                "test": "http://120.77.172.143:28081/touch6/api/v1/tools/codec"
+                "development": "http://120.77.172.143:28081/t6/api/v1/tools/codec",
+                "test": "http://localhost:28081/api/v1/tools/codec"
             },
             "method": "get"
         }
