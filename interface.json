@@ -10,7 +10,7 @@
             "id": "phone.check",
             "urls": {
                 "development": "http://120.77.172.143:28081/t6/api/v1/phone/check",
-                "test": "http://localhost:28081/api/v1/phone/check"
+                "test": "http://localhost:28081/t6/api/v1/phone/check"
             },
             "method": "post",
             "contentType": "application/json"
@@ -20,7 +20,7 @@
             "id": "phone.generateCode",
             "urls": {
                 "development": "http://120.77.172.143:28081/t6/api/v1/phone/code",
-                "test": "http://localhost:28081/api/v1/phone/code"
+                "test": "http://localhost:28081/t6/api/v1/phone/code"
             },
             "method": "get"
         },
@@ -29,7 +29,7 @@
             "id": "phone.verify",
             "urls": {
                 "development": "http://120.77.172.143:28081/t6/api/v1/phone/verify",
-                "test": "http://localhost:28081/api/v1/phone/verify"
+                "test": "http://localhost:28081/t6/api/v1/phone/verify"
             },
             "method": "post",
             "contentType": "application/json"
@@ -39,7 +39,7 @@
             "id": "user.register",
             "urls": {
                 "development": "http://120.77.172.143:28081/t6/api/v1/user/register",
-                "test": "http://localhost:28081/api/v1/user/register"
+                "test": "http://localhost:28081/t6/api/v1/user/register"
             },
             "method": "post",
             "contentType": "application/json"
@@ -49,7 +49,7 @@
             "id": "user.login",
             "urls": {
                 "development": "http://120.77.172.143:28081/t6/api/v1/user/login",
-                "test": "http://localhost:28081/api/v1/user/login"
+                "test": "http://localhost:28081/t6/api/v1/user/login"
             },
             "method": "post",
             "contentType": "application/json"
@@ -59,7 +59,7 @@
             "id": "user.perfect",
             "urls": {
                 "development": "http://120.77.172.143:28081/t6/api/v1/user/perfect",
-                "test": "http://localhost:28081/api/v1/user/perfect"
+                "test": "http://localhost:28081/t6/api/v1/user/perfect"
             },
             "method": "post",
             "contentType": "application/json"
@@ -69,7 +69,7 @@
             "id": "toutiao.overview",
             "urls": {
                 "development": "http://120.77.172.143:28081/t6/api/v1/toutiao/overview",
-                "test": "http://localhost:28081/api/v1/toutiao/overview"
+                "test": "http://localhost:28081/t6/api/v1/toutiao/overview"
             },
             "method": "get"
         },
@@ -78,7 +78,7 @@
             "id": "tools.dateFormat",
             "urls": {
                 "development": "http://120.77.172.143:28081/t6/api/v1/tools/dateformat",
-                "test": "http://localhost:28081/api/v1/tools/dateformat"
+                "test": "http://localhost:28081/t6/api/v1/tools/dateformat"
             },
             "method": "get"
         },
@@ -87,7 +87,7 @@
             "id": "tools.codec",
             "urls": {
                 "development": "http://120.77.172.143:28081/t6/api/v1/tools/codec",
-                "test": "http://localhost:28081/api/v1/tools/codec"
+                "test": "http://localhost:28081/t6/api/v1/tools/codec"
             },
             "method": "get"
         }

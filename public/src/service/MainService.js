@@ -11,7 +11,7 @@ consoleApp.factory("phone", function ($http, $q, $cookies) {
             var deferred;
             deferred = $q.defer();
             //验证验证码；
-            $http.post('/phone/check', {phone: phone}).success(function (data) {
+            $http.post('/~/phone/check', {phone: phone}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -28,7 +28,7 @@ consoleApp.factory("phone", function ($http, $q, $cookies) {
             var deferred;
             deferred = $q.defer();
             //验证验证码；
-            $http.get('/phone/code', {params: {phone: phone}}).success(function (data) {
+            $http.get('/~/phone/code', {params: {phone: phone}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -54,7 +54,7 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
             var deferred;
             deferred = $q.defer();
             //验证验证码；
-            $http.post('/login', {user: user}).success(function (data) {
+            $http.post('/~/login', {user: user}).success(function (data) {
                 if (data) {
                     $cookies.user = JSON.stringify(data);
                     return deferred.resolve(data);
@@ -78,7 +78,7 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
 //                 if (data) {
 //                    console.log(checkRegisterForm(registerUser));
 //                     if (checkRegisterForm(registerUser)) {
-            $http.post('/register', {user: register}).success(function (data) {
+            $http.post('/~/register', {user: register}).success(function (data) {
 //                            console.log("service注册成功返回"+JSON.stringify(data));
                 return deferred.resolve(data);
             }).error(function (data) {
@@ -282,7 +282,7 @@ consoleApp.factory("toutiao", function ($http, $q, $cookies) {
             var deferred;
             deferred = $q.defer();
             //验证验证码；get 传参：{params:{pageNo: pageNo,pageSize:pageSize}}
-            $http.get('/toutiao/overview', {params: {pageNo: pageNo, pageSize: pageSize}}).success(function (data) {
+            $http.get('/~/toutiao/overview', {params: {pageNo: pageNo, pageSize: pageSize}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -302,7 +302,7 @@ consoleApp.factory("tools", function ($http, $q, $cookies) {
         dateFormat: function (src, format, type) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/tools/format', {params: {src: src, format: format, type: type}}).success(function (data) {
+            $http.get('/~/tools/format', {params: {src: src, format: format, type: type}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -317,7 +317,7 @@ consoleApp.factory("tools", function ($http, $q, $cookies) {
         codec: function (src, type) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/tools/codec', {params: {src: src, type: type}}).success(function (data) {
+            $http.get('/~/tools/codec', {params: {src: src, type: type}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {

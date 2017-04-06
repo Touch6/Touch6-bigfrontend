@@ -57,11 +57,11 @@ app.use('/users', users);
 app.use('/home', home);
 //验证码；
 app.use('/ccap', ccap);
-app.use('/login', login);
-app.use('/register', register);
-app.use('/phone', phone);
-app.use('/toutiao', toutiao);
-app.use('/tools', tools);
+app.use('/~/login', login);
+app.use('/~/register', register);
+app.use('/~/phone', phone);
+app.use('/~/toutiao', toutiao);
+app.use('/~/tools', tools);
 app.use('/sendEmail', sendEmail);
 app.use('/touchcApp', touchcApp);
 app.use('/uptoken', uptoken);
