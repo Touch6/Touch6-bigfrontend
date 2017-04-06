@@ -35,28 +35,43 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider,$locationProvider
             url: '/register',
             templateUrl: 'views/user/register.html',
             controller: 'RegisterController'
-        })//头条新闻路由
-        .state('navi', {//导航总路由
-            url: '/navi',
-            templateUrl: 'views/navi.html',
-            controller: 'NaviController'
         })
-        .state('navi.toutiao', {
+        .state('toutiao', {//
             url: '/toutiao',
+            templateUrl: 'views/toutiao/index.html',
+            controller: 'NaviController'
+        })//头条新闻路由
+        .state('toutiao.news', {//
+            url: '/news',
             templateUrl: 'views/toutiao/toutiao.html',
             controller: 'ToutiaoController'
-        })
-        .state('navi.dateTools', {
+        })//头条新闻路由
+        .state('article', {//
+            url: '/article',
+            templateUrl: 'views/article/index.html',
+            controller: 'NaviController'
+        })//技术文章路由
+        .state('article.technology', {//
+            url: '/technology',
+            templateUrl: 'views/article/technology.html',
+            controller: 'NaviController'
+        })//技术文章路由
+        .state('tools', {//工具总路由
             url: '/tools',
+            templateUrl: 'views/tools/index.html',
+            controller: 'NaviController'
+        })
+        .state('tools.date', {
+            url: '/date',
             templateUrl: 'views/tools/date_tools.html',
             controller: 'DateToolsController'
         })
-        .state('navi.codec', {
+        .state('tools.codec', {
             url: '/codec',
             templateUrl: 'views/codec/codec.html',
             controller: 'CodecController'
         })
-        .state('navi.regex', {
+        .state('tools.regex', {
             url: '/regex',
             templateUrl: 'views/tools/regex.html',
             controller: 'RegexController'
@@ -69,6 +84,30 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider,$locationProvider
         .state('loginOut', {
             url: '/loginOut',
             controller: 'LoginOutCtrl'
+        })
+        .state('usercenter', {
+            url: '/usercenter',
+            templateUrl: 'views/usercenter/index.html'
+        })
+        .state('usercenter.article', {
+            url: '/article',
+            templateUrl: 'views/usercenter/article.html',
+            controller: 'UsercenterController'
+        })
+        .state('usercenter.subscribe', {
+            url: '/subscribe',
+            templateUrl: 'views/usercenter/subscribe.html',
+            controller: 'UsercenterController'
+        })
+        .state('usercenter.favorite', {
+            url: '/favorite',
+            templateUrl: 'views/usercenter/favorite.html',
+            controller: 'UsercenterController'
+        })
+        .state('usercenter.help', {
+            url: '/help',
+            templateUrl: 'views/usercenter/help.html',
+            controller: 'UsercenterController'
         })
     $locationProvider.html5Mode(true);
 });

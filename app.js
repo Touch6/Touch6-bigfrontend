@@ -52,9 +52,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/*', function(req, res, next) {
-    res.sendFile(path.join(__dirname, './public', 'index.html'));
-});
 app.use('/users', users);
 
 app.use('/home', home);
@@ -69,6 +66,10 @@ app.use('/sendEmail', sendEmail);
 app.use('/touchcApp', touchcApp);
 app.use('/uptoken', uptoken);
 app.use('/account', account);
+//处理其他路由
+app.use('/*', function(req, res, next) {
+    res.sendFile(path.join(__dirname, './public', 'index.html'));
+});
 
 
 // catch 404 and forward to error handler

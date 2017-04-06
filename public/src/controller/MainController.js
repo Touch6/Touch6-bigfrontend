@@ -97,6 +97,11 @@ consoleApp.controller("RegexController", function ($rootScope, $scope, $window, 
 
 });
 
+/**********************************工具路由**************************************/
+consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies) {
+    console.log("UsercenterController");
+});
+
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $location) {
     $scope.login = {

@@ -18,22 +18,21 @@
         </ul>
         <div class="top-nav notification-row">
             <ul class="nav pull-right top-menu">
-
                 <li class="dropdown header-title">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <a ui-sref-="navi.toutiao" class="title-word" tag="title-word-toutiao">头条新闻</a>
+                        <a class="title-word" tag="title-word-toutiao">头条新闻</a>
                     </a>
                 </li>
                 <li class="dropdown header-separator">|</li>
                 <li class="dropdown header-title">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <a ui-sref-="navi.article" class="title-word" tag="title-word-article">技术文章</a>
+                        <a class="title-word" tag="title-word-article">技术文章</a>
                     </a>
                 </li>
                 <li class="dropdown header-separator">|</li>
                 <li class="dropdown header-title">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <a ui-sref-="navi.tool" class="title-word" tag="title-word-tool">实用工具</a>
+                        <a class="title-word" tag="title-word-tool">实用工具</a>
                     </a>
                 </li>
                 <li class="dropdown header-separator">|</li>
@@ -49,21 +48,21 @@
                     </a>
                 </li>
                 <li class="dropdown header-separator">|</li>
-                <li class="dropdown header-title" ng-show="notLogin">
+                <li class="dropdown header-title" ng-show="notLogin==true">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <a ui-sref-="navi.login" class="title-word" tag="title-word-login">登录</a>
                     </a>
                 </li>
-                <li class="dropdown header-separator" ng-show="notLogin">|</li>
-                <li class="dropdown header-title">
+                <li class="dropdown header-separator" ng-show="notLogin==true">|</li>
+                <li class="dropdown header-title" ng-show="notLogin==true">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                         <a ui-sref-="navi.register" class="title-word" tag="title-word-register">注册</a>
                     </a>
                 </li>
-                <li class="dropdown header-separator">|</li>
+                <li class="dropdown header-separator" ng-show="notLogin==true">|</li>
                 <li class="dropdown header-title">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <a ui-sref-="navi.register" class="title-word" tag="title-word-usercenter">我的</a>
+                        <a ui-sref-="navi.register" class="title-word" tag="title-word-usercenter">个人中心</a>
                     </a>
                 </li>
             </ul>
@@ -76,7 +75,7 @@
             <ul style="width: 100%" class="title-navi pull-right" id="title-word-toutiao">
                 <div class="row">
                     <div class="col-lg-2">
-                        <a data-value="1" ui-sref="navi.toutiao" class="pull-left padding-left">头条新闻</a>
+                        <a data-value="1" ui-sref="toutiao.news" class="pull-left padding-left">头条新闻</a>
                     </div>
                     <div class="col-lg-2">
                         <a data-value="2" class="pull-left doing">正在挖掘...</a>
@@ -123,7 +122,7 @@
             <ul style="width: 100%" class="title-navi pull-right" id="title-word-article">
                 <div class="row">
                     <div class="col-lg-2">
-                        <a data-value="1" class="pull-left padding-left doing">正在挖掘...</a>
+                        <a data-value="1" ui-sref="article.technology" class="pull-left padding-left">技术文章</a>
                     </div>
                     <div class="col-lg-2">
                         <a data-value="2" class="pull-left doing">正在挖掘...</a>
@@ -167,36 +166,36 @@
             <ul style="width: 100%" class="title-navi pull-right" id="title-word-tool">
                 <div class="row">
                     <div class="col-lg-2">
-                        <a data-value="1" ui-sref="navi.dateTools" class="pull-left padding-left">时间处理</a>
+                        <a data-value="1" ui-sref="tools.date" class="pull-left padding-left">时间处理</a>
                     </div>
                     <div class="col-lg-2">
-                        <a data-value="2" class="pull-left doing">cron表达式</a>
+                        <a data-value="2" ui-sref="tools.cron" class="pull-left doing">cron表达式</a>
                     </div>
                     <div class="col-lg-2">
-                        <a data-value="3" ui-sref="navi.codec" class="pull-left">编码解码</a>
+                        <a data-value="3" ui-sref="tools.codec" class="pull-left">编码解码</a>
                     </div>
                     <div class="col-lg-2">
-                        <a data-value="4" class="pull-left">加密解密</a>
+                        <a data-value="4" ui-sref="tools.encryption" class="pull-left">加密解密</a>
                     </div>
                     <div class="col-lg-2">
-                        <a data-value="5" class="pull-left">二维码生成</a>
+                        <a data-value="5" ui-sref="tools.qrcode" class="pull-left">二维码生成</a>
                     </div>
                     <div class="col-lg-2">
-                        <a data-value="6" class="pull-left">短网址链接</a>
+                        <a data-value="6" ui-sref="tools.shortlink" class="pull-left">短网址链接</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-2">
-                        <a data-value="1" class="pull-left padding-left">JSON格式化</a>
+                        <a data-value="1" ui-sref="tools.jsonfmt" class="pull-left padding-left">JSON格式化</a>
                     </div>
                     <div class="col-lg-2">
-                        <a data-value="2" class="pull-left">图片Base64编码</a>
+                        <a data-value="2" ui-sref="tools.base64" class="pull-left">图片Base64编码</a>
                     </div>
                     <div class="col-lg-2">
-                        <a data-value="3" ui-sref="navi.regex" class="pull-left">JS正则表达式</a>
+                        <a data-value="3" ui-sref="tools.regex" class="pull-left">JS正则表达式</a>
                     </div>
                     <div class="col-lg-2">
-                        <a data-value="4" class="pull-left doing">号码归属地</a>
+                        <a data-value="4" ui-sref="tools.number" class="pull-left doing">号码归属地</a>
                     </div>
                 </div>
                 <div class="row">
@@ -296,6 +295,39 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div ng-include="'views/user/register.html'"></div>
+                    </div>
+                </div>
+                <div class="row">
+                <span data-value="6" class="arrows-up pull-right" style="padding-right: 49.5%;cursor: pointer">
+                    <img src="../../images/arrows_up.png"/>
+                </span>
+                </div>
+            </ul>
+            <ul style="width: 100%" class="title-navi pull-right" id="title-word-usercenter">
+                <div class="row col-lg-12 col-lg-offset-4" style="padding: 60px 0 80px 85px;">
+                    <div class="row">
+                        <img src="../../images/handinhand.jpg" style="border-radius: 50%;height:250px;width:250px;"/>
+                    </div>
+                    <div style="padding: 10px 0 0 80px;">管理员</div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a data-value="1" ui-sref="usercenter.article" class="pull-left">我的文章</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="2" ui-sref="usercenter.subscribe" class="pull-left">我的订阅</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="3" ui-sref="usercenter.favorite" class="pull-left">我的收藏</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="4" ui-sref="usercenter.help" class="pull-left">我的求助</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="5" ui-sref="loginOut" class="pull-left">退出登录</a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a data-value="6" class="pull-left doing">其他(正在挖掘...)</a>
                     </div>
                 </div>
                 <div class="row">
