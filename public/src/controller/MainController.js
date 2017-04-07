@@ -9,10 +9,10 @@ var consoleApp = angular.module("consoleApp.controllers", [
 /**********************************整体body模块**************************************/
 consoleApp.controller("MainController", function ($rootScope, $scope, $window, $cookies) {
     console.log("MainController");
-    console.log("MainController->$scope.loginUser:"+$cookies.user);
+    console.log("MainController->$scope.loginUser:" + $cookies.user);
     if ($cookies.user) {
         $rootScope.notLogin = false;
-    }else{
+    } else {
         $rootScope.notLogin = true;
     }
 });
@@ -97,6 +97,39 @@ consoleApp.controller("RegexController", function ($rootScope, $scope, $window, 
 
 });
 
+/**********************************文章路由**************************************/
+consoleApp.controller("ArticleController", function ($rootScope, $scope, $window, article, $cookies) {
+    var uid = "88ba369307564f92a8f8ef9b14d0a2ca";
+    var page = 1;
+    var pageSize = 10;
+    $scope.article = {
+        id: "",
+        uid: "",
+        author: "",
+        title: "",
+        content: "",
+        category: "",
+        type: "",
+        tag: ""
+    };
+    article.articleList(uid, page, pageSize)
+        .then(function (data) {
+            console.log("文章列表获取成功");
+            $scope.articles=data.object;
+        }, function (err) {
+            console.log(err)
+        });
+    $scope.writeArticle = function () {
+        article.write(uid, $scope.article)
+            .then(function (data) {
+                console.log("文章保存成功");
+                console.log("data:" + JSON.stringify(data));
+            }, function (err) {
+                console.log(err)
+            });
+    }
+});
+
 /**********************************工具路由**************************************/
 consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies) {
     console.log("UsercenterController");
@@ -117,7 +150,7 @@ consoleApp.controller("LoginController", function ($rootScope, $scope, $window, 
                 //登录成功跳转到home页面
                 console.log("登录成功");
                 $rootScope.loginUser = data;//将用户信息存入$rootScope，在页面获取
-                $cookies.user=data;
+                $cookies.user = data;
                 console.log("data:" + JSON.stringify(data));
                 console.log(JSON.stringify($scope.loginUser));
                 $rootScope.notLogin = false;

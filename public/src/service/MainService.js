@@ -42,6 +42,44 @@ consoleApp.factory("phone", function ($http, $q, $cookies) {
     }
 
 });
+
+/********************article模块****************************/
+consoleApp.factory("article", function ($http, $q, $cookies) {
+
+    return {
+        write: function (uid, article) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/article', {param: {uid: uid}}, {article: article}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        articleList: function (uid, page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/article/list', {params: {uid: uid, page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
+
+
 /********************user模块****************************/
 consoleApp.factory("user", function ($http, $q, $cookies) {
     var emailActiveCode = "";//邮箱激活码；
@@ -69,7 +107,7 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
         },
         /**********注册**********************************************************/
         registerAccount: function (register) {
-           console.log("从controller拿取的注册用户为"+JSON.stringify(register));
+            console.log("从controller拿取的注册用户为" + JSON.stringify(register));
             var deferred;
             deferred = $q.defer();
             //先验证验证码，成功后再注册；

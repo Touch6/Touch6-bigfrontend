@@ -15,6 +15,7 @@ var register = require('./routes/user/register');
 var phone = require('./routes/user/phone');
 var toutiao = require('./routes/toutiao/toutiao');
 var tools = require('./routes/tools/tools');
+var article = require('./routes/article/article');
 
 var sendEmail = require('./routes/email');
 var touchcApp = require('./routes/touchcApp/touchcApp');
@@ -62,6 +63,7 @@ app.use('/~/register', register);
 app.use('/~/phone', phone);
 app.use('/~/toutiao', toutiao);
 app.use('/~/tools', tools);
+app.use('/~/article', article);
 app.use('/sendEmail', sendEmail);
 app.use('/touchcApp', touchcApp);
 app.use('/uptoken', uptoken);

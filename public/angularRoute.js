@@ -54,7 +54,7 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider,$locationProvider
         .state('article.technology', {//
             url: '/technology',
             templateUrl: 'views/article/technology.html',
-            controller: 'NaviController'
+            controller: 'ArticleController'
         })//技术文章路由
         .state('tools', {//工具总路由
             url: '/tools',

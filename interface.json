@@ -65,6 +65,25 @@
             "contentType": "application/json"
         },
         {
+            "name": "保存文章",
+            "id": "article.write",
+            "urls": {
+                "development": "http://120.77.172.143:28081/t6/api/v1/article",
+                "test": "http://localhost:28081/t6/api/v1/article"
+            },
+            "method": "post",
+            "contentType": "application/json"
+        },
+        {
+            "name": "自动获取文章列表",
+            "id": "article.list",
+            "urls": {
+                "development": "http://120.77.172.143:28081/t6/api/v1/article/list",
+                "test": "http://localhost:28081/t6/api/v1/article/list"
+            },
+            "method": "get"
+        },
+        {
             "name": "自动获取头条标题列表",
             "id": "toutiao.overview",
             "urls": {
