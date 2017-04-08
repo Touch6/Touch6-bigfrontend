@@ -1,15 +1,6 @@
 .mid{width:1200px;margin:0 auto;height:auto;zoom:1;}
 /*************************header布局***********************/
 .dropdown-menu{min-width: 100px;}
-header{width:100%;height:84px;
-    background: #124c78;
-    color:#fff;
-    /*filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#8EC6C6', endColorstr='#EAECEC',GradientType='0'); *//* IE6,IE7 ,IE*/
-    /*-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#8EC6C6', endColorstr='#EAECEC')"; *//* IE8 */
-    /*background: -moz-linear-gradient(top, #8EC6C6, #EAECEC); *//* 火狐 */
-    /*background: -webkit-gradient(linear, 0 0, 0 100%, from(#8EC6C6), to(#EAECEC));  *//* webkit浏览器 */
-    /*background: -o-linear-gradient(top, #8EC6C6 0%,#EAECEC 100%);*//*Opera*/
-}
 .menu,.logoArea,.logoArea>.logoImg,.logoArea>.logoTxt,.apps{display: inline-block;float: left;/* vertical-align: middle; */}
 .menu,.loginTab,.apps{line-height: 83px;}
 .apps{margin-right:20px;}

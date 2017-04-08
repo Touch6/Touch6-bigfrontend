@@ -26,10 +26,10 @@ router.get('/list', function (req, res) {
         page:req.query.page,
         pageSize:req.query.pageSize
     }).done(function (data) {
-        console.log("调用后台文章列表返回信息>>>" + data);
+        console.log("调用后台文章列表返回信息>>>" + JSON.stringify(data));
         res.send(data);
-    }).error(function (data) {
-        console.log("调用后台文章列表返回信息>>>" + data);
+    }).error(function (error) {
+        console.log("调用后台文章列表返回错误信息>>>" + error);
     });
 });
 

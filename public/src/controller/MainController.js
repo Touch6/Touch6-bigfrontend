@@ -40,7 +40,7 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
             $scope.allItems = pageObj.total;
             $scope.totalItems = pageObj.total;
             $scope.pages = pageObj.pages;
-            $scope.maxSize = 25;
+            $scope.maxSize = 20;
             $scope.hasPreviousPage = pageObj.hasPreviousPage;
             $scope.hasNextPage = pageObj.hasNextPage;
             //当页数改变以后，需要重新获取\
@@ -52,7 +52,7 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
             console.log("头条加载失败" + err);
         });
     }
-    $scope.toutiaoList(1, 10);//默认获取10条
+    $scope.toutiaoList(1, 5);//默认获取10条
 });
 /**********************************工具路由**************************************/
 consoleApp.controller("DateToolsController", function ($rootScope, $scope, $window, tools, $cookies) {
@@ -119,25 +119,34 @@ consoleApp.controller("RegexController", function ($rootScope, $scope, $window, 
 /**********************************文章路由**************************************/
 consoleApp.controller("ArticleController", function ($rootScope, $scope, $window, article, $cookies) {
     var uid = "88ba369307564f92a8f8ef9b14d0a2ca";
-    var page = 1;
-    var pageSize = 10;
-    $scope.article = {
-        id: "",
-        uid: "",
-        author: "",
-        title: "",
-        content: "",
-        category: "",
-        type: "",
-        tag: ""
-    };
-    article.articleList(uid, page, pageSize)
-        .then(function (data) {
-            console.log("文章列表获取成功");
-            $scope.articles = data.object;
+    $scope.articleList = function (page, pageSize) {
+        _showMask();
+        //自动获取头条标题信息
+        article.articleList('',page, pageSize).then(function (data) {
+            console.log(JSON.stringify(data))
+            var pageObj = data.object;
+            console.log("文章加载成功:"+JSON.stringify(pageObj));
+            $scope.articles = pageObj.list;
+            $scope.currentPage =page;
+            $scope.pageSize = pageSize;
+            $scope.size = pageObj.size;
+            $scope.allItems = pageObj.total;
+            $scope.totalItems = pageObj.total;
+            $scope.pages = pageObj.pages;
+            $scope.maxSize = 20;
+            $scope.hasPreviousPage = pageObj.hasPreviousPage;
+            $scope.hasNextPage = pageObj.hasNextPage;
+            //当页数改变以后，需要重新获取\
+            $scope.changePage = function () {
+                $scope.articleList($scope.currentPage, $scope.pageSize);
+            };
+            _hideMask();
         }, function (err) {
-            console.log(err)
+            console.log("文章加载失败" + err);
         });
+    };
+    $scope.articleList(1, 4);//默认获取10条
+
     $scope.writeArticle = function () {
         article.write(uid, $scope.article)
             .then(function (data) {
