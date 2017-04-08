@@ -10,19 +10,20 @@
                         <!--<div class="pull-right">-->
                         <div>
                             <pagination boundary-links="true"
-                                        total-items="totalItems"
+                                        total-items="total"
                                         ng-model="currentPage"
                                         class="pagination-md"
                                         ng-change="changePage()"
                                         max-size="maxSize"
-                                        rotate="true"
+                                        rotate="false"
                                         first-text="&laquo;"
                                         previous-text="&lsaquo;"
                                         next-text="&rsaquo;"
                                         last-text="&raquo;"
-                                        force-ellipses="true">
+                                        force-ellipses="true"
+                                        items-per-page="pageSize">
                             </pagination>
-                            <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{allItems}}&nbsp;&nbsp;条</span>
+                            <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{total}}&nbsp;&nbsp;条</span>
                         </div>
                     </div>
                     <table class="table table-striped table-advance table-hover table-responsive">

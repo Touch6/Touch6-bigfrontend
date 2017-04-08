@@ -1,7 +1,6 @@
-[2017-04-05 23:20:14.666] [DEBUG] normal - GET /images/advertisement/login/ad_3.jpg
-[2017-04-05 23:20:14.684] [DEBUG] normal - GET /images/advertisement/register/ad_1.jpg
-[2017-04-05 23:20:14.684] [DEBUG] normal - GET /images/advertisement/register/ad_2.jpg
-[2017-04-05 23:20:14.685] [DEBUG] normal - GET /images/advertisement/register/ad_3.jpg
-[2017-04-05 23:20:20.184] [DEBUG] normal - GET /views/navi.html
-[2017-04-05 23:20:20.185] [DEBUG] normal - GET /views/tools/regex.html
-[2017-04-05 23:20:24.044] [DEBUG] normal - GET /views/codec/codec.html
+[2017-04-08 20:16:31.016] [DEBUG] normal - GET /views/article/technology.html
+[2017-04-08 20:16:31.122] [DEBUG] normal - GET /~/article/list?page=1&pageSize=10&uid=
+[2017-04-08 20:16:40.742] [DEBUG] normal - GET /~/article/list?page=2&pageSize=10&uid=
+[2017-04-08 20:16:41.460] [DEBUG] normal - GET /~/article/list?page=3&pageSize=10&uid=
+[2017-04-08 20:16:42.928] [DEBUG] normal - GET /~/article/list?page=2&pageSize=10&uid=
+[2017-04-08 20:16:43.530] [DEBUG] normal - GET /~/article/list?page=1&pageSize=10&uid=

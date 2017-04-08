@@ -36,13 +36,9 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
             $scope.toutiaos = pageObj.list;
             $scope.currentPage =page;
             $scope.pageSize = pageSize;
-            $scope.size = pageObj.size;
-            $scope.allItems = pageObj.total;
-            $scope.totalItems = pageObj.total;
+            $scope.total = pageObj.total;
             $scope.pages = pageObj.pages;
             $scope.maxSize = 20;
-            $scope.hasPreviousPage = pageObj.hasPreviousPage;
-            $scope.hasNextPage = pageObj.hasNextPage;
             //当页数改变以后，需要重新获取\
             $scope.changePage = function () {
                 $scope.toutiaoList($scope.currentPage, $scope.pageSize);
@@ -52,7 +48,7 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
             console.log("头条加载失败" + err);
         });
     }
-    $scope.toutiaoList(1, 5);//默认获取10条
+    $scope.toutiaoList(1, 10);//默认获取10条
 });
 /**********************************工具路由**************************************/
 consoleApp.controller("DateToolsController", function ($rootScope, $scope, $window, tools, $cookies) {
@@ -129,13 +125,9 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
             $scope.articles = pageObj.list;
             $scope.currentPage =page;
             $scope.pageSize = pageSize;
-            $scope.size = pageObj.size;
-            $scope.allItems = pageObj.total;
-            $scope.totalItems = pageObj.total;
+            $scope.total = pageObj.total;
             $scope.pages = pageObj.pages;
             $scope.maxSize = 20;
-            $scope.hasPreviousPage = pageObj.hasPreviousPage;
-            $scope.hasNextPage = pageObj.hasNextPage;
             //当页数改变以后，需要重新获取\
             $scope.changePage = function () {
                 $scope.articleList($scope.currentPage, $scope.pageSize);
@@ -145,7 +137,7 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
             console.log("文章加载失败" + err);
         });
     };
-    $scope.articleList(1, 4);//默认获取10条
+    $scope.articleList(1, 10);//默认获取10条
 
     $scope.writeArticle = function () {
         article.write(uid, $scope.article)
