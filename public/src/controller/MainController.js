@@ -26,14 +26,34 @@ consoleApp.controller("NaviController", function ($rootScope, $scope, $window, $
 });
 /**********************************头条路由**************************************/
 consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window, toutiao, $cookies) {
-    //自动获取头条标题信息
-    toutiao.overview(1, 30)
-        .then(function (data) {
+
+    $scope.toutiaoList = function (page, pageSize) {
+        _showMask();
+        //自动获取头条标题信息
+        toutiao.overview(page, pageSize).then(function (data) {
+            console.log(JSON.stringify(data))
+            var pageObj = data.object;
             console.log("头条加载成功");
-            $rootScope.overview = data.object;
+            $scope.toutiaos = pageObj.list;
+            $scope.currentPage =page;
+            $scope.pageSize = pageSize;
+            $scope.size = pageObj.size;
+            $scope.allItems = pageObj.total;
+            $scope.totalItems = pageObj.total;
+            $scope.pages = pageObj.pages;
+            $scope.maxSize = 25;
+            $scope.hasPreviousPage = pageObj.hasPreviousPage;
+            $scope.hasNextPage = pageObj.hasNextPage;
+            //当页数改变以后，需要重新获取\
+            $scope.changePage = function () {
+                $scope.toutiaoList($scope.currentPage, $scope.pageSize);
+            };
+            _hideMask();
         }, function (err) {
             console.log("头条加载失败" + err);
         });
+    }
+    $scope.toutiaoList(1, 10);//默认获取10条
 });
 /**********************************工具路由**************************************/
 consoleApp.controller("DateToolsController", function ($rootScope, $scope, $window, tools, $cookies) {
@@ -115,7 +135,7 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     article.articleList(uid, page, pageSize)
         .then(function (data) {
             console.log("文章列表获取成功");
-            $scope.articles=data.object;
+            $scope.articles = data.object;
         }, function (err) {
             console.log(err)
         });

@@ -316,11 +316,11 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
 /********************toutiao模块****************************/
 consoleApp.factory("toutiao", function ($http, $q, $cookies) {
     return {
-        overview: function (pageNo, pageSize) {
+        overview: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();
-            //验证验证码；get 传参：{params:{pageNo: pageNo,pageSize:pageSize}}
-            $http.get('/~/toutiao/overview', {params: {pageNo: pageNo, pageSize: pageSize}}).success(function (data) {
+            //验证验证码；get 传参：{params:{page: page,pageSize:pageSize}}
+            $http.get('/~/toutiao/overview', {params: {page: page, pageSize: pageSize}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
