@@ -26,7 +26,7 @@
                             <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{total}}&nbsp;&nbsp;条</span>
                         </div>
                     </div>
-                    <table class="table table-striped table-advance table-hover table-responsive">
+                    <table class="table  table-bordered table-advance table-hover table-responsive">
                         <thead>
                         <tr>
                             <th><i class="fa fa-home"></i>标题</th>
@@ -35,6 +35,10 @@
                             <th><i class="fa fa-object-ungroup"></i>分类</th>
                             <th><i class="fa fa-rss-square"></i>类型</th>
                             <th><i class="fa fa-calendar"></i>发表时间</th>
+                            <th><i class="fa fa-eye"></i>阅读数</th>
+                            <th><i class="fa fa-commenting"></i>评论数</th>
+                            <th><i class="fa fa-thumbs-up"></i>顶</th>
+                            <th><i class="fa fa-thumbs-down"></i>踩</th>
                         </tr>
                         </thead>
                         <tbody ng-repeat="art in articles">
@@ -45,6 +49,10 @@
                             <td>{{art.category}}</td>
                             <td>{{art.type}}</td>
                             <td>{{art.createTime|date : 'yyyy年MM月dd日HH点mm分'}}</td>
+                            <td>{{art.readerAmount}}</td>
+                            <td>{{art.commentAmount}}</td>
+                            <td>{{art.approvalAmount}}</td>
+                            <td>{{art.treadAmount}}</td>
                         </tr>
                         </tbody>
                     </table>
