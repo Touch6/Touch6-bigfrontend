@@ -8,7 +8,6 @@ var consoleApp = angular.module("consoleApp.controllers", [
 
 /**********************************整体body模块**************************************/
 consoleApp.controller("MainController", function ($rootScope, $scope, $window, $cookies) {
-    console.log("MainController");
     console.log("MainController->$scope.loginUser:" + $cookies.user);
     if ($cookies.user) {
         $rootScope.notLogin = false;
