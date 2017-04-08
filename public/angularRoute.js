@@ -1,4 +1,4 @@
-var consoleApp=angular.module("consoleApp",[
+var consoleApp = angular.module("consoleApp", [
     'ui.router',
     'consoleApp.controllers',
     'consoleApp.services'
@@ -23,7 +23,7 @@ consoleApp.run(function ($rootScope, $state, $stateParams) {
  * @param  {[type]} $urlRouterProvider
  * @return {[type]}
  */
-consoleApp.config(function ($stateProvider, $urlRouterProvider,$locationProvider) {
+consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider.otherwise('/index');
     $stateProvider
         .state('index', {
@@ -54,6 +54,11 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider,$locationProvider
         .state('article.technology', {//
             url: '/technology',
             templateUrl: 'views/article/technology.html',
+            controller: 'ArticleController'
+        })//技术文章路由
+        .state('article.write', {//
+            url: '/write',
+            templateUrl: 'views/article/write.html',
             controller: 'ArticleController'
         })//技术文章路由
         .state('tools', {//工具总路由

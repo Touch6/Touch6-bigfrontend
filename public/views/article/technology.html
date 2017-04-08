@@ -5,6 +5,7 @@
                 <section class="panel">
                     <header class="panel-heading">
                         技术文章
+                        <span><a ui-sref="article.write" target="_blank" class="btn btn-primary pull-right">发表文章</a></span>
                     </header>
                     <div class="page">
                         <!--<div class="pull-right">-->
@@ -44,7 +45,7 @@
                         <tbody ng-repeat="art in articles">
                         <tr>
                             <td>{{art.title}}</td>
-                            <td>{{art.content}}</td>
+                            <td><a ui-sref="article.detail" target="_blank" style="cursor: pointer;text-decoration: underline">{{art.content}}</a></td>
                             <td>{{art.author}}</td>
                             <td>{{art.category}}</td>
                             <td>{{art.type}}</td>
