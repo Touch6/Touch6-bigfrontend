@@ -93,6 +93,24 @@
             "method": "get"
         },
         {
+            "name": "获取文章类型列表",
+            "id": "article.types",
+            "urls": {
+                "development": "http://120.77.172.143:28081/t6/api/v1/article/types",
+                "test": "http://localhost:28081/t6/api/v1/article/types"
+            },
+            "method": "get"
+        },
+        {
+            "name": "获取文章分类列表",
+            "id": "article.categories",
+            "urls": {
+                "development": "http://120.77.172.143:28081/t6/api/v1/article/categories",
+                "test": "http://localhost:28081/t6/api/v1/article/categories"
+            },
+            "method": "get"
+        },
+        {
             "name": "自动获取头条标题列表",
             "id": "toutiao.overview",
             "urls": {

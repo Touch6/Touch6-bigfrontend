@@ -34,7 +34,7 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
             var pageObj = data.object;
             console.log("头条加载成功");
             $scope.toutiaos = pageObj.list;
-            $scope.currentPage =page;
+            $scope.currentPage = page;
             $scope.pageSize = pageSize;
             $scope.total = pageObj.total;
             $scope.pages = pageObj.pages;
@@ -113,17 +113,16 @@ consoleApp.controller("RegexController", function ($rootScope, $scope, $window, 
 });
 
 /**********************************文章路由**************************************/
-consoleApp.controller("ArticleController", function ($rootScope, $scope, $window, article, $cookies) {
+consoleApp.controller("ArticleController", function ($rootScope, $scope, $window, article, $cookies, $location) {
     var uid = "88ba369307564f92a8f8ef9b14d0a2ca";
+    /*******************************start*********************************/
     $scope.articleList = function (page, pageSize) {
         _showMask();
         //自动获取头条标题信息
-        article.articleList('',page, pageSize).then(function (data) {
-            console.log(JSON.stringify(data))
+        article.articleList('', page, pageSize).then(function (data) {
             var pageObj = data.object;
-            console.log("文章加载成功:"+JSON.stringify(pageObj));
             $scope.articles = pageObj.list;
-            $scope.currentPage =page;
+            $scope.currentPage = page;
             $scope.pageSize = pageSize;
             $scope.total = pageObj.total;
             $scope.pages = pageObj.pages;
@@ -137,10 +136,56 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
             console.log("文章加载失败" + err);
         });
     };
-    $scope.articleList(1, 10);//默认获取10条
-
+    //指定页面加载文章列表
+    if ($location.path() == '/article/technology') {
+        $scope.articleList(1, 10);//默认获取10条
+    }
+    /*******************************end*********************************/
+    /*******************************start*********************************/
+    $scope.typeList = function () {
+        article.typeList()
+            .then(function (data) {
+                $scope.types = data.object;
+            }, function (err) {
+                console.log(err)
+            });
+    }
+    //指定页面加载文章类型
+    if ($location.path() == '/article/write') {
+        $scope.typeList();
+    }
+    /*******************************end*********************************/
+    /*******************************start*********************************/
+    //第一级
+    $scope.category1List = function () {
+        article.categoryList('')
+            .then(function (data) {
+                $scope.categories1 = data.object;
+            }, function (err) {
+                console.log(err)
+            });
+    }
+    //指定页面加载文章类型
+    if ($location.path() == '/article/write') {
+        $scope.category1List();
+    }
+    //第二级
+    $scope.category2List = function (parentCategory) {
+        article.categoryList(parentCategory)
+            .then(function (data) {
+                $scope.categories2 = data.object;
+            }, function (err) {
+                console.log(err)
+            });
+    }
+    $scope.categoryChange = function () {
+        $scope.category2List(($scope.art).category1.categoryCode);
+    }
+    /*******************************end*********************************/
+    /*******************************start*********************************/
     $scope.writeArticle = function () {
-        article.write(uid, $scope.article)
+        console.log(JSON.stringify(($scope.art).type.type));
+        article.write(uid, $scope.art)
             .then(function (data) {
                 console.log("文章保存成功");
                 console.log("data:" + JSON.stringify(data));
@@ -148,6 +193,7 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
                 console.log(err)
             });
     }
+    /*******************************end*********************************/
 });
 
 /**********************************工具路由**************************************/
