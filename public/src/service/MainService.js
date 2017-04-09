@@ -47,10 +47,11 @@ consoleApp.factory("phone", function ($http, $q, $cookies) {
 consoleApp.factory("article", function ($http, $q, $cookies) {
 
     return {
-        write: function (uid, article) {
+        write: function (article) {
+            console.log(JSON.stringify(article));
             var deferred;
             deferred = $q.defer();
-            $http.post('/~/article', {param: {uid: uid}}, {article: article}).success(function (data) {
+            $http.post('/~/article', {article: article}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {

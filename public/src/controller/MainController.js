@@ -183,12 +183,19 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     }
     /*******************************end*********************************/
     /*******************************start*********************************/
+    /*******************************end*********************************/
+    /*******************************start*********************************/
     $scope.writeArticle = function () {
-        console.log(JSON.stringify(($scope.art).type.type));
-        article.write(uid, $scope.art)
+        _showMask();
+        ($scope.art).type = ($scope.art).type.type;
+        ($scope.art).category = ($scope.art).category.categoryCode;
+        ($scope.art).uid=uid;
+        article.write($scope.art)
             .then(function (data) {
-                console.log("文章保存成功");
-                console.log("data:" + JSON.stringify(data));
+                console.log("新保存的文章:"+JSON.stringify(data));
+                var art=data.object;
+                ($scope.art).id=art.id;
+                _hideMask();
             }, function (err) {
                 console.log(err)
             });
