@@ -86,10 +86,6 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
             templateUrl: 'views/user/login.html',
             controller: 'LoginCtrl'
         })
-        .state('loginOut', {
-            url: '/loginOut',
-            controller: 'LoginOutCtrl'
-        })
         .state('usercenter', {
             url: '/usercenter',
             templateUrl: 'views/usercenter/index.html'
@@ -97,22 +93,18 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
         .state('usercenter.article', {
             url: '/article',
             templateUrl: 'views/usercenter/article.html',
-            controller: 'UsercenterController'
         })
         .state('usercenter.subscribe', {
             url: '/subscribe',
             templateUrl: 'views/usercenter/subscribe.html',
-            controller: 'UsercenterController'
         })
         .state('usercenter.favorite', {
             url: '/favorite',
             templateUrl: 'views/usercenter/favorite.html',
-            controller: 'UsercenterController'
         })
         .state('usercenter.help', {
             url: '/help',
             templateUrl: 'views/usercenter/help.html',
-            controller: 'UsercenterController'
         })
     $locationProvider.html5Mode(true);
 });

@@ -302,7 +302,7 @@
                 </span>
                 </div>
             </ul>
-            <ul style="width: 100%" class=" pull-right t6-module-ul" id="t6-menu-a-usercenter">
+            <ul style="width: 100%" class=" pull-right t6-module-ul" id="t6-menu-a-usercenter" ng-controller="UsercenterController">
                 <div class="row col-lg-12 col-lg-offset-4" style="padding: 60px 0 80px 85px;">
                     <div class="row ">
                         <img src="../../images/handinhand.jpg" style="border-radius: 50%;height:250px;width:250px;"/>
@@ -326,7 +326,7 @@
                         <a data-value="5" class="pull-left t6-menu-a">完善资料</a>
                     </div>
                     <div class="col-lg-2">
-                        <a data-value="6" ui-sref="loginOut" class="pull-left t6-menu-a">退出登录</a>
+                        <a data-value="6" ng-click="logout()" class="pull-left t6-menu-a">退出登录</a>
                     </div>
                 </div>
                 <div class="row">

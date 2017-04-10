@@ -342,6 +342,14 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
         }
     }
 });
+
+/********************usercenter模块****************************/
+consoleApp.factory("usercenter", function ($http, $q, $cookies) {
+
+    return {
+
+    }
+});
 /********************toutiao模块****************************/
 consoleApp.factory("toutiao", function ($http, $q, $cookies) {
     return {

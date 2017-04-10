@@ -30,7 +30,6 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
         _showMask();
         //自动获取头条标题信息
         toutiao.overview(page, pageSize).then(function (data) {
-            console.log(JSON.stringify(data))
             var pageObj = data.object;
             console.log("头条加载成功");
             $scope.toutiaos = pageObj.list;
@@ -189,12 +188,12 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
         _showMask();
         ($scope.art).type = ($scope.art).type.type;
         ($scope.art).category = ($scope.art).category.categoryCode;
-        ($scope.art).uid=uid;
+        ($scope.art).uid = uid;
         article.write($scope.art)
             .then(function (data) {
-                console.log("新保存的文章:"+JSON.stringify(data));
-                var art=data.object;
-                ($scope.art).id=art.id;
+                console.log("新保存的文章:" + JSON.stringify(data));
+                var art = data.object;
+                ($scope.art).id = art.id;
                 _hideMask();
             }, function (err) {
                 console.log(err)
@@ -205,11 +204,22 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
 
 /**********************************工具路由**************************************/
 consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies) {
-    console.log("UsercenterController");
+    $scope.logout = function () {
+        alert("logout");
+        alert("退出登录前:" + JSON.stringify($cookies.user));
+        $rootScope.notLogin = true;
+        $scope.user = null;
+        delete $cookies.user;
+        $window.location = '/';
+        alert("退出登录后:" + JSON.stringify($cookies.user));
+    }
 });
 
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $location) {
+    $scope.logout222=function () {
+        alert(1111);
+    }
     $scope.login = {};
     $scope.loginError = "";
     //登录提交表单时，对表单进行验证；
@@ -243,17 +253,6 @@ consoleApp.controller("HomeCtrl", function ($scope, $window, user, $cookies, $lo
     //     console.log("你还未登录");
     //     $window.location = "/#/login";
     // }
-});
-/***********************************登出模块********************************************/
-consoleApp.controller("LoginOutCtrl", function ($rootScope,$scope, $cookies, $window) {
-    console.log("退出登录前:" + JSON.stringify($cookies.user));
-    $rootScope.notLogin = true;
-    $scope.logout = function () {
-        $scope.user = null;
-        delete $cookies.user;
-        $window.location = '/#/login';
-    };
-    console.log("退出登录后:" + JSON.stringify($cookies.user));
 });
 /***************************************注册模块*********************************************/
 consoleApp.controller("RegisterController", function ($scope, $cookies, $window, user, phone) {
