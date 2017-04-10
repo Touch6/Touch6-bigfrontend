@@ -210,13 +210,11 @@ consoleApp.controller("UsercenterController", function ($rootScope, $scope, $win
 
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $location) {
-    $scope.login = {
-        "loginName": "",
-        "password": ""
-    }
+    $scope.login = {};
     $scope.loginError = "";
     //登录提交表单时，对表单进行验证；
     $scope.loginSubmit = function () {
+        _showMask();
         //$scope.login为表单已填充后的数据
         user.loginVerify($scope.login)
             .then(function (data) {
@@ -224,10 +222,11 @@ consoleApp.controller("LoginController", function ($rootScope, $scope, $window, 
                 console.log("登录成功");
                 $rootScope.loginUser = data;//将用户信息存入$rootScope，在页面获取
                 $cookies.user = data;
-                console.log("data:" + JSON.stringify(data));
                 console.log(JSON.stringify($scope.loginUser));
                 $rootScope.notLogin = false;
+                _hideMask();
             }, function (err) {
+                _hideMask();
                 alert("登录失败" + JSON.stringify(err));
                 //登录失败，停止在登陆页
                 $scope.loginError = "*用户名或密码错误!";
@@ -246,8 +245,9 @@ consoleApp.controller("HomeCtrl", function ($scope, $window, user, $cookies, $lo
     // }
 });
 /***********************************登出模块********************************************/
-consoleApp.controller("LoginOutCtrl", function ($scope, $cookies, $window) {
+consoleApp.controller("LoginOutCtrl", function ($rootScope,$scope, $cookies, $window) {
     console.log("退出登录前:" + JSON.stringify($cookies.user));
+    $rootScope.notLogin = true;
     $scope.logout = function () {
         $scope.user = null;
         delete $cookies.user;

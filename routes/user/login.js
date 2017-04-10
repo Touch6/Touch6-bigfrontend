@@ -10,20 +10,6 @@ router.post("/",function(req,res){
     //真正请求后台接口的路由
     req.session={};
     console.log("登陆名" + JSON.stringify(req.body.user)+"/"+req.body.user.loginName+"/"+req.body.user.password);
-    var loginUser={
-        "uid":"",
-        "name":"",
-        "nickname":"",
-        "gender":"",
-        "birth":"",
-        "age":"",
-        "nation":"",
-        "qq":"",
-        "weixin":"",
-        "mobile":"",
-        "email":"",
-        "idcard":""
-    }
     userModel.login(req.body.user,{}).done(function(user){
         console.log("登录成功,后端返回数据>>>"+JSON.stringify(user));
         // data.plainPassword=req.body.user.password;
