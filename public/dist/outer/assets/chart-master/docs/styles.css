@@ -152,67 +152,6 @@ h2 {
   line-height: 40px;
   margin-bottom: 40px;
 }
-#wrapper {
-  margin: 0 auto;
-  position: relative;
-  min-width: 768px;
-}
-#wrapper nav {
-  width: 20%;
-  padding-right: 20px;
-  position: fixed;
-  height: 100%;
-  overflow-y: scroll;
-  top: 0;
-  z-index: 0;
-  padding: 40px 20px;
-  font-family: "proxima-nova";
-  background-color: #ebebeb;
-}
-#wrapper nav dl {
-  color: #767c8d;
-}
-#wrapper nav dl dt {
-  list-style: none;
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-#wrapper nav dl dt a {
-  display: block;
-  padding: 2px 0;
-  border-bottom: 1px solid rgba(118, 124, 141, 0.2);
-  text-decoration: none;
-}
-#wrapper nav dl dd {
-  margin-bottom: 5px;
-  padding-left: 5px;
-}
-#wrapper nav dl dd:before {
-  content: "- ";
-}
-#wrapper nav dl dd a {
-  text-decoration: none;
-  font-size: 12px;
-  border-bottom: 1px solid transparent;
-}
-#wrapper nav dl a {
-  -webkit-transition: all 200ms ease-in-out;
-  -moz-transition: all 200ms ease-in-out;
-  -o-transition: all 200ms ease-in-out;
-  -ms-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out;
-}
-#wrapper nav dl a:hover {
-  color: #2d91ea;
-  border-bottom-color: #2d91ea;
-}
-#wrapper #contentWrapper {
-  width: 80%;
-  max-width: 1080px;
-  margin-left: 20%;
-  padding: 0px 40px;
-  padding-top: 72px;
-}
 article {
   border-top: 1px solid #ebebeb;
   padding: 40px 0;

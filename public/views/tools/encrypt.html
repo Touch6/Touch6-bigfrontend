@@ -1,34 +1,98 @@
-<form>
-    <div class="row">
-        <div style="padding: 10px 20px 0px 20px;">
-            <textarea ng-model="src" placeholder="请输入需要加密或解密的文本" required style="width: 100%;height:150px;border: 1px solid;border-radius: 5px;"></textarea>
+<div class="col-lg-7 margin-top-10">
+    <div class="row col-lg-12 margin-top-10">
+        <div class="col-lg-4">
+            <p style="font-size: 24px;color:silver">·······································</p>
+        </div>
+        <div class="col-lg-3 col-lg-offset-1">
+            <span style="font-size: 24px;color:silver">加密解密</span>
+        </div>
+        <div class="col-lg-4">
+            <p style="font-size: 24px;color:silver">·······································</p>
         </div>
     </div>
-    <div>
-        <div class="row" style="padding: 10px 20px 0px 20px;">
-            <label><input type="radio" name="type" ng-model="type" value="1"/>BASE加密</label>
-            <label><input type="radio" name="type" ng-model="type" value="2" disabled/>BASE解密(UTF-8)</label>
-            <label><input type="radio" name="type" ng-model="type" value="3" disabled/>计算MD</label>
-            <label><input type="radio" name="type" ng-model="type" value="4" disabled/>SHA加密</label>
-            <label><input type="radio" name="type" ng-model="type" value="4" disabled/>HMAC加密</label>
-            <label><input type="radio" name="type" ng-model="type" value="4" disabled/>DES加密</label>
-            <label><input type="radio" name="type" ng-model="type" value="4" disabled/>DES解密</label>
-            <label><input type="radio" name="type" ng-model="type" value="4" disabled/>加盐加密</label>
-            <label><input type="radio" name="type" ng-model="type" value="4" disabled/>带盐解密</label>
-        </div>
-
-        <div class="row" style="padding: 10px 4px 10px 4px;">
-            <div class="col-lg-12">
-                <button type="submit" class="btn btn-lg btn-block " ng-click="codec()"
-                        style="background: rgba(54, 66, 74, 0.9);color:whitesmoke;">加密(解密)
-                </button>
+    <form style="padding: 20px 0 0px 20px;">
+        <div class="row col-lg-12 margin-top-10">
+            <div class="col-lg-2">
+                <span>输入方式</span>
+            </div>
+            <div class="col-lg-10">
+                <select class="form-control" ng-model="format">
+                    <option value="0">--请选择方式--</option>
+                    <option value="1">文本</option>
+                    <option value="2">上传</option>
+                </select>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div style="padding: 0px 20px 20px 20px;">
-            <textarea style="width: 100%;height:150px; border: 1px solid;border-radius: 5px;" placeholder="加密(解密)结果" ng-bind="result" readonly disabled></textarea>
+        <div class="row col-lg-12 margin-top-10">
+            <div class="col-lg-2">
+                <span></span>
+            </div>
+            <div class="col-lg-10">
+                <label><input type="radio" name="type" ng-model="type" value="1"/>Plaintext</label>
+                <label><input type="radio" name="type" ng-model="type" value="2" disabled/>HEX</label>
+            </div>
+        </div>
+        <div class="row col-lg-12 margin-top-10">
+            <div class="col-lg-2">
+                <span>输入内容</span>
+            </div>
+            <div class="col-lg-10">
+            <textarea ng-model="src" placeholder="请输入需要加密或解密的文本" required
+                      style="width: 100%;height:150px;border: 1px solid;border-radius: 5px;"></textarea>
+            </div>
+        </div>
+        <div class="row col-lg-12 margin-top-10">
+            <div class="col-lg-2">
+                <span>加解密方式</span>
+            </div>
+            <div class="col-lg-10">
+                <label><input type="radio" name="type" ng-model="type" value="1"/>BASE</label>
+                <label><input type="radio" name="type" ng-model="type" value="3" disabled/>计算MD</label>
+                <label><input type="radio" name="type" ng-model="type" value="4" disabled/>SHA</label>
+                <label><input type="radio" name="type" ng-model="type" value="4" disabled/>HMAC</label>
+                <label><input type="radio" name="type" ng-model="type" value="4" disabled/>DES</label>
+                <label><input type="radio" name="type" ng-model="type" value="4" disabled/>带盐值</label>
+            </div>
+        </div>
+        <div class="row col-lg-12 margin-top-10">
+            <div class="col-lg-2">
+                <span>输入盐值</span>
+            </div>
+            <div class="col-lg-10">
+            <input type="text" class="form-control" ng-model="src" placeholder="请输入需要解密附带的盐值" required/>
+            </div>
+        </div>
 
+
+        <div class="row col-lg-12 margin-top-10">
+            <div class="col-lg-2">
+                <span></span>
+            </div>
+            <div class="col-lg-5">
+                <button type="submit" class="btn btn-sm btn-danger btn-space btn-block" ng-click="encrypt()">加密</button>
+            </div>
+            <div class="col-lg-5">
+                <button type="submit" class="btn btn-sm btn-danger btn-space btn-block" ng-click="decript()">解密</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-lg-5 margin-top-10">
+    <div class="row col-lg-12 margin-top-10">
+        <div class="col-lg-2">
+            <p style="font-size: 24px;color:silver">··················</p>
+        </div>
+        <div class="col-lg-5 col-lg-offset-2">
+            <span style="font-size: 24px;color:silver">加密(解密)结果</span>
+        </div>
+        <div class="col-lg-2">
+            <p style="font-size: 24px;color:silver">··················</p>
         </div>
     </div>
-</form>
+    <div class="row col-lg-12 margin-top-10">
+        <div class="col-lg-12">
+                <textarea style="width: 100%;height:350px; border: 1px solid;border-radius: 5px;" placeholder="加密(解密)结果"
+                          ng-bind="result" readonly disabled></textarea>
+        </div>
+    </div>
+</div>
