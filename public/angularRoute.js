@@ -69,17 +69,21 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
         .state('tools.date', {
             url: '/date',
             templateUrl: 'views/tools/date_tools.html',
-            controller: 'DateToolsController'
+            controller: 'ToolsController'
         })
         .state('tools.codec', {
             url: '/codec',
-            templateUrl: 'views/codec/codec.html',
-            controller: 'CodecController'
+            templateUrl: 'views/tools/codec.html',
+            controller: 'ToolsController'
+        })
+        .state('tools.encrypt', {
+            url: '/encrypt',
+            templateUrl: 'views/tools/encrypt.html',
+            controller: 'ToolsController'
         })
         .state('tools.regex', {
             url: '/regex',
-            templateUrl: 'views/tools/regex.html',
-            controller: 'RegexController'
+            templateUrl: 'views/tools/regex.html'
         })
         .state('login', {
             url: '/login',

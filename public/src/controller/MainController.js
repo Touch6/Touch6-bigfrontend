@@ -50,13 +50,14 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
     $scope.toutiaoList(1, 10);//默认获取10条
 });
 /**********************************工具路由**************************************/
-consoleApp.controller("DateToolsController", function ($rootScope, $scope, $window, tools, $cookies) {
+consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, tools, $cookies) {
 
     //定义变量
     $scope.src = '';
     $scope.format = '0';
     $scope.dst = '';
     $scope.type = '';
+    $scope.result = '';
     $scope.dateFormat = function (type) {
         var src = $scope.src;
         var format = $scope.format;
@@ -74,18 +75,13 @@ consoleApp.controller("DateToolsController", function ($rootScope, $scope, $wind
         tools.dateFormat(src, format, type)
             .then(function (data) {
                 console.log("格式转换成功:" + data.object);
-                $rootScope.formated = data.object;
+                $scope.result = data.object;
             }, function (err) {
                 console.log("格式转换失败" + err);
             });
     }
-});
-/**********************************工具路由**************************************/
-consoleApp.controller("CodecController", function ($rootScope, $scope, $window, tools, $cookies) {
 
     //定义变量
-    $scope.src = '';
-    $scope.type = '';
     $scope.codec = function () {
         var src = $scope.src;
         var type = $scope.type;
@@ -98,17 +94,11 @@ consoleApp.controller("CodecController", function ($rootScope, $scope, $window, 
         tools.codec(src, type)
             .then(function (data) {
                 console.log("编解码成功:" + data.object);
-                $rootScope.result = data.object;
+                $scope.result = data.object;
             }, function (err) {
                 console.log("编解码失败" + err);
             });
     }
-});
-
-/**********************************工具路由**************************************/
-consoleApp.controller("RegexController", function ($rootScope, $scope, $window, tools, $cookies) {
-
-
 });
 
 /**********************************文章路由**************************************/
