@@ -205,13 +205,9 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
 /**********************************工具路由**************************************/
 consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies) {
     $scope.logout = function () {
-        alert("logout");
-        alert("退出登录前:" + JSON.stringify($cookies.user));
         $rootScope.notLogin = true;
         $scope.user = null;
         delete $cookies.user;
-        $window.location = '/';
-        alert("退出登录后:" + JSON.stringify($cookies.user));
     }
 });
 
