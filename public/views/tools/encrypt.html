@@ -10,13 +10,11 @@
             <p style="font-size: 24px;color:silver">·······································</p>
         </div>
     </div>
-    <form style="padding: 20px 0 0px 20px;">
+    <form style="padding: 20px 0 0px 20px;" role="form">
         <div class="row col-lg-12 margin-top-10">
-            <div class="col-lg-2">
-                <span>输入方式</span>
-            </div>
-            <div class="col-lg-10">
-                <select class="form-control" ng-model="format">
+            <div class="input-group col-lg-12">
+                <span class="input-group-addon">输入方式</span>
+                <select class="input-group form-control" ng-model="from">
                     <option value="0">--请选择方式--</option>
                     <option value="1">文本</option>
                     <option value="2">上传</option>
@@ -24,55 +22,68 @@
             </div>
         </div>
         <div class="row col-lg-12 margin-top-10">
-            <div class="col-lg-2">
-                <span></span>
-            </div>
-            <div class="col-lg-10">
-                <label><input type="radio" name="type" ng-model="type" value="1"/>Plaintext</label>
-                <label><input type="radio" name="type" ng-model="type" value="2" disabled/>HEX</label>
-            </div>
-        </div>
-        <div class="row col-lg-12 margin-top-10">
-            <div class="col-lg-2">
-                <span>输入内容</span>
-            </div>
-            <div class="col-lg-10">
-            <textarea ng-model="src" placeholder="请输入需要加密或解密的文本" required
-                      style="width: 100%;height:150px;border: 1px solid;border-radius: 5px;"></textarea>
+            <div class="btn-group col-lg-12" data-toggle="buttons" style="margin-left: 68px;">
+                <label class="btn btn-default">
+                    <input type="radio" ng-model="type" class="toggle" value="1">Plaintext
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" ng-model="type" class="toggle" value="2">&nbsp;&nbsp;&nbsp;&nbsp;HEX&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
             </div>
         </div>
         <div class="row col-lg-12 margin-top-10">
-            <div class="col-lg-2">
-                <span>加解密方式</span>
-            </div>
-            <div class="col-lg-10">
-                <label><input type="radio" name="type" ng-model="type" value="1"/>BASE</label>
-                <label><input type="radio" name="type" ng-model="type" value="3" disabled/>计算MD</label>
-                <label><input type="radio" name="type" ng-model="type" value="4" disabled/>SHA</label>
-                <label><input type="radio" name="type" ng-model="type" value="4" disabled/>HMAC</label>
-                <label><input type="radio" name="type" ng-model="type" value="4" disabled/>DES</label>
-                <label><input type="radio" name="type" ng-model="type" value="4" disabled/>带盐值</label>
+            <div class="input-group col-lg-12">
+                <span class="input-group-addon">输入内容</span>
+                <textarea ng-model="src" class="input-group" placeholder="请输入需要加密或解密的文本" required
+                          style="width: 100%;height:150px;"></textarea>
             </div>
         </div>
         <div class="row col-lg-12 margin-top-10">
-            <div class="col-lg-2">
-                <span>输入盐值</span>
+            <div class="btn-group col-lg-12" data-toggle="buttons" style="margin-left: 68px;">
+                <label class="btn btn-default" onclick="isShowSalt(this)">
+                    <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="1">&nbsp;&nbsp;BASE&nbsp;&nbsp;
+                </label>
+                <label class="btn btn-default" onclick="isShowSalt(this)">
+                    <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="2">&nbsp;&nbsp;&nbsp;&nbsp;计算MD&nbsp;&nbsp;&nbsp;
+                </label>
+                <label class="btn btn-default" onclick="isShowSalt(this)">
+                    <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="3">&nbsp;&nbsp;&nbsp;&nbsp;SHA&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <label class="btn btn-default" onclick="isShowSalt(this)">
+                    <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="4">&nbsp;&nbsp;&nbsp;&nbsp;HMAC&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <label class="btn btn-default" onclick="isShowSalt(this)">
+                    <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="5">&nbsp;&nbsp;&nbsp;&nbsp;DES&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <label class="btn btn-default" onclick="isShowSalt(this)">
+                    <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="6">&nbsp;&nbsp;&nbsp;&nbsp;带盐值&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
             </div>
-            <div class="col-lg-10">
-            <input type="text" class="form-control" ng-model="src" placeholder="请输入需要解密附带的盐值" required/>
+        </div>
+        <div class="row col-lg-12 margin-top-10" id="show_salt" style="display: none">
+            <div class="input-group col-lg-12">
+                <span class="input-group-addon">输入盐值</span>
+                <input type="text" class="input-group form-control" ng-model="salt" placeholder="请输入需要解密附带的盐值" required/>
             </div>
         </div>
 
-
         <div class="row col-lg-12 margin-top-10">
-            <div class="col-lg-2">
-                <span></span>
+            <div class="btn-group col-lg-12" data-toggle="buttons" style="margin-left: 68px;">
+                <label class="btn btn-default">
+                    <input type="radio" ng-model="method" class="toggle" value="1">&nbsp;&nbsp;&nbsp;&nbsp;加密&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" ng-model="method" class="toggle" value="2">&nbsp;&nbsp;&nbsp;&nbsp;解密&nbsp;&nbsp;&nbsp;&nbsp;
+                </label>
             </div>
-            <div class="col-lg-5">
-                <button type="submit" class="btn btn-sm btn-danger btn-space btn-block" ng-click="encrypt()">加密</button>
-            </div>
-            <div class="col-lg-5">
-                <button type="submit" class="btn btn-sm btn-danger btn-space btn-block" ng-click="decript()">解密</button>
+        </div>
+
+        <div class="row col-lg-12 margin-top-20">
+            <div class="btn-group col-lg-12" style="margin-left: 68px;">
+                <button type="submit" ng-model="type" style="margin-right: 50px;"
+                        class="btn btn-danger btn-lg pull-right" ng-click="dencrypt()" value="6">
+                    &nbsp;&nbsp;&nbsp;&nbsp;GO>>&nbsp;&nbsp;&nbsp;&nbsp;
+                </button>
             </div>
         </div>
     </form>
@@ -96,3 +107,13 @@
         </div>
     </div>
 </div>
+<script type="application/javascript">
+    function isShowSalt(element) {
+        $(element).find("input").prop("checked","checked");
+        if($(element).find("input").val()=='6'){
+            $("#show_salt").show(500);
+        }else{
+            $("#show_salt").hide(500);
+        }
+    }
+</script>

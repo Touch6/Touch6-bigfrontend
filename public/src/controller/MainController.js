@@ -99,6 +99,10 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
                 console.log("编解码失败" + err);
             });
     }
+
+    $scope.isShowSalt=function () {
+        alert($scope.calcType);
+    }
 });
 
 /**********************************文章路由**************************************/
