@@ -4785,7 +4785,9 @@ table.sliders tr td {
 .t6-module-ul-header {
     margin-top: -2px;
     border: none;
-    opacity: 0.85;
+    color: #fff;
+    background-color: rgba(26, 39, 50, 0.85);
+    border-bottom: 0.1em solid #f7082a;
 }
 
 .arrows-up {
