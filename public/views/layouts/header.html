@@ -281,7 +281,7 @@
                 </span>
                 </div>
             </ul>
-            <ul style="width: 100%" class=" pull-right t6-module-ul" id="t6-menu-a-login" ng-controller="LoginController">
+            <ul style="width: 100%" class=" pull-right t6-module-ul" id="t6-menu-a-login" ng-show="notLogin==true" ng-controller="LoginController">
                 <div class="row ">
                     <div class="col-lg-12">
                         <div ng-include="'views/user/login.html'"></div>
@@ -293,8 +293,7 @@
                 </span>
                 </div>
             </ul>
-            <ul style="width: 100%" class=" pull-right t6-module-ul" id="t6-menu-a-register"
-                ng-controller="RegisterController">
+            <ul style="width: 100%" class=" pull-right t6-module-ul" id="t6-menu-a-register" ng-show="notLogin==true" ng-controller="RegisterController">
                 <div class="row ">
                     <div class="col-lg-12">
                         <div ng-include="'views/user/register.html'"></div>
@@ -345,7 +344,7 @@
 <script>
     $(function () {
         $(".t6-module-ul").hide();
-        $(".t6-top-menu-li").hover(function () {
+        $(".t6-top-menu-li").click(function () {
             var tag = $(this).attr('tag');
             var uls = $("ul.t6-module-ul");
             for (var i = 0; i < uls.length; i++) {

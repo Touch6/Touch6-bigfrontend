@@ -4766,7 +4766,7 @@ table.sliders tr td {
     text-align: center;
     padding-top: 10px;
     margin-top: 12px;
-    background-color: rgba(40,30,60,1);
+    background: rgba(57, 42, 86,0.5);
     width: 150px;
     height: 40px;
     color: antiquewhite;
