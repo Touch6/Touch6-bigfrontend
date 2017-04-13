@@ -4804,3 +4804,9 @@ table.sliders tr td {
 .margin-left-20 {
     margin-left: 20px;
 }
+.article-border{
+    margin:10px;
+    border:2px solid darksalmon;
+    border-radius: 4px;
+    background-color: #ebebeb;
+}

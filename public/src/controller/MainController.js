@@ -100,7 +100,7 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
             });
     }
 
-    $scope.isShowSalt=function () {
+    $scope.isShowSalt = function () {
         alert($scope.calcType);
     }
 });
@@ -131,7 +131,7 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     };
     //指定页面加载文章列表
     if ($location.path() == '/article/technology') {
-        $scope.articleList(1, 10);//默认获取10条
+        $scope.articleList(1, 16);//默认获取10条
     }
     /*******************************end*********************************/
     /*******************************start*********************************/
@@ -176,8 +176,6 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     }
     /*******************************end*********************************/
     /*******************************start*********************************/
-    /*******************************end*********************************/
-    /*******************************start*********************************/
     $scope.writeArticle = function () {
         _showMask();
         ($scope.art).type = ($scope.art).type.type;
@@ -188,6 +186,19 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
                 console.log("新保存的文章:" + JSON.stringify(data));
                 var art = data.object;
                 ($scope.art).id = art.id;
+                _hideMask();
+            }, function (err) {
+                console.log(err)
+            });
+    }
+    /*******************************end*********************************/
+    /*******************************start*********************************/
+    $scope.articleDetail = function (id) {
+        _showMask();
+        article.articleDetail(id)
+            .then(function (data) {
+                console.log("文章详情:" + JSON.stringify(data));
+                $scope.articleDetailInfo = data.object;
                 _hideMask();
             }, function (err) {
                 console.log(err)
@@ -207,7 +218,7 @@ consoleApp.controller("UsercenterController", function ($rootScope, $scope, $win
 
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $location) {
-    $scope.logout222=function () {
+    $scope.logout222 = function () {
         alert(1111);
     }
     $scope.login = {};

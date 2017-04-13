@@ -50,4 +50,14 @@ router.get('/categories', function (req, res) {
     });
 });
 
+router.get('/detail', function (req, res) {
+
+    articleModel.detail({id: req.query.articleId}).done(function (data) {
+        console.log("调用后台文章详情返回信息>>>" + JSON.stringify(data));
+        res.send(data);
+    }).error(function (error) {
+        console.log("调用后台文章详情返回错误信息>>>" + error);
+    });
+});
+
 module.exports = router;
