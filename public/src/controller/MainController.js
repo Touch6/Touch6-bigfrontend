@@ -106,7 +106,7 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
 });
 
 /**********************************文章路由**************************************/
-consoleApp.controller("ArticleController", function ($rootScope, $scope, $window, article, $cookies, $location) {
+consoleApp.controller("ArticleController", function ($rootScope, $scope, $window, article, $cookies, $location,$state) {
     var uid = "88ba369307564f92a8f8ef9b14d0a2ca";
     /*******************************start*********************************/
     $scope.articleList = function (page, pageSize) {
@@ -131,7 +131,7 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     };
     //指定页面加载文章列表
     if ($location.path() == '/article/technology') {
-        $scope.articleList(1, 16);//默认获取10条
+        $scope.articleList(1, 15);//默认获取10条
     }
     /*******************************end*********************************/
     /*******************************start*********************************/
@@ -194,15 +194,16 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     /*******************************end*********************************/
     /*******************************start*********************************/
     $scope.articleDetail = function (id) {
-        _showMask();
         article.articleDetail(id)
             .then(function (data) {
-                console.log("文章详情:" + JSON.stringify(data));
                 $scope.articleDetailInfo = data.object;
-                _hideMask();
             }, function (err) {
                 console.log(err)
             });
+    }
+    //指定页面加载文章详情
+    if ($location.path() == '/article/detail') {
+        $scope.articleDetail();
     }
     /*******************************end*********************************/
 });

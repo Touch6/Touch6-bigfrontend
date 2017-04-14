@@ -61,6 +61,11 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
             templateUrl: 'views/article/write.html',
             controller: 'ArticleController'
         })//技术文章路由
+        .state('article.detail', {//
+            url: '/detail',
+            templateUrl: 'views/article/article_detail.html',
+            controller: 'ArticleController'
+        })//技术文章路由
         .state('tools', {//工具总路由
             url: '/tools',
             templateUrl: 'views/tools/index.html',

@@ -14,7 +14,7 @@ table>thead>tr{background-color: #F4F4F4;height:50px;line-height: 50px;}
 .basicInfo>.infoLine>.iconImg,.basicInfo>.infoLine>.iconImg>img{width:120px;height:120px;}
 .userLevelOperate{height:40px;line-height: 40px;}
 .userLevelOperate>.versionCreateBtn{border:0;width:120px;height:40px;background-color: #CC0099;color:#fff;}
-.page{height:45px;line-height: 45px;background-color: #E8E8E8;}
+.page{height:45px;line-height: 45px;}
 .page>.deleteBtn{width:120px;height:45px;border:0;background-color: #D0D0D0;color:#FF0000;text-align: center;}
 .pagination{margin:5px 5px 5px 0;}
 .totalPage{display: inline-block;float: right;margin-right:10px;}
