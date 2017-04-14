@@ -448,7 +448,7 @@ ul.sidebar-menu li.active a i {
 
 .wrapper {
     display: inline-block;
-    padding: 15px;
+    padding: 0px;
     width: 100%;
 }
 
@@ -986,7 +986,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .dark-bg {
     color: #fff;
     background-color: rgba(26, 39, 50, 1);
-    border-bottom: 0.1em solid #f7082a;
 }
 
 .facebook-bg {
@@ -4681,8 +4680,6 @@ table.sliders tr td {
     min-height: 120px;
     border: 2px solid #ffd8f7;
     padding: 5px;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
 }
 
 .act-time p {
@@ -4807,4 +4804,20 @@ table.sliders tr td {
     border:2px solid darksalmon;
     border-radius: 4px;
     background-color: #ebebeb;
+}
+.article-separator{
+    border-bottom: 1px solid #ddd;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin: 25px -20px 0 -20px;
+}
+.approval-a,.oppose-a{
+    color: #e1a02d;
+}
+.approval-a:hover{
+    color: #2d15dd;
+}
+.oppose-a:hover{
+    color: red;
 }

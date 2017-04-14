@@ -106,7 +106,7 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
 });
 
 /**********************************文章路由**************************************/
-consoleApp.controller("ArticleController", function ($rootScope, $scope, $window, article, $cookies, $location,$state) {
+consoleApp.controller("ArticleController", function ($rootScope, $scope, $window, article, $cookies, $location, $stateParams) {
     var uid = "88ba369307564f92a8f8ef9b14d0a2ca";
     /*******************************start*********************************/
     $scope.articleList = function (page, pageSize) {
@@ -131,7 +131,7 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     };
     //指定页面加载文章列表
     if ($location.path() == '/article/technology') {
-        $scope.articleList(1, 15);//默认获取10条
+        $scope.articleList(1, 10);//默认获取10条
     }
     /*******************************end*********************************/
     /*******************************start*********************************/
@@ -192,19 +192,22 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
             });
     }
     /*******************************end*********************************/
+});
+/**********************************文章路由**************************************/
+consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $window, article, $cookies, $location, $stateParams) {
     /*******************************start*********************************/
     $scope.articleDetail = function (id) {
+        _showMask();
         article.articleDetail(id)
             .then(function (data) {
                 $scope.articleDetailInfo = data.object;
             }, function (err) {
                 console.log(err)
             });
+        _hideMask();
     }
     //指定页面加载文章详情
-    if ($location.path() == '/article/detail') {
-        $scope.articleDetail();
-    }
+    $scope.articleDetail($stateParams.articleId);
     /*******************************end*********************************/
 });
 

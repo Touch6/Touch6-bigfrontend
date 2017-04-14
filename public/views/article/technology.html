@@ -2,23 +2,29 @@
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
+                <div class="row">
+                    <a ui-sref="article.write" target="_blank"
+                       class="btn btn-primary btn-xs pull-right margin-right-10">&nbsp;&nbsp;&nbsp;&nbsp;发表文章&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                </div>
                 <section class="panel">
                     <!-- page start-->
-                    <div class="row col-lg-10">
+                    <div class="row col-lg-8 col-lg-offset-1">
                         <div ng-repeat="art in articles">
-                            <div class="col-lg-3" style="margin: 40px 20px 0 0;">
+                            <div class="col-lg-12 margin-top-10">
                                 <div class="act-time">
                                     <div class="activity-body act-in">
-                                        <div class="text"  style="background:rgba(74,103,133,1);color:whitesmoke">
-                                            <div class="col-lg-12" style="cursor:pointer;" ng-click="articleDetail(art.id)">
+                                        <div class="text"
+                                             style="background:rgba(37,36,66,0.9);height:200px;color:whitesmoke;border: none;">
+                                            <div class="col-lg-12" style="cursor:pointer;"
+                                                 ui-sref="article.detail({articleId:art.id})">
                                                 <div class="row" style="height: 20px;">
                                                     <div class="col-lg-12">
                                                         <span
-                                                           style="color:whitesmoke;font-size: 14px;font-weight: bold">{{art.title}}
+                                                                style="color:whitesmoke;font-size: 14px;font-weight: bold">{{art.title}}
                                                         </span>
                                                     </div>
                                                 </div>
-                                                <div class="row" style="height: 65px;">
+                                                <div class="row" style="height: 145px;">
                                                     <div class="col-lg-10 col-lg-offset-1">{{art.summary}}...
                                                     </div>
                                                 </div>
@@ -34,32 +40,28 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row col-lg-8">
-                        <div class="page">
-                            <!--<div class="pull-right">-->
-                            <div>
-                                <pagination boundary-links="true"
-                                            total-items="total"
-                                            ng-model="currentPage"
-                                            class="pagination-md"
-                                            ng-change="changePage()"
-                                            max-size="maxSize"
-                                            rotate="false"
-                                            first-text="&laquo;"
-                                            previous-text="&lsaquo;"
-                                            next-text="&rsaquo;"
-                                            last-text="&raquo;"
-                                            force-ellipses="true"
-                                            items-per-page="pageSize">
-                                </pagination>
-                                <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{total}}&nbsp;&nbsp;条</span>
+                        <div style="margin-left: 15px;">
+                            <div class="page">
+                                <!--<div class="pull-right">-->
+                                <div>
+                                    <pagination boundary-links="true"
+                                                total-items="total"
+                                                ng-model="currentPage"
+                                                class="pagination-md"
+                                                ng-change="changePage()"
+                                                max-size="maxSize"
+                                                rotate="false"
+                                                first-text="&laquo;"
+                                                previous-text="&lsaquo;"
+                                                next-text="&rsaquo;"
+                                                last-text="&raquo;"
+                                                force-ellipses="true"
+                                                items-per-page="pageSize">
+                                    </pagination>
+                                    <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{total}}&nbsp;&nbsp;条</span>
+                                </div>
                             </div>
                         </div>
-                        <header class="panel-heading">
-                            <span><a ui-sref="article.write" target="_blank"
-                                     class="btn btn-primary pull-right">发表文章</a></span>
-                        </header>
                     </div>
                     <!-- page end-->
                 </section>

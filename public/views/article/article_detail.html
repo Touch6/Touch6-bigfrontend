@@ -1,1 +1,58 @@
-{{articleDetailInfo.title}}
+<section id="main-content">
+    <section class="wrapper">
+        <div class="col-lg-12">
+            <div class="row" style="height:120px;border: 1px solid navajowhite;border-radius: 4px;background: #2b3857;">
+                <!--header-->
+            </div>
+            <div class="row margin-top-10">
+                <div class="row col-lg-2">
+                    <!--left-->
+                </div>
+                <div class="row col-lg-8"
+                     style="border: 1px solid navajowhite;border-radius: 4px;min-height: 800px;padding: 10px 20px;">
+                    <div class="row">
+                        <span style="background-color: #0e2e42;color: whitesmoke;border-radius: 50%;position: absolute;right: 7px;top:7px;">原</span>
+                        <div style="font-size: 24px;text-align: center;position: relative">{{articleDetailInfo.title}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        标签:<a>{{articleDetailInfo.tag;}}</a>
+                    </div>
+                    <div class="row pull-right">
+                        <span class="fa fa-calendar margin-right-20">&nbsp;&nbsp;{{articleDetailInfo.createTime|date:'yyyy年MM月dd日HH点mm分'}}</span>
+                        <span class="fa fa-eye margin-right-10">({{articleDetailInfo.readAmount}})</span>
+                        <span class="fa fa-thumbs-up margin-right-10">({{articleDetailInfo.approvalAmount}})</span>
+                        <span class="fa fa-thumbs-down margin-right-10">({{articleDetailInfo.opposeAmount}})</span>
+                    </div>
+                    <div class="article-separator"></div>
+                    <div class="margin-top-10 margin-bottom-10" style="height:20px;">
+                        分类：<a>{{articleDetailInfo.category}}</a>
+                    </div>
+                    <div class="article-separator"></div>
+                    <div class="row" style="min-height:100px;">
+                        {{articleDetailInfo.summary}}
+                    </div>
+                    <div class="row" style="min-height:400px;">
+                        {{articleDetailInfo.content}}
+                    </div>
+                    <div class="article-separator"></div>
+                    <div class="row" style="min-height:100px;">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4 margin-top-20">
+                            <div class="col-lg-5" style="border: 1px solid navajowhite;border-radius: 4px;">
+                                <a class="approval-a" style="font-size: 36px;cursor: pointer;font-weight: bold">赞成</a>
+                            </div>
+                            <div class="col-lg-5 col-lg-offset-1" style="border: 1px solid navajowhite;border-radius: 4px;">
+                                <a class="oppose-a" style="font-size: 36px;cursor: pointer;font-weight: bold">反对</a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+                </div>
+                <div class="row col-lg-2">
+                    <!--right-->
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
