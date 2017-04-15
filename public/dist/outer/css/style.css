@@ -985,7 +985,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
 .dark-bg {
     color: #fff;
-    background-color: rgba(26, 39, 50, 1);
+    background-color: #252530;
 }
 
 .facebook-bg {
@@ -4396,17 +4396,6 @@ table.sliders tr td {
 
 /*form wizard*/
 
-.stepy-tab {
-    text-align: center;
-}
-
-.stepy-tab ul {
-    display: inline-block;
-}
-
-.stepy-tab ul li {
-    float: left;
-}
 
 .step legend {
     border: none;
@@ -4427,51 +4416,6 @@ table.sliders tr td {
 
 .step {
     clear: left;
-}
-
-.step label {
-    display: block;
-}
-
-.stepy-titles li {
-    color: #757575;
-    cursor: pointer;
-    float: left;
-    margin: 10px 15px;
-}
-
-.stepy-titles li span {
-    display: block;
-}
-
-.stepy-titles li.current-step div {
-    color: #fff;
-    cursor: auto;
-    background: #688a7e;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-}
-
-.stepy-titles li div {
-    font-size: 16px;
-    font-weight: 300;
-    background: #eee;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-}
-
-/*widget*/
-
-.user-heading.alt {
-    display: inline-block;
-    width: 100%;
-    text-align: left;
 }
 
 .alt.green-bg {

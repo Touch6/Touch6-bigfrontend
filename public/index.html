@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=no"/>
     <base href="/"/>
-    <title>知行云网</title>
+    <title>知行云</title>
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css" type="text/css"/>
     <link href="dist/outer/css/bootstrap-theme.css" rel="stylesheet" type="text/css"/>
@@ -148,14 +148,38 @@
     <!--<script src="//cdn.bootcss.com/owl-carousel/1.32/owl.carousel.js"></script>-->
     <!--custome script for all page-->
     <script src="dist/outer/js/scripts.js"></script>
+    <style type="text/css">
+        .main-wrapper {
+            position: absolute;
+            width: 100%;
+            height: auto;
+            min-height: 100%;
+            background-color: white;
+        }
+        .main-content{
+            padding-bottom: 300px;
+            margin-top: 60px;
+        }
+        .main-footer{
+            position:relative;
+            left: 0;
+            right:0;
+            bottom:0;
+            min-height: 300px;
+            background: #252530;
+        }
+    </style>
 </head>
-<body ng-controller="MainController" class="" style="position:absolute;width:100%;min-height:100%;background-color: white;">
-<div ng-include="'views/layouts/header.html'"></div>
-<div class="content" style="padding-bottom: 60px;margin-top: 60px;">
-    <div ui-view="">
+<body ng-controller="MainController">
+<div class="main-wrapper">
+    <div ng-include="'views/layouts/header.html'"></div>
+    <div class="main-content">
+        <div ui-view="">
+        </div>
     </div>
+    <div ng-include="'views/layouts/footer.html'"
+         class="main-footer"></div>
+    <div ng-include="'views/include/mask.html'"></div>
 </div>
-<div ng-include="'views/layouts/footer.html'" style="position:relative;left: 0;right:0;bottom:0;height: 60px;"></div>
-<div ng-include="'views/include/mask.html'"></div>
 </body>
 </html>
