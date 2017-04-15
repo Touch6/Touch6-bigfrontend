@@ -104,10 +104,38 @@ consoleApp.factory("article", function ($http, $q, $cookies) {
             });
             return deferred.promise;
         },
-        articleDetail:function (articleId) {
+        articleDetail: function (articleId) {
             var deferred;
             deferred = $q.defer();
             $http.get('/~/article/detail', {params: {articleId: articleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        approval: function (approval) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/approval', {approval: approval}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        oppose: function (oppose) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/oppose', {oppose: oppose}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -360,9 +388,7 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
 /********************usercenter模块****************************/
 consoleApp.factory("usercenter", function ($http, $q, $cookies) {
 
-    return {
-
-    }
+    return {}
 });
 /********************toutiao模块****************************/
 consoleApp.factory("toutiao", function ($http, $q, $cookies) {

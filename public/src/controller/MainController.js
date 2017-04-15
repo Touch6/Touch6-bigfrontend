@@ -194,7 +194,12 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     /*******************************end*********************************/
 });
 /**********************************文章路由**************************************/
-consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $window, article, $cookies, $location, $stateParams) {
+consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $window, article, $cookies, $cookieStore, $location, $stateParams) {
+    $scope.approval = {
+        'who': '',
+        'objectId': '',
+        'targetObject': ''
+    };
     /*******************************start*********************************/
     $scope.articleDetail = function (id) {
         _showMask();
@@ -209,19 +214,65 @@ consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $
     //指定页面加载文章详情
     $scope.articleDetail($stateParams.articleId);
     /*******************************end*********************************/
+    /*******************************start*********************************/
+    $scope.articleApproval = function (articleId) {
+        var uid = $cookies.uid;
+        if (!uid) {
+            swal('', '您还未登录!', 'error')
+            return;
+        }
+        $scope.approval = {
+            'who': uid,
+            'objectId': articleId,
+            'targetObject': 'ARTICLE'
+        };
+        article.approval($scope.approval)
+            .then(function (data) {
+                alert(JSON.stringify(data.object))
+                ($scope.articleDetailInfo).approvalAmount = data.object;
+            }, function (err) {
+                if(err.code='200001'){
+                    swal('','您已点过赞了!','error')
+                }
+            });
+    }
+    /*******************************end*********************************/
+    /*******************************start*********************************/
+    $scope.articleOppose = function (articleId) {
+        var uid = $cookies.uid;
+        if (!uid) {
+            swal('', '您还未登录!', 'error')
+            return;
+        }
+        $scope.oppose = {
+            'who': uid,
+            'objectId': articleId,
+            'targetObject': 'ARTICLE'
+        };
+        article.oppose($scope.oppose)
+            .then(function (data) {
+                ($scope.articleDetailInfo).approvalAmount = data.object;
+            }, function (err) {
+                if(err.code='200001'){
+                    swal('','您已反对过了!','error')
+                }
+            });
+    }
+    /*******************************end*********************************/
 });
 
 /**********************************工具路由**************************************/
-consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies) {
+consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies,$cookieStore) {
     $scope.logout = function () {
         $rootScope.notLogin = true;
         $scope.user = null;
-        delete $cookies.user;
+        delete $cookies.uid;
+        $cookieStore.remove('user');
     }
 });
 
 /************************************登录模块*************************************************/
-consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $location) {
+consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $cookieStore, $location) {
     $scope.logout222 = function () {
         alert(1111);
     }
@@ -234,10 +285,9 @@ consoleApp.controller("LoginController", function ($rootScope, $scope, $window, 
         user.loginVerify($scope.login)
             .then(function (data) {
                 //登录成功跳转到home页面
-                console.log("登录成功");
-                $rootScope.loginUser = data;//将用户信息存入$rootScope，在页面获取
-                $cookies.user = data;
-                console.log(JSON.stringify($scope.loginUser));
+                $rootScope.loginUser = data.object;//将用户信息存入$rootScope，在页面获取
+                $cookies.uid = (data.object).uid;
+                $cookieStore.put('user', data.object);
                 $rootScope.notLogin = false;
                 _hideMask();
             }, function (err) {

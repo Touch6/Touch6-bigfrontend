@@ -16,6 +16,8 @@ var phone = require('./routes/user/phone');
 var toutiao = require('./routes/toutiao/toutiao');
 var tools = require('./routes/tools/tools');
 var article = require('./routes/article/article');
+var approval = require('./routes/common/approval');
+var oppose = require('./routes/common/oppose');
 
 var sendEmail = require('./routes/email');
 var touchcApp = require('./routes/touchcApp/touchcApp');
@@ -64,6 +66,8 @@ app.use('/~/phone', phone);
 app.use('/~/toutiao', toutiao);
 app.use('/~/tools', tools);
 app.use('/~/article', article);
+app.use('/~/approval', approval);
+app.use('/~/oppose', oppose);
 app.use('/sendEmail', sendEmail);
 app.use('/touchcApp', touchcApp);
 app.use('/uptoken', uptoken);

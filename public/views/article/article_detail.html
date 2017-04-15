@@ -1,7 +1,8 @@
 <section id="main-content">
     <section class="wrapper">
         <div class="col-lg-12">
-            <div class="row" style="height:120px;border: 1px solid navajowhite;border-radius: 4px;background:url('../../images/article_header.png');">
+            <div class="row"
+                 style="height:120px;border: 1px solid navajowhite;border-radius: 4px;background:url('../../images/article_header.png');">
                 <!--header-->
             </div>
             <div class="row margin-top-10">
@@ -40,10 +41,17 @@
                         <div class="col-lg-4"></div>
                         <div class="col-lg-4 margin-top-20">
                             <div class="col-lg-5" style="border: 1px solid navajowhite;border-radius: 4px;">
-                                <a class="approval-a" style="font-size: 36px;cursor: pointer;font-weight: bold">赞成</a>
+                                <a ng-click="articleApproval(articleDetailInfo.id)" class="approval-a"
+                                   style="font-size: 48px;cursor: pointer;font-weight: bold"><i
+                                        class="fa fa-thumbs-o-up"></i></a>
+                                <span style="position: absolute;top: 40px;right:25px;">({{articleDetailInfo.approvalAmount}})</span>
                             </div>
-                            <div class="col-lg-5 col-lg-offset-1" style="border: 1px solid navajowhite;border-radius: 4px;">
-                                <a class="oppose-a" style="font-size: 36px;cursor: pointer;font-weight: bold">反对</a>
+                            <div class="col-lg-5 col-lg-offset-1"
+                                 style="border: 1px solid navajowhite;border-radius: 4px;">
+                                <a ng-click="articleOppose(articleDetailInfo.id)" class="oppose-a"
+                                   style="font-size: 48px;cursor: pointer;font-weight: bold"><i
+                                        class="fa fa-thumbs-o-down"></i></a>
+                                <span style="position: absolute;top: 40px;right:25px;">({{articleDetailInfo.opposeAmount}})</span>
                             </div>
                         </div>
                         <div class="col-lg-4"></div>

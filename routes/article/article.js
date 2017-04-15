@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var ModelProxy, articleModel;
-ModelProxy = require('./../../proxy/DataProxy').DataProxy;
-articleModel = ModelProxy.create("article.*");
+var ModelProxy = require('./../../proxy/DataProxy').DataProxy;
+var articleModel = ModelProxy.create("article.*");
+var approvalModel = ModelProxy.create("approval.*");
+var opposeModel = ModelProxy.create("oppose.*");
 
 router.post('/', function (req, res) {
 
-    articleModel.write(req.body.article,{}).done(function (data) {
+    articleModel.write(req.body.article, {}).done(function (data) {
         res.send(data);
     }).error(function (error) {
         console.log("调用后台保存文章返回错误信息>>>" + JSON.stringify(error));
@@ -57,6 +58,29 @@ router.get('/detail', function (req, res) {
         res.send(data);
     }).error(function (error) {
         console.log("调用后台文章详情返回错误信息>>>" + error);
+    });
+});
+
+/*****************点赞**********************/
+router.post("/approval", function (req, res) {
+    approvalModel.approval(req.body.approval, {}).done(function (data) {
+        console.log("点赞成功,后端返回数据>>>" + JSON.stringify(data));
+        res.send(data);
+    }).fail(function (error) {
+        console.log("error" + error);
+        res.send(error);
+    });
+});
+
+
+/*****************反对**********************/
+router.post("/oppose", function (req, res) {
+    opposeModel.oppose(req.body.oppose, {}).done(function (data) {
+        console.log("反对成功,后端返回数据>>>" + JSON.stringify(data));
+        res.send(data);
+    }).fail(function (error) {
+        console.log("error" + error);
+        res.send(error);
     });
 });
 

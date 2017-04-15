@@ -111,6 +111,26 @@
             "method": "get"
         },
         {
+            "name": "点赞",
+            "id": "approval.approval",
+            "urls": {
+                "development": "http://120.77.172.143:28081/t6/api/v1/approval",
+                "test": "http://localhost:28081/t6/api/v1/approval"
+            },
+            "method": "post",
+            "contentType": "application/json"
+        },
+        {
+            "name": "反对",
+            "id": "oppose.oppose",
+            "urls": {
+                "development": "http://120.77.172.143:28081/t6/api/v1/oppose",
+                "test": "http://localhost:28081/t6/api/v1/oppose"
+            },
+            "method": "post",
+            "contentType": "application/json"
+        },
+        {
             "name": "自动获取头条标题列表",
             "id": "toutiao.overview",
             "urls": {
