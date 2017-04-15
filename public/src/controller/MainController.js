@@ -100,8 +100,13 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
             });
     }
 
-    $scope.isShowSalt = function () {
-        alert($scope.calcType);
+    $scope.dencrypt=function () {
+        console.log("dataFrom:"+$scope.dataFrom);
+        console.log("scale:"+$scope.scale);
+        console.log("content:"+$scope.content);
+        console.log("calcType:"+$scope.calcType);
+        console.log("salt:"+$scope.salt);
+        console.log("method:"+$scope.method);
     }
 });
 
