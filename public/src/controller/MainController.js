@@ -228,11 +228,12 @@ consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $
         };
         article.approval($scope.approval)
             .then(function (data) {
-                alert(JSON.stringify(data.object))
-                ($scope.articleDetailInfo).approvalAmount = data.object;
+                var info = $scope.articleDetailInfo;
+                info.approvalAmount = data.object;
+                $scope.articleDetailInfo = info;
             }, function (err) {
-                if(err.code='200001'){
-                    swal('','您已点过赞了!','error')
+                if (err.code = '200001') {
+                    swal('', '您已点过赞了!', 'error')
                 }
             });
     }
@@ -251,10 +252,12 @@ consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $
         };
         article.oppose($scope.oppose)
             .then(function (data) {
-                ($scope.articleDetailInfo).approvalAmount = data.object;
+                var info = $scope.articleDetailInfo;
+                info.opposeAmount = data.object;
+                $scope.articleDetailInfo = info;
             }, function (err) {
-                if(err.code='200001'){
-                    swal('','您已反对过了!','error')
+                if (err.code = '200001') {
+                    swal('', '您已反对过了!', 'error')
                 }
             });
     }
@@ -262,7 +265,7 @@ consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $
 });
 
 /**********************************工具路由**************************************/
-consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies,$cookieStore) {
+consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies, $cookieStore) {
     $scope.logout = function () {
         $rootScope.notLogin = true;
         $scope.user = null;
