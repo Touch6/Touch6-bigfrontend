@@ -17,49 +17,49 @@
             <div class="row col-lg-12 margin-top-10">
                 <div class="input-group col-lg-12">
                     <span class="input-group-addon">输入方式</span>
-                    <select class="input-group form-control" ng-model="from">
-                        <option value="0">--请选择方式--</option>
-                        <option value="1">文本</option>
-                        <option value="2">上传</option>
+                    <select class="input-group form-control" ng-model="dataFrom" onchange="makeDataFrom(this)">
+                        <option value="">--请选择方式--</option>
+                        <option value="text">文本</option>
+                        <option value="upload">上传</option>
                     </select>
                 </div>
             </div>
             <div class="row col-lg-12 margin-top-10">
                 <div class="btn-group col-lg-12" data-toggle="buttons" style="margin-left: 68px;">
-                    <label class="btn btn-default">
-                        <input type="radio" ng-model="type" class="toggle" value="1">Plaintext
+                    <label class="btn btn-default" onclick="markChecked(this)">
+                        <input type="radio" name="scale" ng-model="scale" class="toggle" value="plaintext">plaintext
                     </label>
-                    <label class="btn btn-default">
-                        <input type="radio" ng-model="type" class="toggle" value="2">&nbsp;&nbsp;&nbsp;&nbsp;HEX&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="btn btn-default" onclick="markChecked(this)">
+                        <input type="radio" name="scale" ng-model="scale" class="toggle" value="hex">&nbsp;&nbsp;&nbsp;&nbsp;hex&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                 </div>
             </div>
             <div class="row col-lg-12 margin-top-10">
                 <div class="input-group col-lg-12">
                     <span class="input-group-addon">输入内容</span>
-                    <textarea ng-model="src" class="input-group" placeholder="请输入需要加密或解密的文本" required
+                    <textarea ng-model="content" class="input-group" placeholder="请输入需要加密或解密的文本" required
                               style="width: 100%;height:150px;"></textarea>
                 </div>
             </div>
             <div class="row col-lg-12 margin-top-10">
-                <div class="btn-group col-lg-12" data-toggle="buttons" style="margin-left: 68px;">
-                    <label class="btn btn-default" onclick="isShowSalt(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="1">&nbsp;&nbsp;BASE&nbsp;&nbsp;
+                <div class="btn-group col-lg-12 calcType" data-toggle="buttons" style="margin-left: 68px;">
+                    <label class="btn btn-default" onclick="markCalcType(this)">
+                        <input type="radio" name="calcType" ng-model="calcType" class="btn btn-default " value="BASE">&nbsp;&nbsp;BASE&nbsp;&nbsp;
                     </label>
-                    <label class="btn btn-default" onclick="isShowSalt(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="2">&nbsp;&nbsp;&nbsp;&nbsp;计算MD&nbsp;&nbsp;&nbsp;
+                    <label class="btn btn-default" onclick="markCalcType(this)">
+                        <input type="radio" name="calcType" ng-model="calcType" class="btn btn-default " value="MD5">&nbsp;&nbsp;&nbsp;&nbsp;计算MD5&nbsp;&nbsp;&nbsp;
                     </label>
-                    <label class="btn btn-default" onclick="isShowSalt(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="3">&nbsp;&nbsp;&nbsp;&nbsp;SHA&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="btn btn-default" onclick="markCalcType(this)">
+                        <input type="radio" name="calcType" ng-model="calcType" class="btn btn-default " value="SHA">&nbsp;&nbsp;&nbsp;&nbsp;SHA&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
-                    <label class="btn btn-default" onclick="isShowSalt(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="4">&nbsp;&nbsp;&nbsp;&nbsp;HMAC&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="btn btn-default" onclick="markCalcType(this)">
+                        <input type="radio" name="calcType" ng-model="calcType" class="btn btn-default " value="HMAC">&nbsp;&nbsp;&nbsp;&nbsp;HMAC&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
-                    <label class="btn btn-default" onclick="isShowSalt(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="5">&nbsp;&nbsp;&nbsp;&nbsp;DES&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="btn btn-default" onclick="markCalcType(this)">
+                        <input type="radio" name="calcType" ng-model="calcType" class="btn btn-default " value="DES">&nbsp;&nbsp;&nbsp;&nbsp;DES&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
-                    <label class="btn btn-default" onclick="isShowSalt(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default toggle" value="6">&nbsp;&nbsp;&nbsp;&nbsp;带盐值&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="btn btn-default" onclick="markCalcType(this)">
+                        <input type="radio" name="calcType" ng-model="calcType" class="btn btn-default " value="SALT">&nbsp;&nbsp;&nbsp;&nbsp;带盐值&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                 </div>
             </div>
@@ -72,12 +72,12 @@
             </div>
 
             <div class="row col-lg-12 margin-top-10">
-                <div class="btn-group col-lg-12" data-toggle="buttons" style="margin-left: 68px;">
-                    <label class="btn btn-default">
-                        <input type="radio" ng-model="method" class="toggle" value="1">&nbsp;&nbsp;&nbsp;&nbsp;加密&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="btn-group col-lg-12 dencrypt" data-toggle="buttons" style="margin-left: 68px;">
+                    <label class="btn btn-default" onclick="makeMethod(this)">
+                        <input type="radio" name="method" ng-model="method" value="encrypt">&nbsp;&nbsp;&nbsp;&nbsp;加密&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
-                    <label class="btn btn-default">
-                        <input type="radio" ng-model="method" class="toggle" value="2">&nbsp;&nbsp;&nbsp;&nbsp;解密&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="btn btn-default" onclick="makeMethod(this)">
+                        <input type="radio" name="method" ng-model="method" value="decrypt">&nbsp;&nbsp;&nbsp;&nbsp;解密&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                 </div>
             </div>
@@ -86,7 +86,7 @@
                 <div class="btn-group col-lg-12" style="margin-left: 68px;">
                     <button type="submit" ng-model="type" style="margin-right: 50px;"
                             class="btn btn-danger btn-lg pull-right" ng-click="dencrypt()" value="6">
-                        &nbsp;&nbsp;&nbsp;&nbsp;GO>>&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;执行&nbsp;&nbsp;&nbsp;&nbsp;
                     </button>
                 </div>
             </div>
@@ -113,12 +113,28 @@
     </div>
 </div>
 <script type="application/javascript">
-    function isShowSalt(element) {
-        $(element).find("input").prop("checked", "checked");
-        if ($(element).find("input").val() == '6') {
-            $("#show_salt").show(500);
-        } else {
-            $("#show_salt").hide(500);
+    function markCalcType(element) {
+        var radio=$(element).find("input[type=radio]");
+        $(radio).attr("checked", true);
+        var calcType=$('.dencrypt').find('input[type=radio]:checked');
+        if ($(calcType).val() == 'decrypt' && $(radio).val() == 'SALT') {
+            $('#show_salt').show(500);
+        }else{
+            $('#show_salt').hide(500);
+        }
+    }
+    function makeDataFrom(element) {
+        if ($(element).val() == 'upload') {
+            swal('', '暂时只支持手动填入文本!', 'error');
+            $(element).val('text');
+        }
+    }
+    function makeMethod(element) {
+        var calcType = $('.calcType').find('input[type=radio]:checked');
+        if ($(element).find('input[type=radio]').val() == 'decrypt' && $(calcType).val() == 'SALT') {
+            $('#show_salt').show(500);
+        }else{
+            $('#show_salt').hide(500);
         }
     }
 </script>
