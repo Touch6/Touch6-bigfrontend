@@ -29,14 +29,14 @@
             </div>
         </div>
     </div>
-    <form class="col-lg-4 register-form" ng-submit="registerAccount()" role="form">
+    <form class="col-lg-4 register-form" name="registerForm" ng-submit="registerAccount()" role="form" novalidate>
         <div class="login-wrap">
             <p class="login-img"><i class="fa fa-user-circle">注册</i></p>
 
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                <input type="text" id="phone" name="phone" ng-model="register.phone" ng-required="true" class="form-control"
-                       maxlength="11" placeholder="请输入手机号码" autofocus ng-blur="checkMobile()"/>
+                <input type="text" id="phone" name="phone" ng-model="register.phone"  class="form-control"
+                       maxlength="11" placeholder="请输入手机号码" ng-blur="checkMobile()" required/>
                 <span class="input-group-addon" ng-show="mobileIsChecking"><i class="fa fa-spinner fa-pulse"></i><span style="font-size: 8px;">检测中...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span>
                 <span class="input-group-addon" ng-show="mobileIsNotRegistered"><i class=""></i><span style="font-size: 8px;">号码未注册&nbsp;&nbsp;&nbsp;</span></span>
                 <span class="input-group-addon" ng-show="mobileIsRegistered"><i class=""></i><span style="font-size: 8px;">号码已注册&nbsp;&nbsp;&nbsp;</span></span>
@@ -46,7 +46,7 @@
                 <input type="text" id="code" name="code" required ng-model="register.code" class="form-control"
                        placeholder="请输入验证码">
                 <span class="input-group-addon">
-                        <span class="btn btn-primary btn-xs" ng-click="generateCode()">获取验证码</span>
+                        <span class="btn btn-primary btn-xs" ng-disabled="sendCodeBtnDisabled" ng-click="generateCode()">获取验证码</span>
                 </span>
             </div>
             <div class="input-group">
@@ -57,9 +57,14 @@
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_key_alt"></i></span>
                 <input type="password" id="confirmPassword" name="confirmPassword" ng-model="register.confirmPassword"
-                       class="form-control" placeholder="请输入确认密码" required>
+                       class="form-control" placeholder="请输入确认密码" ng-blur="checkConfirmPassword()" required>
             </div>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">注册</button>
+            <div ng-show="registerForm.$valid">
+                <button class="btn btn-info btn-lg btn-block" type="submit">注册</button>
+            </div>
+            <div ng-show="registerForm.$invalid">
+                <button class="btn btn-danger btn-lg btn-block" disabled="disabled"  type="submit">注册</button>
+            </div>
             <div style="margin-top: 30px;">
                 <span class="pull-right"> 已有账号，<a ng-click="toLogin()" style="cursor: pointer"> 直接登录</a></span>
             </div>

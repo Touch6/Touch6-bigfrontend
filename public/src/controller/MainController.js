@@ -100,15 +100,15 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
             });
     }
 
-    $scope.dencryptInput={
-        dataFrom:'',
-        scale:'plaintext',
-        content:'',
-        arithmetic:'MD5BASE64',
-        salt:'',
-        method:'encrypt'
+    $scope.dencryptInput = {
+        dataFrom: '',
+        scale: 'plaintext',
+        content: '',
+        arithmetic: 'MD5BASE64',
+        salt: '',
+        method: 'encrypt'
     };
-    $scope.dencrypt=function () {
+    $scope.dencrypt = function () {
         tools.dencrypt($scope.dencryptInput)
             .then(function (data) {
                 console.log("加解密返回:" + JSON.stringify(data.object));
@@ -328,10 +328,16 @@ consoleApp.controller("HomeCtrl", function ($scope, $window, user, $cookies, $lo
 });
 /***************************************注册模块*********************************************/
 consoleApp.controller("RegisterController", function ($scope, $cookies, $window, user, phone) {
+    var regex = /^1((((((3[4-9])||(47)||(5[0-27-9])||(78)||(8[2-478])))||(((33)||(53)||(8[019])||(77)))||(((3[0-2])||(45)||(5[56])||(76)||(8[56]))))\d{8})||(70[057-9]\d{7}))$/;
+    $scope.sendCodeBtnDisabled = true;
     console.log("注册");
     //1检测手机是否已注册
     $scope.checkMobile = function () {
+        _showMask();
         console.log("time:" + new Date().getMilliseconds() + "(1)页面输入手机号:" + $scope.register.phone);
+        if (regex.test($scope.register.phone) == false) {
+            swal('', '请输入注册手机号码', 'error')
+        }
         $scope.mobileIsChecking = true;
         phone.check($scope.register.phone).then(function (data) {
             if (data.statusCode == 400) {
@@ -347,6 +353,7 @@ consoleApp.controller("RegisterController", function ($scope, $cookies, $window,
                 }
             } else if (data.code = 200) {
                 //后台返回成功
+                $scope.sendCodeBtnDisabled = false;
                 $scope.mobileIsRegistered = false;
                 $scope.mobileIsChecking = false;
                 $scope.mobileIsNotRegistered = true;
@@ -355,7 +362,16 @@ consoleApp.controller("RegisterController", function ($scope, $cookies, $window,
         }, function (err) {
             console.log(err);
         });
-
+        _hideMask();
+    }
+    $scope.checkConfirmPassword = function () {
+        var pass = $scope.register.password;
+        var pass2 = $scope.register.confirmPassword;
+        if (pass != pass2) {
+            swal('','两次密码输入不正确,请重新设置密码','error');
+            $scope.register.password='';
+            $scope.register.confirmPassword='';
+        }
     }
     //2生成手机验证码
     $scope.generateCode = function () {
