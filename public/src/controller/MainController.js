@@ -109,7 +109,6 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
         method:'encrypt'
     };
     $scope.dencrypt=function () {
-        console.log("data:"+$scope.dencryptInput);
         console.log("data:"+JSON.stringify($scope.dencryptInput));
     }
 });
