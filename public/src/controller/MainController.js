@@ -340,7 +340,7 @@ consoleApp.controller("HomeCtrl", function ($scope, $window, user, $cookies, $lo
     // }
 });
 /***************************************注册模块*********************************************/
-consoleApp.controller("RegisterController", function ($scope, $cookies, $window, user, phone) {
+consoleApp.controller("RegisterController", function ($rootScope,$scope, $cookies, $window, user, phone) {
     var regex = /^1((((((3[4-9])||(47)||(5[0-27-9])||(78)||(8[2-478])))||(((33)||(53)||(8[019])||(77)))||(((3[0-2])||(45)||(5[56])||(76)||(8[56]))))\d{8})||(70[057-9]\d{7}))$/;
     $scope.sendCodeBtnDisabled = true;
     console.log("注册");
@@ -410,11 +410,11 @@ consoleApp.controller("RegisterController", function ($scope, $cookies, $window,
         "confirmPassword": ""
     }
     $scope.verifyCode = "";
-    $scope.hasRegistered=false;
+    $rootScope.hasRegistered=false;
     $scope.registerAccount = function () {
         user.registerAccount($scope.register).then(function (data) {
             console.log("注册完成返回的结果" + JSON.stringify(data));
-            $scope.hasRegistered=true;
+            $rootScope.hasRegistered=true;
             // activeEmailCode = data.activationCode;
             //注册成功后，发邮件；
 //             user.sendActiveEmail($scope.registerUser, activeEmailCode).then(function (data) {
