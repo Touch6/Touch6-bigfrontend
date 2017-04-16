@@ -61,6 +61,16 @@ router.get('/detail', function (req, res) {
     });
 });
 
+router.get('/comment/list', function (req, res) {
+
+    articleModel.commentList({articleId: req.query.articleId}).done(function (data) {
+        console.log("调用后台文章评论返回信息>>>" + JSON.stringify(data));
+        res.send(data);
+    }).error(function (error) {
+        console.log("调用后台文章评论返回错误信息>>>" + error);
+    });
+});
+
 /*****************点赞**********************/
 router.post("/approval", function (req, res) {
     approvalModel.approval(req.body.approval, {}).done(function (data) {

@@ -4756,6 +4756,20 @@ table.sliders tr td {
     border-right: none;
     margin: 25px -20px 0 -20px;
 }
+.article-separator-comment{
+    border-bottom: 1px solid #ddd;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin: 10px -30px 0 0px;
+}
+.article-separator-reply{
+    border-bottom: 1px solid #ddd;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin: 10px -30px 0 -8px;
+}
 .approval-a,.oppose-a{
     color: #e1a02d;
 }

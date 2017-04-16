@@ -1,177 +1,186 @@
 {
-    "title": "接口地址配置文件",
-    "version": "1.0.0",
-    "engine": "mockjs",
-    "rulebase": "./interfaceRules/",
-    "status": "development",
-    "interfaces": [
-        {
-            "name": "检测手机号码是否已注册",
-            "id": "phone.check",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/phone/check",
-                "test": "http://localhost:28081/t6/api/v1/phone/check"
-            },
-            "method": "post",
-            "contentType": "application/json"
-        },
-        {
-            "name": "生成手机验证码",
-            "id": "phone.generateCode",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/phone/code",
-                "test": "http://localhost:28081/t6/api/v1/phone/code"
-            },
-            "method": "get"
-        },
-        {
-            "name": "验证手机验证码是否正确",
-            "id": "phone.verify",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/phone/verify",
-                "test": "http://localhost:28081/t6/api/v1/phone/verify"
-            },
-            "method": "post",
-            "contentType": "application/json"
-        },
-        {
-            "name": "用户注册",
-            "id": "user.register",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/user/register",
-                "test": "http://localhost:28081/t6/api/v1/user/register"
-            },
-            "method": "post",
-            "contentType": "application/json"
-        },
-        {
-            "name": "用户登录",
-            "id": "user.login",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/user/login",
-                "test": "http://localhost:28081/t6/api/v1/user/login"
-            },
-            "method": "post",
-            "contentType": "application/json"
-        },
-        {
-            "name": "完善信息",
-            "id": "user.perfect",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/user/perfect",
-                "test": "http://localhost:28081/t6/api/v1/user/perfect"
-            },
-            "method": "post",
-            "contentType": "application/json"
-        },
-        {
-            "name": "保存文章",
-            "id": "article.write",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/article",
-                "test": "http://localhost:28081/t6/api/v1/article"
-            },
-            "method": "post",
-            "contentType": "application/json"
-        },
-        {
-            "name": "自动获取文章列表",
-            "id": "article.list",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/article/list",
-                "test": "http://localhost:28081/t6/api/v1/article/list"
-            },
-            "method": "get"
-        },
-        {
-            "name": "获取文章详情",
-            "id": "article.detail",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/article",
-                "test": "http://localhost:28081/t6/api/v1/article"
-            },
-            "method": "get"
-        },
-        {
-            "name": "获取文章类型列表",
-            "id": "article.types",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/article/types",
-                "test": "http://localhost:28081/t6/api/v1/article/types"
-            },
-            "method": "get"
-        },
-        {
-            "name": "获取文章分类列表",
-            "id": "article.categories",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/article/categories",
-                "test": "http://localhost:28081/t6/api/v1/article/categories"
-            },
-            "method": "get"
-        },
-        {
-            "name": "点赞",
-            "id": "approval.approval",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/approval",
-                "test": "http://localhost:28081/t6/api/v1/approval"
-            },
-            "method": "post",
-            "contentType": "application/json"
-        },
-        {
-            "name": "反对",
-            "id": "oppose.oppose",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/oppose",
-                "test": "http://localhost:28081/t6/api/v1/oppose"
-            },
-            "method": "post",
-            "contentType": "application/json"
-        },
-        {
-            "name": "自动获取头条标题列表",
-            "id": "toutiao.overview",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/toutiao/overview",
-                "test": "http://localhost:28081/t6/api/v1/toutiao/overview"
-            },
-            "method": "get"
-        },
-        {
-            "name": "日期格式转换",
-            "id": "tools.dateFormat",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/tools/dateformat",
-                "test": "http://localhost:28081/t6/api/v1/tools/dateformat"
-            },
-            "method": "get"
-        },
-        {
-            "name": "编解码",
-            "id": "tools.codec",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/tools/codec",
-                "test": "http://localhost:28081/t6/api/v1/tools/codec"
-            },
-            "method": "get"
-        },
-        {
-            "name": "加解密",
-            "id": "tools.dencrypt",
-            "urls": {
-                "development": "http://120.77.172.143:28081/t6/api/v1/tools/dencrypt",
-                "test": "http://localhost:28081/t6/api/v1/tools/dencrypt"
-            },
-            "method": "post",
-            "contentType": "application/json"
-        }
-    ],
-    "combo": {
-        "getMyData": [
-            "Cart.getCart",
-            "Search.suggest"
-        ]
+  "title": "接口地址配置文件",
+  "version": "1.0.0",
+  "engine": "mockjs",
+  "rulebase": "./interfaceRules/",
+  "status": "development",
+  "interfaces": [
+    {
+      "name": "检测手机号码是否已注册",
+      "id": "phone.check",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/phone/check",
+        "test": "http://localhost:28081/t6/api/v1/phone/check"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "生成手机验证码",
+      "id": "phone.generateCode",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/phone/code",
+        "test": "http://localhost:28081/t6/api/v1/phone/code"
+      },
+      "method": "get"
+    },
+    {
+      "name": "验证手机验证码是否正确",
+      "id": "phone.verify",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/phone/verify",
+        "test": "http://localhost:28081/t6/api/v1/phone/verify"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "用户注册",
+      "id": "user.register",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/user/register",
+        "test": "http://localhost:28081/t6/api/v1/user/register"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "用户登录",
+      "id": "user.login",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/user/login",
+        "test": "http://localhost:28081/t6/api/v1/user/login"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "完善信息",
+      "id": "user.perfect",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/user/perfect",
+        "test": "http://localhost:28081/t6/api/v1/user/perfect"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "保存文章",
+      "id": "article.write",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/article",
+        "test": "http://localhost:28081/t6/api/v1/article"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "自动获取文章列表",
+      "id": "article.list",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/article/list",
+        "test": "http://localhost:28081/t6/api/v1/article/list"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取文章详情",
+      "id": "article.detail",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/article",
+        "test": "http://localhost:28081/t6/api/v1/article"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取文章评论列表",
+      "id": "article.commentList",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/article/comment/list",
+        "test": "http://localhost:28081/t6/api/v1/article/comment/list"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取文章类型列表",
+      "id": "article.types",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/article/types",
+        "test": "http://localhost:28081/t6/api/v1/article/types"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取文章分类列表",
+      "id": "article.categories",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/article/categories",
+        "test": "http://localhost:28081/t6/api/v1/article/categories"
+      },
+      "method": "get"
+    },
+    {
+      "name": "点赞",
+      "id": "approval.approval",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/approval",
+        "test": "http://localhost:28081/t6/api/v1/approval"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "反对",
+      "id": "oppose.oppose",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/oppose",
+        "test": "http://localhost:28081/t6/api/v1/oppose"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "自动获取头条标题列表",
+      "id": "toutiao.overview",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/toutiao/overview",
+        "test": "http://localhost:28081/t6/api/v1/toutiao/overview"
+      },
+      "method": "get"
+    },
+    {
+      "name": "日期格式转换",
+      "id": "tools.dateFormat",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/tools/dateformat",
+        "test": "http://localhost:28081/t6/api/v1/tools/dateformat"
+      },
+      "method": "get"
+    },
+    {
+      "name": "编解码",
+      "id": "tools.codec",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/tools/codec",
+        "test": "http://localhost:28081/t6/api/v1/tools/codec"
+      },
+      "method": "get"
+    },
+    {
+      "name": "加解密",
+      "id": "tools.dencrypt",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/tools/dencrypt",
+        "test": "http://localhost:28081/t6/api/v1/tools/dencrypt"
+      },
+      "method": "post",
+      "contentType": "application/json"
     }
+  ],
+  "combo": {
+    "getMyData": [
+      "Cart.getCart",
+      "Search.suggest"
+    ]
+  }
 }

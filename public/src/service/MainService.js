@@ -145,6 +145,20 @@ consoleApp.factory("article", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        commentList: function (articleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/article/comment/list', {params: {articleId: articleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 

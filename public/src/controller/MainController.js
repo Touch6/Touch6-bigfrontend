@@ -220,6 +220,7 @@ consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $
         article.articleDetail(id)
             .then(function (data) {
                 $scope.articleDetailInfo = data.object;
+                $scope.commentList(data.object.id);
             }, function (err) {
                 console.log(err)
             });
@@ -228,6 +229,17 @@ consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $
     //指定页面加载文章详情
     $scope.articleDetail($stateParams.articleId);
     /*******************************end*********************************/
+    /*******************************start*********************************/
+    $scope.commentList = function (articleId) {
+        article.commentList(articleId)
+            .then(function (data) {
+                $scope.comments = data.object;
+            }, function (err) {
+                console.log(JSON.stringify(err));
+            });
+    }
+    /*******************************end*********************************/
+
     /*******************************start*********************************/
     $scope.articleApproval = function (articleId) {
         var uid = $cookies.uid;
@@ -333,13 +345,18 @@ consoleApp.controller("RegisterController", function ($scope, $cookies, $window,
     console.log("注册");
     //1检测手机是否已注册
     $scope.checkMobile = function () {
-        _showMask();
         console.log("time:" + new Date().getMilliseconds() + "(1)页面输入手机号:" + $scope.register.phone);
+        if (!$scope.register.phone) {
+            swal('', '未输入手机号', 'error');
+            return;
+        }
         if (regex.test($scope.register.phone) == false) {
-            swal('', '请输入注册手机号码', 'error')
+            swal('', '手机号格式不正确', 'error')
+            return;
         }
         $scope.mobileIsChecking = true;
         phone.check($scope.register.phone).then(function (data) {
+            _showMask();
             if (data.statusCode == 400) {
                 console.log("检测手机号是否注册返回结果statusCode>>>" + data.statusCode);
                 console.log("检测手机号是否注册返回结果responseText>>>" + JSON.stringify(data.responseText));
@@ -358,19 +375,18 @@ consoleApp.controller("RegisterController", function ($scope, $cookies, $window,
                 $scope.mobileIsChecking = false;
                 $scope.mobileIsNotRegistered = true;
             }
-
+            _hideMask();
         }, function (err) {
             console.log(err);
         });
-        _hideMask();
     }
     $scope.checkConfirmPassword = function () {
         var pass = $scope.register.password;
         var pass2 = $scope.register.confirmPassword;
         if (pass != pass2) {
-            swal('','两次密码输入不正确,请重新设置密码','error');
-            $scope.register.password='';
-            $scope.register.confirmPassword='';
+            swal('', '两次密码输入不正确,请重新设置密码', 'error');
+            $scope.register.password = '';
+            $scope.register.confirmPassword = '';
         }
     }
     //2生成手机验证码
