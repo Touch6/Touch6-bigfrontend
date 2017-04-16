@@ -443,6 +443,21 @@ consoleApp.factory("tools", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        dencrypt: function (dencryption) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/tools/dencrypt', {dencryption: dencryption}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    swal("", "加解密失败!", "error");
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 });

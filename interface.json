@@ -156,6 +156,16 @@
                 "test": "http://localhost:28081/t6/api/v1/tools/codec"
             },
             "method": "get"
+        },
+        {
+            "name": "加解密",
+            "id": "tools.dencrypt",
+            "urls": {
+                "development": "http://120.77.172.143:28081/t6/api/v1/tools/dencrypt",
+                "test": "http://localhost:28081/t6/api/v1/tools/dencrypt"
+            },
+            "method": "post",
+            "contentType": "application/json"
         }
     ],
     "combo": {

@@ -104,12 +104,18 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
         dataFrom:'',
         scale:'plaintext',
         content:'',
-        calcType:'BASE',
+        arithmetic:'MD5BASE64',
         salt:'',
         method:'encrypt'
     };
     $scope.dencrypt=function () {
-        console.log("data:"+JSON.stringify($scope.dencryptInput));
+        tools.dencrypt($scope.dencryptInput)
+            .then(function (data) {
+                console.log("加解密返回:" + JSON.stringify(data.object));
+                $scope.output = data.object;
+            }, function (err) {
+                console.log("加解密失败" + err);
+            });
     }
 });
 
