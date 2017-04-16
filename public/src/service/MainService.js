@@ -179,7 +179,6 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
             //验证验证码；
             $http.post('/~/login', {user: user}).success(function (data) {
                 if (data) {
-                    $cookies.user = JSON.stringify(data);
                     return deferred.resolve(data);
                 } else {
                     swal("", "用户名或密码错误!", "error");

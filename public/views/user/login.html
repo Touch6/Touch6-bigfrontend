@@ -28,9 +28,9 @@
             </div>
         </div>
     </div>
-    <form class="col-lg-4  login-form" ng-submit="loginSubmit()">
+    <form class="col-lg-4  login-form" name="loginForm" ng-submit="loginSubmit()" novalidate>
         <div class="login-wrap">
-            <p style="color: red;font-family: '微软雅黑';">{{loginError}}</p>
+            <p style="color: #ff6f45;font-family: '微软雅黑';">{{loginError}}</p>
             <p class="login-img"><i class="icon_lock_alt"></i></p>
 
             <div class="input-group">
@@ -46,7 +46,12 @@
             <label class="checkbox" style="color: navajowhite">
                 <input type="checkbox" value="remember-me"> 记住我
             </label>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+            <div ng-show="loginForm.$valid">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+            </div>
+            <div ng-show="loginForm.$invalid">
+                <button class="btn btn-danger btn-lg btn-block" disabled="disabled"  type="submit">登录</button>
+            </div>
             <div style="margin-top: 30px;">
                 <span class="pull-left"> <a href="#"> 忘记密码?</a></span>
                 <span class="pull-right"> <a ng-click="toRegister()" style="cursor: pointer "> 注册账号</a></span>

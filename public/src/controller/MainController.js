@@ -302,9 +302,6 @@ consoleApp.controller("UsercenterController", function ($rootScope, $scope, $win
 
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $cookieStore, $location) {
-    $scope.logout222 = function () {
-        alert(1111);
-    }
     $scope.login = {};
     $scope.loginError = "";
     //登录提交表单时，对表单进行验证；
@@ -315,16 +312,20 @@ consoleApp.controller("LoginController", function ($rootScope, $scope, $window, 
             .then(function (data) {
                 //登录成功跳转到home页面
                 $rootScope.loginUser = data.object;//将用户信息存入$rootScope，在页面获取
-                $cookies.uid = (data.object).uid;
+                $cookies.uid = data.object.uid;
                 $cookieStore.put('user', data.object);
                 $rootScope.notLogin = false;
                 _hideMask();
+                swal('','登录成功！','success');
             }, function (err) {
                 _hideMask();
-                alert("登录失败" + JSON.stringify(err));
-                //登录失败，停止在登陆页
-                $scope.loginError = "*用户名或密码错误!";
-                console.log($scope.loginError);
+                console.log(JSON.stringify(err));
+                if(err.code=='100000'){
+                    $scope.loginError = "用户名不存在!";
+                }else if(err.code=='100100'){
+                    $scope.loginError = "密码错误!";
+                }
+                $scope.login = {};
             });
     }
 });
@@ -409,9 +410,11 @@ consoleApp.controller("RegisterController", function ($scope, $cookies, $window,
         "confirmPassword": ""
     }
     $scope.verifyCode = "";
+    $scope.hasRegistered=false;
     $scope.registerAccount = function () {
         user.registerAccount($scope.register).then(function (data) {
             console.log("注册完成返回的结果" + JSON.stringify(data));
+            $scope.hasRegistered=true;
             // activeEmailCode = data.activationCode;
             //注册成功后，发邮件；
 //             user.sendActiveEmail($scope.registerUser, activeEmailCode).then(function (data) {

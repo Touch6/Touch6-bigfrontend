@@ -17,8 +17,10 @@ router.post("/",function(req,res){
         req.session.user = user;
         res.send(user);
   }).fail(function(error){
-        console.log("error"+ error);
-        res.send(error);
+        if(error.statusCode=='400'){
+            console.log("登录失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
     });
 });
 /*****************忘记密码邮箱验证**********************/

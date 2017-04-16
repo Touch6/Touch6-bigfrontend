@@ -17,7 +17,10 @@ router.post('/', function (req, res) {
         console.log("调用后台注册接口成功返回信息>>>" + data);
         res.send(data);
     }).error(function (data) {
-        console.log("调用后台注册接口成功返回信息>>>" + data);
+        if(error.statusCode=='400'){
+            console.log("注册失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
     });
 });
 
