@@ -100,13 +100,17 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
             });
     }
 
+    $scope.dencryptInput={
+        dataFrom:'',
+        scale:'plaintext',
+        content:'',
+        calcType:'BASE',
+        salt:'',
+        method:'encrypt'
+    };
     $scope.dencrypt=function () {
-        console.log("dataFrom:"+$scope.dataFrom);
-        console.log("scale:"+$scope.scale);
-        console.log("content:"+$scope.content);
-        console.log("calcType:"+$scope.calcType);
-        console.log("salt:"+$scope.salt);
-        console.log("method:"+$scope.method);
+        console.log("data:"+$scope.dencryptInput);
+        console.log("data:"+JSON.stringify($scope.dencryptInput));
     }
 });
 

@@ -17,7 +17,7 @@
             <div class="row col-lg-12 margin-top-10">
                 <div class="input-group col-lg-12">
                     <span class="input-group-addon">输入方式</span>
-                    <select class="input-group form-control" ng-model="dataFrom" onchange="makeDataFrom(this)"
+                    <select class="input-group form-control" ng-model="dencryptInput.dataFrom" onchange="makeDataFrom(this)"
                         ng-maxlength="1" ng-required="true">
                         <option value="">--请选择方式--</option>
                         <option value="text">文本</option>
@@ -26,68 +26,68 @@
                 </div>
             </div>
             <div class="row col-lg-12 margin-top-10">
-                <div class="btn-group col-lg-12" data-toggle="buttons" style="margin-left: 68px;">
+                <div class="btn-group col-lg-12" style="margin-left: 68px;">
                     <label class="btn btn-default active" onclick="markScale(this)">
-                        <input type="radio" ng-model="scale" value="plaintext" ng-checked="true" >plaintext
+                        <input type="radio" name="dencryptInput.scale" ng-model="dencryptInput.scale" value="plaintext" hidden/>plaintext
                     </label>
                     <label class="btn btn-default" disabled="disabled" onclick="markScale(this)">
-                        <input type="radio" ng-model="scale" value="hex">&nbsp;&nbsp;&nbsp;&nbsp;hex&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" name="scale" ng-model="dencryptInput.scale" value="hex" hidden>&nbsp;&nbsp;&nbsp;&nbsp;hex&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                 </div>
             </div>
             <div class="row col-lg-12 margin-top-10">
                 <div class="input-group col-lg-12">
                     <span class="input-group-addon">输入内容</span>
-                    <textarea ng-model="content" class="input-group" placeholder="请输入需要加密或解密的文本" 
+                    <textarea ng-model="dencryptInput.content" class="input-group" placeholder="请输入需要加密或解密的文本"
                               style="width: 100%;height:150px;"
                         ng-minlength="1" ng-required="true">
                     </textarea>
                 </div>
             </div>
             <div class="row col-lg-12 margin-top-10">
-                <div class="btn-group col-lg-12 calcType" data-toggle="buttons" style="margin-left: 68px;">
+                <div class="btn-group col-lg-12 calcType" style="margin-left: 68px;">
                     <label class="btn btn-default active" onclick="markCalcType(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default " value="BASE" ng-checked="true">&nbsp;&nbsp;&nbsp;&nbsp;BASE&nbsp;&nbsp;&nbsp;
+                        <input type="radio" ng-model="dencryptInput.calcType" value="BASE" hidden>&nbsp;&nbsp;&nbsp;&nbsp;BASE&nbsp;&nbsp;&nbsp;
                     </label>
                     <label class="btn btn-default" onclick="markCalcType(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default " value="MD5">&nbsp;&nbsp;&nbsp;&nbsp;计算MD5&nbsp;&nbsp;&nbsp;
+                        <input type="radio" ng-model="dencryptInput.calcType" value="MD5" hidden>&nbsp;&nbsp;&nbsp;&nbsp;计算MD5&nbsp;&nbsp;&nbsp;
                     </label>
                     <label class="btn btn-default" onclick="markCalcType(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default " value="SHA">&nbsp;&nbsp;&nbsp;&nbsp;SHA&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" ng-model="dencryptInput.calcType" value="SHA" hidden>&nbsp;&nbsp;&nbsp;&nbsp;SHA&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                     <label class="btn btn-default" onclick="markCalcType(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default " value="HMAC">&nbsp;&nbsp;&nbsp;&nbsp;HMAC&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" ng-model="dencryptInput.calcType" value="HMAC" hidden>&nbsp;&nbsp;&nbsp;&nbsp;HMAC&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                     <label class="btn btn-default" onclick="markCalcType(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default " value="DES">&nbsp;&nbsp;&nbsp;&nbsp;DES&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" ng-model="dencryptInput.calcType"  value="DES" hidden>&nbsp;&nbsp;&nbsp;&nbsp;DES&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                     <label class="btn btn-default" onclick="markCalcType(this)">
-                        <input type="radio" ng-model="calcType" class="btn btn-default " value="SALT">&nbsp;&nbsp;&nbsp;&nbsp;带盐值&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" ng-model="dencryptInput.calcType"  value="SALT" hidden>&nbsp;&nbsp;&nbsp;&nbsp;带盐值&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                 </div>
             </div>
             <div class="row col-lg-12 margin-top-10" id="show_salt" style="display: none">
                 <div class="input-group col-lg-12">
                     <span class="input-group-addon">输入盐值</span>
-                    <input type="text" class="input-group form-control" ng-model="salt" placeholder="请输入需要解密附带的盐值"
+                    <input type="text" class="input-group form-control" ng-model="dencryptInput.salt" placeholder="请输入需要解密附带的盐值"
                            />
                 </div>
             </div>
 
             <div class="row col-lg-12 margin-top-10">
-                <div class="btn-group col-lg-12 dencrypt" data-toggle="buttons" style="margin-left: 68px;">
+                <div class="btn-group col-lg-12 dencrypt" style="margin-left: 68px;">
                     <label class="btn btn-default active" onclick="makeMethod(this)">
-                        <input type="radio" ng-model="method" value="encrypt" ng-checked="true">&nbsp;&nbsp;&nbsp;&nbsp;加密&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" ng-model="dencryptInput.method" value="encrypt" hidden>&nbsp;&nbsp;&nbsp;&nbsp;加密&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                     <label class="btn btn-default" onclick="makeMethod(this)">
-                        <input type="radio" ng-model="method" value="decrypt">&nbsp;&nbsp;&nbsp;&nbsp;解密&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" ng-model="dencryptInput.method" value="decrypt" hidden>&nbsp;&nbsp;&nbsp;&nbsp;解密&nbsp;&nbsp;&nbsp;&nbsp;
                     </label>
                 </div>
             </div>
 
             <div class="row col-lg-12 margin-top-20">
                 <div class="btn-group col-lg-12" style="margin-left: 68px;">
-                    <button type="submit" ng-model="type" style="margin-right: 50px;"
+                    <button type="submit"  style="margin-right: 50px;"
                             class="btn btn-danger btn-lg pull-right" ng-click="dencrypt()" value="6"
                             ng-disabled="dencryptForm.$invalid">
                         &nbsp;&nbsp;&nbsp;&nbsp;执行&nbsp;&nbsp;&nbsp;&nbsp;
@@ -118,6 +118,9 @@
 </div>
 <script type="application/javascript">
     function markCalcType(element) {
+        $(element).parent().find('label').removeClass('active');
+        $(element).addClass('active');
+
         var radio=$(element).find("input[type=radio]");
         $(radio).attr("checked", true);
         var calcType=$('.dencrypt').find('input[type=radio]:checked');
@@ -134,6 +137,12 @@
         }
     }
     function makeMethod(element) {
+        $(element).parent().find('label').removeClass('active');
+        $(element).addClass('active');
+
+        var radio=$(element).find("input[type=radio]");
+        $(radio).attr("checked", true);
+
         var calcType = $('.calcType').find('input[type=radio]:checked');
         if ($(element).find('input[type=radio]').val() == 'decrypt' && $(calcType).val() == 'SALT') {
             $('#show_salt').show(500);
@@ -142,6 +151,9 @@
         }
     }
     function markScale(element) {
+        $(element).parent().find('label').removeClass('active');
+        $(element).addClass('active');
+
         var radio=$(element).find("input[type=radio]");
         $(radio).attr("checked", true);
     }
