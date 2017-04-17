@@ -54,9 +54,12 @@
                         <div class="row" style="margin: 10px;">
                             <div class="input-group input-group-sm col-lg-12">
                                 <span class="input-group-addon"><i class="fa fa-edit">正文&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></span>
-                                <textarea class="form-control" ng-model="art.content" placeholder="正文"
+                                <textarea id="article_content"  class="form-control" ng-model="art.content" placeholder="正文"
                                           style="height:400px;"></textarea>
                             </div>
+                            <script>
+                                CKEDITOR.replace( 'article_content' );
+                            </script>
                         </div>
                         <div class="row" style="margin: 10px;">
                             <div class="input-group col-lg-12">
