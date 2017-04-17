@@ -1,5 +1,6 @@
 var consoleApp = angular.module("consoleApp.controllers", [
     'consoleApp.services',
+    'consoleApp.directives',
     'ngCookies',
     'ui.bootstrap'
 //    'tm.pagination'
@@ -191,10 +192,12 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     /*******************************end*********************************/
     /*******************************start*********************************/
     $scope.writeArticle = function () {
-        _showMask();
-        ($scope.art).type = ($scope.art).type.type;
-        ($scope.art).category = ($scope.art).category.categoryCode;
-        ($scope.art).uid = uid;
+        // _showMask();
+        // ($scope.art).type = ($scope.art).type.type;
+        // ($scope.art).category = ($scope.art).category.categoryCode;
+        // ($scope.art).uid = uid;
+        console.log($scope.article_content);
+        return;
         article.write($scope.art)
             .then(function (data) {
                 console.log("新保存的文章:" + JSON.stringify(data));
