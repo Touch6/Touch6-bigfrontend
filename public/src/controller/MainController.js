@@ -122,7 +122,7 @@ consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, 
 
 /**********************************文章路由**************************************/
 consoleApp.controller("ArticleController", function ($rootScope, $scope, $window, article, $cookies, $location, $stateParams) {
-    var uid = "88ba369307564f92a8f8ef9b14d0a2ca";
+    var uid = $cookies.uid;
     /*******************************start*********************************/
     $scope.articleList = function (page, pageSize) {
         _showMask();
@@ -192,21 +192,20 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
     /*******************************end*********************************/
     /*******************************start*********************************/
     $scope.writeArticle = function () {
-        // _showMask();
-        // ($scope.art).type = ($scope.art).type.type;
-        // ($scope.art).category = ($scope.art).category.categoryCode;
-        // ($scope.art).uid = uid;
-        console.log($scope.article_content);
-        return;
+        _showMask();
+        ($scope.art).type = ($scope.art).type.type;
+        ($scope.art).category = ($scope.art).category.categoryCode;
+        ($scope.art).uid = uid;
         article.write($scope.art)
             .then(function (data) {
                 console.log("新保存的文章:" + JSON.stringify(data));
                 var art = data.object;
                 ($scope.art).id = art.id;
-                _hideMask();
+                $window.location='/article/detail/'+art.id;
             }, function (err) {
                 console.log(err)
             });
+        _hideMask();
     }
     /*******************************end*********************************/
 });

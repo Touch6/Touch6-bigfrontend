@@ -7,6 +7,7 @@ var opposeModel = ModelProxy.create("oppose.*");
 
 router.post('/', function (req, res) {
 
+    console.log("node拿到的文章信息：" + JSON.stringify(req.body.article));
     articleModel.write(req.body.article, {}).done(function (data) {
         res.send(data);
     }).error(function (error) {
