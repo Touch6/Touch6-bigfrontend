@@ -59,7 +59,7 @@ router.delete('/', function (req, res) {
     console.log("删除角色信息：" + req.query.roleId);
     roleModel.deleteRole({roleId:req.query.roleId}).done(function (data) {
         res.send(data);
-    }).error(function (error) {
+    }).error(function (  error) {
         if(error.statusCode=='400'){
             console.log("删除角色失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);

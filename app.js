@@ -23,6 +23,7 @@ var auth = require('./routes/system/auth');
 var module = require('./routes/system/module');
 var menu = require('./routes/system/menu');
 var config = require('./routes/system/config');
+var area = require('./routes/system/area');
 
 var sendEmail = require('./routes/email');
 var touchcApp = require('./routes/touchcApp/touchcApp');
@@ -78,6 +79,7 @@ app.use('/~/system/role', role);
 app.use('/~/system/module', module);
 app.use('/~/system/menu', menu);
 app.use('/~/system/config', config);
+app.use('/~/system/area', area);
 
 app.use('/sendEmail', sendEmail);
 app.use('/touchcApp', touchcApp);
