@@ -18,6 +18,11 @@ var tools = require('./routes/tools/tools');
 var article = require('./routes/article/article');
 var approval = require('./routes/common/approval');
 var oppose = require('./routes/common/oppose');
+var role = require('./routes/system/role');
+var auth = require('./routes/system/auth');
+var module = require('./routes/system/module');
+var menu = require('./routes/system/menu');
+var config = require('./routes/system/config');
 
 var sendEmail = require('./routes/email');
 var touchcApp = require('./routes/touchcApp/touchcApp');
@@ -68,6 +73,12 @@ app.use('/~/tools', tools);
 app.use('/~/article', article);
 app.use('/~/approval', approval);
 app.use('/~/oppose', oppose);
+app.use('/~/system/auth', auth);
+app.use('/~/system/role', role);
+app.use('/~/system/module', module);
+app.use('/~/system/menu', menu);
+app.use('/~/system/config', config);
+
 app.use('/sendEmail', sendEmail);
 app.use('/touchcApp', touchcApp);
 app.use('/uptoken', uptoken);

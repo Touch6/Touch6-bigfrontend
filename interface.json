@@ -175,6 +175,329 @@
       },
       "method": "post",
       "contentType": "application/json"
+    },
+    {
+      "name": "获取省份列表",
+      "id": "area.provinces",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/area/provinces",
+        "test": "http://localhost:28081/t6/api/v1/area/provinces"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取城市列表",
+      "id": "area.cities",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/area/province/:provinceCode/cities",
+        "test": "http://localhost:28081/t6/api/v1/area/province/:provinceCode/cities"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取区县列表",
+      "id": "area.districts",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/area/province/city/:cityCode/districts",
+        "test": "http://localhost:28081/t6/api/v1/area/province/city/:cityCode/districts"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取城镇列表",
+      "id": "area.towns",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/area/province/city/district/:districtCode/towns",
+        "test": "http://localhost:28081/t6/api/v1/area/province/city/district/:districtCode/towns"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取乡村列表",
+      "id": "area.villages",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/api/v1/area/province/city/district/town/:townCode/villages",
+        "test": "http://localhost:28081/t6/api/v1/area/province/city/district/town/:townCode/villages"
+      },
+      "method": "get"
+    },
+    {
+      "name": "添加权限",
+      "id": "auth.addAuth",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth",
+        "test": "http://localhost:28081/t6/system/auth"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "修改权限",
+      "id": "auth.updateAuth",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth",
+        "test": "http://localhost:28081/t6/system/auth"
+      },
+      "method": "put",
+      "contentType": "application/json"
+    },
+    {
+      "name": "权限列表",
+      "id": "auth.authList",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auths",
+        "test": "http://localhost:28081/t6/system/auths"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取权限信息",
+      "id": "auth.authInfo",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/:authId",
+        "test": "http://localhost:28081/t6/system/auth/:authId"
+      },
+      "method": "get"
+    },
+    {
+      "name": "删除权限",
+      "id": "auth.deleteAuth",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/:authId",
+        "test": "http://localhost:28081/t6/system/auth/:authId"
+      },
+      "method": "delete"
+    },
+    {
+      "name": "添加角色",
+      "id": "role.addRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/role",
+        "test": "http://localhost:28081/t6/system/role"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "修改角色",
+      "id": "role.updateRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/role",
+        "test": "http://localhost:28081/t6/system/role"
+      },
+      "method": "put",
+      "contentType": "application/json"
+    },
+    {
+      "name": "角色列表",
+      "id": "role.roleList",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/roles",
+        "test": "http://localhost:28081/t6/system/roles"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取角色信息",
+      "id": "auth.roleInfo",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/role/:roleId",
+        "test": "http://localhost:28081/t6/system/role/:roleId"
+      },
+      "method": "get"
+    },
+    {
+      "name": "删除角色",
+      "id": "role.deleteRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/role/:roleId",
+        "test": "http://localhost:28081/t6/system/role/:roleId"
+      },
+      "method": "delete"
+    },
+    {
+      "name": "添加模块",
+      "id": "module.addModule",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module",
+        "test": "http://localhost:28081/t6/system/module"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "修改模块",
+      "id": "module.updateModule",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module",
+        "test": "http://localhost:28081/t6/system/module"
+      },
+      "method": "put",
+      "contentType": "application/json"
+    },
+    {
+      "name": "模块列表",
+      "id": "module.moduleList",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/modules",
+        "test": "http://localhost:28081/t6/system/modules"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取模块信息",
+      "id": "module.moduleInfo",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module/:moduleId",
+        "test": "http://localhost:28081/t6/system/module/:moduleId"
+      },
+      "method": "get"
+    },
+    {
+      "name": "删除模块",
+      "id": "module.deleteModule",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module/:moduleId",
+        "test": "http://localhost:28081/t6/system/module/:moduleId"
+      },
+      "method": "delete"
+    },
+    {
+      "name": "添加菜单",
+      "id": "menu.addMenu",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menu",
+        "test": "http://localhost:28081/t6/system/menu"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "修改菜单",
+      "id": "menu.updateMenu",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menu",
+        "test": "http://localhost:28081/t6/system/menu"
+      },
+      "method": "put",
+      "contentType": "application/json"
+    },
+    {
+      "name": "菜单列表",
+      "id": "menu.menuList",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menus",
+        "test": "http://localhost:28081/t6/system/menus"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取菜单信息",
+      "id": "menu.menuInfo",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menu/:menuId",
+        "test": "http://localhost:28081/t6/system/menu/:menuId"
+      },
+      "method": "get"
+    },
+    {
+      "name": "删除菜单",
+      "id": "menu.deleteMenu",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menu/:menuId",
+        "test": "http://localhost:28081/t6/system/menu/:menuId"
+      },
+      "method": "delete"
+    },
+    {
+      "name": "添加角色权限配置",
+      "id": "config.addAuthRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/role",
+        "test": "http://localhost:28081/t6/system/auth/role"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "修改角色权限配置",
+      "id": "config.updateAuthRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/role",
+        "test": "http://localhost:28081/t6/system/auth/role"
+      },
+      "method": "put",
+      "contentType": "application/json"
+    },
+    {
+      "name": "删除角色权限配置",
+      "id": "config.deleteAuthRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/role",
+        "test": "http://localhost:28081/t6/system/auth/role"
+      },
+      "method": "delete",
+      "contentType": "application/json"
+    },
+    {
+      "name": "添加菜单权限",
+      "id": "config.addAuthMenu",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/menu",
+        "test": "http://localhost:28081/t6/system/auth/menu"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "修改菜单权限",
+      "id": "config.updateAuthMenu",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/menu",
+        "test": "http://localhost:28081/t6/system/auth/menu"
+      },
+      "method": "put",
+      "contentType": "application/json"
+    },
+    {
+      "name": "删除菜单权限",
+      "id": "config.deleteAuthMenu",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/menu",
+        "test": "http://localhost:28081/t6/system/auth/menu"
+      },
+      "method": "delete",
+      "contentType": "application/json"
+    },
+    {
+      "name": "添加用户角色",
+      "id": "config.addUserRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/user/role",
+        "test": "http://localhost:28081/t6/system/user/role"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "修改用户角色",
+      "id": "config.updateUserRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/user/role",
+        "test": "http://localhost:28081/t6/system/user/role"
+      },
+      "method": "put",
+      "contentType": "application/json"
+    },
+    {
+      "name": "删除用户角色",
+      "id": "config.deleteUserRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/user/role",
+        "test": "http://localhost:28081/t6/system/user/role"
+      },
+      "method": "delete",
+      "contentType": "application/json"
     }
   ],
   "combo": {
