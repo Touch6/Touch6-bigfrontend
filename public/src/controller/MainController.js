@@ -8,7 +8,18 @@ var consoleApp = angular.module("consoleApp.controllers", [
 
 
 /**********************************整体body模块**************************************/
-consoleApp.controller("MainController", function ($rootScope, $scope, $window, $cookies) {
+consoleApp.controller("MainController", function ($rootScope, $scope, $window, $cookies, modules) {
+    //加载公共模块
+    $scope.loadCommonModule = function () {
+        console.log("加载公共模块")
+        modules.loadCommonModule().then(function (data) {
+            $rootScope.moduleList=data.object;
+        }, function (err) {
+            console.log("模块加载失败" + err);
+        });
+    }
+    $scope.loadCommonModule();
+
     console.log("MainController->$scope.loginUser:" + $cookies.user);
     if ($cookies.user) {
         $rootScope.notLogin = false;
@@ -201,7 +212,7 @@ consoleApp.controller("ArticleController", function ($rootScope, $scope, $window
                 console.log("新保存的文章:" + JSON.stringify(data));
                 var art = data.object;
                 ($scope.art).id = art.id;
-                $window.location='/article/detail/'+art.id;
+                $window.location = '/article/detail/' + art.id;
             }, function (err) {
                 console.log(err)
             });
@@ -318,13 +329,13 @@ consoleApp.controller("LoginController", function ($rootScope, $scope, $window, 
                 $cookieStore.put('user', data.object);
                 $rootScope.notLogin = false;
                 _hideMask();
-                swal('','登录成功！','success');
+                swal('', '登录成功！', 'success');
             }, function (err) {
                 _hideMask();
                 console.log(JSON.stringify(err));
-                if(err.code=='100000'){
+                if (err.code == '100000') {
                     $scope.loginError = "用户名不存在!";
-                }else if(err.code=='100100'){
+                } else if (err.code == '100100') {
                     $scope.loginError = "密码错误!";
                 }
                 $scope.login = {};
@@ -342,7 +353,7 @@ consoleApp.controller("HomeCtrl", function ($scope, $window, user, $cookies, $lo
     // }
 });
 /***************************************注册模块*********************************************/
-consoleApp.controller("RegisterController", function ($rootScope,$scope, $cookies, $window, user, phone) {
+consoleApp.controller("RegisterController", function ($rootScope, $scope, $cookies, $window, user, phone) {
     var regex = /^1((((((3[4-9])||(47)||(5[0-27-9])||(78)||(8[2-478])))||(((33)||(53)||(8[019])||(77)))||(((3[0-2])||(45)||(5[56])||(76)||(8[56]))))\d{8})||(70[057-9]\d{7}))$/;
     $scope.sendCodeBtnDisabled = true;
     console.log("注册");
@@ -412,11 +423,11 @@ consoleApp.controller("RegisterController", function ($rootScope,$scope, $cookie
         "confirmPassword": ""
     }
     $scope.verifyCode = "";
-    $rootScope.hasRegistered=false;
+    $rootScope.hasRegistered = false;
     $scope.registerAccount = function () {
         user.registerAccount($scope.register).then(function (data) {
             console.log("注册完成返回的结果" + JSON.stringify(data));
-            $rootScope.hasRegistered=true;
+            $rootScope.hasRegistered = true;
             // activeEmailCode = data.activationCode;
             //注册成功后，发邮件；
 //             user.sendActiveEmail($scope.registerUser, activeEmailCode).then(function (data) {

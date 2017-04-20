@@ -54,6 +54,32 @@ router.get('/list', function (req, res) {
     });
 });
 
+router.get('/common', function (req, res) {
+
+    console.log("node端加载公共模块")
+    moduleModel.commonModules({roleId:10000}).done(function (data) {
+        console.log("加载的公共模块:"+JSON.stringify(data));
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("获取公共模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
+router.get('/loginuser', function (req, res) {
+
+    moduleModel.loginuserModules({token:req.query.token}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("获取登录用户模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
 router.delete('/', function (req, res) {
 
     console.log("删除模块信息：" + req.query.moduleId);

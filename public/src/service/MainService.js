@@ -2,6 +2,28 @@ var consoleApp = angular.module('consoleApp.services', [
     'ngCookies'
 ]);
 /********************mobile模块****************************/
+consoleApp.factory("modules", function ($http, $q, $cookies) {
+
+    return {
+        /*******************获取公共模块******************************************************/
+        loadCommonModule: function () {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/module/common', {}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
+/********************mobile模块****************************/
 consoleApp.factory("phone", function ($http, $q, $cookies) {
 
     return {

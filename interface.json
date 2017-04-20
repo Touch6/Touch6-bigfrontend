@@ -345,6 +345,24 @@
       "method": "get"
     },
     {
+      "name": "公共模块列表",
+      "id": "module.commonModules",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/common/modules",
+        "test": "http://localhost:28081/t6/system/common/modules"
+      },
+      "method": "get"
+    },
+    {
+      "name": "登录用户模块列表",
+      "id": "module.loginuserModules",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/loginuser/modules",
+        "test": "http://localhost:28081/t6/system/loginuser/modules"
+      },
+      "method": "get"
+    },
+    {
       "name": "获取模块信息",
       "id": "module.moduleInfo",
       "urls": {
