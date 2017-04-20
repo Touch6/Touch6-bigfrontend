@@ -1747,20 +1747,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     font-weight: 300;
 }
 
-/*--sidebar toggle---*/
-
-.toggle-nav {
-    float: left;
-    padding-right: 15px;
-    margin-top: 20px;
-}
-
-.toggle-nav .icon-reorder {
-    cursor: pointer;
-    display: inline-block;
-    font-size: 20px;
-}
-
 .sidebar-closed > #sidebar > ul {
     display: none;
 }

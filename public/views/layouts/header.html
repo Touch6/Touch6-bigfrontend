@@ -1,13 +1,5 @@
 <header class="header">
     <div class="row dark-bg" style="padding-bottom: 10px;">
-
-        <div class="toggle-nav">
-            <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-        </div>
-
-        <!--logo start-->
-        <a href="#" class="logo">知行 <span class="lite">云网</span></a>
-        <!--logo end-->
         <ul class="nav pull-left">
             <!--检索框-->
             <li class="dropdown header-search">
@@ -20,7 +12,7 @@
             <ul class="nav pull-right top-menu">
                 <li class="dropdown header-title" ng-repeat="module in moduleList">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <a class="t6-top-menu-li" tag="t6-menu-a-toutiao">头条新闻</a>
+                        <a class="top-a-module" containerId="{{module.attrLink}}">{{module.name}}</a>
                         <img src="../../images/hot.png" style="position: absolute;right: 7px;top: 7px;width: 24px;"/>
                     </a>
                 </li>
@@ -30,11 +22,11 @@
     <div class="row dark-bg t6-module-ul-header">
         <div>
             <!--导航-->
-            <ul style="width: 100%" class="pull-right t6-module-ul" id="t6-menu-a-toutiao" ng-repeat="module in moduleList">
+            <ul style="width: 100%" class="pull-right t6-module-ul" id="{{module.attrLink}}" ng-repeat="module in moduleList">
                 <div class="row ">
                     <div class="col-lg-2" ng-repeat="menu in module.menuList">
                         <a data-value="1" ui-sref="toutiao.news" class="pull-left t6-menu-a">
-                            <span>头条新闻</span>
+                            <span>{{menu.name}}</span>
                             <img src="../../images/new.png" style="width: 28px;margin-left:5px;right: 5px;">
                         </a>
                     </div>
@@ -51,16 +43,17 @@
 <script>
     $(function () {
         $(".t6-module-ul").hide();
-        $('body').delegate('.t6-top-menu-li','click',function () {
-            var tag = $(this).attr('tag');
+        $('body').delegate('.top-a-module','click',function () {
+            var containerId = $(this).attr('containerId');
+            console.log(containerId)
             var uls = $("ul.t6-module-ul");
             for (var i = 0; i < uls.length; i++) {
                 var ul = uls[i];
-                if ($(ul).attr('id') != tag) {
+                if ($(ul).attr('id') != containerId) {
                     $(ul).hide();
                 }
             }
-            $("#" + tag).slideToggle(500);
+            $("#" + containerId).slideToggle(500);
         });
         $(".arrows-up").click(function () {
             $(this).parent().parent().parent().slideToggle(500);
