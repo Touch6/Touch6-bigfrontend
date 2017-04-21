@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beauty Of open-ic&yy</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
+    <meta name="author" content="GeeksLabs">
+    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <link rel="shortcut icon" href="/images/handinhand.jpg">
+
+    <!-- Bootstrap CSS -->
+    <link href="/outer/css/bootstrap.min.css" rel="stylesheet">
+    <!-- bootstrap theme -->
+    <link href="/outer/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="/outer/css/elegant-icons-style.css" rel="stylesheet"/>
+    <link href="/outer/css/font-awesome.min.css" rel="stylesheet"/>
+    <!-- full calendar css-->
+    <link href="/outer/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet"/>
+    <link href="/outer/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet"/>
+    <!-- easy pie chart-->
+    <link href="/outer/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css"
+          media="screen"/>
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="/outer/css/owl.carousel.css" type="text/css">
+    <link href="/outer/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="/outer/css/fullcalendar.css">
+    <link href="/outer/css/widgets.css" rel="stylesheet">
+    <link href="/outer/css/style.css" rel="stylesheet">
+    <link href="/outer/css/style-responsive.css" rel="stylesheet"/>
+    <link href="/outer/css/xcharts.min.css" rel=" stylesheet">
+    <link href="/outer/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+    <script src="/outer/js/html5shiv.js"></script>
+    <script src="/outer/js/respond.min.js"></script>
+    <script src="/outer/js/lte-ie7.js"></script>
+    <![endif]-->
+    <%--<script src="/static/jquery/jquery-1.9.1.min.js"></script>--%>
+</head>
+<body>
+<!-- container section start -->
+<section id="container" class="">
+
+
+<header class="header dark-bg">
+<div class="toggle-nav">
+    <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
+</div>
+
+<!--左上角logo start-->
+<a href="/user/<%=userDto.getToken()%>/home" class="logo">开源 <span class="lite">之美</span></a>
+<!--左上角logo end-->
+
+<!--左上角搜索条 start-->
+<div class="nav search-row" id="top_menu">
+    <!--  search form start -->
+    <ul class="nav top-menu">
+        <li>
+            <form class="navbar-form">
+                <input class="form-control" placeholder="Search" type="text">
+            </form>
+        </li>
+    </ul>
+    <!--  search form end -->
+</div>
+<!--左上角搜索条 end-->
+
+<!--任务通知 start-->
+<div class="top-nav notification-row">
+<!-- notificatoin dropdown start-->
+<ul class="nav pull-right top-menu">
+
+<!-- task notificatoin start -->
+<li id="task_notificatoin_bar" class="dropdown">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="icon-task-l"></i>
+                                <span class="badge bg-important">5</span>
+                            </span>
+    </a>
+    <ul class="dropdown-menu extended tasks-bar">
+        <div class="notify-arrow notify-arrow-blue"></div>
+        <li>
+            <p class="blue">你有5个未完成任务</p>
+        </li>
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">设计PSD</div>
+                    <div class="percent">90%</div>
+                </div>
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+                        <span class="sr-only">已完成90%(正常)</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">
+                        Open-IC项目
+                    </div>
+                    <div class="percent">30%</div>
+                </div>
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 30%">
+                        <span class="sr-only">已完成30%(警告)</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">数据统计</div>
+                    <div class="percent">80%</div>
+                </div>
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                        <span class="sr-only">已完成80%(紧急)</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">Logo设计</div>
+                    <div class="percent">78%</div>
+                </div>
+                <div class="progress progress-striped">
+                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="78"
+                         aria-valuemin="0" aria-valuemax="100" style="width: 78%">
+                        <span class="sr-only">已完成78%(警告)</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <div class="task-info">
+                    <div class="desc">界面设计</div>
+                    <div class="percent">50%</div>
+                </div>
+                <div class="progress progress-striped active">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0"
+                         aria-valuemax="100" style="width: 50%">
+                        <span class="sr-only">已完成50%(重要紧急)</span>
+                    </div>
+                </div>
+
+            </a>
+        </li>
+        <li class="external">
+            <a href="#">查看所有任务...</a>
+        </li>
+    </ul>
+</li>
+<!--任务通知 end-->
+
+<!--邮件通知 start-->
+<li id="mail_notificatoin_bar" class="dropdown">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <i class="icon-envelope-l"></i>
+        <span class="badge bg-important">4</span>
+    </a>
+    <ul class="dropdown-menu extended inbox">
+        <div class="notify-arrow notify-arrow-blue"></div>
+        <li>
+            <p class="blue">你有4封新邮件</p>
+        </li>
+        <li>
+            <a href="#">
+                <span class="photo"><img alt="avatar" src="/outer/img/avatar-mini.jpg"></span>
+                                    <span class="subject">
+                                    <span class="from">Mar Tin</span>
+                                    <span class="time">1分钟</span>
+                                    </span>
+                                    <span class="message">
+                                        我非常喜欢这个网站.
+                                    </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="photo"><img alt="avatar" src="/outer/img/avatar-mini2.jpg"></span>
+                                    <span class="subject">
+                                    <span class="from">Jackson</span>
+                                    <span class="time">5分钟</span>
+                                    </span>
+                                    <span class="message">
+                                     请问,下一个计划是什么呢？
+                                    </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="photo"><img alt="avatar" src="/outer/img/avatar-mini3.jpg"></span>
+                                    <span class="subject">
+                                    <span class="from">Tomson</span>
+                                    <span class="time">2小时</span>
+                                    </span>
+                                    <span class="message">
+                                        我想加入这个大家庭.
+                                    </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="photo"><img alt="avatar" src="/outer/img/avatar-mini4.jpg"></span>
+                                    <span class="subject">
+                                    <span class="from">Monica</span>
+                                    <span class="time">1天</span>
+                                    </span>
+                                    <span class="message">
+                                        网站非常美丽,32个赞！.
+                                    </span>
+            </a>
+        </li>
+        <li>
+            <a href="#">查看更多...</a>
+        </li>
+    </ul>
+</li>
+<!--邮件通知 end-->
+
+<!--即时消息通知 start-->
+<li id="alert_notificatoin_bar" class="dropdown">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+        <i class="icon-bell-l"></i>
+        <span class="badge bg-important">4</span>
+    </a>
+    <ul class="dropdown-menu extended notification">
+        <div class="notify-arrow notify-arrow-blue"></div>
+        <li>
+            <p class="blue">你有4个新的通知</p>
+        </li>
+        <li>
+            <a href="#">
+                <span class="label label-primary"><i class="icon_profile"></i></span>
+                好友请求
+                <span class="small italic pull-right">5分钟</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="label label-warning"><i class="icon_pin"></i></span>
+                John location.
+                <span class="small italic pull-right">50分钟</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="label label-danger"><i class="icon_book_alt"></i></span>
+                3个任务完成.
+                <span class="small italic pull-right">1小时</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="label label-success"><i class="icon_like"></i></span>
+                Mick很欣赏你的工作.
+                <span class="small italic pull-right">今天</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">查看更多...</a>
+        </li>
+    </ul>
+</li>
+<!--即时消息通知 start-->
+
+<!-- 个人中心 start-->
+<li class="dropdown">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img style="height:40px;width:40px;" alt="" src="<%=userDto.getAvatar()%>">
+                            </span>
+        <span class="username"><%=userDto.getNickname()%></span>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu extended logout">
+        <div class="log-arrow-up"></div>
+        <li class="eborder-top">
+            <a href="#"><i class="icon_profile"></i>个人资料</a>
+        </li>
+        <li>
+            <a href="#"><i class="icon_mail_alt"></i>收件箱</a>
+        </li>
+        <li>
+            <a href="#"><i class="icon_clock_alt"></i>我的计划</a>
+        </li>
+        <li>
+            <a href="#"><i class="icon_chat_alt"></i>图表统计</a>
+        </li>
+        <li>
+            <a href="login.html"><i class="icon_key_alt"></i>退出</a>
+        </li>
+        <li>
+            <a href="documentation.html"><i class="icon_key_alt"></i>文档</a>
+        </li>
+    </ul>
+</li>
+<!-- 个人中心 end-->
+</ul>
+<!-- notificatoin dropdown end-->
+</div>
+</header>
+<!--header end-->
+
+<!--左侧导航 start-->
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+        <!-- sidebar menu start-->
+        <ul class="sidebar-menu">
+            <%--**********************************我的主页************************************--%>
+            <li class="active">
+                <a class="" href="/user/<%=userDto.getToken()%>/home">
+                    <i class="icon_house_alt"></i>
+                    <span>我的主页</span>
+                </a>
+            </li>
+            <%--**********************************蜜语墙************************************--%>
+            <li class="sub-menu">
+                <a href="javascript;" class="">
+                    <i class="icon_document_alt"></i>
+                    <span>蜜语墙</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="user/<%=userDto.getId()%>/truelove">真爱大胆说</a></li>
+                    <li><a class="" href="user/<%=userDto.getId()%>/whisper">匿名悄悄话</a></li>
+                </ul>
+            </li>
+            <%--**********************************我的文章************************************--%>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_documents_alt"></i>
+                    <span>我的文章</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="profile.html">博客</a></li>
+                    <li><a class="" href="login.html"><span>随笔</span></a></li>
+                    <li><a class="" href="blank.html">宣泄</a></li>
+                    <li><a class="" href="404.html">寄语</a></li>
+                </ul>
+            </li>
+            <%--**********************************我的相册************************************--%>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_desktop"></i>
+                    <span>我的相册</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="general.html">Elements</a></li>
+                    <li><a class="" href="buttons.html">Buttons</a></li>
+                    <li><a class="" href="grids.html">Grids</a></li>
+                </ul>
+            </li>
+            <%--**********************************我的视频************************************--%>
+            <li>
+                <a class="" href="widgets.html">
+                    <i class="icon_genius"></i>
+                    <span>我的视频</span>
+                </a>
+            </li>
+            <%--**********************************我的音乐************************************--%>
+            <li>
+                <a class="" href="chart-chartjs.html">
+                    <i class="icon_piechart"></i>
+                    <span>我的音乐</span>
+
+                </a>
+
+            </li>
+            <%--**********************************音乐广场************************************--%>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_table"></i>
+                    <span>音乐广场</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="basic_table.html">求音乐</a></li>
+                </ul>
+            </li>
+            <%--**********************************视频广场************************************--%>
+            <li class="sub-menu">
+                <a href="javascript:;" class="">
+                    <i class="icon_documents_alt"></i>
+                    <span>视频广场</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li><a class="" href="profile.html">萌萌区</a></li>
+                    <li><a class="" href="login.html"><span>剧情区</span></a></li>
+                    <li><a class="" href="blank.html">电影区</a></li>
+                    <li><a class="" href="404.html">动漫区</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <!-- sidebar menu end-->
+    </div>
+</aside>
+<!--sidebar end-->
+<%--********************************************内容区*********************************************--%>
+<!--main content start-->
+<section id="main-content">
+<section class="wrapper">
+<!--overview start-->
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header"><i class="fa fa-laptop"></i>Dashboard</h3>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i><a href="index.html">主页</a></li>
+            <li><i class="fa fa-laptop"></i>Dashboard</li>
+        </ol>
+    </div>
+</div>
+<%--**********************************分享数************************************--%>
+<div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="info-box blue-bg">
+            <i class="fa fa-cloud-download"></i>
+
+            <div class="count"><%=userDto.getShare()%>
+            </div>
+            <div class="title">分享</div>
+        </div>
+        <!--/.info-box-->
+    </div>
+    <!--/.col-->
+    <%--**********************************访问数************************************--%>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="info-box brown-bg">
+            <i class="fa fa-shopping-cart"></i>
+
+            <div class="count"><%=userDto.getVisit()%>
+            </div>
+            <div class="title">访问数</div>
+        </div>
+        <!--/.info-box-->
+    </div>
+    <!--/.col-->
+    <%--**********************************点赞数************************************--%>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="info-box dark-bg">
+            <i class="fa fa-thumbs-o-up"></i>
+
+            <div class="count"><%=userDto.getPraise()%>
+            </div>
+            <div class="title">赞</div>
+        </div>
+        <!--/.info-box-->
+    </div>
+    <!--/.col-->
+    <%--**********************************关注数************************************--%>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="info-box green-bg">
+            <i class="fa fa-cubes"></i>
+
+            <div class="count"><%=userDto.getAttention()%>
+            </div>
+            <div class="title">关注</div>
+        </div>
+        <!--/.info-box-->
+    </div>
+    <!--/.col-->
+
+</div>
+<!--/.row-->
+
+<%--<div class="row">--%>
+    <%--<table id="contentTable" class="table table-responsive table-hover table-striped table-bordered">--%>
+        <%--<thead>--%>
+        <%--<tr>--%>
+            <%--<th width="10%">发送者</th>--%>
+            <%--<th width="30%">时间</th>--%>
+            <%--<th width="30%">蜜语</th>--%>
+            <%--<th width="10%">接收者</th>--%>
+            <%--<th width="10%">权限</th>--%>
+            <%--<th width="10%">类型</th>--%>
+            <%--</tr>--%>
+        <%--</thead>--%>
+        <%--<tbody>--%>
+        <%--<c:forEach items="${sweets.content}" var="sweet">--%>
+            <%--<tr>--%>
+                <%--<td>${sweet.fromName}</td>--%>
+                <%--<td><fmt:formatDate value="${sweet.createTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>--%>
+                <%--<td>${sweet.sweet}</td>--%>
+                <%--<td>${sweet.toName}</td>--%>
+                <%--<td>${sweet.authType}</td>--%>
+                <%--<td>${sweet.openType}</td>--%>
+                <%--</tr>--%>
+            <%--</c:forEach>--%>
+        <%--</tbody>--%>
+        <%--</table>--%>
+
+    <%--<tags:pagination page="${sweets}" paginationSize="5"/>--%>
+    <%--</div>--%>
+<%--**********************************地图************************************--%>
+<div class="row">
+    <div class="col-lg-9 col-md-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2><i class="fa fa-map-marker red"></i><strong>Countries</strong></h2>
+
+                <div class="panel-actions">
+                    <a href="index.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+                    <a href="index.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+                    <a href="index.html#" class="btn-close"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <div class="panel-body-map">
+                <div id="map" style="height:380px;"></div>
+            </div>
+
+        </div>
+    </div>
+    <%--**********************************综合统计************************************--%>
+    <div class="col-md-3">
+        <!-- List starts -->
+        <ul class="today-datas">
+            <!-- List #1 -->
+            <li>
+                <!-- Graph -->
+                <div><span id="todayspark1" class="spark"></span></div>
+                <!-- Text -->
+                <div class="datas-text">11,500 访问量/日</div>
+            </li>
+            <li>
+                <div><span id="todayspark2" class="spark"></span></div>
+                <div class="datas-text">15,000 综合浏览量</div>
+            </li>
+            <li>
+                <div><span id="todayspark3" class="spark"></span></div>
+                <div class="datas-text">30.55% 反弹率</div>
+            </li>
+            <li>
+                <div><span id="todayspark4" class="spark"></span></div>
+                <div class="datas-text">$16,00 收益/日</div>
+            </li>
+            <li>
+                <div><span id="todayspark5" class="spark"></span></div>
+                <div class="datas-text">12,000000 访问量/月</div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Today status end -->
+
+
+<div class="row">
+
+<div class="col-lg-9 col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2><i class="fa fa-flag-o red"></i><strong>已注册用户</strong></h2>
+
+            <div class="panel-actions">
+                <a href="index.html#" class="btn-setting"><i class="fa fa-rotate-right"></i></a>
+                <a href="index.html#" class="btn-minimize"><i class="fa fa-chevron-up"></i></a>
+                <a href="index.html#" class="btn-close"><i class="fa fa-times"></i></a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table bootstrap-datatable countries">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>国家</th>
+                    <th>用户</th>
+                    <th>在线</th>
+                    <th>性能</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><img src="/outer/img/Germany.png" style="height:18px; margin-top:-2px;">
+                    </td>
+                    <td>德国</td>
+                    <td>2563</td>
+                    <td>1025</td>
+                    <td>
+                        <div class="progress thin">
+                            <div class="progress-bar progress-bar-danger" role="progressbar"
+                                 aria-valuenow="73" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 73%">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                 aria-valuenow="27" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 27%">
+                            </div>
+                        </div>
+                        <span class="sr-only">73%</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/outer/img/India.png" style="height:18px; margin-top:-2px;"></td>
+                    <td>印度</td>
+                    <td>3652</td>
+                    <td>2563</td>
+                    <td>
+                        <div class="progress thin">
+                            <div class="progress-bar progress-bar-danger" role="progressbar"
+                                 aria-valuenow="57" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 57%">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                 aria-valuenow="43" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 43%">
+                            </div>
+                        </div>
+                        <span class="sr-only">57%</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/outer/img/Spain.png" style="height:18px; margin-top:-2px;"></td>
+                    <td>西班牙</td>
+                    <td>562</td>
+                    <td>452</td>
+                    <td>
+                        <div class="progress thin">
+                            <div class="progress-bar progress-bar-danger" role="progressbar"
+                                 aria-valuenow="93" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 93%">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                 aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 7%">
+                            </div>
+                        </div>
+                        <span class="sr-only">93%</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/outer/img/India.png" style="height:18px; margin-top:-2px;"></td>
+                    <td>俄罗斯</td>
+                    <td>1258</td>
+                    <td>958</td>
+                    <td>
+                        <div class="progress thin">
+                            <div class="progress-bar progress-bar-danger" role="progressbar"
+                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 20%">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                 aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 80%">
+                            </div>
+                        </div>
+                        <span class="sr-only">20%</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/outer/img/Spain.png" style="height:18px; margin-top:-2px;"></td>
+                    <td>美国</td>
+                    <td>4856</td>
+                    <td>3621</td>
+                    <td>
+                        <div class="progress thin">
+                            <div class="progress-bar progress-bar-danger" role="progressbar"
+                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 20%">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                 aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 80%">
+                            </div>
+                        </div>
+                        <span class="sr-only">20%</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/outer/img/Germany.png" style="height:18px; margin-top:-2px;">
+                    </td>
+                    <td>巴西</td>
+                    <td>265</td>
+                    <td>102</td>
+                    <td>
+                        <div class="progress thin">
+                            <div class="progress-bar progress-bar-danger" role="progressbar"
+                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 20%">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                 aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 80%">
+                            </div>
+                        </div>
+                        <span class="sr-only">20%</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/outer/img/Germany.png" style="height:18px; margin-top:-2px;">
+                    </td>
+                    <td>哥伦比亚</td>
+                    <td>265</td>
+                    <td>102</td>
+                    <td>
+                        <div class="progress thin">
+                            <div class="progress-bar progress-bar-danger" role="progressbar"
+                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 20%">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                 aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 80%">
+                            </div>
+                        </div>
+                        <span class="sr-only">20%</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><img src="/outer/img/Germany.png" style="height:18px; margin-top:-2px;">
+                    </td>
+                    <td>法国</td>
+                    <td>265</td>
+                    <td>102</td>
+                    <td>
+                        <div class="progress thin">
+                            <div class="progress-bar progress-bar-danger" role="progressbar"
+                                 aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 20%">
+                            </div>
+                            <div class="progress-bar progress-bar-warning" role="progressbar"
+                                 aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                 style="width: 80%">
+                            </div>
+                        </div>
+                        <span class="sr-only">20%</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<!--/col-->
+<div class="col-md-3">
+
+    <div class="social-box facebook">
+        <i class="fa fa-facebook"></i>
+        <ul>
+            <li>
+                <strong>256k</strong>
+                <span>活动用户</span>
+            </li>
+            <li>
+                <strong>359</strong>
+                <span>资源</span>
+            </li>
+        </ul>
+    </div>
+    <!--/social-box-->
+</div>
+<div class="col-md-3">
+
+    <div class="social-box google-plus">
+        <i class="fa fa-google-plus"></i>
+        <ul>
+            <li>
+                <strong>962</strong>
+                <span>网友</span>
+            </li>
+            <li>
+                <strong>256</strong>
+                <span>资源</span>
+            </li>
+        </ul>
+    </div>
+    <!--/social-box-->
+
+</div>
+<!--/col-->
+<div class="col-md-3">
+
+    <div class="social-box twitter">
+        <i class="fa fa-twitter"></i>
+        <ul>
+            <li>
+                <strong>1562k</strong>
+                <span>网友</span>
+            </li>
+            <li>
+                <strong>2562</strong>
+                <span>资源</span>
+            </li>
+        </ul>
+    </div>
+    <!--/social-box-->
+
+</div>
+<!--/col-->
+
+</div>
+
+
+<!-- statics end -->
+
+
+<!-- project team & activity start -->
+<div class="row">
+<div class="col-md-4 portlets">
+    <!-- Widget -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <div class="pull-left">即时消息</div>
+            <div class="widget-icons pull-right">
+                <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a>
+                <a href="#" class="wclose"><i class="fa fa-times"></i></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="panel-body">
+            <!-- Widget content -->
+            <div class="padd sscroll">
+
+                <ul class="chats">
+
+                    <!-- Chat by us. Use the class "by-me". -->
+                    <li class="by-me">
+                        <!-- Use the class "pull-left" in avatar -->
+                        <div class="avatar pull-left">
+                            <img src="/outer/img/user.jpg" alt=""/>
+                        </div>
+
+                        <div class="chat-content">
+                            <!-- In meta area, first include "name" and then "time" -->
+                            <div class="chat-meta">John Smith <span
+                                    class="pull-right">3 hours ago</span></div>
+                            Vivamus diam elit diam, consectetur dapibus adipiscing elit.
+                            <div class="clearfix"></div>
+                        </div>
+                    </li>
+
+                    <!-- Chat by other. Use the class "by-other". -->
+                    <li class="by-other">
+                        <!-- Use the class "pull-right" in avatar -->
+                        <div class="avatar pull-right">
+                            <img src="/outer/img/user22.png" alt=""/>
+                        </div>
+
+                        <div class="chat-content">
+                            <!-- In the chat meta, first include "time" then "name" -->
+                            <div class="chat-meta">3 hours ago <span
+                                    class="pull-right">Jenifer Smith</span></div>
+                            Vivamus diam elit diam, consectetur fconsectetur dapibus adipiscing
+                            elit.
+                            <div class="clearfix"></div>
+                        </div>
+                    </li>
+
+                    <li class="by-me">
+                        <div class="avatar pull-left">
+                            <img src="/outer/img/user.jpg" alt=""/>
+                        </div>
+
+                        <div class="chat-content">
+                            <div class="chat-meta">John Smith <span
+                                    class="pull-right">4 hours ago</span></div>
+                            Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus
+                            consectetur dapibus adipiscing elit.
+                            <div class="clearfix"></div>
+                        </div>
+                    </li>
+
+                    <li class="by-other">
+                        <!-- Use the class "pull-right" in avatar -->
+                        <div class="avatar pull-right">
+                            <img src="/outer/img/user22.png" alt=""/>
+                        </div>
+
+                        <div class="chat-content">
+                            <!-- In the chat meta, first include "time" then "name" -->
+                            <div class="chat-meta">3 hours ago <span
+                                    class="pull-right">Jenifer Smith</span></div>
+                            Vivamus diam elit diam, consectetur fermentum sed dapibus eget, Vivamus
+                            consectetur dapibus adipiscing elit.
+                            <div class="clearfix"></div>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+            <!-- Widget footer -->
+            <div class="widget-foot">
+
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control"
+                               placeholder="Type your message here...">
+                    </div>
+                    <button type="submit" class="btn btn-info">Send</button>
+                </form>
+
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="col-lg-8">
+    <!--Project Activity start-->
+    <section class="panel">
+        <div class="panel-body progress-panel">
+            <div class="row">
+                <div class="col-lg-8 task-progress pull-left">
+                    <h1>我的操作日志</h1>
+                </div>
+                <div class="col-lg-4">
+                                <span class="profile-ava pull-right">
+                                        <img alt="" style="height:40px;width: 40px;" class="simple"
+                                             src="<%=userDto.getAvatar()%>">
+                                        <%=userDto.getNickname()%>
+                                </span>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover personal-task">
+            <tbody>
+            <tr>
+                <td>今天</td>
+                <td>
+                    发布音乐
+                </td>
+                <td>
+                    <span class="badge bg-important">上传</span>
+                </td>
+                <td>
+                                    <span class="profile-ava">
+                                        <img alt="" style="height:40px;width: 40px;" class="simple"
+                                             src="/outer/img/avatar1_small.jpg">
+                                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Yesterday</td>
+                <td>
+                    Project Design Task
+                </td>
+                <td>
+                    <span class="badge bg-success">Task</span>
+                </td>
+                <td>
+                    <div id="work-progress2"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>21-10-14</td>
+                <td>
+                    Generate Invoice
+                </td>
+                <td>
+                    <span class="badge bg-success">Task</span>
+                </td>
+                <td>
+                    <div id="work-progress3"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>22-10-14</td>
+                <td>
+                    Project Testing
+                </td>
+                <td>
+                    <span class="badge bg-primary">To-Do</span>
+                </td>
+                <td>
+                                      <span class="profile-ava">
+                                        <img alt="" class="simple" src="/outer/img/avatar1_small.jpg">
+                                      </span>
+                </td>
+            </tr>
+            <tr>
+                <td>24-10-14</td>
+                <td>
+                    Project Release Date
+                </td>
+                <td>
+                    <span class="badge bg-info">Milestone</span>
+                </td>
+                <td>
+                    <div id="work-progress4"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>28-10-14</td>
+                <td>
+                    Project Release Date
+                </td>
+                <td>
+                    <span class="badge bg-primary">To-Do</span>
+                </td>
+                <td>
+                    <div id="work-progress5"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Last week</td>
+                <td>
+                    Project Release Date
+                </td>
+                <td>
+                    <span class="badge bg-primary">To-Do</span>
+                </td>
+                <td>
+                    <div id="work-progress1"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>last month</td>
+                <td>
+                    Project Release Date
+                </td>
+                <td>
+                    <span class="badge bg-success">To-Do</span>
+                </td>
+                <td>
+                                      <span class="profile-ava">
+                                        <img alt="" class="simple" src="/outer/img/avatar1_small.jpg">
+                                      </span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <!--Project Activity end-->
+</div>
+</div>
+<br><br>
+
+<!-- project team & activity end -->
+
+</section>
+</section>
+<!--main content end-->
+</section>
+<!-- container section start -->
+
+<!-- javascripts -->
+<script src="/outer/js/jquery.js"></script>
+<script src="/outer/js/jquery-ui-1.10.4.min.js"></script>
+<script src="/outer/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/outer/js/jquery-ui-1.9.2.custom.min.js"></script>
+<!-- bootstrap -->
+<script src="/outer/js/bootstrap.min.js"></script>
+<!-- nice scroll -->
+<script src="/outer/js/jquery.scrollTo.min.js"></script>
+<script src="/outer/js/jquery.nicescroll.js" type="text/javascript"></script>
+<!-- charts scripts -->
+<script src="/outer/assets/jquery-knob/js/jquery.knob.js"></script>
+<script src="/outer/js/jquery.sparkline.js" type="text/javascript"></script>
+<script src="/outer/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
+<script src="/outer/js/owl.carousel.js"></script>
+<!-- jQuery full calendar -->
+<
+<script src="/outer/js/fullcalendar.min.js"></script>
+<!-- Full Google Calendar - Calendar -->
+<script src="/outer/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
+<!--script for this page only-->
+<script src="/outer/js/calendar-custom.js"></script>
+<script src="/outer/js/jquery.rateit.min.js"></script>
+<!-- custom select -->
+<script src="/outer/js/jquery.customSelect.min.js"></script>
+<script src="/outer/assets/chart-master/Chart.js"></script>
+
+<!--custome script for all page-->
+<script src="/outer/js/scripts.js"></script>
+<!-- custom script for this page-->
+<script src="/outer/js/sparkline-chart.js"></script>
+<script src="/outer/js/easy-pie-chart.js"></script>
+<script src="/outer/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/outer/js/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/outer/js/xcharts.min.js"></script>
+<script src="/outer/js/jquery.autosize.min.js"></script>
+<script src="/outer/js/jquery.placeholder.min.js"></script>
+<script src="/outer/js/gdp-data.js"></script>
+<script src="/outer/js/morris.min.js"></script>
+<script src="/outer/js/sparklines.js"></script>
+<script src="/outer/js/charts.js"></script>
+<script src="/outer/js/jquery.slimscroll.min.js"></script>
+<script>
+
+    //knob
+    $(function () {
+        $(".knob").knob({
+            'draw': function () {
+                $(this.i).val(this.cv + '%')
+            }
+        })
+    });
+
+    //carousel
+    $(document).ready(function () {
+        $("#owl-slider").owlCarousel({
+            navigation: true,
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            singleItem: true
+
+        });
+    });
+
+    //custom select box
+
+
+    /* ---------- Map ---------- */
+    $(function () {
+        $('#map').vectorMap({
+            map: 'world_mill_en',
+            series: {
+                regions: [{
+                    values: gdpData,
+                    scale: ['#000', '#000'],
+                    normalizeFunction: 'polynomial'
+                }]
+            },
+            backgroundColor: '#eef3f7',
+            onLabelShow: function (e, el, code) {
+                el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
+            }
+        });
+    });
+
+
+</script>
+</body>
+</html>
