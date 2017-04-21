@@ -53,26 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="page">
-            <!--<div class="pull-right">-->
-            <div>
-                <pagination boundary-links="true"
-                            total-items="total"
-                            ng-model="currentPage"
-                            class="pagination-md"
-                            ng-change="changePage()"
-                            max-size="maxSize"
-                            rotate="false"
-                            first-text="&laquo;"
-                            previous-text="&lsaquo;"
-                            next-text="&rsaquo;"
-                            last-text="&raquo;"
-                            force-ellipses="true"
-                            items-per-page="pageSize">
-                </pagination>
-                <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{total}}&nbsp;&nbsp;条</span>
-            </div>
-        </div>
+
         <!-- page start-->
         <div class="row">
             <div ng-repeat="tt in toutiaos">
@@ -110,5 +91,25 @@
             </div>
         </div>
         <!-- page end-->
+        <div class="page">
+            <!--<div class="pull-right">-->
+            <div>
+                <pagination boundary-links="true"
+                            total-items="total"
+                            ng-model="currentPage"
+                            class="pagination-md"
+                            ng-change="changePage()"
+                            max-size="maxSize"
+                            rotate="false"
+                            first-text="&laquo;"
+                            previous-text="&lsaquo;"
+                            next-text="&rsaquo;"
+                            last-text="&raquo;"
+                            force-ellipses="true"
+                            items-per-page="pageSize">
+                </pagination>
+                <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{total}}&nbsp;&nbsp;条</span>
+            </div>
+        </div>
     </section>
 </section>
