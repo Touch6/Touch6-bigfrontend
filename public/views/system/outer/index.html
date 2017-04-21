@@ -1,321 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Beauty Of open-ic&yy</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="/images/handinhand.jpg">
 
-    <!-- Bootstrap CSS -->
-    <link href="/outer/css/bootstrap.min.css" rel="stylesheet">
-    <!-- bootstrap theme -->
-    <link href="/outer/css/bootstrap-theme.css" rel="stylesheet">
-    <!--external css-->
-    <!-- font icon -->
-    <link href="/outer/css/elegant-icons-style.css" rel="stylesheet"/>
-    <link href="/outer/css/font-awesome.min.css" rel="stylesheet"/>
-    <!-- full calendar css-->
-    <link href="/outer/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet"/>
-    <link href="/outer/assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet"/>
-    <!-- easy pie chart-->
-    <link href="/outer/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css"
-          media="screen"/>
-    <!-- owl carousel -->
-    <link rel="stylesheet" href="/outer/css/owl.carousel.css" type="text/css">
-    <link href="/outer/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="/outer/css/fullcalendar.css">
-    <link href="/outer/css/widgets.css" rel="stylesheet">
-    <link href="/outer/css/style.css" rel="stylesheet">
-    <link href="/outer/css/style-responsive.css" rel="stylesheet"/>
-    <link href="/outer/css/xcharts.min.css" rel=" stylesheet">
-    <link href="/outer/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-    <!--[if lt IE 9]>
-    <script src="/outer/js/html5shiv.js"></script>
-    <script src="/outer/js/respond.min.js"></script>
-    <script src="/outer/js/lte-ie7.js"></script>
-    <![endif]-->
-    <%--<script src="/static/jquery/jquery-1.9.1.min.js"></script>--%>
-</head>
-<body>
 <!-- container section start -->
-<section id="container" class="">
 
 
-<header class="header dark-bg">
-<div class="toggle-nav">
-    <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-</div>
-
-<!--左上角logo start-->
-<a href="/user/<%=userDto.getToken()%>/home" class="logo">开源 <span class="lite">之美</span></a>
-<!--左上角logo end-->
-
-<!--左上角搜索条 start-->
-<div class="nav search-row" id="top_menu">
-    <!--  search form start -->
-    <ul class="nav top-menu">
-        <li>
-            <form class="navbar-form">
-                <input class="form-control" placeholder="Search" type="text">
-            </form>
-        </li>
-    </ul>
-    <!--  search form end -->
-</div>
-<!--左上角搜索条 end-->
-
-<!--任务通知 start-->
-<div class="top-nav notification-row">
-<!-- notificatoin dropdown start-->
-<ul class="nav pull-right top-menu">
-
-<!-- task notificatoin start -->
-<li id="task_notificatoin_bar" class="dropdown">
-    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="icon-task-l"></i>
-                                <span class="badge bg-important">5</span>
-                            </span>
-    </a>
-    <ul class="dropdown-menu extended tasks-bar">
-        <div class="notify-arrow notify-arrow-blue"></div>
-        <li>
-            <p class="blue">你有5个未完成任务</p>
-        </li>
-        <li>
-            <a href="#">
-                <div class="task-info">
-                    <div class="desc">设计PSD</div>
-                    <div class="percent">90%</div>
-                </div>
-                <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90"
-                         aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                        <span class="sr-only">已完成90%(正常)</span>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <div class="task-info">
-                    <div class="desc">
-                        Open-IC项目
-                    </div>
-                    <div class="percent">30%</div>
-                </div>
-                <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30"
-                         aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                        <span class="sr-only">已完成30%(警告)</span>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <div class="task-info">
-                    <div class="desc">数据统计</div>
-                    <div class="percent">80%</div>
-                </div>
-                <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80"
-                         aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                        <span class="sr-only">已完成80%(紧急)</span>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <div class="task-info">
-                    <div class="desc">Logo设计</div>
-                    <div class="percent">78%</div>
-                </div>
-                <div class="progress progress-striped">
-                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="78"
-                         aria-valuemin="0" aria-valuemax="100" style="width: 78%">
-                        <span class="sr-only">已完成78%(警告)</span>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <div class="task-info">
-                    <div class="desc">界面设计</div>
-                    <div class="percent">50%</div>
-                </div>
-                <div class="progress progress-striped active">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0"
-                         aria-valuemax="100" style="width: 50%">
-                        <span class="sr-only">已完成50%(重要紧急)</span>
-                    </div>
-                </div>
-
-            </a>
-        </li>
-        <li class="external">
-            <a href="#">查看所有任务...</a>
-        </li>
-    </ul>
-</li>
-<!--任务通知 end-->
-
-<!--邮件通知 start-->
-<li id="mail_notificatoin_bar" class="dropdown">
-    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-        <i class="icon-envelope-l"></i>
-        <span class="badge bg-important">4</span>
-    </a>
-    <ul class="dropdown-menu extended inbox">
-        <div class="notify-arrow notify-arrow-blue"></div>
-        <li>
-            <p class="blue">你有4封新邮件</p>
-        </li>
-        <li>
-            <a href="#">
-                <span class="photo"><img alt="avatar" src="/outer/img/avatar-mini.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Mar Tin</span>
-                                    <span class="time">1分钟</span>
-                                    </span>
-                                    <span class="message">
-                                        我非常喜欢这个网站.
-                                    </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="photo"><img alt="avatar" src="/outer/img/avatar-mini2.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Jackson</span>
-                                    <span class="time">5分钟</span>
-                                    </span>
-                                    <span class="message">
-                                     请问,下一个计划是什么呢？
-                                    </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="photo"><img alt="avatar" src="/outer/img/avatar-mini3.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Tomson</span>
-                                    <span class="time">2小时</span>
-                                    </span>
-                                    <span class="message">
-                                        我想加入这个大家庭.
-                                    </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="photo"><img alt="avatar" src="/outer/img/avatar-mini4.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Monica</span>
-                                    <span class="time">1天</span>
-                                    </span>
-                                    <span class="message">
-                                        网站非常美丽,32个赞！.
-                                    </span>
-            </a>
-        </li>
-        <li>
-            <a href="#">查看更多...</a>
-        </li>
-    </ul>
-</li>
-<!--邮件通知 end-->
-
-<!--即时消息通知 start-->
-<li id="alert_notificatoin_bar" class="dropdown">
-    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-
-        <i class="icon-bell-l"></i>
-        <span class="badge bg-important">4</span>
-    </a>
-    <ul class="dropdown-menu extended notification">
-        <div class="notify-arrow notify-arrow-blue"></div>
-        <li>
-            <p class="blue">你有4个新的通知</p>
-        </li>
-        <li>
-            <a href="#">
-                <span class="label label-primary"><i class="icon_profile"></i></span>
-                好友请求
-                <span class="small italic pull-right">5分钟</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="label label-warning"><i class="icon_pin"></i></span>
-                John location.
-                <span class="small italic pull-right">50分钟</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="label label-danger"><i class="icon_book_alt"></i></span>
-                3个任务完成.
-                <span class="small italic pull-right">1小时</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <span class="label label-success"><i class="icon_like"></i></span>
-                Mick很欣赏你的工作.
-                <span class="small italic pull-right">今天</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">查看更多...</a>
-        </li>
-    </ul>
-</li>
-<!--即时消息通知 start-->
-
-<!-- 个人中心 start-->
-<li class="dropdown">
-    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img style="height:40px;width:40px;" alt="" src="<%=userDto.getAvatar()%>">
-                            </span>
-        <span class="username"><%=userDto.getNickname()%></span>
-        <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu extended logout">
-        <div class="log-arrow-up"></div>
-        <li class="eborder-top">
-            <a href="#"><i class="icon_profile"></i>个人资料</a>
-        </li>
-        <li>
-            <a href="#"><i class="icon_mail_alt"></i>收件箱</a>
-        </li>
-        <li>
-            <a href="#"><i class="icon_clock_alt"></i>我的计划</a>
-        </li>
-        <li>
-            <a href="#"><i class="icon_chat_alt"></i>图表统计</a>
-        </li>
-        <li>
-            <a href="login.html"><i class="icon_key_alt"></i>退出</a>
-        </li>
-        <li>
-            <a href="documentation.html"><i class="icon_key_alt"></i>文档</a>
-        </li>
-    </ul>
-</li>
-<!-- 个人中心 end-->
-</ul>
-<!-- notificatoin dropdown end-->
-</div>
-</header>
-<!--header end-->
 
 <!--左侧导航 start-->
 <aside>
@@ -324,10 +10,6 @@
         <ul class="sidebar-menu">
             <%--**********************************我的主页************************************--%>
             <li class="active">
-                <a class="" href="/user/<%=userDto.getToken()%>/home">
-                    <i class="icon_house_alt"></i>
-                    <span>我的主页</span>
-                </a>
             </li>
             <%--**********************************蜜语墙************************************--%>
             <li class="sub-menu">
@@ -337,8 +19,8 @@
                     <span class="menu-arrow arrow_carrot-right"></span>
                 </a>
                 <ul class="sub">
-                    <li><a class="" href="user/<%=userDto.getId()%>/truelove">真爱大胆说</a></li>
-                    <li><a class="" href="user/<%=userDto.getId()%>/whisper">匿名悄悄话</a></li>
+                    <li><a class="" href="/truelove">真爱大胆说</a></li>
+                    <li><a class="" href="/whisper">匿名悄悄话</a></li>
                 </ul>
             </li>
             <%--**********************************我的文章************************************--%>
@@ -415,7 +97,6 @@
     </div>
 </aside>
 <!--sidebar end-->
-<%--********************************************内容区*********************************************--%>
 <!--main content start-->
 <section id="main-content">
 <section class="wrapper">
@@ -435,7 +116,7 @@
         <div class="info-box blue-bg">
             <i class="fa fa-cloud-download"></i>
 
-            <div class="count"><%=userDto.getShare()%>
+            <div class="count">
             </div>
             <div class="title">分享</div>
         </div>
@@ -447,7 +128,7 @@
         <div class="info-box brown-bg">
             <i class="fa fa-shopping-cart"></i>
 
-            <div class="count"><%=userDto.getVisit()%>
+            <div class="count">
             </div>
             <div class="title">访问数</div>
         </div>
@@ -459,7 +140,7 @@
         <div class="info-box dark-bg">
             <i class="fa fa-thumbs-o-up"></i>
 
-            <div class="count"><%=userDto.getPraise()%>
+            <div class="count">
             </div>
             <div class="title">赞</div>
         </div>
@@ -471,7 +152,7 @@
         <div class="info-box green-bg">
             <i class="fa fa-cubes"></i>
 
-            <div class="count"><%=userDto.getAttention()%>
+            <div class="count">
             </div>
             <div class="title">关注</div>
         </div>
@@ -481,37 +162,7 @@
 
 </div>
 <!--/.row-->
-
-<%--<div class="row">--%>
-    <%--<table id="contentTable" class="table table-responsive table-hover table-striped table-bordered">--%>
-        <%--<thead>--%>
-        <%--<tr>--%>
-            <%--<th width="10%">发送者</th>--%>
-            <%--<th width="30%">时间</th>--%>
-            <%--<th width="30%">蜜语</th>--%>
-            <%--<th width="10%">接收者</th>--%>
-            <%--<th width="10%">权限</th>--%>
-            <%--<th width="10%">类型</th>--%>
-            <%--</tr>--%>
-        <%--</thead>--%>
-        <%--<tbody>--%>
-        <%--<c:forEach items="${sweets.content}" var="sweet">--%>
-            <%--<tr>--%>
-                <%--<td>${sweet.fromName}</td>--%>
-                <%--<td><fmt:formatDate value="${sweet.createTime}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>--%>
-                <%--<td>${sweet.sweet}</td>--%>
-                <%--<td>${sweet.toName}</td>--%>
-                <%--<td>${sweet.authType}</td>--%>
-                <%--<td>${sweet.openType}</td>--%>
-                <%--</tr>--%>
-            <%--</c:forEach>--%>
-        <%--</tbody>--%>
-        <%--</table>--%>
-
-    <%--<tags:pagination page="${sweets}" paginationSize="5"/>--%>
-    <%--</div>--%>
-<%--**********************************地图************************************--%>
-<div class="row">
+    <div class="row">
     <div class="col-lg-9 col-md-12">
 
         <div class="panel panel-default">
@@ -530,7 +181,6 @@
 
         </div>
     </div>
-    <%--**********************************综合统计************************************--%>
     <div class="col-md-3">
         <!-- List starts -->
         <ul class="today-datas">
@@ -1054,95 +704,4 @@
 </section>
 </section>
 <!--main content end-->
-</section>
 <!-- container section start -->
-
-<!-- javascripts -->
-<script src="/outer/js/jquery.js"></script>
-<script src="/outer/js/jquery-ui-1.10.4.min.js"></script>
-<script src="/outer/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="/outer/js/jquery-ui-1.9.2.custom.min.js"></script>
-<!-- bootstrap -->
-<script src="/outer/js/bootstrap.min.js"></script>
-<!-- nice scroll -->
-<script src="/outer/js/jquery.scrollTo.min.js"></script>
-<script src="/outer/js/jquery.nicescroll.js" type="text/javascript"></script>
-<!-- charts scripts -->
-<script src="/outer/assets/jquery-knob/js/jquery.knob.js"></script>
-<script src="/outer/js/jquery.sparkline.js" type="text/javascript"></script>
-<script src="/outer/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
-<script src="/outer/js/owl.carousel.js"></script>
-<!-- jQuery full calendar -->
-<
-<script src="/outer/js/fullcalendar.min.js"></script>
-<!-- Full Google Calendar - Calendar -->
-<script src="/outer/assets/fullcalendar/fullcalendar/fullcalendar.js"></script>
-<!--script for this page only-->
-<script src="/outer/js/calendar-custom.js"></script>
-<script src="/outer/js/jquery.rateit.min.js"></script>
-<!-- custom select -->
-<script src="/outer/js/jquery.customSelect.min.js"></script>
-<script src="/outer/assets/chart-master/Chart.js"></script>
-
-<!--custome script for all page-->
-<script src="/outer/js/scripts.js"></script>
-<!-- custom script for this page-->
-<script src="/outer/js/sparkline-chart.js"></script>
-<script src="/outer/js/easy-pie-chart.js"></script>
-<script src="/outer/js/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="/outer/js/jquery-jvectormap-world-mill-en.js"></script>
-<script src="/outer/js/xcharts.min.js"></script>
-<script src="/outer/js/jquery.autosize.min.js"></script>
-<script src="/outer/js/jquery.placeholder.min.js"></script>
-<script src="/outer/js/gdp-data.js"></script>
-<script src="/outer/js/morris.min.js"></script>
-<script src="/outer/js/sparklines.js"></script>
-<script src="/outer/js/charts.js"></script>
-<script src="/outer/js/jquery.slimscroll.min.js"></script>
-<script>
-
-    //knob
-    $(function () {
-        $(".knob").knob({
-            'draw': function () {
-                $(this.i).val(this.cv + '%')
-            }
-        })
-    });
-
-    //carousel
-    $(document).ready(function () {
-        $("#owl-slider").owlCarousel({
-            navigation: true,
-            slideSpeed: 300,
-            paginationSpeed: 400,
-            singleItem: true
-
-        });
-    });
-
-    //custom select box
-
-
-    /* ---------- Map ---------- */
-    $(function () {
-        $('#map').vectorMap({
-            map: 'world_mill_en',
-            series: {
-                regions: [{
-                    values: gdpData,
-                    scale: ['#000', '#000'],
-                    normalizeFunction: 'polynomial'
-                }]
-            },
-            backgroundColor: '#eef3f7',
-            onLabelShow: function (e, el, code) {
-                el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
-            }
-        });
-    });
-
-
-</script>
-</body>
-</html>

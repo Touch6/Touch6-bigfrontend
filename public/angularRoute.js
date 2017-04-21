@@ -116,5 +116,45 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
             url: '/help',
             templateUrl: 'views/usercenter/help.html',
         })
+        .state('system', {
+            url: '/system',
+            templateUrl: 'views/system/system.html',
+            controller: 'SystemController'
+        })
+        .state('system.setting', {
+            url: '/setting',
+            templateUrl: 'views/system/outer/index.html',
+            controller: 'SystemController'
+        })
+        .state('system.module', {
+            url: '/module',
+            templateUrl: 'views/system/outer/basic_table.html',
+            controller: 'SystemController'
+        })
+        .state('system.menu', {
+            url: '/menu',
+            templateUrl: 'views/system/outer/blank.html',
+            controller: 'SystemController'
+        })
+        .state('system.auth', {
+            url: '/auth',
+            templateUrl: 'views/system/outer/buttons.html',
+            controller: 'SystemController'
+        })
+        .state('system.role', {
+            url: '/role',
+            templateUrl: 'views/system/outer/chart-chartjs.html',
+            controller: 'SystemController'
+        })
+        .state('system.mapping', {
+            url: '/mapping',
+            templateUrl: 'views/system/outer/form_component.html',
+            controller: 'SystemController'
+        })
+        .state('system.route', {
+            url: '/route',
+            templateUrl: 'views/system/outer/general.html',
+            controller: 'SystemController'
+        })
     $locationProvider.html5Mode(true);
 });

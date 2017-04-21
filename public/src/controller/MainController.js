@@ -313,6 +313,11 @@ consoleApp.controller("UsercenterController", function ($rootScope, $scope, $win
     }
 });
 
+/**********************************系统设置**************************************/
+consoleApp.controller("SystemController", function ($rootScope, $scope, $window, usercenter, $cookies, $cookieStore) {
+    
+});
+
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $cookieStore, $location) {
     $scope.login = {};
