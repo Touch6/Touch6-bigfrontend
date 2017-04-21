@@ -25,7 +25,7 @@
             <ul style="width: 100%" class="pull-right t6-module-ul" id="{{module.attrLink}}" ng-repeat="module in moduleList">
                 <div class="row ">
                     <div class="col-lg-2" ng-repeat="menu in module.menuList">
-                        <a data-value="1" ui-sref="toutiao.news" class="pull-left t6-menu-a">
+                        <a data-value="1" ui-sref="{{menu.uisref}}" class="pull-left t6-menu-a">
                             <span>{{menu.name}}</span>
                             <img src="../../images/new.png" style="width: 28px;margin-left:5px;right: 5px;">
                         </a>
@@ -55,10 +55,10 @@
             }
             $("#" + containerId).slideToggle(500);
         });
-        $(".arrows-up").click(function () {
+        $("body").delegate('.arrows-up','click',function () {
             $(this).parent().parent().parent().slideToggle(500);
         });
-        $(".t6-menu-a").not(".doing").click(function () {
+        $("body").delegate('.t6-menu-a:not(.doing)','click',function () {
             $(this).parent().parent().parent().slideToggle(500);
         })
     })
