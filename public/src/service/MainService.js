@@ -601,7 +601,7 @@ consoleApp.factory("toutiao", function ($http, $q, $cookies) {
             var deferred;
             deferred = $q.defer();
             //验证验证码；get 传参：{params:{page: page,pageSize:pageSize}}
-            $http.get('/~/toutiao/overview', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+            $http.get('/~/hotspot/overview', {params: {page: page, pageSize: pageSize}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {

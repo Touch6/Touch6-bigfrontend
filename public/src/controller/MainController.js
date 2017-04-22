@@ -36,7 +36,7 @@ consoleApp.controller("NaviController", function ($rootScope, $scope, $window, $
     console.log("NaviController")
 });
 /**********************************头条路由**************************************/
-consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window, toutiao, $cookies) {
+consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window, toutiao,modules, $cookies) {
 
     $scope.toutiaoList = function (page, pageSize) {
         _showMask();
@@ -60,6 +60,24 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
         });
     }
     $scope.toutiaoList(1, 10);//默认获取10条
+    $scope.pageModules = function (page, pageSize) {
+        modules.pageModules(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageModuleList = pageObj.list;
+            $scope.moduleOfCurrentPage = page;
+            $scope.moduleOfPageSize = pageSize;
+            $scope.moduleOfTotal = pageObj.total;
+            $scope.moduleOfPages = pageObj.pages;
+            $scope.moduleOfMaxSize = 20;
+            //当页数改变以后，需要重新获取
+            $scope.changeModulePage = function () {
+                $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+            };
+        }, function (err) {
+            console.log("模块列表加载失败" + err);
+        });
+    }
+    $scope.pageModules(1,10);
 });
 /**********************************工具路由**************************************/
 consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, tools, $cookies) {
@@ -341,7 +359,7 @@ consoleApp.controller("SystemController", function ($rootScope, $scope, $window,
             $scope.moduleOfTotal = pageObj.total;
             $scope.moduleOfPages = pageObj.pages;
             $scope.moduleOfMaxSize = 20;
-            //当页数改变以后，需要重新获取\
+            //当页数改变以后，需要重新获取
             $scope.changeModulePage = function () {
                 $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
             };

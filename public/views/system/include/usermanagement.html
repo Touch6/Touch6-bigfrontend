@@ -38,23 +38,3 @@
     </tr>
     </tbody>
 </table>
-<div class="page">
-    <!--<div class="pull-right">-->
-    <div>
-        <pagination boundary-links="true"
-                    total-items="userOfTotal"
-                    ng-model="userOfCurrentPage"
-                    class="pagination-md"
-                    ng-change="changeUserPage()"
-                    max-size="userOfMaxSize"
-                    rotate="false"
-                    first-text="&laquo;"
-                    previous-text="&lsaquo;"
-                    next-text="&rsaquo;"
-                    last-text="&raquo;"
-                    force-ellipses="true"
-                    items-per-page="userOfPageSize">
-        </pagination>
-        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{userOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{userOfTotal}}&nbsp;&nbsp;条</span>
-    </div>
-</div>

@@ -70,7 +70,7 @@ app.use('/ccap', ccap);
 app.use('/~/login', login);
 app.use('/~/register', register);
 app.use('/~/phone', phone);
-app.use('/~/toutiao', toutiao);
+app.use('/~/hotspot', toutiao);
 app.use('/~/tools', tools);
 app.use('/~/article', article);
 app.use('/~/approval', approval);

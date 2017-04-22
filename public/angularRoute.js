@@ -39,14 +39,19 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
         })
         .state('hotspot', {//
             url: '/hotspot',
-            templateUrl: 'views/toutiao/index.html',
+            templateUrl: 'views/hotspot/index.html',
             controller: 'NaviController'
         })//头条新闻路由
         .state('hotspot.toutiao', {//
             url: '/toutiao',
-            templateUrl: 'views/toutiao/toutiao.html',
+            templateUrl: 'views/hotspot/toutiao.html',
             controller: 'ToutiaoController'
-        })//头条新闻路由
+        })
+        .state('hotspot.test', {//
+            url: '/test',
+            templateUrl: 'views/hotspot/test.html',
+            controller: 'ToutiaoController'
+        })
         .state('article', {//
             url: '/article',
             templateUrl: 'views/article/index.html',

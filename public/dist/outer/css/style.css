@@ -4769,3 +4769,10 @@ table.sliders tr td {
     padding: 0 0 5px -15px !important;
     margin-bottom: 5px;
 }
+section .system-management-table-280{
+    min-height:280px;
+}
+
+section .system-management-table-470{
+    min-height:470px;
+}
