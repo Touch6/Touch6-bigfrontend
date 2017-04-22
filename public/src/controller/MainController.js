@@ -324,7 +324,7 @@ consoleApp.controller("SystemController", function ($rootScope, $scope, $window,
             $scope.userOfTotal = pageObj.total;
             $scope.userOfPages = pageObj.pages;
             $scope.userOfMaxSize = 20;
-            //当页数改变以后，需要重新获取\
+            //当页数改变以后，需要重新获取
             $scope.changeUserPage = function () {
                 $scope.pageUsers($scope.userOfCurrentPage, $scope.userOfPageSize);
             };

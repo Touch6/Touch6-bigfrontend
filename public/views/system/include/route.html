@@ -28,3 +28,23 @@
     </tr>
     </tbody>
 </table>
+<div class="page">
+    <!--<div class="pull-right">-->
+    <div>
+        <pagination boundary-links="true"
+                    total-items="routeOfTotal"
+                    ng-model="routeOfCurrentPage"
+                    class="pagination-md"
+                    ng-change="changeRoutePage()"
+                    max-size="routeOfMaxSize"
+                    rotate="false"
+                    first-text="&laquo;"
+                    previous-text="&lsaquo;"
+                    next-text="&rsaquo;"
+                    last-text="&raquo;"
+                    force-ellipses="true"
+                    items-per-page="routeOfPageSize">
+        </pagination>
+        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{routeOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{routeOfTotal}}&nbsp;&nbsp;条</span>
+    </div>
+</div>

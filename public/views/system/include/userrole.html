@@ -24,3 +24,23 @@
     </tr>
     </tbody>
 </table>
+<div class="page">
+    <!--<div class="pull-right">-->
+    <div>
+        <pagination boundary-links="true"
+                    total-items="userroleOfTotal"
+                    ng-model="userroleOfCurrentPage"
+                    class="pagination-md"
+                    ng-change="changeUserrolePage()"
+                    max-size="userroleOfMaxSize"
+                    rotate="false"
+                    first-text="&laquo;"
+                    previous-text="&lsaquo;"
+                    next-text="&rsaquo;"
+                    last-text="&raquo;"
+                    force-ellipses="true"
+                    items-per-page="userroleOfPageSize">
+        </pagination>
+        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{userroleOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{userroleOfTotal}}&nbsp;&nbsp;条</span>
+    </div>
+</div>

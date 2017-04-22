@@ -2,7 +2,7 @@
 <header class="panel-header">
     <label>模块管理</label>
     <label class="pull-right">
-        <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
+        <a id="new_module" class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
         <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
         <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
     </label>
@@ -28,3 +28,31 @@
     </tr>
     </tbody>
 </table>
+<!-- page end-->
+<div class="page">
+    <!--<div class="pull-right">-->
+    <div>
+        <pagination boundary-links="true"
+                    total-items="moduleOfTotal"
+                    ng-model="moduleOfCurrentPage"
+                    class="pagination-md"
+                    ng-change="changeModulePage()"
+                    max-size="moduleOfMaxSize"
+                    rotate="false"
+                    first-text="&laquo;"
+                    previous-text="&lsaquo;"
+                    next-text="&rsaquo;"
+                    last-text="&raquo;"
+                    force-ellipses="true"
+                    items-per-page="moduleOfPageSize">
+        </pagination>
+        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{moduleOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{moduleOfTotal}}&nbsp;&nbsp;条</span>
+    </div>
+</div>
+<script>
+    $(function () {
+        $("#new_module").click(function () {
+            alert(1);
+        })
+    })
+</script>

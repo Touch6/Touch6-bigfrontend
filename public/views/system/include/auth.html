@@ -22,3 +22,23 @@
     </tr>
     </tbody>
 </table>
+<div class="page">
+    <!--<div class="pull-right">-->
+    <div>
+        <pagination boundary-links="true"
+                    total-items="authOfTotal"
+                    ng-model="authOfCurrentPage"
+                    class="pagination-md"
+                    ng-change="changeAuthPage()"
+                    max-size="authOfMaxSize"
+                    rotate="false"
+                    first-text="&laquo;"
+                    previous-text="&lsaquo;"
+                    next-text="&rsaquo;"
+                    last-text="&raquo;"
+                    force-ellipses="true"
+                    items-per-page="authOfPageSize">
+        </pagination>
+        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{authOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{authOfTotal}}&nbsp;&nbsp;条</span>
+    </div>
+</div>
