@@ -92,4 +92,29 @@ router.delete('/', function (req, res) {
         }
     });
 });
+
+
+router.get('/page/modules', function (req, res) {
+
+    moduleModel.pageModules({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("获取模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
+router.get('/page/modules', function (req, res) {
+
+    moduleModel.pageModules({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("获取模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
 module.exports = router;

@@ -37,13 +37,13 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
             templateUrl: 'views/user/register.html',
             controller: 'RegisterController'
         })
-        .state('toutiao', {//
-            url: '/toutiao',
+        .state('hotspot', {//
+            url: '/hotspot',
             templateUrl: 'views/toutiao/index.html',
             controller: 'NaviController'
         })//头条新闻路由
-        .state('toutiao.news', {//
-            url: '/news',
+        .state('hotspot.toutiao', {//
+            url: '/toutiao',
             templateUrl: 'views/toutiao/toutiao.html',
             controller: 'ToutiaoController'
         })//头条新闻路由
@@ -121,39 +121,39 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
             templateUrl: 'views/system/system.html',
             controller: 'SystemController'
         })
-        .state('system.setting', {
-            url: '/setting',
-            templateUrl: 'views/system/outer/index.html',
+        .state('system.management', {
+            url: '/management',
+            templateUrl: 'views/system/outer/management.html',
             controller: 'SystemController'
         })
         .state('system.module', {
             url: '/module',
-            templateUrl: 'views/system/outer/basic_table.html',
+            templateUrl: 'views/system/outer/help.html',
             controller: 'SystemController'
         })
         .state('system.menu', {
             url: '/menu',
-            templateUrl: 'views/system/outer/blank.html',
+            templateUrl: 'views/system/outer/help.html',
             controller: 'SystemController'
         })
         .state('system.auth', {
             url: '/auth',
-            templateUrl: 'views/system/outer/buttons.html',
+            templateUrl: 'views/system/outer/help.html',
             controller: 'SystemController'
         })
         .state('system.role', {
             url: '/role',
-            templateUrl: 'views/system/outer/chart-chartjs.html',
+            templateUrl: 'views/system/outer/help.html',
             controller: 'SystemController'
         })
         .state('system.mapping', {
             url: '/mapping',
-            templateUrl: 'views/system/outer/form_component.html',
+            templateUrl: 'views/system/outer/help.html',
             controller: 'SystemController'
         })
         .state('system.route', {
             url: '/route',
-            templateUrl: 'views/system/outer/general.html',
+            templateUrl: 'views/system/outer/help.html',
             controller: 'SystemController'
         })
     $locationProvider.html5Mode(true);

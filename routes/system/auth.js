@@ -66,4 +66,18 @@ router.delete('/', function (req, res) {
         }
     });
 });
+
+
+router.get('/page/auths', function (req, res) {
+
+    authModel.pageAuths({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("获取权限失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
 module.exports = router;

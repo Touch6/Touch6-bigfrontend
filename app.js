@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var usercenter = require('./routes/user/usercenter');
 /********设置nodejs路由对应的文件*************/
 var home = require('./routes/user/home');
 var ccap = require('./routes/ccap');
@@ -24,6 +24,7 @@ var modules = require('./routes/system/modules');
 var menu = require('./routes/system/menu');
 var config = require('./routes/system/config');
 var area = require('./routes/system/area');
+var route = require('./routes/system/route');
 
 var sendEmail = require('./routes/email');
 var touchcApp = require('./routes/touchcApp/touchcApp');
@@ -61,7 +62,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/users', users);
+app.use('/~/usercenter', usercenter);
 
 app.use('/home', home);
 //验证码；
@@ -80,6 +81,7 @@ app.use('/~/system/module', modules);
 app.use('/~/system/menu', menu);
 app.use('/~/system/config', config);
 app.use('/~/system/area', area);
+app.use('/~/system/route', route);
 
 app.use('/sendEmail', sendEmail);
 app.use('/touchcApp', touchcApp);

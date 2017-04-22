@@ -1,16 +1,16 @@
 var express = require('express');
 var router = express.Router();
 var ModelProxy = require('./../../proxy/DataProxy').DataProxy;
-var roleModel = ModelProxy.create("role.*");
+var routeModel = ModelProxy.create("route.*");
 
 router.post('/', function (req, res) {
 
-    console.log("添加角色信息：" + JSON.stringify(req.body.role));
-    roleModel.addRole(req.body.role, {}).done(function (data) {
+    console.log("添加路由信息：" + JSON.stringify(req.body.route));
+    routeModel.addRoute(req.body.route, {}).done(function (data) {
         res.send(data);
     }).error(function (error) {
         if(error.statusCode=='400'){
-            console.log("添加角色失败,后端返回数据>>>" + error.responseText);
+            console.log("添加路由失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
     });
@@ -18,12 +18,12 @@ router.post('/', function (req, res) {
 
 router.put('/', function (req, res) {
 
-    console.log("修改角色信息：" + JSON.stringify(req.body.role));
-    roleModel.updateRole(req.body.role, {}).done(function (data) {
+    console.log("修改路由信息：" + JSON.stringify(req.body.route));
+    routeModel.updateRoute(req.body.route, {}).done(function (data) {
         res.send(data);
     }).error(function (error) {
         if(error.statusCode=='400'){
-            console.log("修改角色失败,后端返回数据>>>" + error.responseText);
+            console.log("修改路由失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
     });
@@ -31,12 +31,12 @@ router.put('/', function (req, res) {
 
 router.get('/', function (req, res) {
 
-    console.log("获取角色信息：" + req.query.roleId);
-    roleModel.roleInfo({roleId:req.query.roleId}).done(function (data) {
+    console.log("获取路由信息：" + req.query.routeId);
+    routeModel.routeInfo({routeId:req.query.routeId}).done(function (data) {
         res.send(data);
     }).error(function (error) {
         if(error.statusCode=='400'){
-            console.log("获取角色失败,后端返回数据>>>" + error.responseText);
+            console.log("获取路由失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
     });
@@ -44,11 +44,11 @@ router.get('/', function (req, res) {
 
 router.get('/list', function (req, res) {
 
-    roleModel.roleList().done(function (data) {
+    routeModel.routeList().done(function (data) {
         res.send(data);
     }).error(function (error) {
         if(error.statusCode=='400'){
-            console.log("获取角色失败,后端返回数据>>>" + error.responseText);
+            console.log("获取路由失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
     });
@@ -56,25 +56,25 @@ router.get('/list', function (req, res) {
 
 router.delete('/', function (req, res) {
 
-    console.log("删除角色信息：" + req.query.roleId);
-    roleModel.deleteRole({roleId:req.query.roleId}).done(function (data) {
+    console.log("删除路由信息：" + req.query.routeId);
+    routeModel.deleteRoute({routeId:req.query.routeId}).done(function (data) {
         res.send(data);
     }).error(function (  error) {
         if(error.statusCode=='400'){
-            console.log("删除角色失败,后端返回数据>>>" + error.responseText);
+            console.log("删除路由失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
     });
 });
 
 
-router.get('/page/roles', function (req, res) {
+router.get('/page/routes', function (req, res) {
 
-    roleModel.pageRoles({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+    routeModel.pageRoutes({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
         res.send(data);
     }).error(function (error) {
         if(error.statusCode=='400'){
-            console.log("获取角色失败,后端返回数据>>>" + error.responseText);
+            console.log("获取路由失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
     });

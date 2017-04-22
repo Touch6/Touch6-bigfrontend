@@ -13,7 +13,7 @@ consoleApp.controller("MainController", function ($rootScope, $scope, $window, $
     $scope.loadCommonModule = function () {
         console.log("加载公共模块")
         modules.loadCommonModule().then(function (data) {
-            $rootScope.moduleList=data.object;
+            $rootScope.moduleList = data.object;
         }, function (err) {
             console.log("模块加载失败" + err);
         });
@@ -314,8 +314,170 @@ consoleApp.controller("UsercenterController", function ($rootScope, $scope, $win
 });
 
 /**********************************系统设置**************************************/
-consoleApp.controller("SystemController", function ($rootScope, $scope, $window, usercenter, $cookies, $cookieStore) {
-    
+consoleApp.controller("SystemController", function ($rootScope, $scope, $window, $cookies, $cookieStore, usercenter, modules, menu, role, auth, config, route) {
+    $scope.pageUsers = function (page, pageSize) {
+        usercenter.pageUsers(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageUserList = pageObj.list;
+            $scope.userOfCurrentPage = page;
+            $scope.userOfPageSize = pageSize;
+            $scope.userOfTotal = pageObj.total;
+            $scope.userOfPages = pageObj.pages;
+            $scope.userOfMaxSize = 20;
+            //当页数改变以后，需要重新获取\
+            $scope.changeUserPage = function () {
+                $scope.pageUsers($scope.userOfCurrentPage, $scope.userOfPageSize);
+            };
+        }, function (err) {
+            console.log("用户列表加载失败" + err);
+        });
+    }
+    $scope.pageModules = function (page, pageSize) {
+        modules.pageModules(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageModuleList = pageObj.list;
+            $scope.moduleOfCurrentPage = page;
+            $scope.moduleOfPageSize = pageSize;
+            $scope.moduleOfTotal = pageObj.total;
+            $scope.moduleOfPages = pageObj.pages;
+            $scope.moduleOfMaxSize = 20;
+            //当页数改变以后，需要重新获取\
+            $scope.changeModulePage = function () {
+                $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+            };
+        }, function (err) {
+            console.log("模块列表加载失败" + err);
+        });
+    }
+    $scope.pageMenus = function (page, pageSize) {
+        menu.pageMenus(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageMenuList = pageObj.list;
+            $scope.menuOfCurrentPage = page;
+            $scope.menuOfPageSize = pageSize;
+            $scope.menuOfTotal = pageObj.total;
+            $scope.menuOfPages = pageObj.pages;
+            $scope.menuOfMaxSize = 20;
+            //当页数改变以后，需要重新获取\
+            $scope.changeMenuPage = function () {
+                $scope.pageMenus($scope.menuOfCurrentPage, $scope.menuOfPageSize);
+            };
+        }, function (err) {
+            console.log("菜单列表加载失败" + err);
+        });
+    }
+    $scope.pageRoles = function (page, pageSize) {
+        role.pageRoles(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageRoleList = pageObj.list;
+            $scope.roleOfCurrentPage = page;
+            $scope.roleOfPageSize = pageSize;
+            $scope.roleOfTotal = pageObj.total;
+            $scope.roleOfPages = pageObj.pages;
+            $scope.roleOfMaxSize = 20;
+            //当页数改变以后，需要重新获取\
+            $scope.changeRolePage = function () {
+                $scope.pageRoles($scope.roleOfCurrentPage, $scope.roleOfPageSize);
+            };
+        }, function (err) {
+            console.log("角色列表加载失败" + err);
+        });
+    }
+    $scope.pageAuths = function (page, pageSize) {
+        auth.pageAuths(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageAuthList = pageObj.list;
+            $scope.authOfCurrentPage = page;
+            $scope.authOfPageSize = pageSize;
+            $scope.authOfTotal = pageObj.total;
+            $scope.authOfPages = pageObj.pages;
+            $scope.authOfMaxSize = 20;
+            //当页数改变以后，需要重新获取\
+            $scope.changeAuthPage = function () {
+                $scope.pageAuths($scope.authOfCurrentPage, $scope.authOfPageSize);
+            };
+        }, function (err) {
+            console.log("权限列表加载失败" + err);
+        });
+    }
+    $scope.pageRoutes = function (page, pageSize) {
+        route.pageRoutes(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageRouteList = pageObj.list;
+            $scope.routeOfCurrentPage = page;
+            $scope.routeOfPageSize = pageSize;
+            $scope.routeOfTotal = pageObj.total;
+            $scope.routeOfPages = pageObj.pages;
+            $scope.routeOfMaxSize = 20;
+            //当页数改变以后，需要重新获取\
+            $scope.changeRoutePage = function () {
+                $scope.pageRoutes($scope.routeOfCurrentPage, $scope.routeOfPageSize);
+            };
+        }, function (err) {
+            console.log("路由列表加载失败" + err);
+        });
+    }
+    $scope.pageUserroles = function (page, pageSize) {
+        config.pageUserroles(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageUserroleList = pageObj.list;
+            $scope.userroleOfCurrentPage = page;
+            $scope.userroleOfPageSize = pageSize;
+            $scope.userroleOfTotal = pageObj.total;
+            $scope.userroleOfPages = pageObj.pages;
+            $scope.userroleOfMaxSize = 20;
+            //当页数改变以后，需要重新获取\
+            $scope.changeUserrolePage = function () {
+                $scope.pageUserroles($scope.userroleOfCurrentPage, $scope.userroleOfPageSize);
+            };
+        }, function (err) {
+            console.log("用户角色列表加载失败" + err);
+        });
+    }
+    $scope.pageAuthroles = function (page, pageSize) {
+        config.pageAuthroles(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageAuthroleList = pageObj.list;
+            $scope.authroleOfCurrentPage = page;
+            $scope.authroleOfPageSize = pageSize;
+            $scope.authroleOfTotal = pageObj.total;
+            $scope.authroleOfPages = pageObj.pages;
+            $scope.authroleOfMaxSize = 20;
+            //当页数改变以后，需要重新获取\
+            $scope.changeAuthrolePage = function () {
+                $scope.pageAuthroles($scope.authroleOfCurrentPage, $scope.authroleOfPageSize);
+            };
+        }, function (err) {
+            console.log("权限角色列表加载失败" + err);
+        });
+    }
+    $scope.pageAuthmenus = function (page, pageSize) {
+        config.pageAuthmenus(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageAuthmenuList = pageObj.list;
+            $scope.authmenuOfCurrentPage = page;
+            $scope.authmenuOfPageSize = pageSize;
+            $scope.authmenuOfTotal = pageObj.total;
+            $scope.authmenuOfPages = pageObj.pages;
+            $scope.authmenuOfMaxSize = 20;
+            //当页数改变以后，需要重新获取\
+            $scope.changeAuthmenuPage = function () {
+                $scope.pageAuthmenus($scope.authmenuOfCurrentPage, $scope.authmenuOfPageSize);
+            };
+        }, function (err) {
+            console.log("菜单权限列表加载失败" + err);
+        });
+    }
+    $scope.pageModules(1,5);
+    $scope.pageMenus(1,5);
+    $scope.pageRoles(1,5);
+    $scope.pageAuths(1,5);
+    $scope.pageRoutes(1,5);
+    //页面显示，加载所有信息？
+    $scope.pageUsers(1,10);
+    $scope.pageUserroles(1,10);
+    $scope.pageAuthroles(1,10);
+    $scope.pageAuthmenus(1,10);
 });
 
 /************************************登录模块*************************************************/

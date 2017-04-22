@@ -1,7 +1,7 @@
 var consoleApp = angular.module('consoleApp.services', [
     'ngCookies'
 ]);
-/********************mobile模块****************************/
+/********************module模块****************************/
 consoleApp.factory("modules", function ($http, $q, $cookies) {
 
     return {
@@ -19,10 +19,165 @@ consoleApp.factory("modules", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        pageModules: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/module/page/modules', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 
 });
+
+/********************menu模块****************************/
+consoleApp.factory("menu", function ($http, $q, $cookies) {
+
+    return {
+        pageMenus: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/menu/page/menus', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
+
+/********************role模块****************************/
+consoleApp.factory("role", function ($http, $q, $cookies) {
+
+    return {
+        pageRoles: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/role/page/roles', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
+
+/********************auth模块****************************/
+consoleApp.factory("auth", function ($http, $q, $cookies) {
+
+    return {
+        pageAuths: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/auth/page/auths', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
+
+/********************route模块****************************/
+consoleApp.factory("route", function ($http, $q, $cookies) {
+
+    return {
+        pageRoutes: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/route/page/routes', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
+
+/********************config模块****************************/
+consoleApp.factory("config", function ($http, $q, $cookies) {
+
+    return {
+        pageUserroles: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/config/page/userroles', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        pageAuthroles: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/config/page/authroles', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        pageAuthmenus: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/config/page/authmenus', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
+
+
+
 /********************mobile模块****************************/
 consoleApp.factory("phone", function ($http, $q, $cookies) {
 
@@ -422,8 +577,22 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
 
 /********************usercenter模块****************************/
 consoleApp.factory("usercenter", function ($http, $q, $cookies) {
-
-    return {}
+    return {
+        pageUsers: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/usercenter/page/users', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
 });
 /********************toutiao模块****************************/
 consoleApp.factory("toutiao", function ($http, $q, $cookies) {

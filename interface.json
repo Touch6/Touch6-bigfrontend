@@ -316,6 +316,62 @@
       "method": "delete"
     },
     {
+      "name": "添加路由",
+      "id": "route.addRoute",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/route",
+        "test": "http://localhost:28081/t6/system/route"
+      },
+      "method": "post",
+      "contentType": "application/json"
+    },
+    {
+      "name": "修改路由",
+      "id": "route.updateRoute",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/route",
+        "test": "http://localhost:28081/t6/system/route"
+      },
+      "method": "put",
+      "contentType": "application/json"
+    },
+    {
+      "name": "路由列表",
+      "id": "route.routeList",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/routes",
+        "test": "http://localhost:28081/t6/system/routes"
+      },
+      "method": "get"
+    },
+    {
+      "name": "获取路由信息",
+      "id": "route.routeInfo",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/route/:routeId",
+        "test": "http://localhost:28081/t6/system/route/:routeId"
+      },
+      "method": "get"
+    },
+    {
+      "name": "删除路由信息",
+      "id": "route.deleteRoute",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/route/:routeId",
+        "test": "http://localhost:28081/t6/system/route/:routeId"
+      },
+      "method": "delete"
+    },
+    {
+      "name": "删除角色",
+      "id": "role.deleteRole",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/role/:roleId",
+        "test": "http://localhost:28081/t6/system/role/:roleId"
+      },
+      "method": "delete"
+    },
+    {
       "name": "添加模块",
       "id": "module.addModule",
       "urls": {
@@ -516,6 +572,87 @@
       },
       "method": "delete",
       "contentType": "application/json"
+    },
+    {
+      "name": "系统管理模块列表",
+      "id": "module.pageModules",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/modules",
+        "test": "http://localhost:28081/t6/system/page/modules"
+      },
+      "method": "get"
+    },
+    {
+      "name": "系统管理菜单列表",
+      "id": "menu.pageMenus",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/menus",
+        "test": "http://localhost:28081/t6/system/page/menus"
+      },
+      "method": "get"
+    },
+    {
+      "name": "系统管理角色列表",
+      "id": "role.pageRoles",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/roles",
+        "test": "http://localhost:28081/t6/system/page/roles"
+      },
+      "method": "get"
+    },
+    {
+      "name": "系统管理权限列表",
+      "id": "auth.pageAuths",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/auths",
+        "test": "http://localhost:28081/t6/system/page/auths"
+      },
+      "method": "get"
+    },
+    {
+      "name": "系统管理路由列表",
+      "id": "route.pageRoutes",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/routes",
+        "test": "http://localhost:28081/t6/system/page/routes"
+      },
+      "method": "get"
+    },
+    {
+      "name": "系统管理用户列表",
+      "id": "usercenter.pageUsers",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/users",
+        "test": "http://localhost:28081/t6/system/page/users"
+      },
+      "method": "get"
+    },
+    {
+      "name": "系统管理角色权限列表",
+      "id": "config.pageAuthRoles",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/authroles",
+        "test": "http://localhost:28081/t6/system/page/authroles"
+      },
+      "method": "get"
+    },
+    {
+      "name": "系统管理用户角色列表",
+      "id": "config.pageUserRoles",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/userroles",
+        "test": "http://localhost:28081/t6/system/page/userroles"
+      },
+      "method": "get"
+    },
+    {
+      "name": "系统管理菜单权限列表",
+      "id": "config.pageAuthMenus",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/authmenus",
+        "test": "http://localhost:28081/t6/system/page/authmenus"
+      },
+      "method": "get"
     }
   ],
   "combo": {

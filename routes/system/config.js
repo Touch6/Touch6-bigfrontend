@@ -122,5 +122,44 @@ router.delete('/userrole', function (req, res) {
     });
 });
 
+router.get('/page/authroles', function (req, res) {
+
+    console.log("获取权限角色配置信息");
+    configModel.pageAuthRoles({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("查询权限角色失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
+router.get('/page/userroles', function (req, res) {
+
+    console.log("获取用户角色配置信息");
+    configModel.pageUserRoles({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("查询用户角色失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
+
+router.get('/page/authmenus', function (req, res) {
+
+    console.log("获取权限菜单配置信息");
+    configModel.pageAuthMenus({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("查询权限菜单失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
 
 module.exports = router;

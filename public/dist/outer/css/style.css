@@ -3577,7 +3577,7 @@ ul.amounts li {
 
 /*panel heading color*/
 .panel-heading, .modal-header {
-    color: #688a7e;
+    color: #0b0c74;
 
 }
 
@@ -4764,4 +4764,8 @@ table.sliders tr td {
 }
 .oppose-a:hover{
     color: red;
+}
+.panel .panel-header{
+    padding: 0 0 5px -15px !important;
+    margin-bottom: 5px;
 }
