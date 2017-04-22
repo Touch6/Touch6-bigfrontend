@@ -8,308 +8,47 @@
         <!-- page start-->
         <div class="row">
             <div class="col-sm-6">
-                <section class="panel">
-                    <header class="panel-header">
-                        <label>模块管理</label>
-                        <label class="pull-right">
-                            <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-                        </label>
-                    </header>
-
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>名称</th>
-                            <th>模块样式</th>
-                            <th>容器链接</th>
-                            <th>显示排序</th>
-                            <th>创建时间</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="m in pageModuleList">
-                            <td>{{m.name}}</td>
-                            <td>{{m.className}}</td>
-                            <td>{{m.attrLink}}</td>
-                            <td>{{m.sort}}</td>
-                            <td>{{m.createTime|date:'yyyy-MM-dd'}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <section class="panel" ng-include="'views/system/include/modules.html'">
                 </section>
             </div>
             <div class="col-sm-6">
-                <section class="panel">
-                    <header class="panel-header">
-                        <label>菜单管理</label>
-                        <label class="pull-right">
-                            <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-                        </label>
-                    </header>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>名称</th>
-                            <th>所属模块</th>
-                            <th>ui-sref</th>
-                            <th>菜单样式</th>
-                            <th>容器链接</th>
-                            <th>开发进度</th>
-                            <th>显示排序</th>
-                            <th>创建时间</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="m in pageMenuList">
-                            <td>{{m.name}}</td>
-                            <td>{{m.moduleId}}</td>
-                            <td>{{m.uisref}}</td>
-                            <td>{{m.className}}</td>
-                            <td>{{m.attrLink}}</td>
-                            <td>{{m.status}}</td>
-                            <td>{{m.sort}}</td>
-                            <td>{{m.createTime|date:'yyyy-MM-dd'}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <section class="panel" ng-include="'views/system/include/menu.html'">
                 </section>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <section class="panel">
-                    <header class="panel-header">
-                        <label>角色管理</label>
-                        <label class="pull-right">
-                            <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-                        </label>
-                    </header>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>名称</th>
-                            <th>创建时间</th>
-                            <th>更新时间</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="role in pageRoleList">
-                            <td>{{role.name}}</td>
-                            <td>{{m.createTime|date:'yyyy-MM-dd'}}</td>
-                            <td>{{m.updateTime|date:'yyyy-MM-dd'}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <section class="panel" ng-include="'views/system/include/role.html'">
                 </section>
             </div>
             <div class="col-sm-6">
-                <section class="panel">
-                    <header class="panel-header">
-                        <label>权限管理</label>
-                        <label class="pull-right">
-                            <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-                        </label>
-                    </header>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>名称</th>
-                            <th>创建时间</th>
-                            <th>更新时间</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="auth in pageAuthList">
-                            <td>{{auth.name}}</td>
-                            <td>{{auth.createTime|date:'yyyy-MM-dd'}}</td>
-                            <td>{{auth.updateTime|date:'yyyy-MM-dd'}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <section class="panel" ng-include="'views/system/include/auth.html'">
                 </section>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <section class="panel">
-                    <header class="panel-header">
-                        <label>路由管理</label>
-                        <label class="pull-right">
-                            <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-                        </label>
-                    </header>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>名称</th>
-                            <th>上一级路由</th>
-                            <th>路由级别</th>
-                            <th>ui-sref</th>
-                            <th>描述信息</th>
-                            <th>创建时间</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="route in pageRouteList">
-                            <td>{{route.name}}</td>
-                            <td>{{route.superId}}</td>
-                            <td>{{route.rank}}</td>
-                            <td>{{route.uisref}}</td>
-                            <td>{{route.description}}</td>
-                            <td>{{auth.createTime|date:'yyyy-MM-dd'}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <section class="panel" ng-include="'views/system/include/route.html'">
                 </section>
             </div>
             <div class="col-sm-6">
-                <section class="panel">
-                    <header class="panel-header">
-                        <label>权限<->菜单映射管理</label>
-                        <label class="pull-right">
-                            <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-                        </label>
-                    </header>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>权限ID</th>
-                            <th>权限名称</th>
-                            <th>菜单ID</th>
-                            <th>菜单名称</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="map in pageAuthmenuList">
-                            <td>{{map.authId}}</td>
-                            <td>{{map.authName}}</td>
-                            <td>{{map.menuId}}</td>
-                            <td>{{map.menuName}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <section class="panel" ng-include="'views/system/include/authmenu.html'">
                 </section>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
-                <section class="panel">
-                    <header class="panel-header">
-                        <label>权限<->角色映射管理</label>
-                        <label class="pull-right">
-                            <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-                        </label>
-                    </header>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>权限ID</th>
-                            <th>权限名称</th>
-                            <th>菜单ID</th>
-                            <th>菜单名称</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="map in pageAuthroleList">
-                            <td>{{map.authId}}</td>
-                            <td>{{map.authName}}</td>
-                            <td>{{map.roleId}}</td>
-                            <td>{{map.roleName}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
+                <section class="panel" ng-include="'views/system/include/authrole.html'">
                 </section>
             </div>
             <div class="col-sm-6">
-                <section class="panel">
-                    <header class="panel-header">
-                        <label>用户<->角色映射管理</label>
-                        <label class="pull-right">
-                            <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-                        </label>
-                    </header>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                        <tr>
-                            <th>用户ID</th>
-                            <th>用户</th>
-                            <th>角色ID</th>
-                            <th>角色名称</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="map in pageUserroleList">
-                            <td>{{map.userId}}</td>
-                            <td>{{map.userName}}</td>
-                            <td>{{map.roleId}}</td>
-                            <td>{{map.roleName}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
+                <section class="panel" ng-include="'views/system/include/userrole.html'">
                 </section>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <section class="panel">
-                    <header class="panel-header">
-                        <label>用户管理</label>
-                        <label class="pull-right">
-                            <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
-                            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-                            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-                        </label>
-                    </header>
-                    <table class="table table-striped table-hover">
-                        <tbody>
-                        <tr>
-                            <th><i class="fa fa-user"></i>用户</th>
-                            <th><i class="fa fa-heart"></i>昵称</th>
-                            <th><i class="fa fa-intersex"></i>性别</th>
-                            <th><i class="fa fa-clock-o"></i>生日</th>
-                            <th><i class="fa fa-buysellads"></i>年龄</th>
-                            <th><i class="fa fa-font-awesome"></i>国籍</th>
-                            <th><i class="fa fa-phone"></i>手机号</th>
-                            <th><i class="fa fa-envelope"></i>邮箱</th>
-                            <th><i class="fa fa-id-card-o"></i>身份证号</th>
-                            <th><i class="fa fa-cogs"></i>操作</th>
-                        </tr>
-                        <tr ng-repeat="u in pageUserList">
-                            <td>{{u.name}}</td>
-                            <td>{{u.nickname}}</td>
-                            <td>{{u.gender}}</td>
-                            <td>{{u.birth}}</td>
-                            <td>{{u.age}}</td>
-                            <td>{{u.nation}}</td>
-                            <td>{{u.phone}}</td>
-                            <td>{{u.email}}</td>
-                            <td>{{u.idcard}}</td>
-                            <td>
-                                <a class="btn btn-primary btn-xs" href="#"><i class="icon_plus_alt2"></i></a>
-                                <a class="btn btn-success btn-xs" href="#"><i class="icon_check_alt2"></i></a>
-                                <a class="btn btn-danger btn-xs" href="#"><i class="icon_close_alt2"></i></a>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+                <section class="panel" ng-include="'views/system/include/usermanagement.html'">
                 </section>
             </div>
         </div>
