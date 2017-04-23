@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="m in pageModuleList">
+        <tr ng-repeat="m in moduleList">
             <td>{{m.name}}</td>
             <td>{{m.className}}</td>
             <td>{{m.attrLink}}</td>
@@ -42,20 +42,20 @@
         <!--<div class="pull-right">-->
         <div>
             <pagination boundary-links="true"
-                        total-items="moduleOfTotal"
-                        ng-model="moduleOfCurrentPage"
+                        total-items="total"
+                        ng-model="currentPage"
                         class="pagination-md"
                         ng-change="changeModulePage()"
-                        max-size="moduleOfMaxSize"
+                        max-size="maxSize"
                         rotate="false"
                         first-text="&laquo;"
                         previous-text="&lsaquo;"
                         next-text="&rsaquo;"
                         last-text="&raquo;"
                         force-ellipses="true"
-                        items-per-page="moduleOfPageSize">
+                        items-per-page="pageSize">
             </pagination>
-            <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{moduleOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{moduleOfTotal}}&nbsp;&nbsp;条</span>
+            <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{total}}&nbsp;&nbsp;条</span>
         </div>
     </div>
 
@@ -111,7 +111,7 @@
                                     <span class="input-group-addon">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     <select ng-model="addModuleInput.sort" class="form-control"
                                             ng-options="(m.sort+1) as '位于【'+m.name+'】后' for m in moduleSelectList">
-                                        <option value="">--请选择(不选择默认排最前)--</option>
+                                        <option value="">--请选择--</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">注:不选择排序在首位</div>
@@ -224,7 +224,7 @@
                                     <span class="input-group-addon">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     <select ng-model="updateModuleInput.sort" class="form-control"
                                             ng-options="(m.sort+1) as '位于【'+m.name+'】后' for m in moduleSelectList">
-                                        <option value="">--请选择(不选择默认排最前)--</option>
+                                        <option value="">--请选择--</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">注:不选择排序在首位</div>

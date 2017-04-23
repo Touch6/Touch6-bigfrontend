@@ -486,15 +486,15 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
     $scope.pageModules = function (page, pageSize) {
         modules.pageModules(page, pageSize).then(function (data) {
             var pageObj = data.object;
-            $scope.pageModuleList = pageObj.list;
-            $scope.moduleOfCurrentPage = page;
-            $scope.moduleOfPageSize = pageSize;
-            $scope.moduleOfTotal = pageObj.total;
-            $scope.moduleOfPages = pageObj.pages;
-            $scope.moduleOfMaxSize = 20;
+            $scope.moduleList = pageObj.list;
+            $scope.currentPage = page;
+            $scope.pageSize = pageSize;
+            $scope.total = pageObj.total;
+            $scope.pages = pageObj.pages;
+            $scope.maxSize = 20;
             //当页数改变以后，需要重新获取
             $scope.changeModulePage = function () {
-                $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+                $scope.pageModules($scope.currentPage, $scope.pageSize);
             };
         }, function (err) {
             console.log("模块列表加载失败" + err);
@@ -502,13 +502,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
     };
     $scope.pageModules(1, 5);
 
-    $scope.loadSelectList = function () {
-        modules.selectList().then(function (data) {
-            $scope.moduleSelectList = data.object;
-        }, function (err) {
-            console.log("模块列表加载失败" + err);
-        });
-    }
+
     $scope.addModuleInput = {
         name: '',
         className: '',
@@ -523,6 +517,13 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
         sort: ''
     }
     $scope.moduleObject = {
+        loadSelectModuleList: function () {
+            modules.selectList().then(function (data) {
+                $scope.moduleSelectList = data.object;
+            }, function (err) {
+                console.log("模块列表加载失败" + err);
+            });
+        },
         add: function () {
             if (!$scope.addModuleInput.sort) {
                 //不选默认排序0
@@ -563,13 +564,13 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 });
         },
         openUpdateModal: function (moduleId) {
-            $scope.updateModuleInput={};
+            $scope.updateModuleInput = {};
             _showMask();
             modules.viewDetail(moduleId)
                 .then(function (data1) {
                     $scope.updateModuleInput = data1.object;
                     //加载列表
-                    $scope.loadSelectList();
+                    $scope.moduleObject.loadSelectModuleList();
                     _hideMask();
                 }, function (err) {
                     console.log(err);
