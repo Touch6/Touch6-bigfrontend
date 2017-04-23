@@ -23,7 +23,54 @@ consoleApp.factory("modules", function ($http, $q, $cookies) {
         pageModules: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/~/system/module/page/modules', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+            $http.get('/~/system/module/page/modules', {
+                params: {
+                    page: page,
+                    pageSize: pageSize
+                }
+            }).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        selectList: function () {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/module/selectlist', {}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addModule: function (module) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/module', {module: module}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        delete: function (moduleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.delete('/~/system/module', {params: {moduleId: moduleId}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -34,6 +81,7 @@ consoleApp.factory("modules", function ($http, $q, $cookies) {
             });
             return deferred.promise;
         }
+
     }
 
 });
@@ -111,7 +159,12 @@ consoleApp.factory("route", function ($http, $q, $cookies) {
         pageRoutes: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/~/system/route/page/routes', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+            $http.get('/~/system/route/page/routes', {
+                params: {
+                    page: page,
+                    pageSize: pageSize
+                }
+            }).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -133,7 +186,12 @@ consoleApp.factory("config", function ($http, $q, $cookies) {
         pageUserroles: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/~/system/config/page/userroles', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+            $http.get('/~/system/config/page/userroles', {
+                params: {
+                    page: page,
+                    pageSize: pageSize
+                }
+            }).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -147,7 +205,12 @@ consoleApp.factory("config", function ($http, $q, $cookies) {
         pageAuthroles: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/~/system/config/page/authroles', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+            $http.get('/~/system/config/page/authroles', {
+                params: {
+                    page: page,
+                    pageSize: pageSize
+                }
+            }).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -161,7 +224,12 @@ consoleApp.factory("config", function ($http, $q, $cookies) {
         pageAuthmenus: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/~/system/config/page/authmenus', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+            $http.get('/~/system/config/page/authmenus', {
+                params: {
+                    page: page,
+                    pageSize: pageSize
+                }
+            }).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -175,7 +243,6 @@ consoleApp.factory("config", function ($http, $q, $cookies) {
     }
 
 });
-
 
 
 /********************mobile模块****************************/

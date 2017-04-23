@@ -5,7 +5,6 @@ Author: GeeksLabs
 Website: http://geekslabs.com/
 */
 /* Import fonts */
-@import url(http://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 @import url(line-icons.css);
 
 body {
@@ -157,17 +156,6 @@ table tr th {
     background: #44ccfe;
     box-shadow: 0 4px #2bb4e8;
     float: left;
-}
-
-/*Modal Content*/
-.modal-content {
-    border-radius: 0px;
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.modal-header .close {
-    font-weight: 300;
-    font-size: 30px;
 }
 
 /*sidebar navigation*/
@@ -1498,25 +1486,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     padding: 0px;
 }
 
-.widget .widget-head, .modal-header {
-    background-color: #f8f8f8;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
-    background: -webkit-linear-gradient(top, #f8f8f8, #f2f2f2);
-    background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
-    background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
-    background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-    background: linear-gradient(top, #f8f8f8, #f2f2f2);
-    border-top-right-radius: 3px;
-    border-top-left-radius: 3px;
-    text-shadow: 0px 1px #fff;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #fff;
-    color: #666;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 8px 15px;
-}
-
 .widget.wblack .widget-head {
     background-color: #e8ece9;
     background: -webkit-gradient(linear, left top, left bottom, from(#e8ece9), to(#111));
@@ -1550,25 +1519,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     margin: 0px 4px;
 }
 
-.widget .widget-foot, .modal-footer {
-    background-color: #f8f8f8;
-    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
-    background: -webkit-linear-gradient(top, #f8f8f8, #f2f2f2);
-    background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
-    background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
-    background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-    background: linear-gradient(top, #f8f8f8, #f2f2f2);
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    text-shadow: 0px 1px #fff;
-    border-bottom: 1px solid #fff;
-    border-top: 1px solid #ccc;
-    padding: 8px 15px;
-    font-size: 12px;
-    color: #555;
-    box-shadow: inset 0px 1px 1px #fff;
-}
-
 .widget-content .error .form-inline button {
     margin-left: -2px;
     padding: 8px 12px;
@@ -1592,10 +1542,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .widget-content .form-inline button {
     margin-left: 0px;
     padding: 7px 12px;
-}
-
-.widget .padd .modal-body {
-    padding: 13px 15px;
 }
 
 .buttons button {
@@ -1629,10 +1575,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
 .widget .nav-tabs {
     margin-bottom: 5px;
-}
-
-.widget .padd, .modal-body {
-    padding: 13px 15px;
 }
 
 .portlets {
@@ -3050,21 +2992,6 @@ ul.inbox-pagination li {
     background: #eeeeee;
 }
 
-.inbox-body .modal .modal-body input, .inbox-body .modal .modal-body textarea {
-    border: 1px solid #e6e6e6;
-    box-shadow: none;
-}
-
-.modal-header h4.modal-title {
-    font-weight: 300;
-    font-family: 'Lato', sans-serif;
-}
-
-.modal-body label {
-    font-weight: 400;
-    font-family: 'Lato', sans-serif;
-}
-
 /*404 page*/
 
 .page-404 {
@@ -3573,12 +3500,6 @@ ul.amounts li {
     border-radius: 4px;
     -webkit-border-radius: 4px;
     font-weight: 300;
-}
-
-/*panel heading color*/
-.panel-heading, .modal-header {
-    color: #0b0c74;
-
 }
 
 .panel-heading h3 {
@@ -4729,6 +4650,7 @@ table.sliders tr td {
 .margin-left-20 {
     margin-left: 20px;
 }
+
 .article-border{
     margin:10px;
     border:2px solid darksalmon;
@@ -4775,4 +4697,9 @@ section .system-management-table-280{
 
 section .system-management-table-470{
     min-height:470px;
+}
+.hint-color{
+    margin-top: 5px;
+    color: #c3bfb9;
+    font-size: 12px;
 }

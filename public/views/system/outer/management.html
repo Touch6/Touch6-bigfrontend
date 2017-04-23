@@ -10,27 +10,6 @@
             <div class="col-sm-6 ">
                 <section class="panel system-management-table-280" ng-include="'views/system/include/modules.html'">
                 </section>
-                <!-- page end-->
-                <div class="page">
-                    <!--<div class="pull-right">-->
-                    <div>
-                        <pagination boundary-links="true"
-                                    total-items="moduleOfTotal"
-                                    ng-model="moduleOfCurrentPage"
-                                    class="pagination-md"
-                                    ng-change="changeModulePage()"
-                                    max-size="moduleOfMaxSize"
-                                    rotate="false"
-                                    first-text="&laquo;"
-                                    previous-text="&lsaquo;"
-                                    next-text="&rsaquo;"
-                                    last-text="&raquo;"
-                                    force-ellipses="true"
-                                    items-per-page="moduleOfPageSize">
-                        </pagination>
-                        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{moduleOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{moduleOfTotal}}&nbsp;&nbsp;条</span>
-                    </div>
-                </div>
             </div>
             <div class="col-sm-6 ">
                 <section class="panel system-management-table-280" ng-include="'views/system/include/menu.html'">

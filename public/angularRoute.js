@@ -49,8 +49,7 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
         })
         .state('hotspot.test', {//
             url: '/test',
-            templateUrl: 'views/hotspot/test.html',
-            controller: 'ToutiaoController'
+            templateUrl: 'plugins/modal/index.html'
         })
         .state('article', {//
             url: '/article',
@@ -124,7 +123,6 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
         .state('system', {
             url: '/system',
             templateUrl: 'views/system/system.html',
-            controller: 'SystemController'
         })
         .state('system.management', {
             url: '/management',

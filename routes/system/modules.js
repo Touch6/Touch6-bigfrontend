@@ -54,6 +54,18 @@ router.get('/list', function (req, res) {
     });
 });
 
+router.get('/selectlist', function (req, res) {
+
+    moduleModel.selectList().done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("获取模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
 router.get('/common', function (req, res) {
 
     console.log("node端加载公共模块")

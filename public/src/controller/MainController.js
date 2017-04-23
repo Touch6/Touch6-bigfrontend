@@ -36,7 +36,7 @@ consoleApp.controller("NaviController", function ($rootScope, $scope, $window, $
     console.log("NaviController")
 });
 /**********************************头条路由**************************************/
-consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window, toutiao,modules, $cookies) {
+consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window, toutiao, modules, $cookies) {
 
     $scope.toutiaoList = function (page, pageSize) {
         _showMask();
@@ -77,7 +77,7 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
             console.log("模块列表加载失败" + err);
         });
     }
-    $scope.pageModules(1,10);
+    $scope.pageModules(1, 10);
 });
 /**********************************工具路由**************************************/
 consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, tools, $cookies) {
@@ -350,23 +350,7 @@ consoleApp.controller("SystemController", function ($rootScope, $scope, $window,
             console.log("用户列表加载失败" + err);
         });
     }
-    $scope.pageModules = function (page, pageSize) {
-        modules.pageModules(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageModuleList = pageObj.list;
-            $scope.moduleOfCurrentPage = page;
-            $scope.moduleOfPageSize = pageSize;
-            $scope.moduleOfTotal = pageObj.total;
-            $scope.moduleOfPages = pageObj.pages;
-            $scope.moduleOfMaxSize = 20;
-            //当页数改变以后，需要重新获取
-            $scope.changeModulePage = function () {
-                $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
-            };
-        }, function (err) {
-            console.log("模块列表加载失败" + err);
-        });
-    }
+
     $scope.pageMenus = function (page, pageSize) {
         menu.pageMenus(page, pageSize).then(function (data) {
             var pageObj = data.object;
@@ -486,16 +470,79 @@ consoleApp.controller("SystemController", function ($rootScope, $scope, $window,
             console.log("菜单权限列表加载失败" + err);
         });
     }
-    $scope.pageModules(1,5);
-    $scope.pageMenus(1,5);
-    $scope.pageRoles(1,5);
-    $scope.pageAuths(1,5);
-    $scope.pageRoutes(1,5);
+    $scope.pageMenus(1, 5);
+    $scope.pageRoles(1, 5);
+    $scope.pageAuths(1, 5);
+    $scope.pageRoutes(1, 5);
     //页面显示，加载所有信息？
-    $scope.pageUsers(1,10);
-    $scope.pageUserroles(1,10);
-    $scope.pageAuthroles(1,10);
-    $scope.pageAuthmenus(1,10);
+    $scope.pageUsers(1, 10);
+    $scope.pageUserroles(1, 10);
+    $scope.pageAuthroles(1, 10);
+    $scope.pageAuthmenus(1, 10);
+});
+
+/**********************************系统设置**************************************/
+consoleApp.controller("ModuleController", function ($rootScope, $scope, $window, $cookies, $cookieStore, modules) {
+    $scope.pageModules = function (page, pageSize) {
+        modules.pageModules(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.pageModuleList = pageObj.list;
+            $scope.moduleOfCurrentPage = page;
+            $scope.moduleOfPageSize = pageSize;
+            $scope.moduleOfTotal = pageObj.total;
+            $scope.moduleOfPages = pageObj.pages;
+            $scope.moduleOfMaxSize = 20;
+            //当页数改变以后，需要重新获取
+            $scope.changeModulePage = function () {
+                $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+            };
+        }, function (err) {
+            console.log("模块列表加载失败" + err);
+        });
+    };
+    $scope.pageModules(1, 5);
+
+    $scope.loadSelectList = function () {
+        modules.selectList().then(function (data) {
+            $scope.moduleSelectList = data.object;
+        }, function (err) {
+            console.log("模块列表加载失败" + err);
+        });
+    }
+    $scope.module = {
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.moduleObject = {
+        add: function () {
+            if (!$scope.module.sort) {
+                //不选默认排序0
+                $scope.module.sort = 1;
+            }
+            modules.addModule($scope.module)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '模块名:' + mo.name, 'success');
+                    $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+                }, function (err) {
+                    $scope.addSuccess = false;
+                    console.log(err)
+                });
+        },
+        delete: function (moduleId) {
+            _showMask();
+            modules.delete(moduleId)
+                .then(function (data) {
+                    $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        }
+    }
 });
 
 /************************************登录模块*************************************************/

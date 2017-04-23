@@ -1,7 +1,7 @@
 <header class="panel-header">
     <label>路由管理</label>
     <label class="pull-right">
-        <a class="btn btn-primary btn-sm" href="#"><i class="icon_plus_alt2"></i></a>
+        <a class="btn btn-primary btn-sm"  data-modal="modal-13"><i class="icon_plus_alt2"></i></a>
         <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
         <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
     </label>
@@ -24,7 +24,7 @@
         <td>{{route.rank}}</td>
         <td>{{route.uisref}}</td>
         <td>{{route.description}}</td>
-        <td>{{auth.createTime|date:'yyyy-MM-dd'}}</td>
+        <td>{{auth.createTime|date:'yyyy年MM月dd日'}}</td>
     </tr>
     </tbody>
 </table>
