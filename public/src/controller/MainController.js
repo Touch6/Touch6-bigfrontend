@@ -483,26 +483,6 @@ consoleApp.controller("SystemController", function ($rootScope, $scope, $window,
 
 /**********************************系统设置**************************************/
 consoleApp.controller("ModuleController", function ($rootScope, $scope, $window, $cookies, $cookieStore, modules) {
-    $scope.pageModules = function (page, pageSize) {
-        modules.pageModules(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.moduleList = pageObj.list;
-            $scope.currentPage = page;
-            $scope.pageSize = pageSize;
-            $scope.total = pageObj.total;
-            $scope.pages = pageObj.pages;
-            $scope.maxSize = 20;
-            //当页数改变以后，需要重新获取
-            $scope.changeModulePage = function () {
-                $scope.pageModules($scope.currentPage, $scope.pageSize);
-            };
-        }, function (err) {
-            console.log("模块列表加载失败" + err);
-        });
-    };
-    $scope.pageModules(1, 5);
-
-
     $scope.addModuleInput = {
         name: '',
         className: '',
@@ -517,6 +497,23 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
         sort: ''
     }
     $scope.moduleObject = {
+        pageModules: function (page, pageSize) {
+            modules.pageModules(page, pageSize).then(function (data) {
+                var pageObj = data.object;
+                $scope.moduleList = pageObj.list;
+                $scope.currentPage = page;
+                $scope.pageSize = pageSize;
+                $scope.total = pageObj.total;
+                $scope.pages = pageObj.pages;
+                $scope.maxSize = 20;
+                //当页数改变以后，需要重新获取
+                $scope.changeModulePage = function () {
+                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                };
+            }, function (err) {
+                console.log("模块列表加载失败" + err);
+            });
+        },
         loadSelectModuleList: function () {
             modules.selectList().then(function (data) {
                 $scope.moduleSelectList = data.object;
@@ -528,6 +525,8 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
             if (!$scope.addModuleInput.sort) {
                 //不选默认排序0
                 $scope.addModuleInput.sort = 1;
+            } else {
+                $scope.addModuleInput.sort = $scope.addModuleInput.sort + 1;
             }
             modules.addModule($scope.addModuleInput)
                 .then(function (data) {
@@ -578,17 +577,12 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 });
         },
         edit: function () {
-            if (!$scope.updateModuleInput.sort) {
-                //不选默认排序0
-                $scope.updateModuleInput.sort = 1;
-            }
-            alert(JSON.stringify($scope.updateModuleInput))
             _showMask();
             modules.updateModule($scope.updateModuleInput)
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '模块名:' + mo.name, 'success');
-                    $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
                     $scope.editSuccess = false;
@@ -597,6 +591,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 });
         }
     }
+    $scope.moduleObject.pageModules(1, 5);
 });
 
 /************************************登录模块*************************************************/

@@ -2,7 +2,7 @@
     <header class="panel-header">
         <label>模块管理</label>
         <label class="pull-right">
-            <a class="btn btn-primary btn-sm" data-toggle="modal" ng-click="loadSelectList()"
+            <a class="btn btn-primary btn-sm" data-toggle="modal" ng-click="moduleObject.loadSelectModuleList()"
                data-target="#addModuleModal"><i
                     class="icon_plus_alt2"></i></a>
         </label>
@@ -33,6 +33,12 @@
                    ng-click="moduleObject.openUpdateModal(m.moduleId)"><i class="fa fa-edit"></i></a>
                 <a class="btn btn-danger btn-xs" ng-click="moduleObject.delete(m.moduleId)"><i
                         class="fa fa-minus-circle"></i></a>
+                <a class="btn btn-warning btn-xs" ng-click="moduleObject.moveUp(m.moduleId)"><i
+                        class="fa fa-arrow-circle-up"></i></a>
+                <a class="btn btn-warning btn-xs" ng-click="moduleObject.moveDown(m.moduleId)"><i
+                        class="fa fa-arrow-circle-down"></i></a>
+                <a class="btn btn-danger btn-xs" ng-click="moduleObject.moveTop(m.moduleId)"><i
+                        class="fa fa-toggle-on"></i></a>
             </td>
         </tr>
         </tbody>
@@ -110,8 +116,8 @@
                                 <div class="input-group">
                                     <span class="input-group-addon">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     <select ng-model="addModuleInput.sort" class="form-control"
-                                            ng-options="(m.sort+1) as '位于【'+m.name+'】后' for m in moduleSelectList">
-                                        <option value="">--请选择--</option>
+                                            ng-options="m.sort as '位于【'+m.name+'】后' for m in moduleSelectList">
+                                        <option value="">--置顶--</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">注:不选择排序在首位</div>
@@ -218,16 +224,6 @@
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
                                     注:链接格式只能为英文,样例XXX-YYY或XXXYYYY
                                 </div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="input-group">
-                                    <span class="input-group-addon">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <select ng-model="updateModuleInput.sort" class="form-control"
-                                            ng-options="(m.sort+1) as '位于【'+m.name+'】后' for m in moduleSelectList">
-                                        <option value="">--请选择--</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">注:不选择排序在首位</div>
                             </div>
                         </div>
                     </div>
