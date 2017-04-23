@@ -498,8 +498,9 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
     }
     $scope.moduleObject = {
         pageModules: function (page, pageSize) {
-            modules.pageModules(page, pageSize).then(function (data) {
+            modules.pageModulesMenus(page, pageSize).then(function (data) {
                 var pageObj = data.object;
+                console.log(JSON.stringify(pageObj))
                 $scope.moduleList = pageObj.list;
                 $scope.currentPage = page;
                 $scope.pageSize = pageSize;

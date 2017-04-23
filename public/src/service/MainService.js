@@ -39,6 +39,25 @@ consoleApp.factory("modules", function ($http, $q, $cookies) {
             });
             return deferred.promise;
         },
+        pageModulesMenus: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/module/page/modules/menus', {
+                params: {
+                    page: page,
+                    pageSize: pageSize
+                }
+            }).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
         selectList: function () {
             var deferred;
             deferred = $q.defer();

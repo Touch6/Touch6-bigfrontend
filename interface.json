@@ -583,6 +583,15 @@
       "method": "get"
     },
     {
+      "name": "系统管理模块(包括菜单)列表",
+      "id": "module.pageModulesMenus",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/page/modules/menus",
+        "test": "http://localhost:28081/t6/system/page/modules/menus"
+      },
+      "method": "get"
+    },
+    {
       "name": "系统管理模块下拉框列表",
       "id": "module.selectList",
       "urls": {
