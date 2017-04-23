@@ -60,24 +60,24 @@ consoleApp.controller("ToutiaoController", function ($rootScope, $scope, $window
         });
     }
     $scope.toutiaoList(1, 10);//默认获取10条
-    $scope.pageModules = function (page, pageSize) {
-        modules.pageModules(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageModuleList = pageObj.list;
-            $scope.moduleOfCurrentPage = page;
-            $scope.moduleOfPageSize = pageSize;
-            $scope.moduleOfTotal = pageObj.total;
-            $scope.moduleOfPages = pageObj.pages;
-            $scope.moduleOfMaxSize = 20;
-            //当页数改变以后，需要重新获取
-            $scope.changeModulePage = function () {
-                $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
-            };
-        }, function (err) {
-            console.log("模块列表加载失败" + err);
-        });
-    }
-    $scope.pageModules(1, 10);
+    // $scope.pageModules = function (page, pageSize) {
+    //     modules.pageModules(page, pageSize).then(function (data) {
+    //         var pageObj = data.object;
+    //         $scope.pageModuleList = pageObj.list;
+    //         $scope.moduleOfCurrentPage = page;
+    //         $scope.moduleOfPageSize = pageSize;
+    //         $scope.moduleOfTotal = pageObj.total;
+    //         $scope.moduleOfPages = pageObj.pages;
+    //         $scope.moduleOfMaxSize = 20;
+    //         //当页数改变以后，需要重新获取
+    //         $scope.changeModulePage = function () {
+    //             $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+    //         };
+    //     }, function (err) {
+    //         console.log("模块列表加载失败" + err);
+    //     });
+    // }
+    // $scope.pageModules(1, 10);
 });
 /**********************************工具路由**************************************/
 consoleApp.controller("ToolsController", function ($rootScope, $scope, $window, tools, $cookies) {
@@ -501,6 +501,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
             modules.pageModulesMenus(page, pageSize).then(function (data) {
                 var pageObj = data.object;
                 console.log(JSON.stringify(pageObj))
+                $scope.modulePageObj=pageObj;
                 $scope.moduleList = pageObj.list;
                 $scope.currentPage = page;
                 $scope.pageSize = pageSize;
@@ -509,7 +510,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 $scope.maxSize = 20;
                 //当页数改变以后，需要重新获取
                 $scope.changeModulePage = function () {
-                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    $scope.moduleObject.pageModules($scope.modulePageObj.pageNum, $scope.modulePageObj.pageSize);
                 };
             }, function (err) {
                 console.log("模块列表加载失败" + err);
