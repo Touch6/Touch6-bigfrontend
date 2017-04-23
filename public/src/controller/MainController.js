@@ -498,10 +498,8 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
     }
     $scope.moduleObject = {
         pageModules: function (page, pageSize) {
-            modules.pageModulesMenus(page, pageSize).then(function (data) {
+            modules.pageModules(page, pageSize).then(function (data) {
                 var pageObj = data.object;
-                console.log(JSON.stringify(pageObj))
-                $scope.modulePageObj=pageObj;
                 $scope.moduleList = pageObj.list;
                 $scope.currentPage = page;
                 $scope.pageSize = pageSize;
@@ -510,7 +508,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 $scope.maxSize = 20;
                 //当页数改变以后，需要重新获取
                 $scope.changeModulePage = function () {
-                    $scope.moduleObject.pageModules($scope.modulePageObj.pageNum, $scope.modulePageObj.pageSize);
+                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                 };
             }, function (err) {
                 console.log("模块列表加载失败" + err);
@@ -534,7 +532,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '模块名:' + mo.name, 'success');
-                    $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+                    $scope.pageModules($scope.currentPage, $scope.pageSize);
                 }, function (err) {
                     $scope.addSuccess = false;
                     console.log(err)
@@ -545,7 +543,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 _showMask();
                 modules.delete(moduleId)
                     .then(function (data) {
-                        $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+                        $scope.pageModules($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
                         console.log(err);
@@ -588,6 +586,39 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                     _hideMask();
                 }, function (err) {
                     $scope.editSuccess = false;
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveTop: function (moduleId) {
+            _showMask();
+            modules.moveTop(moduleId)
+                .then(function (data) {
+                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveUp: function (moduleId) {
+            _showMask();
+            modules.moveUp(moduleId)
+                .then(function (data) {
+                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveDown: function (moduleId) {
+            _showMask();
+            modules.moveDown(moduleId)
+                .then(function (data) {
+                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
                     console.log(err);
                     _hideMask();
                 });

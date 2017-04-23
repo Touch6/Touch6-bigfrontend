@@ -9,7 +9,7 @@ router.post('/', function (req, res) {
     moduleModel.addModule(req.body.module, {}).done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("添加模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
@@ -22,8 +22,46 @@ router.put('/', function (req, res) {
     moduleModel.updateModule(req.body.module, {}).done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("修改模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
+router.get('/top', function (req, res) {
+
+    console.log("置顶模块信息：" + req.query.moduleId);
+    moduleModel.moveTop({moduleId: req.query.moduleId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if (error.statusCode == '400') {
+            console.log("置顶模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
+router.get('/up', function (req, res) {
+
+    console.log("上移模块信息：" + req.query.moduleId);
+    moduleModel.moveUp({moduleId: req.query.moduleId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if (error.statusCode == '400') {
+            console.log("上移模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+router.get('/down', function (req, res) {
+
+    console.log("下移模块信息：" + req.query.moduleId);
+    moduleModel.moveDown({moduleId: req.query.moduleId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if (error.statusCode == '400') {
+            console.log("下移模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
     });
@@ -32,10 +70,10 @@ router.put('/', function (req, res) {
 router.get('/', function (req, res) {
 
     console.log("获取模块信息：" + req.query.moduleId);
-    moduleModel.moduleInfo({moduleId:req.query.moduleId}).done(function (data) {
+    moduleModel.moduleInfo({moduleId: req.query.moduleId}).done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("获取模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
@@ -47,7 +85,7 @@ router.get('/list', function (req, res) {
     moduleModel.moduleList().done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("获取模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
@@ -59,7 +97,7 @@ router.get('/selectlist', function (req, res) {
     moduleModel.selectList().done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("获取模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
@@ -69,11 +107,11 @@ router.get('/selectlist', function (req, res) {
 router.get('/common', function (req, res) {
 
     console.log("node端加载公共模块")
-    moduleModel.commonModules({roleId:10000}).done(function (data) {
-        console.log("加载的公共模块:"+JSON.stringify(data));
+    moduleModel.commonModules({roleId: 10000}).done(function (data) {
+        console.log("加载的公共模块:" + JSON.stringify(data));
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("获取公共模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
@@ -82,10 +120,10 @@ router.get('/common', function (req, res) {
 
 router.get('/loginuser', function (req, res) {
 
-    moduleModel.loginuserModules({token:req.query.token}).done(function (data) {
+    moduleModel.loginuserModules({token: req.query.token}).done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("获取登录用户模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
@@ -95,10 +133,10 @@ router.get('/loginuser', function (req, res) {
 router.delete('/', function (req, res) {
 
     console.log("删除模块信息：" + req.query.moduleId);
-    moduleModel.deleteModule({moduleId:req.query.moduleId}).done(function (data) {
+    moduleModel.deleteModule({moduleId: req.query.moduleId}).done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("删除模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
@@ -108,10 +146,10 @@ router.delete('/', function (req, res) {
 
 router.get('/page/modules', function (req, res) {
 
-    moduleModel.pageModules({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+    moduleModel.pageModules({page: req.query.page, pageSize: req.query.pageSize}).done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("获取模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
@@ -120,10 +158,10 @@ router.get('/page/modules', function (req, res) {
 
 router.get('/page/modules/menus', function (req, res) {
 
-    moduleModel.pageModulesMenus({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+    moduleModel.pageModulesMenus({page: req.query.page, pageSize: req.query.pageSize}).done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("获取模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
@@ -132,10 +170,10 @@ router.get('/page/modules/menus', function (req, res) {
 
 router.get('/page/modules', function (req, res) {
 
-    moduleModel.pageModules({page:req.query.page,pageSize:req.query.pageSize}).done(function (data) {
+    moduleModel.pageModules({page: req.query.page, pageSize: req.query.pageSize}).done(function (data) {
         res.send(data);
     }).error(function (error) {
-        if(error.statusCode=='400'){
+        if (error.statusCode == '400') {
             console.log("获取模块失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }

@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="m in modulePageObj.list">
+        <tr ng-repeat="m in moduleList">
             <td>{{m.name}}</td>
             <td>{{m.className}}</td>
             <td>{{m.attrLink}}</td>
@@ -48,8 +48,8 @@
         <!--<div class="pull-right">-->
         <div>
             <pagination boundary-links="true"
-                        total-items="modulePageObj.total"
-                        ng-model="modulePageObj.pageNum"
+                        total-items="total"
+                        ng-model="currentPage"
                         class="pagination-md"
                         ng-change="changeModulePage()"
                         max-size="maxSize"
@@ -59,9 +59,9 @@
                         next-text="&rsaquo;"
                         last-text="&raquo;"
                         force-ellipses="true"
-                        items-per-page="modulePageObj.pageSize">
+                        items-per-page="pageSize">
             </pagination>
-            <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{modulePageObj.pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{modulePageObj.total}}&nbsp;&nbsp;条</span>
+            <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{total}}&nbsp;&nbsp;条</span>
         </div>
     </div>
 

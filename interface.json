@@ -392,6 +392,33 @@
       "contentType": "application/json"
     },
     {
+      "name": "模块置顶",
+      "id": "module.moveTop",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module/top",
+        "test": "http://localhost:28081/t6/system/module/top"
+      },
+      "method": "get"
+    },
+    {
+      "name": "模块上移",
+      "id": "module.moveUp",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module/up",
+        "test": "http://localhost:28081/t6/system/module/up"
+      },
+      "method": "get"
+    },
+    {
+      "name": "模块下移",
+      "id": "module.moveDown",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module/down",
+        "test": "http://localhost:28081/t6/system/module/down"
+      },
+      "method": "get"
+    },
+    {
       "name": "模块列表",
       "id": "module.moduleList",
       "urls": {
