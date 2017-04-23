@@ -509,7 +509,14 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
             console.log("模块列表加载失败" + err);
         });
     }
-    $scope.module = {
+    $scope.addModuleInput = {
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.updateModuleInput = {
+        moduleId: '',
         name: '',
         className: '',
         attrLink: '',
@@ -517,11 +524,11 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
     }
     $scope.moduleObject = {
         add: function () {
-            if (!$scope.module.sort) {
+            if (!$scope.addModuleInput.sort) {
                 //不选默认排序0
-                $scope.module.sort = 1;
+                $scope.addModuleInput.sort = 1;
             }
-            modules.addModule($scope.module)
+            modules.addModule($scope.addModuleInput)
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '模块名:' + mo.name, 'success');
@@ -532,12 +539,52 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 });
         },
         delete: function (moduleId) {
+            swal(deleteOptions, function () {
+                _showMask();
+                modules.delete(moduleId)
+                    .then(function (data) {
+                        $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
+                        _hideMask();
+                    }, function (err) {
+                        console.log(err);
+                        _hideMask();
+                    });
+            })
+        },
+        view: function (moduleId) {
             _showMask();
-            modules.delete(moduleId)
+            modules.viewDetail(moduleId)
                 .then(function (data) {
+                    $scope.module = data.object;
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openUpdateModal: function (moduleId) {
+            _showMask();
+            modules.viewDetail(moduleId)
+                .then(function (data1) {
+                    $scope.updateModuleInput = data1.object;
+                    //加载列表
+                    $scope.loadSelectList();
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        edit: function () {
+            _showMask();
+            modules.updateModule($scope.updateModuleInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '模块名:' + mo.name, 'success');
                     $scope.pageModules($scope.moduleOfCurrentPage, $scope.moduleOfPageSize);
                     _hideMask();
                 }, function (err) {
+                    $scope.editSuccess = false;
                     console.log(err);
                     _hideMask();
                 });

@@ -3,10 +3,8 @@
         <label>模块管理</label>
         <label class="pull-right">
             <a class="btn btn-primary btn-sm" data-toggle="modal" ng-click="loadSelectList()"
-               data-target="#moduleModal"><i
+               data-target="#addModuleModal"><i
                     class="icon_plus_alt2"></i></a>
-            <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-            <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
         </label>
     </header>
 
@@ -29,8 +27,12 @@
             <td>{{m.sort}}</td>
             <td>{{m.createTime|date:'yyyy年MM月dd日'}}</td>
             <td>
-                <a class="btn btn-success btn-xs" href="#"><i class="icon_check_alt2"></i></a>
-                <a class="btn btn-danger btn-xs" ng-click="moduleObject.delete(m.moduleId)"><i class="icon_close_alt2"></i></a>
+                <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#viewModuleModal"
+                   ng-click="moduleObject.view(m.moduleId)"><i class="fa fa-eye"></i></a>
+                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#updateModuleModal"
+                   ng-click="moduleObject.openUpdateModal(m.moduleId)"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger btn-xs" ng-click="moduleObject.delete(m.moduleId)"><i
+                        class="fa fa-minus-circle"></i></a>
             </td>
         </tr>
         </tbody>
@@ -59,7 +61,7 @@
 
     <!--新增模态框-->
     <!-- Modal -->
-    <div class="modal fade modal-primary" id="moduleModal" tabindex="-1" role="dialog" aria-hidden="false"
+    <div class="modal fade modal-primary" id="addModuleModal" tabindex="-1" role="dialog" aria-hidden="false"
          aria-labelledby="myModalLabel"
          data-backdrop="static">
         <div class="modal-dialog" style="left: 50px;">
@@ -77,7 +79,7 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
                                     <span class="input-group-addon">模块名称&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" class="input-group form-control" ng-model="module.name"
+                                    <input type="text" class="input-group form-control" ng-model="addModuleInput.name"
                                            placeholder="请输入模块名称" required/>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
@@ -87,7 +89,7 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
                                     <span class="input-group-addon">CSS CLASS</span>
-                                    <input type="text" class="input-group form-control" ng-model="module.className"
+                                    <input type="text" class="input-group form-control" ng-model="addModuleInput.className"
                                            placeholder="请输入模块的样式CSS选择器" required/>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
@@ -97,7 +99,7 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
                                     <span class="input-group-addon">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" class="input-group form-control" ng-model="module.attrLink"
+                                    <input type="text" class="input-group form-control" ng-model="addModuleInput.attrLink"
                                            placeholder="请输入模块与容器链接的标识" required/>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
@@ -107,7 +109,7 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
                                     <span class="input-group-addon">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <select ng-model="module.sort" class="form-control"
+                                    <select ng-model="addModuleInput.sort" class="form-control"
                                             ng-options="(m.sort+1) as '位于【'+m.name+'】后' for m in moduleSelectList">
                                         <option value="">--请选择(不选择默认排最前)--</option>
                                     </select>
@@ -117,8 +119,123 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">关闭</button>
-                        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="addModuleForm.$invalid">保存
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
+                                class="fa fa-times-circle"></i></button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="addModuleForm.$invalid"><i
+                                class="fa fa-floppy-o"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--查看模态框-->
+    <div class="modal fade modal-primary" id="viewModuleModal" tabindex="-1" role="dialog" aria-hidden="false"
+         aria-labelledby="myModalLabel"
+         data-backdrop="static">
+        <div class="modal-dialog" style="left: 50px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" style="color:darkseagreen">模块详情</h4>
+                </div>
+                <form role="form" name="viewModuleForm" novalidate>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="col-sm-4" style="color:darkseagreen">模块名称&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{module.name}}</div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="col-sm-4" style="color:darkseagreen">CSS CLASS</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{module.className}}
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="col-sm-4" style="color:darkseagreen">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{module.attrLink}}
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="col-sm-4" style="color:darkseagreen">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{module.sort}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
+                                class="fa fa-times-circle"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--修改模态框-->
+    <div class="modal fade modal-primary" id="updateModuleModal" tabindex="-1" role="dialog" aria-hidden="false"
+         aria-labelledby="myModalLabel"
+         data-backdrop="static">
+        <div class="modal-dialog" style="left: 50px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">修改模块</h4>
+                </div>
+                <form role="form" name="updateModuleForm" ng-submit="moduleObject.edit()" novalidate>
+                    <div class="modal-body">
+                        <div ng-show="editSuccess==false" style="text-align: center;color:red;">温馨提示:修改失败</div>
+                        <div class="row">
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <input ng-model="updateModuleInput.moduleId" hidden/>
+                                <div class="input-group">
+                                    <span class="input-group-addon">模块名称&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="text" class="input-group form-control" ng-model="updateModuleInput.name"
+                                           placeholder="请输入模块名称" required/>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:必须为中文且长度为2-4个汉字
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">CSS CLASS</span>
+                                    <input type="text" class="input-group form-control" ng-model="updateModuleInput.className"
+                                           placeholder="请输入模块的样式CSS选择器" required/>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:CSS选择器格式-隔开且只能为英文,样例XXX-YYY
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="text" class="input-group form-control" ng-model="updateModuleInput.attrLink"
+                                           placeholder="请输入模块与容器链接的标识" required/>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:链接格式只能为英文,样例XXX-YYY或XXXYYYY
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select ng-model="updateModuleInput.sort" class="form-control"
+                                            ng-options="(m.sort+1) as '位于【'+m.name+'】后' for m in moduleSelectList">
+                                        <option value="">--请选择(不选择默认排最前)--</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">注:不选择排序在首位</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
+                                class="fa fa-times-circle"></i></button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="updateModuleForm.$invalid"><i
+                                class="fa fa-floppy-o"></i>
                         </button>
                     </div>
                 </form>
