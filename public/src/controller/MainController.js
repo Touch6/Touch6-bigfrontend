@@ -563,6 +563,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 });
         },
         openUpdateModal: function (moduleId) {
+            $scope.updateModuleInput={};
             _showMask();
             modules.viewDetail(moduleId)
                 .then(function (data1) {
@@ -576,6 +577,11 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 });
         },
         edit: function () {
+            if (!$scope.updateModuleInput.sort) {
+                //不选默认排序0
+                $scope.updateModuleInput.sort = 1;
+            }
+            alert(JSON.stringify($scope.updateModuleInput))
             _showMask();
             modules.updateModule($scope.updateModuleInput)
                 .then(function (data) {
