@@ -782,7 +782,7 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
         sort: ''
     }
     $scope.updateRoleInput = {
-        menuId: '',
+        roleId: '',
         name: '',
         className: '',
         attrLink: '',
@@ -917,6 +917,152 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
         }
     }
     $scope.roleObject.pageRoles(1, 5);
+});
+
+/**********************************系统设置>权限管理**************************************/
+consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $cookies, $cookieStore, auth) {
+    $scope.addAuthInput = {
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.updateAuthInput = {
+        authId: '',
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.authObject = {
+        pageAuths: function (page, pageSize) {
+            auth.pageAuths(page, pageSize).then(function (data) {
+                var pageObj = data.object;
+                $scope.authList = pageObj.list;
+                $scope.currentPage = page;
+                $scope.pageSize = pageSize;
+                $scope.total = pageObj.total;
+                $scope.pages = pageObj.pages;
+                $scope.maxSize = 20;
+                //当页数改变以后，需要重新获取
+                $scope.changePage = function () {
+                    $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                };
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        loadSelectMenuList: function () {
+            auth.selectList().then(function (data) {
+                $scope.authSelectList = data.object;
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        add: function () {
+            if (!$scope.addAuthInput.sort) {
+                //不选默认排序0
+                $scope.addAuthInput.sort = 1;
+            } else {
+                $scope.addAuthInput.sort = $scope.addAuthInput.sort + 1;
+            }
+            auth.addMenu($scope.addAuthInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '菜单名:' + mo.name, 'success');
+                    $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                }, function (err) {
+                    $scope.addSuccess = false;
+                    console.log(err)
+                });
+        },
+        delete: function (authId) {
+            swal(deleteOptions, function () {
+                _showMask();
+                auth.delete(authId)
+                    .then(function (data) {
+                        $scope.moduleObject.pageAuths($scope.currentPage, $scope.pageSize);
+                        _hideMask();
+                    }, function (err) {
+                        console.log(err);
+                        _hideMask();
+                    });
+            })
+        },
+        view: function (authId) {
+            _showMask();
+            auth.viewDetail(authId)
+                .then(function (data) {
+                    $scope.auth = data.object;
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openUpdateModal: function (authId) {
+            $scope.updateAuthInput = {};
+            _showMask();
+            auth.viewDetail(authId)
+                .then(function (data1) {
+                    $scope.updateAuthInput = data1.object;
+                    //加载列表
+                    $scope.authObject.loadSelectMenuList();
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        edit: function () {
+            _showMask();
+            auth.updateMenu($scope.updateAuthInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '模块名:' + mo.name, 'success');
+                    $scope.authObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    $scope.editSuccess = false;
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveTop: function (authId) {
+            _showMask();
+            auth.moveTop(authId)
+                .then(function (data) {
+                    $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveUp: function (authId) {
+            _showMask();
+            auth.moveUp(authId)
+                .then(function (data) {
+                    $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveDown: function (authId) {
+            _showMask();
+            auth.moveDown(authId)
+                .then(function (data) {
+                    $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        }
+    }
+    $scope.authObject.pageAuths(1, 5);
 });
 
 

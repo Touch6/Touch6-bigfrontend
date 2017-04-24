@@ -24,126 +24,26 @@
             <div class="col-sm-6">
                 <section class="panel system-management-table-280" ng-include="'views/system/include/auth.html'">
                 </section>
-                <div class="page">
-                    <!--<div class="pull-right">-->
-                    <div>
-                        <pagination boundary-links="true"
-                                    total-items="authOfTotal"
-                                    ng-model="authOfCurrentPage"
-                                    class="pagination-md"
-                                    ng-change="changeAuthPage()"
-                                    max-size="authOfMaxSize"
-                                    rotate="false"
-                                    first-text="&laquo;"
-                                    previous-text="&lsaquo;"
-                                    next-text="&rsaquo;"
-                                    last-text="&raquo;"
-                                    force-ellipses="true"
-                                    items-per-page="authOfPageSize">
-                        </pagination>
-                        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{authOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{authOfTotal}}&nbsp;&nbsp;条</span>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
                 <section class="panel system-management-table-470" ng-include="'views/system/include/route.html'">
                 </section>
-                <div class="page">
-                    <!--<div class="pull-right">-->
-                    <div>
-                        <pagination boundary-links="true"
-                                    total-items="routeOfTotal"
-                                    ng-model="routeOfCurrentPage"
-                                    class="pagination-md"
-                                    ng-change="changeRoutePage()"
-                                    max-size="routeOfMaxSize"
-                                    rotate="false"
-                                    first-text="&laquo;"
-                                    previous-text="&lsaquo;"
-                                    next-text="&rsaquo;"
-                                    last-text="&raquo;"
-                                    force-ellipses="true"
-                                    items-per-page="routeOfPageSize">
-                        </pagination>
-                        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{routeOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{routeOfTotal}}&nbsp;&nbsp;条</span>
-                    </div>
-                </div>
             </div>
             <div class="col-sm-6">
                 <section class="panel system-management-table-470" ng-include="'views/system/include/authmenu.html'">
                 </section>
-                <div class="page">
-                    <!--<div class="pull-right">-->
-                    <div>
-                        <pagination boundary-links="true"
-                                    total-items="authmenuOfTotal"
-                                    ng-model="authmenuOfCurrentPage"
-                                    class="pagination-md"
-                                    ng-change="changeAuthmenuPage()"
-                                    max-size="authmenuOfMaxSize"
-                                    rotate="false"
-                                    first-text="&laquo;"
-                                    previous-text="&lsaquo;"
-                                    next-text="&rsaquo;"
-                                    last-text="&raquo;"
-                                    force-ellipses="true"
-                                    items-per-page="authmenuOfPageSize">
-                        </pagination>
-                        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{authmenuOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{authmenuOfTotal}}&nbsp;&nbsp;条</span>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
                 <section class="panel system-management-table-470" ng-include="'views/system/include/authrole.html'">
                 </section>
-                <div class="page">
-                    <!--<div class="pull-right">-->
-                    <div>
-                        <pagination boundary-links="true"
-                                    total-items="authroleOfTotal"
-                                    ng-model="authroleOfCurrentPage"
-                                    class="pagination-md"
-                                    ng-change="changeAuthrolePage()"
-                                    max-size="authroleOfMaxSize"
-                                    rotate="false"
-                                    first-text="&laquo;"
-                                    previous-text="&lsaquo;"
-                                    next-text="&rsaquo;"
-                                    last-text="&raquo;"
-                                    force-ellipses="true"
-                                    items-per-page="authroleOfPageSize">
-                        </pagination>
-                        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{authroleOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{authroleOfTotal}}&nbsp;&nbsp;条</span>
-                    </div>
-                </div>
             </div>
             <div class="col-sm-6">
                 <section class="panel system-management-table-470" ng-include="'views/system/include/userrole.html'">
                 </section>
-                <div class="page">
-                    <!--<div class="pull-right">-->
-                    <div>
-                        <pagination boundary-links="true"
-                                    total-items="userroleOfTotal"
-                                    ng-model="userroleOfCurrentPage"
-                                    class="pagination-md"
-                                    ng-change="changeUserrolePage()"
-                                    max-size="userroleOfMaxSize"
-                                    rotate="false"
-                                    first-text="&laquo;"
-                                    previous-text="&lsaquo;"
-                                    next-text="&rsaquo;"
-                                    last-text="&raquo;"
-                                    force-ellipses="true"
-                                    items-per-page="userroleOfPageSize">
-                        </pagination>
-                        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{userroleOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{userroleOfTotal}}&nbsp;&nbsp;条</span>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="row">
@@ -151,26 +51,6 @@
                 <section class="panel system-management-table-470"
                          ng-include="'views/system/include/usermanagement.html'">
                 </section>
-                <div class="page">
-                    <!--<div class="pull-right">-->
-                    <div>
-                        <pagination boundary-links="true"
-                                    total-items="userOfTotal"
-                                    ng-model="userOfCurrentPage"
-                                    class="pagination-md"
-                                    ng-change="changeUserPage()"
-                                    max-size="userOfMaxSize"
-                                    rotate="false"
-                                    first-text="&laquo;"
-                                    previous-text="&lsaquo;"
-                                    next-text="&rsaquo;"
-                                    last-text="&raquo;"
-                                    force-ellipses="true"
-                                    items-per-page="userOfPageSize">
-                        </pagination>
-                        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{userOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{userOfTotal}}&nbsp;&nbsp;条</span>
-                    </div>
-                </div>
             </div>
         </div>
         <!-- page end-->

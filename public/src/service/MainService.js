@@ -459,6 +459,118 @@ consoleApp.factory("auth", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        selectList: function () {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/auth/selectlist', {}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addAuth: function (auth) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/auth', {auth: auth}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        delete: function (authId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.delete('/~/system/auth', {params: {authId: authId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        viewDetail: function (authId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/auth', {params: {authId: authId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        updateAuth: function (auth) {
+            var deferred;
+            deferred = $q.defer();
+            $http.put('/~/system/auth', {auth: auth}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveTop: function (authId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/auth/top', {params: {authId: authId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveUp: function (authId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/auth/up', {params: {authId: authId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveDown: function (authId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/auth/down', {params: {authId: authId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 
