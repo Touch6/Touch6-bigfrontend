@@ -14,26 +14,6 @@
             <div class="col-sm-6 ">
                 <section class="panel system-management-table-280" ng-include="'views/system/include/menu.html'">
                 </section>
-                <div class="page">
-                    <!--<div class="pull-right">-->
-                    <div>
-                        <pagination boundary-links="true"
-                                    total-items="menuOfTotal"
-                                    ng-model="menuOfCurrentPage"
-                                    class="pagination-md"
-                                    ng-change="changeMenuPage()"
-                                    max-size="menuOfMaxSize"
-                                    rotate="false"
-                                    first-text="&laquo;"
-                                    previous-text="&lsaquo;"
-                                    next-text="&rsaquo;"
-                                    last-text="&raquo;"
-                                    force-ellipses="true"
-                                    items-per-page="menuOfPageSize">
-                        </pagination>
-                        <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{menuOfPages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{menuOfTotal}}&nbsp;&nbsp;条</span>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="row">

@@ -191,6 +191,118 @@ consoleApp.factory("menu", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        selectList: function () {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/menu/selectlist', {}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addMenu: function (menu) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/menu', {menu: menu}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        delete: function (menuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.delete('/~/system/menu', {params: {menuId: menuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        viewDetail: function (menuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/menu', {params: {menuId: menuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        updateModule: function (menu) {
+            var deferred;
+            deferred = $q.defer();
+            $http.put('/~/system/menu', {menu: menu}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveTop: function (menuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/menu/top', {params: {menuId: menuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveUp: function (menuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/menu/up', {params: {menuId: menuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveDown: function (menuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/menu/down', {params: {menuId: menuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 

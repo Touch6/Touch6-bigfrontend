@@ -481,7 +481,7 @@ consoleApp.controller("SystemController", function ($rootScope, $scope, $window,
     $scope.pageAuthmenus(1, 10);
 });
 
-/**********************************系统设置**************************************/
+/**********************************系统设置>模块管理**************************************/
 consoleApp.controller("ModuleController", function ($rootScope, $scope, $window, $cookies, $cookieStore, modules) {
     $scope.addModuleInput = {
         name: '',
@@ -625,6 +625,152 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
         }
     }
     $scope.moduleObject.pageModules(1, 5);
+});
+
+/**********************************系统设置>菜单管理**************************************/
+consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, menu) {
+    $scope.addMenuInput = {
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.updateMenuInput = {
+        menuId: '',
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.menuObject = {
+        pageMenus: function (page, pageSize) {
+            menu.pageMenus(page, pageSize).then(function (data) {
+                var pageObj = data.object;
+                $scope.menuList = pageObj.list;
+                $scope.currentPage = page;
+                $scope.pageSize = pageSize;
+                $scope.total = pageObj.total;
+                $scope.pages = pageObj.pages;
+                $scope.maxSize = 20;
+                //当页数改变以后，需要重新获取
+                $scope.changePage = function () {
+                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                };
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        loadSelectMenuList: function () {
+            menu.selectList().then(function (data) {
+                $scope.menuSelectList = data.object;
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        add: function () {
+            if (!$scope.addMenuInput.sort) {
+                //不选默认排序0
+                $scope.addMenuInput.sort = 1;
+            } else {
+                $scope.addMenuInput.sort = $scope.addMenuInput.sort + 1;
+            }
+            menu.addMenu($scope.addMenuInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '菜单名:' + mo.name, 'success');
+                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                }, function (err) {
+                    $scope.addSuccess = false;
+                    console.log(err)
+                });
+        },
+        delete: function (menuId) {
+            swal(deleteOptions, function () {
+                _showMask();
+                menu.delete(menuId)
+                    .then(function (data) {
+                        $scope.moduleObject.pageMenus($scope.currentPage, $scope.pageSize);
+                        _hideMask();
+                    }, function (err) {
+                        console.log(err);
+                        _hideMask();
+                    });
+            })
+        },
+        view: function (menuId) {
+            _showMask();
+            menu.viewDetail(menuId)
+                .then(function (data) {
+                    $scope.menu = data.object;
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openUpdateModal: function (menuId) {
+            $scope.updateMenuInput = {};
+            _showMask();
+            menu.viewDetail(menuId)
+                .then(function (data1) {
+                    $scope.updateMenuInput = data1.object;
+                    //加载列表
+                    $scope.menuObject.loadSelectMenuList();
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        edit: function () {
+            _showMask();
+            menu.updateMenu($scope.updateMenuInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '模块名:' + mo.name, 'success');
+                    $scope.menuObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    $scope.editSuccess = false;
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveTop: function (menuId) {
+            _showMask();
+            menu.moveTop(menuId)
+                .then(function (data) {
+                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveUp: function (menuId) {
+            _showMask();
+            menu.moveUp(menuId)
+                .then(function (data) {
+                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveDown: function (menuId) {
+            _showMask();
+            menu.moveDown(menuId)
+                .then(function (data) {
+                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        }
+    }
+    $scope.menuObject.pageMenus(1, 5);
 });
 
 /************************************登录模块*************************************************/
