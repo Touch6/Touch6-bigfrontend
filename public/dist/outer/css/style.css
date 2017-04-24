@@ -4703,3 +4703,12 @@ section .system-management-table-470{
     color: #c3bfb9;
     font-size: 12px;
 }
+.badge.badge-error{
+    background-color: #ca6861;
+}
+.badge.badge-warning{
+    background-color: #0b0c74;
+}
+.label.label-danger{
+    width:600px;
+}

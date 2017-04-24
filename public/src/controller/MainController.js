@@ -532,7 +532,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '模块名:' + mo.name, 'success');
-                    $scope.pageModules($scope.currentPage, $scope.pageSize);
+                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                 }, function (err) {
                     $scope.addSuccess = false;
                     console.log(err)
@@ -543,7 +543,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 _showMask();
                 modules.delete(moduleId)
                     .then(function (data) {
-                        $scope.pageModules($scope.currentPage, $scope.pageSize);
+                        $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
                         console.log(err);

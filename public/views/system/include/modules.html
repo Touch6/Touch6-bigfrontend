@@ -21,14 +21,12 @@
         </thead>
         <tbody>
         <tr ng-repeat="m in moduleList">
-            <td ng-if="m.sort==1"><span class="label label-inverse"><strong>{{m.name}}</strong></span></td>
-            <td ng-if="m.sort!=1">{{m.name}}</td>
+            <td ng-if="m.sort==1"><span class="label label-danger"><strong>{{m.name}}</strong></span></td>
+            <td ng-if="m.sort!=1"><span class="label label-success"><strong>{{m.name}}</strong></span></td>
 
             <td>{{m.className}}</td>
             <td>{{m.attrLink}}</td>
-            <td ng-if="$odd"><span class="badge badge-error">{{m.sort}}</span></td>
-            <td ng-if="$even"><span class="badge badge-warning">{{m.sort}}</span></td>
-
+            <td><span ng-class-even="'badge badge-error'" ng-class-odd="'badge badge-warning'">{{m.sort}}</span></td>
 
             <td>{{m.createTime|date:'yyyy年MM月dd日'}}</td>
             <td>
