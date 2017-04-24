@@ -773,6 +773,153 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
     $scope.menuObject.pageMenus(1, 5);
 });
 
+/**********************************系统设置>角色管理**************************************/
+consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $cookies, $cookieStore, role) {
+    $scope.addRoleInput = {
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.updateRoleInput = {
+        menuId: '',
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.roleObject = {
+        pageRoles: function (page, pageSize) {
+            role.pageRoles(page, pageSize).then(function (data) {
+                var pageObj = data.object;
+                $scope.roleList = pageObj.list;
+                $scope.currentPage = page;
+                $scope.pageSize = pageSize;
+                $scope.total = pageObj.total;
+                $scope.pages = pageObj.pages;
+                $scope.maxSize = 20;
+                //当页数改变以后，需要重新获取
+                $scope.changePage = function () {
+                    $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                };
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        loadSelectMenuList: function () {
+            role.selectList().then(function (data) {
+                $scope.roleSelectList = data.object;
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        add: function () {
+            if (!$scope.addRoleInput.sort) {
+                //不选默认排序0
+                $scope.addRoleInput.sort = 1;
+            } else {
+                $scope.addRoleInput.sort = $scope.addRoleInput.sort + 1;
+            }
+            role.addMenu($scope.addRoleInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '菜单名:' + mo.name, 'success');
+                    $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                }, function (err) {
+                    $scope.addSuccess = false;
+                    console.log(err)
+                });
+        },
+        delete: function (roleId) {
+            swal(deleteOptions, function () {
+                _showMask();
+                role.delete(roleId)
+                    .then(function (data) {
+                        $scope.moduleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                        _hideMask();
+                    }, function (err) {
+                        console.log(err);
+                        _hideMask();
+                    });
+            })
+        },
+        view: function (roleId) {
+            _showMask();
+            role.viewDetail(roleId)
+                .then(function (data) {
+                    $scope.role = data.object;
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openUpdateModal: function (roleId) {
+            $scope.updateRoleInput = {};
+            _showMask();
+            role.viewDetail(roleId)
+                .then(function (data1) {
+                    $scope.updateRoleInput = data1.object;
+                    //加载列表
+                    $scope.roleObject.loadSelectMenuList();
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        edit: function () {
+            _showMask();
+            role.updateMenu($scope.updateRoleInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '模块名:' + mo.name, 'success');
+                    $scope.roleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    $scope.editSuccess = false;
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveTop: function (roleId) {
+            _showMask();
+            role.moveTop(roleId)
+                .then(function (data) {
+                    $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveUp: function (roleId) {
+            _showMask();
+            role.moveUp(roleId)
+                .then(function (data) {
+                    $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveDown: function (roleId) {
+            _showMask();
+            role.moveDown(roleId)
+                .then(function (data) {
+                    $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        }
+    }
+    $scope.roleObject.pageRoles(1, 5);
+});
+
+
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $cookieStore, $location) {
     $scope.login = {};

@@ -248,7 +248,7 @@ consoleApp.factory("menu", function ($http, $q, $cookies) {
             });
             return deferred.promise;
         },
-        updateModule: function (menu) {
+        updateMenu: function (menu) {
             var deferred;
             deferred = $q.defer();
             $http.put('/~/system/menu', {menu: menu}).success(function (data) {
@@ -316,6 +316,118 @@ consoleApp.factory("role", function ($http, $q, $cookies) {
             var deferred;
             deferred = $q.defer();
             $http.get('/~/system/role/page/roles', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        selectList: function () {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/role/selectlist', {}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addRole: function (role) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/role', {role: role}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        delete: function (roleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.delete('/~/system/role', {params: {roleId: roleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        viewDetail: function (roleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/role', {params: {roleId: roleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        updateRole: function (role) {
+            var deferred;
+            deferred = $q.defer();
+            $http.put('/~/system/role', {role: role}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveTop: function (roleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/role/top', {params: {roleId: roleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveUp: function (roleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/role/up', {params: {roleId: roleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveDown: function (roleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/role/down', {params: {roleId: roleId}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
