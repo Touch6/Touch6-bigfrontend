@@ -245,8 +245,8 @@
       "name": "权限列表",
       "id": "auth.authList",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/auths",
-        "test": "http://localhost:28081/t6/system/auths"
+        "development": "http://120.77.172.143:28081/t6/system/auth/list",
+        "test": "http://localhost:28081/t6/system/auth/list"
       },
       "method": "get"
     },
@@ -292,8 +292,8 @@
       "name": "角色列表",
       "id": "role.roleList",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/roles",
-        "test": "http://localhost:28081/t6/system/roles"
+        "development": "http://120.77.172.143:28081/t6/system/role/list",
+        "test": "http://localhost:28081/t6/system/role/list"
       },
       "method": "get"
     },
@@ -339,8 +339,8 @@
       "name": "路由列表",
       "id": "route.routeList",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/routes",
-        "test": "http://localhost:28081/t6/system/routes"
+        "development": "http://120.77.172.143:28081/t6/system/route/list",
+        "test": "http://localhost:28081/t6/system/route/list"
       },
       "method": "get"
     },
@@ -359,15 +359,6 @@
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/route/:routeId",
         "test": "http://localhost:28081/t6/system/route/:routeId"
-      },
-      "method": "delete"
-    },
-    {
-      "name": "删除角色",
-      "id": "role.deleteRole",
-      "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/role/:roleId",
-        "test": "http://localhost:28081/t6/system/role/:roleId"
       },
       "method": "delete"
     },
@@ -422,8 +413,8 @@
       "name": "模块列表",
       "id": "module.moduleList",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/modules",
-        "test": "http://localhost:28081/t6/system/modules"
+        "development": "http://120.77.172.143:28081/t6/system/module/list",
+        "test": "http://localhost:28081/t6/system/module/list"
       },
       "method": "get"
     },
@@ -431,8 +422,8 @@
       "name": "公共模块列表",
       "id": "module.commonModules",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/common/modules",
-        "test": "http://localhost:28081/t6/system/common/modules"
+        "development": "http://120.77.172.143:28081/t6/system/module/common/list",
+        "test": "http://localhost:28081/t6/system/module/common/list"
       },
       "method": "get"
     },
@@ -440,8 +431,8 @@
       "name": "登录用户模块列表",
       "id": "module.loginuserModules",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/loginuser/modules",
-        "test": "http://localhost:28081/t6/system/loginuser/modules"
+        "development": "http://120.77.172.143:28081/t6/system/module/loginuser/list",
+        "test": "http://localhost:28081/t6/system/module/loginuser/list"
       },
       "method": "get"
     },
@@ -487,8 +478,8 @@
       "name": "菜单列表",
       "id": "menu.menuList",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/menus",
-        "test": "http://localhost:28081/t6/system/menus"
+        "development": "http://120.77.172.143:28081/t6/system/menu/list",
+        "test": "http://localhost:28081/t6/system/menu/list"
       },
       "method": "get"
     },
@@ -514,8 +505,8 @@
       "name": "添加角色权限配置",
       "id": "config.addAuthRole",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/auth/role",
-        "test": "http://localhost:28081/t6/system/auth/role"
+        "development": "http://120.77.172.143:28081/t6/system/authrole",
+        "test": "http://localhost:28081/t6/system/authrole"
       },
       "method": "post",
       "contentType": "application/json"
@@ -524,8 +515,8 @@
       "name": "修改角色权限配置",
       "id": "config.updateAuthRole",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/auth/role",
-        "test": "http://localhost:28081/t6/system/auth/role"
+        "development": "http://120.77.172.143:28081/t6/system/authrole",
+        "test": "http://localhost:28081/t6/system/authrole"
       },
       "method": "put",
       "contentType": "application/json"
@@ -534,8 +525,8 @@
       "name": "删除角色权限配置",
       "id": "config.deleteAuthRole",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/auth/role",
-        "test": "http://localhost:28081/t6/system/auth/role"
+        "development": "http://120.77.172.143:28081/t6/system/authrole",
+        "test": "http://localhost:28081/t6/system/authrole"
       },
       "method": "delete",
       "contentType": "application/json"
@@ -544,8 +535,8 @@
       "name": "添加菜单权限",
       "id": "config.addAuthMenu",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/auth/menu",
-        "test": "http://localhost:28081/t6/system/auth/menu"
+        "development": "http://120.77.172.143:28081/t6/system/authmenu",
+        "test": "http://localhost:28081/t6/system/authmenu"
       },
       "method": "post",
       "contentType": "application/json"
@@ -554,8 +545,8 @@
       "name": "修改菜单权限",
       "id": "config.updateAuthMenu",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/auth/menu",
-        "test": "http://localhost:28081/t6/system/auth/menu"
+        "development": "http://120.77.172.143:28081/t6/system/authmenu",
+        "test": "http://localhost:28081/t6/system/authmenu"
       },
       "method": "put",
       "contentType": "application/json"
@@ -564,8 +555,8 @@
       "name": "删除菜单权限",
       "id": "config.deleteAuthMenu",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/auth/menu",
-        "test": "http://localhost:28081/t6/system/auth/menu"
+        "development": "http://120.77.172.143:28081/t6/system/authmenu",
+        "test": "http://localhost:28081/t6/system/authmenu"
       },
       "method": "delete",
       "contentType": "application/json"
@@ -574,8 +565,8 @@
       "name": "添加用户角色",
       "id": "config.addUserRole",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/user/role",
-        "test": "http://localhost:28081/t6/system/user/role"
+        "development": "http://120.77.172.143:28081/t6/system/userrole",
+        "test": "http://localhost:28081/t6/system/userrole"
       },
       "method": "post",
       "contentType": "application/json"
@@ -584,8 +575,8 @@
       "name": "修改用户角色",
       "id": "config.updateUserRole",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/user/role",
-        "test": "http://localhost:28081/t6/system/user/role"
+        "development": "http://120.77.172.143:28081/t6/system/userrole",
+        "test": "http://localhost:28081/t6/system/userrole"
       },
       "method": "put",
       "contentType": "application/json"
@@ -594,8 +585,8 @@
       "name": "删除用户角色",
       "id": "config.deleteUserRole",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/user/role",
-        "test": "http://localhost:28081/t6/system/user/role"
+        "development": "http://120.77.172.143:28081/t6/system/userrole",
+        "test": "http://localhost:28081/t6/system/userrole"
       },
       "method": "delete",
       "contentType": "application/json"
@@ -604,8 +595,8 @@
       "name": "系统管理模块列表",
       "id": "module.pageModules",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/modules",
-        "test": "http://localhost:28081/t6/system/page/modules"
+        "development": "http://120.77.172.143:28081/t6/system/module/pageable",
+        "test": "http://localhost:28081/t6/system/module/pageable"
       },
       "method": "get"
     },
@@ -613,8 +604,8 @@
       "name": "系统管理模块(包括菜单)列表",
       "id": "module.pageModulesMenus",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/modules/menus",
-        "test": "http://localhost:28081/t6/system/page/modules/menus"
+        "development": "http://120.77.172.143:28081/t6/system/module/pageable/withmenu",
+        "test": "http://localhost:28081/t6/system/module/pageable/withmenu"
       },
       "method": "get"
     },
@@ -631,8 +622,8 @@
       "name": "系统管理菜单列表",
       "id": "menu.pageMenus",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/menus",
-        "test": "http://localhost:28081/t6/system/page/menus"
+        "development": "http://120.77.172.143:28081/t6/system/menu/pageable",
+        "test": "http://localhost:28081/t6/system/menu/pageable"
       },
       "method": "get"
     },
@@ -640,7 +631,7 @@
       "name": "系统管理角色列表",
       "id": "role.pageRoles",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/roles",
+        "development": "http://120.77.172.143:28081/t6/system/role/pageable",
         "test": "http://localhost:28081/t6/system/page/roles"
       },
       "method": "get"
@@ -649,8 +640,8 @@
       "name": "系统管理权限列表",
       "id": "auth.pageAuths",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/auths",
-        "test": "http://localhost:28081/t6/system/page/auths"
+        "development": "http://120.77.172.143:28081/t6/system/auth/pageable",
+        "test": "http://localhost:28081/t6/system/auth/pageable"
       },
       "method": "get"
     },
@@ -658,8 +649,8 @@
       "name": "系统管理路由列表",
       "id": "route.pageRoutes",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/routes",
-        "test": "http://localhost:28081/t6/system/page/routes"
+        "development": "http://120.77.172.143:28081/t6/system/route/pageable",
+        "test": "http://localhost:28081/t6/system/route/pageable"
       },
       "method": "get"
     },
@@ -667,8 +658,8 @@
       "name": "系统管理用户列表",
       "id": "usercenter.pageUsers",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/users",
-        "test": "http://localhost:28081/t6/system/page/users"
+        "development": "http://120.77.172.143:28081/t6/system/usercenter/pageable",
+        "test": "http://localhost:28081/t6/system/usercenter/pageable"
       },
       "method": "get"
     },
@@ -676,8 +667,8 @@
       "name": "系统管理角色权限列表",
       "id": "config.pageAuthRoles",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/authroles",
-        "test": "http://localhost:28081/t6/system/page/authroles"
+        "development": "http://120.77.172.143:28081/t6/system/authrole/pageable",
+        "test": "http://localhost:28081/t6/system/authrole/pageable"
       },
       "method": "get"
     },
@@ -685,8 +676,8 @@
       "name": "系统管理用户角色列表",
       "id": "config.pageUserRoles",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/userroles",
-        "test": "http://localhost:28081/t6/system/page/userroles"
+        "development": "http://120.77.172.143:28081/t6/system/userrole/pageable",
+        "test": "http://localhost:28081/t6/system/userrole/pageable"
       },
       "method": "get"
     },
@@ -694,8 +685,8 @@
       "name": "系统管理菜单权限列表",
       "id": "config.pageAuthMenus",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/page/authmenus",
-        "test": "http://localhost:28081/t6/system/page/authmenus"
+        "development": "http://120.77.172.143:28081/t6/system/authmenu/pageable",
+        "test": "http://localhost:28081/t6/system/authmenu/pageable"
       },
       "method": "get"
     }
