@@ -21,7 +21,8 @@
         </thead>
         <tbody>
         <tr ng-repeat="m in moduleList">
-            <td>{{m.name}}</td>
+            <td ng-if="m.sort==1"><strong>{{m.name}}<置顶></strong></td>
+            <td ng-if="m.sort!=1">{{m.name}}</td>
             <td>{{m.className}}</td>
             <td>{{m.attrLink}}</td>
             <td>{{m.sort}}</td>
