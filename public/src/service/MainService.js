@@ -715,57 +715,131 @@ consoleApp.factory("route", function ($http, $q, $cookies) {
 
 });
 
-/********************config模块****************************/
-consoleApp.factory("config", function ($http, $q, $cookies) {
+/********************authmenu模块****************************/
+consoleApp.factory("authmenu", function ($http, $q, $cookies) {
 
     return {
-        pageUserroles: function (page, pageSize) {
-            var deferred;
-            deferred = $q.defer();
-            $http.get('/~/system/config/page/userroles', {
-                params: {
-                    page: page,
-                    pageSize: pageSize
-                }
-            }).success(function (data) {
-                if (data) {
-                    return deferred.resolve(data);
-                } else {
-                    return deferred.reject(data);
-                }
-            }).error(function (error) {
-                return deferred.reject(error);
-            });
-            return deferred.promise;
-        },
-        pageAuthroles: function (page, pageSize) {
-            var deferred;
-            deferred = $q.defer();
-            $http.get('/~/system/config/page/authroles', {
-                params: {
-                    page: page,
-                    pageSize: pageSize
-                }
-            }).success(function (data) {
-                if (data) {
-                    return deferred.resolve(data);
-                } else {
-                    return deferred.reject(data);
-                }
-            }).error(function (error) {
-                return deferred.reject(error);
-            });
-            return deferred.promise;
-        },
         pageAuthmenus: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/~/system/config/page/authmenus', {
+            $http.get('/~/system/authmenu/pageable', {
                 params: {
                     page: page,
                     pageSize: pageSize
                 }
             }).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        selectList: function () {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authmenu/selectlist', {}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addAuthmenu: function (authmenu) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/authmenu', {authmenu: authmenu}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        delete: function (authmenuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.delete('/~/system/authmenu', {params: {authmenuId: authmenuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        viewDetail: function (authmenuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authmenu', {params: {authmenuId: authmenuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        updateAuthmenu: function (authmenu) {
+            var deferred;
+            deferred = $q.defer();
+            $http.put('/~/system/authmenu', {authmenu: authmenu}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveTop: function (authmenuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authmenu/top', {params: {authmenuId: authmenuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveUp: function (authmenuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authmenu/up', {params: {authmenuId: authmenuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveDown: function (authmenuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authmenu/down', {params: {authmenuId: authmenuId}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -780,6 +854,283 @@ consoleApp.factory("config", function ($http, $q, $cookies) {
 
 });
 
+/********************authrole模块****************************/
+consoleApp.factory("authrole", function ($http, $q, $cookies) {
+
+    return {
+        pageAuthroles: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authrole/pageable', {
+                params: {
+                    page: page,
+                    pageSize: pageSize
+                }
+            }).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        selectList: function () {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authrole/selectlist', {}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addAuthrole: function (authrole) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/authrole', {authrole: authrole}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        delete: function (authroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.delete('/~/system/authrole', {params: {authroleId: authroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        viewDetail: function (authroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authrole', {params: {authroleId: authroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        updateAuthrole: function (authrole) {
+            var deferred;
+            deferred = $q.defer();
+            $http.put('/~/system/authrole', {authrole: authrole}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveTop: function (authroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authrole/top', {params: {authroleId: authroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveUp: function (authroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authrole/up', {params: {authroleId: authroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveDown: function (authroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/authrole/down', {params: {authroleId: authroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
+
+/********************userrole模块****************************/
+consoleApp.factory("userrole", function ($http, $q, $cookies) {
+
+    return {
+        pageUserroles: function (page, pageSize) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/userrole/pageable', {
+                params: {
+                    page: page,
+                    pageSize: pageSize
+                }
+            }).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        selectList: function () {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/userrole/selectlist', {}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addUserrole: function (userrole) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/userrole', {userrole: userrole}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        delete: function (userroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.delete('/~/system/userrole', {params: {userroleId: userroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        viewDetail: function (userroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/userrole', {params: {userroleId: userroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        updateUserrole: function (userrole) {
+            var deferred;
+            deferred = $q.defer();
+            $http.put('/~/system/userrole', {userrole: userrole}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveTop: function (userroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/userrole/top', {params: {userroleId: userroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveUp: function (userroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/userrole/up', {params: {userroleId: userroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveDown: function (userroleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/userrole/down', {params: {userroleId: userroleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        }
+    }
+
+});
 
 /********************mobile模块****************************/
 consoleApp.factory("phone", function ($http, $q, $cookies) {
@@ -1184,7 +1535,7 @@ consoleApp.factory("usercenter", function ($http, $q, $cookies) {
         pageUsers: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/~/usercenter/page/users', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+            $http.get('/~/system/usercenter/pageable', {params: {page: page, pageSize: pageSize}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {

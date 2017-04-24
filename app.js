@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var usercenter = require('./routes/user/usercenter');
 /********设置nodejs路由对应的文件*************/
 var home = require('./routes/user/home');
 var ccap = require('./routes/ccap');
@@ -22,7 +21,10 @@ var role = require('./routes/system/role');
 var auth = require('./routes/system/auth');
 var modules = require('./routes/system/modules');
 var menu = require('./routes/system/menu');
-var config = require('./routes/system/config');
+var authmenu = require('./routes/system/authmenu');
+var authrole = require('./routes/system/authrole');
+var userrole = require('./routes/system/userrole');
+var usercenter = require('./routes/system/usercenter');
 var area = require('./routes/system/area');
 var route = require('./routes/system/route');
 
@@ -62,8 +64,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/~/usercenter', usercenter);
-
 app.use('/home', home);
 //验证码；
 app.use('/ccap', ccap);
@@ -79,9 +79,12 @@ app.use('/~/system/role', role);
 app.use('/~/system/auth', auth);
 app.use('/~/system/module', modules);
 app.use('/~/system/menu', menu);
-app.use('/~/system/config', config);
+app.use('/~/system/authmenu', authmenu);
+app.use('/~/system/authrole', authrole);
+app.use('/~/system/userrole', userrole);
 app.use('/~/system/area', area);
 app.use('/~/system/route', route);
+app.use('/~/system/usercenter', usercenter);
 
 app.use('/sendEmail', sendEmail);
 app.use('/touchcApp', touchcApp);

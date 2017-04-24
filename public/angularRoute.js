@@ -127,37 +127,30 @@ consoleApp.config(function ($stateProvider, $urlRouterProvider, $locationProvide
         .state('system.management', {
             url: '/management',
             templateUrl: 'views/system/outer/management.html',
-            controller: 'SystemController'
         })
         .state('system.module', {
             url: '/module',
-            templateUrl: 'views/system/outer/help.html',
-            controller: 'SystemController'
+            templateUrl: 'views/system/outer/help.html'
         })
         .state('system.menu', {
             url: '/menu',
-            templateUrl: 'views/system/outer/help.html',
-            controller: 'SystemController'
+            templateUrl: 'views/system/outer/help.html'
         })
         .state('system.auth', {
             url: '/auth',
-            templateUrl: 'views/system/outer/help.html',
-            controller: 'SystemController'
+            templateUrl: 'views/system/outer/help.html'
         })
         .state('system.role', {
             url: '/role',
-            templateUrl: 'views/system/outer/help.html',
-            controller: 'SystemController'
+            templateUrl: 'views/system/outer/help.html'
         })
         .state('system.mapping', {
             url: '/mapping',
-            templateUrl: 'views/system/outer/help.html',
-            controller: 'SystemController'
+            templateUrl: 'views/system/outer/help.html'
         })
         .state('system.route', {
             url: '/route',
-            templateUrl: 'views/system/outer/help.html',
-            controller: 'SystemController'
+            templateUrl: 'views/system/outer/help.html'
         })
     $locationProvider.html5Mode(true);
 });

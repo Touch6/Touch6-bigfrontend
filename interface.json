@@ -665,7 +665,7 @@
     },
     {
       "name": "系统管理角色权限列表",
-      "id": "config.pageAuthRoles",
+      "id": "authrole.pageAuthroles",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/authrole/pageable",
         "test": "http://localhost:28081/t6/system/authrole/pageable"
@@ -674,7 +674,7 @@
     },
     {
       "name": "系统管理用户角色列表",
-      "id": "config.pageUserRoles",
+      "id": "userrole.pageUserroles",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/userrole/pageable",
         "test": "http://localhost:28081/t6/system/userrole/pageable"
@@ -683,7 +683,7 @@
     },
     {
       "name": "系统管理菜单权限列表",
-      "id": "config.pageAuthMenus",
+      "id": "authmenu.pageAuthmenus",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/authmenu/pageable",
         "test": "http://localhost:28081/t6/system/authmenu/pageable"

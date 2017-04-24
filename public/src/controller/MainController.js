@@ -321,166 +321,6 @@ consoleApp.controller("ArticleDetailController", function ($rootScope, $scope, $
     /*******************************end*********************************/
 });
 
-/**********************************工具路由**************************************/
-consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies, $cookieStore) {
-    $scope.logout = function () {
-        $rootScope.notLogin = true;
-        $scope.user = null;
-        delete $cookies.uid;
-        $cookieStore.remove('user');
-    }
-});
-
-/**********************************系统设置**************************************/
-consoleApp.controller("SystemController", function ($rootScope, $scope, $window, $cookies, $cookieStore, usercenter, modules, menu, role, auth, config, route) {
-    $scope.pageUsers = function (page, pageSize) {
-        usercenter.pageUsers(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageUserList = pageObj.list;
-            $scope.userOfCurrentPage = page;
-            $scope.userOfPageSize = pageSize;
-            $scope.userOfTotal = pageObj.total;
-            $scope.userOfPages = pageObj.pages;
-            $scope.userOfMaxSize = 20;
-            //当页数改变以后，需要重新获取
-            $scope.changeUserPage = function () {
-                $scope.pageUsers($scope.userOfCurrentPage, $scope.userOfPageSize);
-            };
-        }, function (err) {
-            console.log("用户列表加载失败" + err);
-        });
-    }
-
-    $scope.pageMenus = function (page, pageSize) {
-        menu.pageMenus(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageMenuList = pageObj.list;
-            $scope.menuOfCurrentPage = page;
-            $scope.menuOfPageSize = pageSize;
-            $scope.menuOfTotal = pageObj.total;
-            $scope.menuOfPages = pageObj.pages;
-            $scope.menuOfMaxSize = 20;
-            //当页数改变以后，需要重新获取\
-            $scope.changeMenuPage = function () {
-                $scope.pageMenus($scope.menuOfCurrentPage, $scope.menuOfPageSize);
-            };
-        }, function (err) {
-            console.log("菜单列表加载失败" + err);
-        });
-    }
-    $scope.pageRoles = function (page, pageSize) {
-        role.pageRoles(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageRoleList = pageObj.list;
-            $scope.roleOfCurrentPage = page;
-            $scope.roleOfPageSize = pageSize;
-            $scope.roleOfTotal = pageObj.total;
-            $scope.roleOfPages = pageObj.pages;
-            $scope.roleOfMaxSize = 20;
-            //当页数改变以后，需要重新获取\
-            $scope.changeRolePage = function () {
-                $scope.pageRoles($scope.roleOfCurrentPage, $scope.roleOfPageSize);
-            };
-        }, function (err) {
-            console.log("角色列表加载失败" + err);
-        });
-    }
-    $scope.pageAuths = function (page, pageSize) {
-        auth.pageAuths(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageAuthList = pageObj.list;
-            $scope.authOfCurrentPage = page;
-            $scope.authOfPageSize = pageSize;
-            $scope.authOfTotal = pageObj.total;
-            $scope.authOfPages = pageObj.pages;
-            $scope.authOfMaxSize = 20;
-            //当页数改变以后，需要重新获取\
-            $scope.changeAuthPage = function () {
-                $scope.pageAuths($scope.authOfCurrentPage, $scope.authOfPageSize);
-            };
-        }, function (err) {
-            console.log("权限列表加载失败" + err);
-        });
-    }
-    $scope.pageRoutes = function (page, pageSize) {
-        route.pageRoutes(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageRouteList = pageObj.list;
-            $scope.routeOfCurrentPage = page;
-            $scope.routeOfPageSize = pageSize;
-            $scope.routeOfTotal = pageObj.total;
-            $scope.routeOfPages = pageObj.pages;
-            $scope.routeOfMaxSize = 20;
-            //当页数改变以后，需要重新获取\
-            $scope.changeRoutePage = function () {
-                $scope.pageRoutes($scope.routeOfCurrentPage, $scope.routeOfPageSize);
-            };
-        }, function (err) {
-            console.log("路由列表加载失败" + err);
-        });
-    }
-    $scope.pageUserroles = function (page, pageSize) {
-        config.pageUserroles(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageUserroleList = pageObj.list;
-            $scope.userroleOfCurrentPage = page;
-            $scope.userroleOfPageSize = pageSize;
-            $scope.userroleOfTotal = pageObj.total;
-            $scope.userroleOfPages = pageObj.pages;
-            $scope.userroleOfMaxSize = 20;
-            //当页数改变以后，需要重新获取\
-            $scope.changeUserrolePage = function () {
-                $scope.pageUserroles($scope.userroleOfCurrentPage, $scope.userroleOfPageSize);
-            };
-        }, function (err) {
-            console.log("用户角色列表加载失败" + err);
-        });
-    }
-    $scope.pageAuthroles = function (page, pageSize) {
-        config.pageAuthroles(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageAuthroleList = pageObj.list;
-            $scope.authroleOfCurrentPage = page;
-            $scope.authroleOfPageSize = pageSize;
-            $scope.authroleOfTotal = pageObj.total;
-            $scope.authroleOfPages = pageObj.pages;
-            $scope.authroleOfMaxSize = 20;
-            //当页数改变以后，需要重新获取\
-            $scope.changeAuthrolePage = function () {
-                $scope.pageAuthroles($scope.authroleOfCurrentPage, $scope.authroleOfPageSize);
-            };
-        }, function (err) {
-            console.log("权限角色列表加载失败" + err);
-        });
-    }
-    $scope.pageAuthmenus = function (page, pageSize) {
-        config.pageAuthmenus(page, pageSize).then(function (data) {
-            var pageObj = data.object;
-            $scope.pageAuthmenuList = pageObj.list;
-            $scope.authmenuOfCurrentPage = page;
-            $scope.authmenuOfPageSize = pageSize;
-            $scope.authmenuOfTotal = pageObj.total;
-            $scope.authmenuOfPages = pageObj.pages;
-            $scope.authmenuOfMaxSize = 20;
-            //当页数改变以后，需要重新获取\
-            $scope.changeAuthmenuPage = function () {
-                $scope.pageAuthmenus($scope.authmenuOfCurrentPage, $scope.authmenuOfPageSize);
-            };
-        }, function (err) {
-            console.log("菜单权限列表加载失败" + err);
-        });
-    }
-    $scope.pageMenus(1, 5);
-    $scope.pageRoles(1, 5);
-    $scope.pageAuths(1, 5);
-    $scope.pageRoutes(1, 5);
-    //页面显示，加载所有信息？
-    $scope.pageUsers(1, 10);
-    $scope.pageUserroles(1, 10);
-    $scope.pageAuthroles(1, 10);
-    $scope.pageAuthmenus(1, 10);
-});
-
 /**********************************系统设置>模块管理**************************************/
 consoleApp.controller("ModuleController", function ($rootScope, $scope, $window, $cookies, $cookieStore, modules) {
     $scope.addModuleInput = {
@@ -1211,6 +1051,471 @@ consoleApp.controller("RouteController", function ($rootScope, $scope, $window, 
     $scope.routeObject.pageRoutes(1, 5);
 });
 
+/**********************************系统设置>权限菜单管理**************************************/
+consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, authmenu) {
+    $scope.addAuthmenuInput = {
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.updateAuthmenuInput = {
+        authmenuId: '',
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.authmenuObject = {
+        pageAuthmenus: function (page, pageSize) {
+            authmenu.pageAuthmenus(page, pageSize).then(function (data) {
+                var pageObj = data.object;
+                $scope.authmenuList = pageObj.list;
+                $scope.currentPage = page;
+                $scope.pageSize = pageSize;
+                $scope.total = pageObj.total;
+                $scope.pages = pageObj.pages;
+                $scope.maxSize = 20;
+                //当页数改变以后，需要重新获取
+                $scope.changePage = function () {
+                    $scope.authmenuObject.pageAuthmenus($scope.currentPage, $scope.pageSize);
+                };
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        loadSelectAuthmenuList: function () {
+            authmenu.selectList().then(function (data) {
+                $scope.authmenuSelectList = data.object;
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        add: function () {
+            if (!$scope.addAuthmenuInput.sort) {
+                //不选默认排序0
+                $scope.addAuthmenuInput.sort = 1;
+            } else {
+                $scope.addAuthmenuInput.sort = $scope.addAuthmenuInput.sort + 1;
+            }
+            authmenu.addAuthmenu($scope.addAuthmenuInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '菜单名:' + mo.name, 'success');
+                    $scope.authmenuObject.pageAuthmenus($scope.currentPage, $scope.pageSize);
+                }, function (err) {
+                    $scope.addSuccess = false;
+                    console.log(err)
+                });
+        },
+        delete: function (authmenuId) {
+            swal(deleteOptions, function () {
+                _showMask();
+                authmenu.delete(authmenuId)
+                    .then(function (data) {
+                        $scope.moduleObject.pageAuthmenus($scope.currentPage, $scope.pageSize);
+                        _hideMask();
+                    }, function (err) {
+                        console.log(err);
+                        _hideMask();
+                    });
+            })
+        },
+        view: function (authmenuId) {
+            _showMask();
+            authmenu.viewDetail(authmenuId)
+                .then(function (data) {
+                    $scope.authmenu = data.object;
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openUpdateModal: function (authmenuId) {
+            $scope.updateAuthmenuInput = {};
+            _showMask();
+            authmenu.viewDetail(authmenuId)
+                .then(function (data1) {
+                    $scope.updateAuthmenuInput = data1.object;
+                    //加载列表
+                    $scope.authmenuObject.loadSelectMenuList();
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        edit: function () {
+            _showMask();
+            authmenu.updateMenu($scope.updateAuthmenuInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '模块名:' + mo.name, 'success');
+                    $scope.authmenuObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    $scope.editSuccess = false;
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveTop: function (authmenuId) {
+            _showMask();
+            authmenu.moveTop(authmenuId)
+                .then(function (data) {
+                    $scope.authmenuObject.pageAuthmenus($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveUp: function (authmenuId) {
+            _showMask();
+            authmenu.moveUp(authmenuId)
+                .then(function (data) {
+                    $scope.authmenuObject.pageAuthmenus($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveDown: function (authmenuId) {
+            _showMask();
+            authmenu.moveDown(authmenuId)
+                .then(function (data) {
+                    $scope.authmenuObject.pageAuthmenus($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        }
+    }
+    $scope.authmenuObject.pageAuthmenus(1, 5);
+});
+
+/**********************************系统设置>权限角色管理**************************************/
+consoleApp.controller("AuthroleController", function ($rootScope, $scope, $window, $cookies, $cookieStore, authrole) {
+    $scope.addAuthroleInput = {
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.updateAuthroleInput = {
+        authroleId: '',
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.authroleObject = {
+        pageAuthroles: function (page, pageSize) {
+            authrole.pageAuthroles(page, pageSize).then(function (data) {
+                var pageObj = data.object;
+                $scope.authroleList = pageObj.list;
+                $scope.currentPage = page;
+                $scope.pageSize = pageSize;
+                $scope.total = pageObj.total;
+                $scope.pages = pageObj.pages;
+                $scope.maxSize = 20;
+                //当页数改变以后，需要重新获取
+                $scope.changePage = function () {
+                    $scope.authroleObject.pageAuthroles($scope.currentPage, $scope.pageSize);
+                };
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        loadSelectAuthroleList: function () {
+            authrole.selectList().then(function (data) {
+                $scope.authroleSelectList = data.object;
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        add: function () {
+            if (!$scope.addAuthroleInput.sort) {
+                //不选默认排序0
+                $scope.addAuthroleInput.sort = 1;
+            } else {
+                $scope.addAuthroleInput.sort = $scope.addAuthroleInput.sort + 1;
+            }
+            authrole.addAuthrole($scope.addAuthroleInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '菜单名:' + mo.name, 'success');
+                    $scope.authroleObject.pageAuthroles($scope.currentPage, $scope.pageSize);
+                }, function (err) {
+                    $scope.addSuccess = false;
+                    console.log(err)
+                });
+        },
+        delete: function (authroleId) {
+            swal(deleteOptions, function () {
+                _showMask();
+                authrole.delete(authroleId)
+                    .then(function (data) {
+                        $scope.moduleObject.pageAuthroles($scope.currentPage, $scope.pageSize);
+                        _hideMask();
+                    }, function (err) {
+                        console.log(err);
+                        _hideMask();
+                    });
+            })
+        },
+        view: function (authroleId) {
+            _showMask();
+            authrole.viewDetail(authroleId)
+                .then(function (data) {
+                    $scope.authrole = data.object;
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openUpdateModal: function (authroleId) {
+            $scope.updateAuthroleInput = {};
+            _showMask();
+            authrole.viewDetail(authroleId)
+                .then(function (data1) {
+                    $scope.updateAuthroleInput = data1.object;
+                    //加载列表
+                    $scope.authroleObject.loadSelectMenuList();
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        edit: function () {
+            _showMask();
+            authrole.updateMenu($scope.updateAuthroleInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '模块名:' + mo.name, 'success');
+                    $scope.authroleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    $scope.editSuccess = false;
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveTop: function (authroleId) {
+            _showMask();
+            authrole.moveTop(authroleId)
+                .then(function (data) {
+                    $scope.authroleObject.pageAuthroles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveUp: function (authroleId) {
+            _showMask();
+            authrole.moveUp(authroleId)
+                .then(function (data) {
+                    $scope.authroleObject.pageAuthroles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveDown: function (authroleId) {
+            _showMask();
+            authrole.moveDown(authroleId)
+                .then(function (data) {
+                    $scope.authroleObject.pageAuthroles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        }
+    }
+    $scope.authroleObject.pageAuthroles(1, 5);
+});
+
+/**********************************系统设置>用户角色管理**************************************/
+consoleApp.controller("UserroleController", function ($rootScope, $scope, $window, $cookies, $cookieStore, userrole) {
+    $scope.addUserroleInput = {
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.updateUserroleInput = {
+        userroleId: '',
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.userroleObject = {
+        pageUserroles: function (page, pageSize) {
+            userrole.pageUserroles(page, pageSize).then(function (data) {
+                var pageObj = data.object;
+                $scope.userroleList = pageObj.list;
+                $scope.currentPage = page;
+                $scope.pageSize = pageSize;
+                $scope.total = pageObj.total;
+                $scope.pages = pageObj.pages;
+                $scope.maxSize = 20;
+                //当页数改变以后，需要重新获取
+                $scope.changePage = function () {
+                    $scope.userroleObject.pageUserroles($scope.currentPage, $scope.pageSize);
+                };
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        loadSelectUserroleList: function () {
+            userrole.selectList().then(function (data) {
+                $scope.userroleSelectList = data.object;
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        add: function () {
+            if (!$scope.addUserroleInput.sort) {
+                //不选默认排序0
+                $scope.addUserroleInput.sort = 1;
+            } else {
+                $scope.addUserroleInput.sort = $scope.addUserroleInput.sort + 1;
+            }
+            userrole.addUserrole($scope.addUserroleInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '菜单名:' + mo.name, 'success');
+                    $scope.userroleObject.pageUserroles($scope.currentPage, $scope.pageSize);
+                }, function (err) {
+                    $scope.addSuccess = false;
+                    console.log(err)
+                });
+        },
+        delete: function (userroleId) {
+            swal(deleteOptions, function () {
+                _showMask();
+                userrole.delete(userroleId)
+                    .then(function (data) {
+                        $scope.moduleObject.pageUserroles($scope.currentPage, $scope.pageSize);
+                        _hideMask();
+                    }, function (err) {
+                        console.log(err);
+                        _hideMask();
+                    });
+            })
+        },
+        view: function (userroleId) {
+            _showMask();
+            userrole.viewDetail(userroleId)
+                .then(function (data) {
+                    $scope.userrole = data.object;
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openUpdateModal: function (userroleId) {
+            $scope.updateUserroleInput = {};
+            _showMask();
+            userrole.viewDetail(userroleId)
+                .then(function (data1) {
+                    $scope.updateUserroleInput = data1.object;
+                    //加载列表
+                    $scope.userroleObject.loadSelectMenuList();
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        edit: function () {
+            _showMask();
+            userrole.updateMenu($scope.updateUserroleInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '模块名:' + mo.name, 'success');
+                    $scope.userroleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    $scope.editSuccess = false;
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveTop: function (userroleId) {
+            _showMask();
+            userrole.moveTop(userroleId)
+                .then(function (data) {
+                    $scope.userroleObject.pageUserroles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveUp: function (userroleId) {
+            _showMask();
+            userrole.moveUp(userroleId)
+                .then(function (data) {
+                    $scope.userroleObject.pageUserroles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveDown: function (userroleId) {
+            _showMask();
+            userrole.moveDown(userroleId)
+                .then(function (data) {
+                    $scope.userroleObject.pageUserroles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        }
+    }
+    $scope.userroleObject.pageUserroles(1, 5);
+});
+
+/**********************************工具路由**************************************/
+consoleApp.controller("UsercenterController", function ($rootScope, $scope, $window, usercenter, $cookies, $cookieStore) {
+    $scope.logout = function () {
+        $rootScope.notLogin = true;
+        $scope.user = null;
+        delete $cookies.uid;
+        $cookieStore.remove('user');
+    }
+    $scope.pageUsers = function (page, pageSize) {
+        usercenter.pageUsers(page, pageSize).then(function (data) {
+            var pageObj = data.object;
+            $scope.userList = pageObj.list;
+            $scope.currentPage = page;
+            $scope.pageSize = pageSize;
+            $scope.total = pageObj.total;
+            $scope.pages = pageObj.pages;
+            $scope.maxSize = 20;
+            //当页数改变以后，需要重新获取
+            $scope.changePage = function () {
+                $scope.pageUsers($scope.currentPage, $scope.pageSize);
+            };
+        }, function (err) {
+            console.log("用户列表加载失败" + err);
+        });
+    }
+    $scope.pageUsers(1, 10);
+});
 
 /************************************登录模块*************************************************/
 consoleApp.controller("LoginController", function ($rootScope, $scope, $window, user, $cookies, $cookieStore, $location) {
