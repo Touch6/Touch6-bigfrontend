@@ -806,7 +806,7 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
                 console.log("菜单列表加载失败" + err);
             });
         },
-        loadSelectMenuList: function () {
+        loadSelectRoleList: function () {
             role.selectList().then(function (data) {
                 $scope.roleSelectList = data.object;
             }, function (err) {
@@ -820,7 +820,7 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
             } else {
                 $scope.addRoleInput.sort = $scope.addRoleInput.sort + 1;
             }
-            role.addMenu($scope.addRoleInput)
+            role.addRole($scope.addRoleInput)
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '菜单名:' + mo.name, 'success');
@@ -952,7 +952,7 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
                 console.log("菜单列表加载失败" + err);
             });
         },
-        loadSelectMenuList: function () {
+        loadSelectAuthList: function () {
             auth.selectList().then(function (data) {
                 $scope.authSelectList = data.object;
             }, function (err) {
@@ -966,7 +966,7 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
             } else {
                 $scope.addAuthInput.sort = $scope.addAuthInput.sort + 1;
             }
-            auth.addMenu($scope.addAuthInput)
+            auth.addAuth($scope.addAuthInput)
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '菜单名:' + mo.name, 'success');
@@ -1063,6 +1063,152 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
         }
     }
     $scope.authObject.pageAuths(1, 5);
+});
+
+/**********************************系统设置>路由管理**************************************/
+consoleApp.controller("RouteController", function ($rootScope, $scope, $window, $cookies, $cookieStore, route) {
+    $scope.addRouteInput = {
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.updateRouteInput = {
+        routeId: '',
+        name: '',
+        className: '',
+        attrLink: '',
+        sort: ''
+    }
+    $scope.routeObject = {
+        pageRoutes: function (page, pageSize) {
+            route.pageRoutes(page, pageSize).then(function (data) {
+                var pageObj = data.object;
+                $scope.routeList = pageObj.list;
+                $scope.currentPage = page;
+                $scope.pageSize = pageSize;
+                $scope.total = pageObj.total;
+                $scope.pages = pageObj.pages;
+                $scope.maxSize = 20;
+                //当页数改变以后，需要重新获取
+                $scope.changePage = function () {
+                    $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
+                };
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        loadSelectRouteList: function () {
+            route.selectList().then(function (data) {
+                $scope.routeSelectList = data.object;
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        add: function () {
+            if (!$scope.addRouteInput.sort) {
+                //不选默认排序0
+                $scope.addRouteInput.sort = 1;
+            } else {
+                $scope.addRouteInput.sort = $scope.addRouteInput.sort + 1;
+            }
+            route.addRoute($scope.addRouteInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '菜单名:' + mo.name, 'success');
+                    $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
+                }, function (err) {
+                    $scope.addSuccess = false;
+                    console.log(err)
+                });
+        },
+        delete: function (routeId) {
+            swal(deleteOptions, function () {
+                _showMask();
+                route.delete(routeId)
+                    .then(function (data) {
+                        $scope.moduleObject.pageRoutes($scope.currentPage, $scope.pageSize);
+                        _hideMask();
+                    }, function (err) {
+                        console.log(err);
+                        _hideMask();
+                    });
+            })
+        },
+        view: function (routeId) {
+            _showMask();
+            route.viewDetail(routeId)
+                .then(function (data) {
+                    $scope.route = data.object;
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openUpdateModal: function (routeId) {
+            $scope.updateRouteInput = {};
+            _showMask();
+            route.viewDetail(routeId)
+                .then(function (data1) {
+                    $scope.updateRouteInput = data1.object;
+                    //加载列表
+                    $scope.routeObject.loadSelectMenuList();
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        edit: function () {
+            _showMask();
+            route.updateMenu($scope.updateRouteInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '模块名:' + mo.name, 'success');
+                    $scope.routeObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    $scope.editSuccess = false;
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveTop: function (routeId) {
+            _showMask();
+            route.moveTop(routeId)
+                .then(function (data) {
+                    $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveUp: function (routeId) {
+            _showMask();
+            route.moveUp(routeId)
+                .then(function (data) {
+                    $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        moveDown: function (routeId) {
+            _showMask();
+            route.moveDown(routeId)
+                .then(function (data) {
+                    $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        }
+    }
+    $scope.routeObject.pageRoutes(1, 5);
 });
 
 

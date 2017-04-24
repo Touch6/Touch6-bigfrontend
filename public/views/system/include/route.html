@@ -1,30 +1,245 @@
-<header class="panel-header">
-    <label>路由管理</label>
-    <label class="pull-right">
-        <a class="btn btn-primary btn-sm"  data-modal="modal-13"><i class="icon_plus_alt2"></i></a>
-        <a class="btn btn-success btn-sm" href="#"><i class="icon_check_alt2"></i></a>
-        <a class="btn btn-danger btn-sm" href="#"><i class="icon_close_alt2"></i></a>
-    </label>
-</header>
-<table class="table table-striped table-hover">
-    <thead>
-    <tr>
-        <th>名称</th>
-        <th>上一级路由</th>
-        <th>路由级别</th>
-        <th>ui-sref</th>
-        <th>描述信息</th>
-        <th>创建时间</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="route in pageRouteList">
-        <td>{{route.name}}</td>
-        <td>{{route.superId}}</td>
-        <td>{{route.rank}}</td>
-        <td>{{route.uisref}}</td>
-        <td>{{route.description}}</td>
-        <td>{{auth.createTime|date:'yyyy年MM月dd日'}}</td>
-    </tr>
-    </tbody>
-</table>
+<div ng-controller="RouteController">
+    <header class="panel-header">
+        <label>路由管理</label>
+        <label class="pull-right">
+            <a class="btn btn-primary btn-sm" data-toggle="modal" ng-click="routeObject.loadSelectRouteList()"
+               data-target="#addRouteModal"><i
+                    class="icon_plus_alt2"></i></a>
+        </label>
+    </header>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>名称</th>
+            <th>上一级路由</th>
+            <th>路由级别</th>
+            <th>ui-sref</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="route in routeList">
+            <td>{{route.name}}</td>
+            <td>{{route.superId}}</td>
+            <td>{{route.rank}}</td>
+            <td>{{route.uisref}}</td>
+            <td>{{route.createTime|date:'yyyy年MM月dd日'}}</td>
+            <td>
+                <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#viewRouteModal"
+                   ng-click="routeObject.view(m.routeId)"><i class="fa fa-eye"></i></a>
+                <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#updateRouteModal"
+                   ng-click="routeObject.openUpdateModal(m.routeId)"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger btn-xs" ng-click="routeObject.delete(m.routeId)"><i
+                        class="fa fa-minus-circle"></i></a>
+                <a class="btn btn-warning btn-xs" ng-click="routeObject.moveUp(m.routeId)"><i
+                        class="fa fa-arrow-circle-up"></i></a>
+                <a class="btn btn-warning btn-xs" ng-click="routeObject.moveDown(m.routeId)"><i
+                        class="fa fa-arrow-circle-down"></i></a>
+                <a class="btn btn-danger btn-xs" ng-click="routeObject.moveTop(m.routeId)"><i
+                        class="fa fa-toggle-on"></i></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- page end-->
+    <div class="page">
+        <!--<div class="pull-right">-->
+        <div>
+            <pagination boundary-links="true"
+                        total-items="total"
+                        ng-model="currentPage"
+                        class="pagination-md"
+                        ng-change="changeRoutePage()"
+                        max-size="maxSize"
+                        rotate="false"
+                        first-text="&laquo;"
+                        previous-text="&lsaquo;"
+                        next-text="&rsaquo;"
+                        last-text="&raquo;"
+                        force-ellipses="true"
+                        items-per-page="pageSize">
+            </pagination>
+            <span class="totalPage" ng-cloak class="ng-cloak">共&nbsp;&nbsp;{{pages}}&nbsp;&nbsp;页，总&nbsp;&nbsp;{{total}}&nbsp;&nbsp;条</span>
+        </div>
+    </div>
+
+    <!--新增模态框-->
+    <!-- Modal -->
+    <div class="modal fade modal-primary" id="addRouteModal" tabindex="-1" role="dialog" aria-hidden="false"
+         aria-labelledby="myModalLabel"
+         data-backdrop="static">
+        <div class="modal-dialog" style="left: 50px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">添加路由</h4>
+                </div>
+                <form role="form" name="addRouteForm" ng-submit="routeObject.add()" novalidate>
+                    <div class="modal-body">
+                        <div ng-show="addSuccess==false" style="text-align: center;color:red;">温馨提示:添加失败</div>
+                        <div class="row">
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">路由名称&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="text" class="input-group form-control" ng-model="addRouteInput.name"
+                                           placeholder="请输入路由名称" required/>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:必须为中文且长度为2-4个汉字
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">CSS CLASS</span>
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="addRouteInput.className"
+                                           placeholder="请输入路由的样式CSS选择器" required/>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:CSS选择器格式-隔开且只能为英文,样例XXX-YYY
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="addRouteInput.attrLink"
+                                           placeholder="请输入路由与容器链接的标识" required/>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:链接格式只能为英文,样例XXX-YYY或XXXYYYY
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <select ng-model="addRouteInput.sort" class="form-control"
+                                            ng-options="m.sort as '位于【'+m.name+'】后' for m in routeSelectList">
+                                        <option value="">--置顶--</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">注:不选择排序在首位</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
+                                class="fa fa-times-circle"></i></button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="addRouteForm.$invalid"><i
+                                class="fa fa-floppy-o"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--查看模态框-->
+    <div class="modal fade modal-primary" id="viewRouteModal" tabindex="-1" role="dialog" aria-hidden="false"
+         aria-labelledby="myModalLabel"
+         data-backdrop="static">
+        <div class="modal-dialog" style="left: 50px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" style="color:darkseagreen">路由详情</h4>
+                </div>
+                <form role="form" name="viewRouteForm" novalidate>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="col-sm-4" style="color:darkseagreen">路由名称&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{route.name}}</div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="col-sm-4" style="color:darkseagreen">CSS CLASS</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{route.className}}
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="col-sm-4" style="color:darkseagreen">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{route.attrLink}}
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="col-sm-4" style="color:darkseagreen">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{route.sort}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
+                                class="fa fa-times-circle"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--修改模态框-->
+    <div class="modal fade modal-primary" id="updateRouteModal" tabindex="-1" role="dialog" aria-hidden="false"
+         aria-labelledby="myModalLabel"
+         data-backdrop="static">
+        <div class="modal-dialog" style="left: 50px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">修改路由</h4>
+                </div>
+                <form role="form" name="updateRouteForm" ng-submit="routeObject.edit()" novalidate>
+                    <div class="modal-body">
+                        <div ng-show="editSuccess==false" style="text-align: center;color:red;">温馨提示:修改失败</div>
+                        <div class="row">
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <input ng-model="updateRouteInput.routeId" hidden/>
+                                <div class="input-group">
+                                    <span class="input-group-addon">路由名称&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="updateRouteInput.name"
+                                           placeholder="请输入路由名称" required/>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:必须为中文且长度为2-4个汉字
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">CSS CLASS</span>
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="updateRouteInput.className"
+                                           placeholder="请输入路由的样式CSS选择器" required/>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:CSS选择器格式-隔开且只能为英文,样例XXX-YYY
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="updateRouteInput.attrLink"
+                                           placeholder="请输入路由与容器链接的标识" required/>
+                                </div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:链接格式只能为英文,样例XXX-YYY或XXXYYYY
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
+                                class="fa fa-times-circle"></i></button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="updateRouteForm.$invalid"><i
+                                class="fa fa-floppy-o"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

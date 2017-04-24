@@ -598,6 +598,118 @@ consoleApp.factory("route", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        selectList: function () {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/route/selectlist', {}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addRoute: function (route) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/route', {route: route}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        delete: function (routeId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.delete('/~/system/route', {params: {routeId: routeId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        viewDetail: function (routeId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/route', {params: {routeId: routeId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        updateRoute: function (route) {
+            var deferred;
+            deferred = $q.defer();
+            $http.put('/~/system/route', {route: route}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveTop: function (routeId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/route/top', {params: {routeId: routeId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveUp: function (routeId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/route/up', {params: {routeId: routeId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        moveDown: function (routeId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/route/down', {params: {routeId: routeId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 
