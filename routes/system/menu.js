@@ -80,5 +80,26 @@ router.get('/page/menus', function (req, res) {
     });
 });
 
+router.get('/lock', function (req, res) {
 
+    menuModel.lock({menuId:req.query.menuId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("锁定菜单失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+router.get('/unlock', function (req, res) {
+
+    menuModel.unlock({menuId:req.query.menuId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("解锁菜单失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
 module.exports = router;

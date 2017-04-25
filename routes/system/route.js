@@ -79,5 +79,26 @@ router.get('/page/routes', function (req, res) {
         }
     });
 });
+router.get('/lock', function (req, res) {
 
+    routeModel.lock({routeId:req.query.routeId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("锁定路由失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+router.get('/unlock', function (req, res) {
+
+    routeModel.unlock({routeId:req.query.routeId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("解锁路由失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
 module.exports = router;

@@ -269,6 +269,24 @@
       "method": "delete"
     },
     {
+      "name": "锁定权限",
+      "id": "auth.lock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/lock",
+        "test": "http://localhost:28081/t6/system/auth/lock"
+      },
+      "method": "get"
+    },
+    {
+      "name": "解锁权限",
+      "id": "auth.unlock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/auth/unlock",
+        "test": "http://localhost:28081/t6/system/auth/unlock"
+      },
+      "method": "get"
+    },
+    {
       "name": "添加角色",
       "id": "role.addRole",
       "urls": {
@@ -316,6 +334,24 @@
       "method": "delete"
     },
     {
+      "name": "锁定角色",
+      "id": "role.lock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/role/lock",
+        "test": "http://localhost:28081/t6/system/role/lock"
+      },
+      "method": "get"
+    },
+    {
+      "name": "解锁角色",
+      "id": "role.unlock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/role/unlock",
+        "test": "http://localhost:28081/t6/system/role/unlock"
+      },
+      "method": "get"
+    },
+    {
       "name": "添加路由",
       "id": "route.addRoute",
       "urls": {
@@ -361,6 +397,24 @@
         "test": "http://localhost:28081/t6/system/route/:routeId"
       },
       "method": "delete"
+    },
+    {
+      "name": "锁定路由",
+      "id": "route.lock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/route/lock",
+        "test": "http://localhost:28081/t6/system/route/lock"
+      },
+      "method": "get"
+    },
+    {
+      "name": "解锁路由",
+      "id": "route.unlock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/route/unlock",
+        "test": "http://localhost:28081/t6/system/route/unlock"
+      },
+      "method": "get"
     },
     {
       "name": "添加模块",
@@ -455,6 +509,24 @@
       "method": "delete"
     },
     {
+      "name": "锁定模块",
+      "id": "module.lock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module/lock",
+        "test": "http://localhost:28081/t6/system/module/lock"
+      },
+      "method": "get"
+    },
+    {
+      "name": "解锁模块",
+      "id": "module.unlock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module/unlock",
+        "test": "http://localhost:28081/t6/system/module/unlock"
+      },
+      "method": "get"
+    },
+    {
       "name": "添加菜单",
       "id": "menu.addMenu",
       "urls": {
@@ -500,6 +572,24 @@
         "test": "http://localhost:28081/t6/system/menu/:menuId"
       },
       "method": "delete"
+    },
+    {
+      "name": "锁定菜单",
+      "id": "menu.lock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menu/lock",
+        "test": "http://localhost:28081/t6/system/menu/lock"
+      },
+      "method": "get"
+    },
+    {
+      "name": "解锁菜单",
+      "id": "menu.unlock",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menu/unlock",
+        "test": "http://localhost:28081/t6/system/menu/unlock"
+      },
+      "method": "get"
     },
     {
       "name": "添加角色权限配置",

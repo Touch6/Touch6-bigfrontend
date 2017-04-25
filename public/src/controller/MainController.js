@@ -462,6 +462,28 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                     console.log(err);
                     _hideMask();
                 });
+        },
+        lock: function (moduleId) {
+            _showMask();
+            modules.lock(moduleId)
+                .then(function (data) {
+                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        unlock: function (moduleId) {
+            _showMask();
+            modules.unlock(moduleId)
+                .then(function (data) {
+                    $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
         }
     }
     $scope.moduleObject.pageModules(1, 5);
@@ -601,6 +623,28 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
         moveDown: function (menuId) {
             _showMask();
             menu.moveDown(menuId)
+                .then(function (data) {
+                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        lock: function (menuId) {
+            _showMask();
+            menu.lock(menuId)
+                .then(function (data) {
+                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        unlock: function (menuId) {
+            _showMask();
+            menu.unlock(menuId)
                 .then(function (data) {
                     $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
                     _hideMask();
@@ -754,6 +798,28 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
                     console.log(err);
                     _hideMask();
                 });
+        },
+        lock: function (roleId) {
+            _showMask();
+            role.lock(roleId)
+                .then(function (data) {
+                    $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        unlock: function (roleId) {
+            _showMask();
+            role.unlock(roleId)
+                .then(function (data) {
+                    $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
         }
     }
     $scope.roleObject.pageRoles(1, 5);
@@ -900,6 +966,28 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
                     console.log(err);
                     _hideMask();
                 });
+        },
+        lock: function (authId) {
+            _showMask();
+            auth.lock(authId)
+                .then(function (data) {
+                    $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        unlock: function (authId) {
+            _showMask();
+            auth.unlock(authId)
+                .then(function (data) {
+                    $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
         }
     }
     $scope.authObject.pageAuths(1, 5);
@@ -1039,6 +1127,28 @@ consoleApp.controller("RouteController", function ($rootScope, $scope, $window, 
         moveDown: function (routeId) {
             _showMask();
             route.moveDown(routeId)
+                .then(function (data) {
+                    $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        lock: function (routeId) {
+            _showMask();
+            route.lock(routeId)
+                .then(function (data) {
+                    $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        unlock: function (routeId) {
+            _showMask();
+            route.unlock(routeId)
                 .then(function (data) {
                     $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
                     _hideMask();

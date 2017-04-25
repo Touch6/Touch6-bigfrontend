@@ -179,4 +179,28 @@ router.get('/page/modules', function (req, res) {
         }
     });
 });
+
+router.get('/lock', function (req, res) {
+
+    moduleModel.lock({moduleId:req.query.moduleId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("锁定模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+router.get('/unlock', function (req, res) {
+
+    moduleModel.unlock({moduleId:req.query.moduleId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("解锁模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
 module.exports = router;

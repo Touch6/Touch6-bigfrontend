@@ -169,6 +169,34 @@ consoleApp.factory("modules", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        lock: function (moduleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/module/lock', {params: {moduleId: moduleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        unlock: function (moduleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/module/unlock', {params: {moduleId: moduleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 
@@ -294,6 +322,34 @@ consoleApp.factory("menu", function ($http, $q, $cookies) {
             var deferred;
             deferred = $q.defer();
             $http.get('/~/system/menu/down', {params: {menuId: menuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        lock: function (menuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/menu/lock', {params: {menuId: menuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        unlock: function (menuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/menu/unlock', {params: {menuId: menuId}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -437,6 +493,34 @@ consoleApp.factory("role", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        lock: function (roleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/role/lock', {params: {roleId: roleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        unlock: function (roleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/role/unlock', {params: {roleId: roleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 
@@ -562,6 +646,34 @@ consoleApp.factory("auth", function ($http, $q, $cookies) {
             var deferred;
             deferred = $q.defer();
             $http.get('/~/system/auth/down', {params: {authId: authId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        lock: function (authId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/auth/lock', {params: {authId: authId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        unlock: function (authId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/auth/unlock', {params: {authId: authId}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -701,6 +813,34 @@ consoleApp.factory("route", function ($http, $q, $cookies) {
             var deferred;
             deferred = $q.defer();
             $http.get('/~/system/route/down', {params: {routeId: routeId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        lock: function (routeId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/route/lock', {params: {routeId: routeId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        unlock: function (routeId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/route/unlock', {params: {routeId: routeId}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
