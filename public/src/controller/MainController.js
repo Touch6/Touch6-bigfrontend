@@ -386,11 +386,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                         $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
-                        if (err.code == '200002') {
-                            swal('', err.info, 'error')
-                        } else if (err.code == '200004') {
-                            swal('', err.info, 'error')
-                        }
+                        swal('', err.info, 'error')
                         _hideMask();
                     });
             })
