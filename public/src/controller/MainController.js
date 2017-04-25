@@ -386,7 +386,11 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                         $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
-                        console.log(err);
+                        if (err.code == '200002') {
+                            swal('', err.info, 'error')
+                        } else if (err.code == '200004') {
+                            swal('', err.info, 'error')
+                        }
                         _hideMask();
                     });
             })
@@ -470,7 +474,9 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                     $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200002') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         },
@@ -481,7 +487,9 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                     $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200003') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         }
@@ -554,7 +562,11 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                         $scope.moduleObject.pageMenus($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
-                        console.log(err);
+                        if (err.code == '200002') {
+                            swal('', err.info, 'error')
+                        } else if (err.code == '200004') {
+                            swal('', err.info, 'error')
+                        }
                         _hideMask();
                     });
             })
@@ -638,7 +650,9 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                     $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200002') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         },
@@ -649,7 +663,9 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                     $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200003') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         }
@@ -722,7 +738,11 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
                         $scope.moduleObject.pageRoles($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
-                        console.log(err);
+                        if (err.code == '200002') {
+                            swal('', err.info, 'error')
+                        } else if (err.code == '200004') {
+                            swal('', err.info, 'error')
+                        }
                         _hideMask();
                     });
             })
@@ -806,7 +826,9 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
                     $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200002') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         },
@@ -817,7 +839,9 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
                     $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200003') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         }
@@ -890,7 +914,11 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
                         $scope.moduleObject.pageAuths($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
-                        console.log(err);
+                        if (err.code == '200002') {
+                            swal('', err.info, 'error')
+                        } else if (err.code == '200004') {
+                            swal('', err.info, 'error')
+                        }
                         _hideMask();
                     });
             })
@@ -974,7 +1002,9 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
                     $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200002') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         },
@@ -985,7 +1015,9 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
                     $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200003') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         }
@@ -1058,7 +1090,11 @@ consoleApp.controller("RouteController", function ($rootScope, $scope, $window, 
                         $scope.moduleObject.pageRoutes($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
-                        console.log(err);
+                        if (err.code == '200002') {
+                            swal('', err.info, 'error')
+                        } else if (err.code == '200004') {
+                            swal('', err.info, 'error')
+                        }
                         _hideMask();
                     });
             })
@@ -1142,7 +1178,9 @@ consoleApp.controller("RouteController", function ($rootScope, $scope, $window, 
                     $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200002') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         },
@@ -1153,7 +1191,9 @@ consoleApp.controller("RouteController", function ($rootScope, $scope, $window, 
                     $scope.routeObject.pageRoutes($scope.currentPage, $scope.pageSize);
                     _hideMask();
                 }, function (err) {
-                    console.log(err);
+                    if (err.code == '200003') {
+                        swal('', err.info, 'error')
+                    }
                     _hideMask();
                 });
         }
@@ -1226,7 +1266,11 @@ consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $windo
                         $scope.moduleObject.pageAuthmenus($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
-                        console.log(err);
+                        if (err.code == '200002') {
+                            swal('', err.info, 'error')
+                        } else if (err.code == '200004') {
+                            swal('', err.info, 'error')
+                        }
                         _hideMask();
                     });
             })
@@ -1372,7 +1416,11 @@ consoleApp.controller("AuthroleController", function ($rootScope, $scope, $windo
                         $scope.moduleObject.pageAuthroles($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
-                        console.log(err);
+                        if (err.code == '200002') {
+                            swal('', err.info, 'error')
+                        } else if (err.code == '200004') {
+                            swal('', err.info, 'error')
+                        }
                         _hideMask();
                     });
             })
@@ -1518,7 +1566,11 @@ consoleApp.controller("UserroleController", function ($rootScope, $scope, $windo
                         $scope.moduleObject.pageUserroles($scope.currentPage, $scope.pageSize);
                         _hideMask();
                     }, function (err) {
-                        console.log(err);
+                        if (err.code == '200002') {
+                            swal('', err.info, 'error')
+                        } else if (err.code == '200004') {
+                            swal('', err.info, 'error')
+                        }
                         _hideMask();
                     });
             })

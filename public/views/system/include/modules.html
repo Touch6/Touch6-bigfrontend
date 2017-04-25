@@ -40,6 +40,10 @@
                         class="fa fa-arrow-circle-down"></i></a>
                 <a class="btn btn-danger btn-xs" ng-click="moduleObject.moveTop(m.moduleId)"><i
                         class="fa fa-toggle-on"></i></a>
+                <a class="btn btn-danger btn-xs" ng-if="m.locked==1" ng-click="moduleObject.unlock(m.moduleId)"><i
+                        class="fa fa-lock"></i></a>
+                <a class="btn btn-success btn-xs" ng-if="m.locked==0" ng-click="moduleObject.lock(m.moduleId)"><i
+                        class="fa fa-unlock-alt"></i></a>
             </td>
         </tr>
         </tbody>
@@ -96,7 +100,8 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
                                     <span class="input-group-addon">CSS CLASS</span>
-                                    <input type="text" class="input-group form-control" ng-model="addModuleInput.className"
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="addModuleInput.className"
                                            placeholder="请输入模块的样式CSS选择器" required/>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
@@ -106,7 +111,8 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
                                     <span class="input-group-addon">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" class="input-group form-control" ng-model="addModuleInput.attrLink"
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="addModuleInput.attrLink"
                                            placeholder="请输入模块与容器链接的标识" required/>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
@@ -199,7 +205,8 @@
                                 <input ng-model="updateModuleInput.moduleId" hidden/>
                                 <div class="input-group">
                                     <span class="input-group-addon">模块名称&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" class="input-group form-control" ng-model="updateModuleInput.name"
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="updateModuleInput.name"
                                            placeholder="请输入模块名称" required/>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
@@ -209,7 +216,8 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
                                     <span class="input-group-addon">CSS CLASS</span>
-                                    <input type="text" class="input-group form-control" ng-model="updateModuleInput.className"
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="updateModuleInput.className"
                                            placeholder="请输入模块的样式CSS选择器" required/>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
@@ -219,7 +227,8 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
                                     <span class="input-group-addon">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" class="input-group form-control" ng-model="updateModuleInput.attrLink"
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="updateModuleInput.attrLink"
                                            placeholder="请输入模块与容器链接的标识" required/>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">

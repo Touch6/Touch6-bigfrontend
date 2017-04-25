@@ -182,7 +182,9 @@ router.get('/page/modules', function (req, res) {
 
 router.get('/lock', function (req, res) {
 
+    console.log("锁定模块:"+req.query.moduleId);
     moduleModel.lock({moduleId:req.query.moduleId}).done(function (data) {
+        console.log("锁定结果:"+JSON.stringify(data));
         res.send(data);
     }).error(function (error) {
         if(error.statusCode=='400'){
