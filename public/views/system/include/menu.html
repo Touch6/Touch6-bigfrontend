@@ -1,3 +1,40 @@
+<style type="text/css">
+    .progress-mine {
+        margin: 3px 0 -20px 0;
+        height:15px;
+        background: #28f8b2;
+        overflow: visible;
+    }
+
+    .progress-mine .progress-bar {
+        position: relative;
+        animation: animate-positive 2s;
+    }
+
+    .progress-bar.active {
+        animation: reverse progress-bar-stripes 0.40s linear infinite, animate-positive 2s;
+    }
+    .progress .progress-value{
+        display: block;
+        font-size: 12px;
+        color: #fff;
+        border-radius: 4px;
+        background: #27cb8d;
+        border: 1px solid #bbcb10;
+        position: absolute;
+        top: -30px;
+        right: -10px;
+    }
+    .progress .progress-value:after{
+        content: "";
+        border-top: 5px solid #bbcb10;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        position: absolute;
+        bottom: -6px;
+        left: 26%;
+    }
+</style>
 <div ng-controller="MenuController">
     <header class="panel-header">
         <label>菜单管理</label>
@@ -25,7 +62,28 @@
             <!--<td>{{m.uisref}}</td>-->
             <!--<td>{{m.className}}</td>-->
             <td>{{m.attrLink}}</td>
-            <td>{{m.status}}</td>
+            <td ng-if="m.status=='CREATE'">
+                <div class="progress-mine progress">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 80%;">
+                        <div class="progress-value">未开发</div>
+                    </div>
+                </div>
+            </td>
+            <td ng-if="m.status=='DOING'">
+                <div class="progress-mine progress">
+                    <div class="progress-bar progress-bar-danger progress-bar-striped active" style="width: 60%;">
+                        <div class="progress-value">开发中</div>
+                    </div>
+                </div>
+            </td>
+            <td ng-if="m.status=='DONE'">
+                <div class="progress-mine progress">
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 100%;">
+                        <div class="progress-value">已完成</div>
+                    </div>
+                </div>
+            </td>
+
             <td><span ng-class-even="'badge badge-error'" ng-class-odd="'badge badge-warning'">{{m.sort}}</span></td>
             <td>
                 <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#viewMenuModal"
