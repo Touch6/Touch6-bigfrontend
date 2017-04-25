@@ -42,9 +42,9 @@ router.get('/', function (req, res) {
     });
 });
 
-router.get('/list', function (req, res) {
+router.get('/selectlist', function (req, res) {
 
-    menuModel.menuList().done(function (data) {
+    menuModel.menuList({moduleId:req.query.moduleId}).done(function (data) {
         res.send(data);
     }).error(function (error) {
         if(error.statusCode=='400'){

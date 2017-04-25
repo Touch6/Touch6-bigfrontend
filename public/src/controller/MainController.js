@@ -494,7 +494,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
 });
 
 /**********************************系统设置>菜单管理**************************************/
-consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, menu) {
+consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, menu, modules) {
     $scope.addMenuInput = {
         name: '',
         className: '',
@@ -527,10 +527,17 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
             });
         },
         loadSelectMenuList: function () {
-            menu.selectList().then(function (data) {
+            menu.selectList($scope.addMenuInput.moduleId).then(function (data) {
                 $scope.menuSelectList = data.object;
             }, function (err) {
                 console.log("菜单列表加载失败" + err);
+            });
+        },
+        loadSelectModuleList: function () {
+            modules.selectList().then(function (data) {
+                $scope.moduleSelectList = data.object;
+            }, function (err) {
+                console.log("模块列表加载失败" + err);
             });
         },
         add: function () {

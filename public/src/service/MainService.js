@@ -220,10 +220,10 @@ consoleApp.factory("menu", function ($http, $q, $cookies) {
             });
             return deferred.promise;
         },
-        selectList: function () {
+        selectList: function (moduleId) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/~/system/menu/selectlist', {}).success(function (data) {
+            $http.get('/~/system/menu/selectlist', {params: {moduleId: moduleId}}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -1675,7 +1675,12 @@ consoleApp.factory("usercenter", function ($http, $q, $cookies) {
         pageUsers: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();
-            $http.get('/~/system/usercenter/pageable', {params: {page: page, pageSize: pageSize}}).success(function (data) {
+            $http.get('/~/system/usercenter/pageable', {
+                params: {
+                    page: page,
+                    pageSize: pageSize
+                }
+            }).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
