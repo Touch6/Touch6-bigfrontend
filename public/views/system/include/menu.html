@@ -22,8 +22,8 @@
         background: #27cb8d;
         border: 1px solid #bbcb10;
         position: absolute;
-        top: -30px;
-        right: -10px;
+        top: -22px;
+        right: -26px;
     }
     .progress .progress-value:after{
         content: "";
@@ -65,21 +65,21 @@
             <td ng-if="m.status=='CREATE'">
                 <div class="progress-mine progress">
                     <div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 80%;">
-                        <div class="progress-value">未开发</div>
+                        <div class="progress-value small-font">0%</div>
                     </div>
                 </div>
             </td>
             <td ng-if="m.status=='DOING'">
                 <div class="progress-mine progress">
                     <div class="progress-bar progress-bar-danger progress-bar-striped active" style="width: 60%;">
-                        <div class="progress-value">开发中</div>
+                        <div class="progress-value small-font">50%</div>
                     </div>
                 </div>
             </td>
             <td ng-if="m.status=='DONE'">
                 <div class="progress-mine progress">
                     <div class="progress-bar progress-bar-info progress-bar-striped active" style="width: 100%;">
-                        <div class="progress-value">已完成</div>
+                        <div class="progress-value small-font">100%</div>
                     </div>
                 </div>
             </td>

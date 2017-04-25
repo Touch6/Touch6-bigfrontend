@@ -4712,3 +4712,8 @@ section .system-management-table-470{
 .label.label-danger{
     width:600px;
 }
+.small-font{
+    font-size:8.4px;
+    -webkit-transform-origin-x: 0;
+    -webkit-transform: scale(0.70);
+}
