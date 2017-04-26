@@ -373,6 +373,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                     var mo = data.object;
                     swal('', '模块名:' + mo.name, 'success');
                     $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    $scope.addModuleInput={};
                 }, function (err) {
                     $scope.addSuccess = false;
                     console.log(err)

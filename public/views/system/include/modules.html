@@ -20,8 +20,8 @@
         </thead>
         <tbody>
         <tr ng-repeat="m in moduleList">
-            <td ng-if="m.sort==1"><span class="label label-danger"><strong>{{m.name}}</strong></span></td>
-            <td ng-if="m.sort!=1"><span class="label label-success"><strong>{{m.name}}</strong></span></td>
+            <td ng-if="m.sort==1"><span class="label label-danger">{{m.name}}</span></td>
+            <td ng-if="m.sort!=1"><span class="label label-success">{{m.name}}</span></td>
 
             <td>{{m.className}}</td>
             <td>{{m.attrLink}}</td>
@@ -78,7 +78,7 @@
     <div class="modal fade modal-primary" id="addModuleModal" tabindex="-1" role="dialog" aria-hidden="false"
          aria-labelledby="myModalLabel"
          data-backdrop="static">
-        <div class="modal-dialog" style="left: 50px;">
+        <div class="modal-dialog" >
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
