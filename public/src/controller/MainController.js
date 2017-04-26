@@ -347,7 +347,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 $scope.pages = pageObj.pages;
                 $scope.maxSize = 20;
                 //当页数改变以后，需要重新获取
-                $scope.changeModulePage = function () {
+                $scope.changePage = function () {
                     $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                 };
             }, function (err) {
@@ -374,6 +374,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                     swal('', '模块名:' + mo.name, 'success');
                     $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
                     $scope.addModuleInput={};
+                    $('#addModuleModal').modal('hide');
                 }, function (err) {
                     $scope.addSuccess = false;
                     console.log(err)
