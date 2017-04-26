@@ -373,7 +373,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                     var mo = data.object;
                     swal('', '模块名:' + mo.name, 'success');
                     $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
-                    $scope.addModuleInput={};
+                    $scope.addModuleInput = {};
                     $('#addModuleModal').modal('hide');
                 }, function (err) {
                     $scope.addSuccess = false;
@@ -381,16 +381,21 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                 });
         },
         delete: function (moduleId) {
-            swal(deleteOptions, function () {
-                _showMask();
-                modules.delete(moduleId)
-                    .then(function (data) {
-                        $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
-                        _hideMask();
-                    }, function (err) {
-                        swal('', err.info, 'error')
-                        _hideMask();
-                    });
+            swal(deleteOptions, function (isok) {
+                if (isok) {
+                    _showMask();
+                    modules.delete(moduleId)
+                        .then(function (data) {
+                            $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                            _hideMask();
+                            swal('', '删除成功', 'success')
+                        }, function (err) {
+                            swal('', err.info, 'error')
+                            _hideMask();
+                        });
+                } else {
+                    swal('', '您已取消删除', 'success')
+                }
             })
         },
         view: function (moduleId) {
@@ -425,6 +430,8 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
                     var mo = data.object;
                     swal('', '模块名:' + mo.name, 'success');
                     $scope.moduleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    $scope.updateModuleInput = {};
+                    $('#updateModuleModal').modal('hide');
                     _hideMask();
                 }, function (err) {
                     $scope.editSuccess = false;
