@@ -2,7 +2,7 @@
     <header class="panel-header">
         <label>角色管理</label>
         <label class="pull-right">
-            <a class="btn btn-primary btn-sm" data-toggle="modal" ng-click="roleObject.loadSelectRoleList()"
+            <a class="btn btn-primary btn-sm" data-toggle="modal"
                data-target="#addRoleModal"><i
                     class="icon_plus_alt2"></i></a>
         </label>
@@ -11,6 +11,7 @@
         <thead>
         <tr>
             <th>名称</th>
+            <th>锁定状态</th>
             <th>创建时间</th>
             <th>更新时间</th>
             <th>操作</th>
@@ -18,16 +19,27 @@
         </thead>
         <tbody>
         <tr ng-repeat="role in roleList">
-            <td>{{role.name}}</td>
-            <td>{{m.createTime|date:'yyyy年MM月dd日'}}</td>
-            <td>{{m.updateTime|date:'yyyy年MM月dd日'}}</td>
+            <td><span class="label label-success">{{role.name}}</span></td>
+            <td>
+                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">
+                    <span ng-if="role.locked==0" class='badge badge-error'><span class="fa fa-unlock-alt"></span></span>
+                    <span ng-if="role.locked==1" class='badge badge-warning'><span class="fa fa-lock"></span></span>
+                </div>
+            </td>
+            <td>{{role.createTime|date:'yyyy年MM月dd日'}}</td>
+            <td>{{role.updateTime|date:'yyyy年MM月dd日'}}</td>
             <td>
                 <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#viewRoleModal"
-                   ng-click="roleObject.view(m.roleId)"><i class="fa fa-eye"></i></a>
+                   ng-click="roleObject.view(role.roleId)"><i class="fa fa-eye"></i></a>
                 <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#updateRoleModal"
-                   ng-click="roleObject.openUpdateModal(m.roleId)"><i class="fa fa-edit"></i></a>
-                <a class="btn btn-danger btn-xs" ng-click="roleObject.delete(m.roleId)"><i
+                   ng-click="roleObject.openUpdateModal(role.roleId)"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger btn-xs" ng-click="roleObject.delete(role.roleId)"><i
                         class="fa fa-minus-circle"></i></a>
+
+                <a class="btn btn-danger btn-xs" ng-if="role.locked==1" ng-click="roleObject.unlock(role.roleId)"><i
+                        class="fa fa-lock"></i></a>
+                <a class="btn btn-success btn-xs" ng-if="role.locked==0" ng-click="roleObject.lock(role.roleId)"><i
+                        class="fa fa-unlock-alt"></i></a>
             </td>
         </tr>
         </tbody>
@@ -82,35 +94,18 @@
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
-                                    <span class="input-group-addon">CSS CLASS</span>
-                                    <input type="text" class="input-group form-control"
-                                           ng-model="addRoleInput.className"
-                                           placeholder="请输入角色的样式CSS选择器" required/>
+                                    <div class="btn-group col-lg-12 dencrypt" style="margin-left: 85px;">
+                                        <label class="btn btn-success btn-sm active" onclick="makeMethod(this)">
+                                            <input type="radio" ng-model="addRoleInput.locked" value="0" hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解锁&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label class="btn btn-danger btn-sm" onclick="makeMethod(this)">
+                                            <input type="radio" ng-model="addRoleInput.locked" value="1" hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;锁定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
-                                    注:CSS选择器格式-隔开且只能为英文,样例XXX-YYY
+                                    注:锁定后无法进行敏感操作
                                 </div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="input-group">
-                                    <span class="input-group-addon">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" class="input-group form-control"
-                                           ng-model="addRoleInput.attrLink"
-                                           placeholder="请输入角色与容器链接的标识" required/>
-                                </div>
-                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
-                                    注:链接格式只能为英文,样例XXX-YYY或XXXYYYY
-                                </div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="input-group">
-                                    <span class="input-group-addon">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <select ng-model="addRoleInput.sort" class="form-control"
-                                            ng-options="m.sort as '位于【'+m.name+'】后' for m in roleSelectList">
-                                        <option value="">--置顶--</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">注:不选择排序在首位</div>
                             </div>
                         </div>
                     </div>
@@ -145,18 +140,20 @@
                                 <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{role.name}}</div>
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="col-sm-4" style="color:darkseagreen">CSS CLASS</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{role.className}}
+                                <div class="col-sm-4" style="color:darkseagreen">锁定状态&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">
+                                    <span ng-if="role.locked==0" class='badge badge-error'><span class="fa fa-unlock-alt"></span></span>
+                                    <span ng-if="role.locked==1" class='badge badge-warning'><span class="fa fa-lock"></span></span>
                                 </div>
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="col-sm-4" style="color:darkseagreen">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{role.attrLink}}
+                                <div class="col-sm-4" style="color:darkseagreen">创建时间&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{role.createTime|date:'yyyy年MM月dd日 HH点mm分ss秒'}}
                                 </div>
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="col-sm-4" style="color:darkseagreen">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{role.sort}}</div>
+                                <div class="col-sm-4" style="color:darkseagreen">更新时间&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{role.updateTime|date:'yyyy年MM月dd日 HH点mm分ss秒'}}</div>
                             </div>
                         </div>
                     </div>
@@ -185,7 +182,6 @@
                         <div ng-show="editSuccess==false" style="text-align: center;color:red;">温馨提示:修改失败</div>
                         <div class="row">
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <input ng-model="updateRoleInput.roleId" hidden/>
                                 <div class="input-group">
                                     <span class="input-group-addon">角色名称&nbsp;&nbsp;&nbsp;&nbsp;</span>
                                     <input type="text" class="input-group form-control"
@@ -198,24 +194,17 @@
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
-                                    <span class="input-group-addon">CSS CLASS</span>
-                                    <input type="text" class="input-group form-control"
-                                           ng-model="updateRoleInput.className"
-                                           placeholder="请输入角色的样式CSS选择器" required/>
+                                    <div class="btn-group col-lg-12 dencrypt" style="margin-left: 85px;">
+                                        <label class="btn btn-success btn-sm active" onclick="makeMethod(this)">
+                                            <input type="radio" ng-model="updateRoleInput.locked" value="0" hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解锁&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                        <label class="btn btn-danger btn-sm" onclick="makeMethod(this)">
+                                            <input type="radio" ng-model="updateRoleInput.locked" value="1" hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;锁定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="col-sm-12 hint-color" style="padding-left: 100px;">
-                                    注:CSS选择器格式-隔开且只能为英文,样例XXX-YYY
-                                </div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="input-group">
-                                    <span class="input-group-addon">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" class="input-group form-control"
-                                           ng-model="updateRoleInput.attrLink"
-                                           placeholder="请输入角色与容器链接的标识" required/>
-                                </div>
-                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
-                                    注:链接格式只能为英文,样例XXX-YYY或XXXYYYY
+                                    注:锁定后无法进行敏感操作
                                 </div>
                             </div>
                         </div>
@@ -232,3 +221,13 @@
         </div>
     </div>
 </div>
+<script>
+    //    $('input[name="radio2"]').bootstrapSwitch('state', true, true);
+    function makeMethod(element) {
+        $(element).parent().find('label').removeClass('active');
+        $(element).addClass('active');
+
+        var radio=$(element).find("input[type=radio]");
+        $(radio).attr("checked", true);
+    }
+</script>

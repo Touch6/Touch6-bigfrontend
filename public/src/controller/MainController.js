@@ -748,20 +748,21 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
                 });
         },
         delete: function (roleId) {
-            swal(deleteOptions, function () {
-                _showMask();
-                role.delete(roleId)
-                    .then(function (data) {
-                        $scope.moduleObject.pageRoles($scope.currentPage, $scope.pageSize);
-                        _hideMask();
-                    }, function (err) {
-                        if (err.code == '200002') {
+            swal(deleteOptions, function (isok) {
+                if (isok) {
+                    _showMask();
+                    role.delete(roleId)
+                        .then(function (data) {
+                            swal('', '删除成功', 'success')
+                            $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                            _hideMask();
+                        }, function (err) {
                             swal('', err.info, 'error')
-                        } else if (err.code == '200004') {
-                            swal('', err.info, 'error')
-                        }
-                        _hideMask();
-                    });
+                            _hideMask();
+                        });
+                } else {
+                    swal('', '您已取消删除', 'success')
+                }
             })
         },
         view: function (roleId) {
@@ -782,7 +783,6 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
                 .then(function (data1) {
                     $scope.updateRoleInput = data1.object;
                     //加载列表
-                    $scope.roleObject.loadSelectMenuList();
                     _hideMask();
                 }, function (err) {
                     console.log(err);
@@ -791,11 +791,12 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
         },
         edit: function () {
             _showMask();
-            role.updateMenu($scope.updateRoleInput)
+            role.updateRole($scope.updateRoleInput)
                 .then(function (data) {
                     var mo = data.object;
-                    swal('', '模块名:' + mo.name, 'success');
-                    $scope.roleObject.pageModules($scope.currentPage, $scope.pageSize);
+                    swal('', '角色名:' + mo.name, 'success');
+                    $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
+                    $scope.updateRoleInput={};
                     _hideMask();
                 }, function (err) {
                     $scope.editSuccess = false;

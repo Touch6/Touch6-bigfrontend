@@ -317,7 +317,7 @@
     },
     {
       "name": "获取角色信息",
-      "id": "auth.roleInfo",
+      "id": "role.roleDetail",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/role/:roleId",
         "test": "http://localhost:28081/t6/system/role/:roleId"
