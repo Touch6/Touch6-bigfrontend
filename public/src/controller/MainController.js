@@ -796,7 +796,7 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
                     var mo = data.object;
                     swal('', '角色名:' + mo.name, 'success');
                     $scope.roleObject.pageRoles($scope.currentPage, $scope.pageSize);
-                    $scope.updateRoleInput={};
+                    $scope.updateRoleInput = {};
                     _hideMask();
                 }, function (err) {
                     $scope.editSuccess = false;
@@ -918,27 +918,30 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '菜单名:' + mo.name, 'success');
+                    $scope.addAuthInput = {};
                     $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                    $("#addAuthModal").modal('hide');
                 }, function (err) {
                     $scope.addSuccess = false;
                     console.log(err)
                 });
         },
         delete: function (authId) {
-            swal(deleteOptions, function () {
-                _showMask();
-                auth.delete(authId)
-                    .then(function (data) {
-                        $scope.moduleObject.pageAuths($scope.currentPage, $scope.pageSize);
-                        _hideMask();
-                    }, function (err) {
-                        if (err.code == '200002') {
+            swal(deleteOptions, function (isok) {
+                if (isok) {
+                    _showMask();
+                    auth.delete(authId)
+                        .then(function (data) {
+                            swal('', '删除成功', 'success')
+                            $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                            _hideMask();
+                        }, function (err) {
                             swal('', err.info, 'error')
-                        } else if (err.code == '200004') {
-                            swal('', err.info, 'error')
-                        }
-                        _hideMask();
-                    });
+                            _hideMask();
+                        });
+                } else {
+                    swal('', '您已取消删除', 'success')
+                }
             })
         },
         view: function (authId) {
@@ -959,7 +962,6 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
                 .then(function (data1) {
                     $scope.updateAuthInput = data1.object;
                     //加载列表
-                    $scope.authObject.loadSelectMenuList();
                     _hideMask();
                 }, function (err) {
                     console.log(err);
@@ -968,11 +970,12 @@ consoleApp.controller("AuthController", function ($rootScope, $scope, $window, $
         },
         edit: function () {
             _showMask();
-            auth.updateMenu($scope.updateAuthInput)
+            auth.updateAuth($scope.updateAuthInput)
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '模块名:' + mo.name, 'success');
-                    $scope.authObject.pageModules($scope.currentPage, $scope.pageSize);
+                    $scope.authObject.pageAuths($scope.currentPage, $scope.pageSize);
+                    $("#updateAuthModal").modal('hide');
                     _hideMask();
                 }, function (err) {
                     $scope.editSuccess = false;
