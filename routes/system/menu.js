@@ -93,11 +93,51 @@ router.get('/lock', function (req, res) {
 });
 router.get('/unlock', function (req, res) {
 
+    console.log(req.query.menuId);
     menuModel.unlock({menuId:req.query.menuId}).done(function (data) {
         res.send(data);
     }).error(function (error) {
         if(error.statusCode=='400'){
             console.log("解锁菜单失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
+
+router.get('/top', function (req, res) {
+
+    console.log("置顶菜单信息：" + req.query.menuId);
+    menuModel.moveTop({menuId: req.query.menuId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if (error.statusCode == '400') {
+            console.log("置顶菜单失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
+router.get('/up', function (req, res) {
+
+    console.log("上移菜单信息：" + req.query.menuId);
+    menuModel.moveUp({menuId: req.query.menuId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if (error.statusCode == '400') {
+            console.log("上移菜单失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+router.get('/down', function (req, res) {
+
+    console.log("下移菜单信息：" + req.query.menuId);
+    menuModel.moveDown({menuId: req.query.menuId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if (error.statusCode == '400') {
+            console.log("下移菜单失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);
         }
     });

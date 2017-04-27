@@ -547,6 +547,33 @@
       "contentType": "application/json"
     },
     {
+      "name": "菜单置顶",
+      "id": "menu.moveTop",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menu/top",
+        "test": "http://localhost:28081/t6/system/menu/top"
+      },
+      "method": "get"
+    },
+    {
+      "name": "菜单上移",
+      "id": "menu.moveUp",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menu/up",
+        "test": "http://localhost:28081/t6/system/menu/up"
+      },
+      "method": "get"
+    },
+    {
+      "name": "菜单下移",
+      "id": "menu.moveDown",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/menu/down",
+        "test": "http://localhost:28081/t6/system/menu/down"
+      },
+      "method": "get"
+    },
+    {
       "name": "菜单列表",
       "id": "menu.menuList",
       "urls": {

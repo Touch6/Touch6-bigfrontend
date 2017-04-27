@@ -535,8 +535,8 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                 console.log("菜单列表加载失败" + err);
             });
         },
-        loadSelectMenuList: function () {
-            menu.selectList($scope.addMenuInput.moduleId).then(function (data) {
+        loadSelectMenuList: function (moduleId) {
+            menu.selectList(moduleId).then(function (data) {
                 $scope.menuSelectList = data.object;
             }, function (err) {
                 console.log("菜单列表加载失败" + err);
@@ -560,6 +560,8 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '菜单名:' + mo.name, 'success');
+                    $scope.addMenuInput = {};
+                    $("#addMenuModal").modal('hide');
                     $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
                 }, function (err) {
                     $scope.addSuccess = false;
@@ -567,20 +569,21 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                 });
         },
         delete: function (menuId) {
-            swal(deleteOptions, function () {
-                _showMask();
-                menu.delete(menuId)
-                    .then(function (data) {
-                        $scope.moduleObject.pageMenus($scope.currentPage, $scope.pageSize);
-                        _hideMask();
-                    }, function (err) {
-                        if (err.code == '200002') {
+            swal(deleteOptions, function (isok) {
+                if (isok) {
+                    _showMask();
+                    menu.delete(menuId)
+                        .then(function (data) {
+                            swal('', '删除成功', 'success')
+                            $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                            _hideMask();
+                        }, function (err) {
                             swal('', err.info, 'error')
-                        } else if (err.code == '200004') {
-                            swal('', err.info, 'error')
-                        }
-                        _hideMask();
-                    });
+                            _hideMask();
+                        });
+                } else {
+                    swal('', '您已取消删除', 'success')
+                }
             })
         },
         view: function (menuId) {
@@ -601,7 +604,7 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                 .then(function (data1) {
                     $scope.updateMenuInput = data1.object;
                     //加载列表
-                    $scope.menuObject.loadSelectMenuList();
+                    $scope.menuObject.loadSelectModuleList();
                     _hideMask();
                 }, function (err) {
                     console.log(err);
@@ -614,7 +617,9 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                 .then(function (data) {
                     var mo = data.object;
                     swal('', '模块名:' + mo.name, 'success');
-                    $scope.menuObject.pageModules($scope.currentPage, $scope.pageSize);
+                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                    $scope.updateMenuInput = {};
+                    $("#updateMenuModal").modal('hide');
                     _hideMask();
                 }, function (err) {
                     $scope.editSuccess = false;
