@@ -2,7 +2,7 @@
     <header class="panel-header">
         <label>权限管理</label>
         <label class="pull-right">
-            <a class="btn btn-primary btn-sm" data-toggle="modal" ng-click="authObject.loadSelectAuthList()"
+            <a class="btn btn-primary btn-sm" data-toggle="modal"
                data-target="#addAuthModal"><i
                     class="icon_plus_alt2"></i></a>
         </label>
@@ -12,6 +12,7 @@
         <thead>
         <tr>
             <th>名称</th>
+            <th>锁定状态</th>
             <th>创建时间</th>
             <th>更新时间</th>
             <th>操作</th>
@@ -20,14 +21,20 @@
         <tbody>
         <tr ng-repeat="auth in authList">
             <td>{{auth.name}}</td>
+            <td>
+                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">
+                    <span ng-if="auth.locked==0" class='badge badge-error'><span class="fa fa-unlock-alt"></span></span>
+                    <span ng-if="auth.locked==1" class='badge badge-warning'><span class="fa fa-lock"></span></span>
+                </div>
+            </td>
             <td>{{auth.createTime|date:'yyyy年MM月dd日'}}</td>
             <td>{{auth.updateTime|date:'yyyy年MM月dd日'}}</td>
             <td>
                 <a class="btn btn-success btn-xs" data-toggle="modal" data-target="#viewAuthModal"
-                   ng-click="authObject.view(m.authId)"><i class="fa fa-eye"></i></a>
+                   ng-click="authObject.view(auth.authId)"><i class="fa fa-eye"></i></a>
                 <a class="btn btn-info btn-xs" data-toggle="modal" data-target="#updateAuthModal"
-                   ng-click="authObject.openUpdateModal(m.authId)"><i class="fa fa-edit"></i></a>
-                <a class="btn btn-danger btn-xs" ng-click="authObject.delete(m.authId)"><i
+                   ng-click="authObject.openUpdateModal(auth.authId)"><i class="fa fa-edit"></i></a>
+                <a class="btn btn-danger btn-xs" ng-click="authObject.delete(auth.authId)"><i
                         class="fa fa-minus-circle"></i></a>
             </td>
         </tr>
@@ -41,7 +48,7 @@
                         total-items="total"
                         ng-model="currentPage"
                         class="pagination-md"
-                        ng-change="changeAuthPage()"
+                        ng-change="changePage()"
                         max-size="maxSize"
                         rotate="false"
                         first-text="&laquo;"
