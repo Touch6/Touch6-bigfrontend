@@ -34,14 +34,14 @@
                    ng-click="moduleObject.openUpdateModal(m.moduleId)"><i class="fa fa-edit"></i></a>
                 <a class="btn btn-danger btn-xs" ng-click="moduleObject.delete(m.moduleId)"><i
                         class="fa fa-minus-circle"></i></a>
-                <a class="btn btn-warning btn-xs" ng-click="moduleObject.moveUp(m.moduleId)"><i
+                <a class="btn btn-warning btn-xs" ng-disabled="m.sort==1" ng-click="moduleObject.moveUp(m.moduleId)"><i
                         class="fa fa-arrow-circle-up"></i></a>
                 <a class="btn btn-warning btn-xs" ng-click="moduleObject.moveDown(m.moduleId)"><i
                         class="fa fa-arrow-circle-down"></i></a>
-                <a class="btn btn-danger btn-xs" ng-if="m.sort==1" disabled ng-click="moduleObject.moveTop(m.moduleId)"><i
+                <a class="btn btn-danger btn-xs" ng-if="m.sort==1" ng-click="moduleObject.moveTop(m.moduleId)"><i
                         class="fa fa-toggle-on"></i></a>
                 <a class="btn btn-primary btn-xs" ng-if="m.sort!=1" ng-click="moduleObject.moveTop(m.moduleId)"><i
-                        class="fa fa-toggle-on"></i></a>
+                        class="fa fa-toggle-off"></i></a>
 
                 <a class="btn btn-danger btn-xs" ng-if="m.locked==1" ng-click="moduleObject.unlock(m.moduleId)"><i
                         class="fa fa-lock"></i></a>
