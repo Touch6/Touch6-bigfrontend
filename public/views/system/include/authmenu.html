@@ -67,7 +67,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">添加权限<->角色</h4>
+                    <h4 class="modal-title" id="myModalLabel">添加权限<->菜单</h4>
                 </div>
                 <form role="form" name="addAuthmenuForm" ng-submit="authmenuObject.add()" novalidate>
                     <div class="modal-body">
@@ -75,45 +75,83 @@
                         <div class="row">
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
-                                    <span class="input-group-addon">权限<->角色名称&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" class="input-group form-control" ng-model="addAuthmenuInput.name"
-                                           placeholder="请输入权限<->角色名称" required/>
-                                </div>
-                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
-                                    注:必须为中文且长度为2-4个汉字
-                                </div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="input-group">
-                                    <span class="input-group-addon">CSS CLASS</span>
-                                    <input type="text" class="input-group form-control"
-                                           ng-model="addAuthmenuInput.className"
-                                           placeholder="请输入权限<->角色的样式CSS选择器" required/>
-                                </div>
-                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
-                                    注:CSS选择器格式-隔开且只能为英文,样例XXX-YYY
-                                </div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="input-group">
-                                    <span class="input-group-addon">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <input type="text" class="input-group form-control"
-                                           ng-model="addAuthmenuInput.attrLink"
-                                           placeholder="请输入权限<->角色与容器链接的标识" required/>
-                                </div>
-                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
-                                    注:链接格式只能为英文,样例XXX-YYY或XXXYYYY
-                                </div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="input-group">
-                                    <span class="input-group-addon">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <select ng-model="addAuthmenuInput.sort" class="form-control"
-                                            ng-options="m.sort as '位于【'+m.name+'】后' for m in authmenuSelectList">
-                                        <option value="">--置顶--</option>
+                                    <span class="input-group-addon">维护对象</span>
+                                    <select class="input-group form-control" ng-model="addAuthmenuInput.type"
+                                            ng-change="authmenuObject.loadAuthsAndModules()"
+                                            ng-maxlength="1" ng-required="true">
+                                        <option value="">--请选择--</option>
+                                        <option value="auth">权限</option>
+                                        <option value="menu">菜单</option>
                                     </select>
                                 </div>
-                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">注:不选择排序在首位</div>
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                    注:选择维护方
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;"
+                                 ng-show="addAuthmenuInput.type=='auth'">
+                                <div class="input-group">
+                                    <span class="input-group-addon">选择权限</span>
+                                    <select ng-model="addAuthmenuInput.authId" class="form-control"
+                                            ng-options="auth.authId as '【'+auth.name+'】' for auth in authSelectList">
+                                        <option value="">--请选择--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;"
+                                 ng-show="addAuthmenuInput.type=='auth'">
+                                <div class="input-group">
+                                    <span class="input-group-addon">选择模块</span>
+                                    <select ng-model="addAuthmenuInput.moduleId" class="form-control"
+                                            ng-change="authmenuObject.loadSelectMenuList(addAuthmenuInput.moduleId)"
+                                            ng-options="mo.moduleId as '【'+mo.name+'】' for mo in moduleSelectList">
+                                        <option value="">--请选择--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;"
+                                 ng-show="addAuthmenuInput.moduleId!=''&&addAuthmenuInput.type=='auth'">
+                                <div class="input-group">
+                                    <span class="input-group-addon">选择菜单</span>
+                                    <div class="form-control" style="min-height:150px;overflow-y: scroll">
+                                        <label ng-repeat="m in menuSelectList">
+                                            <input type="checkbox" name="mymenu" ng-model="addAuthmenuInput.menuId[$index]" ng-true-value="{{m.menuId}}"/>{{m.name}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--选择菜单后授权-->
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;"
+                                 ng-show="addAuthmenuInput.type=='menu'">
+                                <div class="input-group">
+                                    <span class="input-group-addon">选择模块</span>
+                                    <select ng-model="addAuthmenuInput.moduleId" class="form-control"
+                                            ng-change="authmenuObject.loadSelectMenuList(addAuthmenuInput.moduleId)"
+                                            ng-options="mo.moduleId as '【'+mo.name+'】' for mo in moduleSelectList">
+                                        <option value="">--请选择--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;"
+                                 ng-show="addAuthmenuInput.moduleId!=''&&addAuthmenuInput.type=='menu'">
+                                <div class="input-group">
+                                    <span class="input-group-addon">选择菜单</span>
+                                    <select ng-model="addAuthmenuInput.menuId" class="form-control"
+                                            ng-options="m.menuId as '【'+m.name+'】' for m in menuSelectList">
+                                        <option value="">--请选择--</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;"
+                                 ng-show="addAuthmenuInput.type=='menu'">
+                                <div class="input-group">
+                                    <span class="input-group-addon">赋予权限</span>
+                                    <div class="form-control" style="min-height:150px;overflow-y: scroll">
+                                        <label ng-repeat="auth in authSelectList">
+                                            <input type="checkbox" ng-model="addAuthmenuInput.authId[$index]" ng-true-value="{{auth.authId}}" ng-false-value="null"/>{{auth.name}}
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -123,49 +161,6 @@
                         <button type="submit" class="btn btn-primary btn-sm" ng-disabled="addAuthmenuForm.$invalid"><i
                                 class="fa fa-floppy-o"></i>
                         </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!--查看模态框-->
-    <div class="modal fade modal-primary" id="viewAuthmenuModal" tabindex="-1" role="dialog" aria-hidden="false"
-         aria-labelledby="myModalLabel"
-         data-backdrop="static">
-        <div class="modal-dialog" style="left: 50px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" style="color:darkseagreen">权限<->角色详情</h4>
-                </div>
-                <form role="form" name="viewAuthmenuForm" novalidate>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="col-sm-4" style="color:darkseagreen">权限<->角色名称&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{authmenu.name}}</div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="col-sm-4" style="color:darkseagreen">CSS CLASS</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{authmenu.className}}
-                                </div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="col-sm-4" style="color:darkseagreen">容器链接&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{authmenu.attrLink}}
-                                </div>
-                            </div>
-                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
-                                <div class="col-sm-4" style="color:darkseagreen">显示顺序&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{authmenu.sort}}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
-                                class="fa fa-times-circle"></i></button>
                     </div>
                 </form>
             </div>
@@ -226,8 +221,9 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
                                 class="fa fa-times-circle"></i></button>
-                        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="updateAuthmenuForm.$invalid"><i
-                                class="fa fa-floppy-o"></i>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="updateAuthmenuForm.$invalid">
+                            <i
+                                    class="fa fa-floppy-o"></i>
                         </button>
                     </div>
                 </form>
@@ -235,3 +231,12 @@
         </div>
     </div>
 </div>
+<script>
+    function changeType(element) {
+        $(element).parent().find('label').removeClass('active');
+
+        $(element).addClass('active');
+        var radio = $(element).find("input[type=radio]");
+        $(radio).attr("checked", true);
+    }
+</script>

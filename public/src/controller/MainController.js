@@ -536,6 +536,7 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
             });
         },
         loadSelectMenuList: function (moduleId) {
+            alert(moduleId)
             menu.selectList(moduleId).then(function (data) {
                 $scope.menuSelectList = data.object;
             }, function (err) {
@@ -1223,12 +1224,11 @@ consoleApp.controller("RouteController", function ($rootScope, $scope, $window, 
 });
 
 /**********************************系统设置>权限菜单管理**************************************/
-consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, authmenu) {
+consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, authmenu, auth, modules, menu) {
     $scope.addAuthmenuInput = {
+        type: '',
         name: '',
-        className: '',
-        attrLink: '',
-        sort: ''
+        moduleId: ''
     }
     $scope.updateAuthmenuInput = {
         authmenuId: '',
@@ -1262,13 +1262,34 @@ consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $windo
                 console.log("菜单列表加载失败" + err);
             });
         },
-        add: function () {
-            if (!$scope.addAuthmenuInput.sort) {
-                //不选默认排序0
-                $scope.addAuthmenuInput.sort = 1;
-            } else {
-                $scope.addAuthmenuInput.sort = $scope.addAuthmenuInput.sort + 1;
+        loadSelectMenuList: function (moduleId) {
+            menu.selectList(moduleId).then(function (data) {
+                $scope.menuSelectList = data.object;
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
+        loadAuthsAndModules: function () {
+            $scope.authSelectList = {};
+            $scope.moduleSelectList = {};
+            $scope.menuSelectList = {};
+            if ($scope.addAuthmenuInput.type) {
+                auth.selectList().then(function (data1) {
+                    $scope.authSelectList = data1.object;
+                    console.log(JSON.stringify($scope.authSelectList))
+                    modules.selectList().then(function (data2) {
+                        $scope.moduleSelectList = data2.object;
+                        console.log(JSON.stringify($scope.moduleSelectList))
+                    }, function (err) {
+                        console.log("菜单列表加载失败" + err);
+                    });
+                }, function (err) {
+                    console.log("权限列表加载失败" + err);
+                });
             }
+        },
+        add: function () {
+            alert(JSON.stringify($scope.addAuthmenuInput));
             authmenu.addAuthmenu($scope.addAuthmenuInput)
                 .then(function (data) {
                     var mo = data.object;

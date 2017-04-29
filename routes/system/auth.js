@@ -42,7 +42,7 @@ router.get('/', function (req, res) {
     });
 });
 
-router.get('/list', function (req, res) {
+router.get('/selectlist', function (req, res) {
 
     authModel.authList().done(function (data) {
         res.send(data);
