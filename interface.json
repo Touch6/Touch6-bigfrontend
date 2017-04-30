@@ -473,6 +473,15 @@
       "method": "get"
     },
     {
+      "name": "模块包括菜单列表",
+      "id": "module.modulesWithMenus",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/module/list/withmenus",
+        "test": "http://localhost:28081/t6/system/module/list/withmenus"
+      },
+      "method": "get"
+    },
+    {
       "name": "公共模块列表",
       "id": "module.commonModules",
       "urls": {

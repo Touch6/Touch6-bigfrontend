@@ -9,28 +9,21 @@
     </header>
 
 
-    <section id="light">
-        <div class="page-header">
-            <h1>Light Style <small>(Basic style, default configuration)</small></h1>
-        </div>
-        <div class="row">
-            <div class="col-md-6 show-grid">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="example-caption">EXAMPLE:</div>
-                        <div save-content="light-html">
-                            <treecontrol class="tree-light"
-                                         tree-model="treedata"
-                                         on-selection="showSelected(node)">
-                                label: {{node.label}} ({{node.id}})
-                            </treecontrol>
-                        </div>
+    <div class="row">
+        <div class="col-md-10 show-grid">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div save-content="light-html">
+                        <treecontrol class="tree-light"
+                                     tree-model="treedata"
+                                     on-selection="showSelected(node)">
+                            {{node.name}} (5)
+                        </treecontrol>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
 
 
     <table class="table table-striped table-hover">
@@ -141,7 +134,8 @@
                                     <span class="input-group-addon">选择菜单</span>
                                     <div class="form-control" style="min-height:150px;overflow-y: scroll">
                                         <label ng-repeat="m in menuSelectList">
-                                            <input type="checkbox" ng-model="addAuthmenuInput.menuId[$index]" ng-true-value="{{m.menuId}}"/>{{m.name}}
+                                            <input type="checkbox" ng-model="addAuthmenuInput.menuId[$index]"
+                                                   ng-true-value="{{m.menuId}}"/>{{m.name}}
                                         </label>
                                     </div>
                                 </div>
@@ -174,7 +168,8 @@
                                     <span class="input-group-addon">赋予权限</span>
                                     <div class="form-control" style="min-height:150px;overflow-y: scroll">
                                         <label ng-repeat="auth in authSelectList">
-                                            <input type="checkbox" ng-model="addAuthmenuInput.authId[$index]" ng-true-value="{{auth.authId}}"/>{{auth.name}}
+                                            <input type="checkbox" ng-model="addAuthmenuInput.authId[$index]"
+                                                   ng-true-value="{{auth.authId}}"/>{{auth.name}}
                                         </label>
                                     </div>
                                 </div>

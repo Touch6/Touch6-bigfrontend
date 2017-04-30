@@ -1225,10 +1225,6 @@ consoleApp.controller("RouteController", function ($rootScope, $scope, $window, 
 
 /**********************************系统设置>权限菜单管理**************************************/
 consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, authmenu, auth, modules, menu) {
-    $scope.treedata=createSubTree(3, 4, "");
-    $scope.showSelected = function(sel) {
-        $scope.selectedNode = sel;
-    };
 
     $scope.addAuthmenuInput = {
         type: '',
@@ -1243,6 +1239,14 @@ consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $windo
         sort: ''
     }
     $scope.authmenuObject = {
+        modulesWithMenus: function () {
+            modules.modulesWithMenus().then(function (data) {
+                $scope.modulesWithMenus = data.object;
+                console.log($scope.modulesWithMenus)
+            }, function (err) {
+                console.log("菜单列表加载失败" + err);
+            });
+        },
         pageAuthmenus: function (page, pageSize) {
             authmenu.pageAuthmenus(page, pageSize).then(function (data) {
                 var pageObj = data.object;
@@ -1307,7 +1311,7 @@ consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $windo
                     authIds.push(id);
                 })
             }
-            authmenu.addAuthmenu({authIds:authIds,menuIds:menuIds})
+            authmenu.addAuthmenu({authIds: authIds, menuIds: menuIds})
                 .then(function (data) {
                     swal('', '配置成功', 'success');
                     $scope.authmenuObject.pageAuthmenus($scope.currentPage, $scope.pageSize);
@@ -1315,7 +1319,7 @@ consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $windo
                     $scope.addAuthmenuInput = {};
                 }, function (err) {
                     $scope.addSuccess = false;
-                    swal('',err.info,'error')
+                    swal('', err.info, 'error')
                 });
         },
         delete: function (authmenuId) {
@@ -1409,6 +1413,17 @@ consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $windo
         }
     }
     $scope.authmenuObject.pageAuthmenus(1, 5);
+    var arr = [2, 3, 4, 5];
+    var res = [];
+    for (var i = 0; i < arr.length; i++) {
+        res.push(createSubTree(arr[i], 1, arr, ""));
+    }
+    $scope.treedata = res;
+    console.log(JSON.stringify($scope.treedata))
+    $scope.showSelected = function (sel) {
+        $scope.selectedNode = sel;
+    };
+    $scope.authmenuObject.modulesWithMenus();
 });
 
 /**********************************系统设置>权限角色管理**************************************/

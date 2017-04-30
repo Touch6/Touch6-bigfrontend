@@ -102,14 +102,20 @@ consoleApp.directive("nav", function () {
         }
     }
 })
-var names = ['Homer', 'Marge', 'Bart', 'Lisa', 'Mo'];
-function createSubTree(level, width, prefix) {
+function createSubTree(level,amount, prefix) {
     if (level > 0) {
         var res = [];
-        for (var i=1; i <= width; i++)
-            res.push({ "label" : "Node " + prefix + i, "id" : "id"+prefix + i, "i": i, "children": createSubTree(level-1, width, prefix + i +"."), "name": names[i%names.length] });
+        for (var i = 1; i <= amount; i++) {
+            res.push({
+                "name": "菜单" + prefix + i,
+                "id": "id" + prefix + i,
+                "i": i,
+                "children": createSubTree(level - 1, amount, prefix + i + ".")
+            });
+        }
         return res;
     }
-    else
+    else {
         return [];
+    }
 }

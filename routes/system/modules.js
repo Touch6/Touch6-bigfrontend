@@ -91,6 +91,17 @@ router.get('/list', function (req, res) {
         }
     });
 });
+router.get('/list/withmenus', function (req, res) {
+
+    moduleModel.modulesWithMenus().done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if (error.statusCode == '400') {
+            console.log("获取模块失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
 
 router.get('/selectlist', function (req, res) {
 
