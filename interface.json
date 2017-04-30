@@ -650,7 +650,7 @@
     },
     {
       "name": "添加菜单权限",
-      "id": "config.addAuthMenu",
+      "id": "authmenu.addAuthmenu",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/authmenu",
         "test": "http://localhost:28081/t6/system/authmenu"
@@ -660,7 +660,7 @@
     },
     {
       "name": "修改菜单权限",
-      "id": "config.updateAuthMenu",
+      "id": "authmenu.updateAuthmenu",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/authmenu",
         "test": "http://localhost:28081/t6/system/authmenu"
@@ -670,7 +670,7 @@
     },
     {
       "name": "删除菜单权限",
-      "id": "config.deleteAuthMenu",
+      "id": "authmenu.deleteAuthmenu",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/authmenu",
         "test": "http://localhost:28081/t6/system/authmenu"
@@ -680,7 +680,7 @@
     },
     {
       "name": "添加用户角色",
-      "id": "config.addUserRole",
+      "id": "userrole.addUserRole",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/userrole",
         "test": "http://localhost:28081/t6/system/userrole"
@@ -690,7 +690,7 @@
     },
     {
       "name": "修改用户角色",
-      "id": "config.updateUserRole",
+      "id": "userrole.updateUserRole",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/userrole",
         "test": "http://localhost:28081/t6/system/userrole"
@@ -700,7 +700,7 @@
     },
     {
       "name": "删除用户角色",
-      "id": "config.deleteUserRole",
+      "id": "userrole.deleteUserRole",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/userrole",
         "test": "http://localhost:28081/t6/system/userrole"

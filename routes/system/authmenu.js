@@ -9,6 +9,7 @@ router.post('/', function (req, res) {
     authmenuModel.addAuthmenu(req.body.authmenu, {}).done(function (data) {
         res.send(data);
     }).error(function (error) {
+        console.log("错误信息:"+JSON.stringify(error));
         if(error.statusCode=='400'){
             console.log("添加菜单权限配置失败,后端返回数据>>>" + error.responseText);
             res.status(error.statusCode).send(error.responseText);

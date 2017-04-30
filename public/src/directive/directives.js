@@ -86,4 +86,30 @@ var deleteOptions = {
     cancelButtonText: "让我再考虑一下…",
     closeOnConfirm: false,
     closeOnCancel: false
+};
+consoleApp.directive("nav", function () {
+    return {
+        restrict: "A",
+        compile: function ($element) {
+            var sections = $("section");
+            angular.forEach(sections, function (section) {
+                var $section = $(section);
+                var id = $section.attr('id');
+                var titleHtml = $section.find("h1").html();
+                titleHtml = titleHtml.slice(0, titleHtml.indexOf("<")).trim();
+                $element.append("<li><a href='#" + id + "'>" + titleHtml + "</a></li>")
+            })
+        }
+    }
+})
+var names = ['Homer', 'Marge', 'Bart', 'Lisa', 'Mo'];
+function createSubTree(level, width, prefix) {
+    if (level > 0) {
+        var res = [];
+        for (var i=1; i <= width; i++)
+            res.push({ "label" : "Node " + prefix + i, "id" : "id"+prefix + i, "i": i, "children": createSubTree(level-1, width, prefix + i +"."), "name": names[i%names.length] });
+        return res;
+    }
+    else
+        return [];
 }

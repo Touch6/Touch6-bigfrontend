@@ -2,8 +2,8 @@ var consoleApp = angular.module("consoleApp.controllers", [
     'consoleApp.services',
     'consoleApp.directives',
     'ngCookies',
-    'ui.bootstrap'
-//    'tm.pagination'
+    'ui.bootstrap',
+    'treeControl'
 ]);
 
 
@@ -1225,6 +1225,11 @@ consoleApp.controller("RouteController", function ($rootScope, $scope, $window, 
 
 /**********************************系统设置>权限菜单管理**************************************/
 consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, authmenu, auth, modules, menu) {
+    $scope.treedata=createSubTree(3, 4, "");
+    $scope.showSelected = function(sel) {
+        $scope.selectedNode = sel;
+    };
+
     $scope.addAuthmenuInput = {
         type: '',
         name: '',
@@ -1289,15 +1294,28 @@ consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $windo
             }
         },
         add: function () {
-            alert(JSON.stringify($scope.addAuthmenuInput));
-            authmenu.addAuthmenu($scope.addAuthmenuInput)
+            var authIds = new Array();
+            var menuIds = new Array();
+            if ($scope.addAuthmenuInput.type == 'auth') {
+                authIds.push($scope.addAuthmenuInput.authId);
+                angular.forEach($scope.addAuthmenuInput.menuId, function (id, index, array) {
+                    menuIds.push(id);
+                })
+            } else {
+                menuIds.push($scope.addAuthmenuInput.menuId);
+                angular.forEach($scope.addAuthmenuInput.authId, function (id, index, array) {
+                    authIds.push(id);
+                })
+            }
+            authmenu.addAuthmenu({authIds:authIds,menuIds:menuIds})
                 .then(function (data) {
-                    var mo = data.object;
-                    swal('', '菜单名:' + mo.name, 'success');
+                    swal('', '配置成功', 'success');
                     $scope.authmenuObject.pageAuthmenus($scope.currentPage, $scope.pageSize);
+                    $("#addAuthmenuModal").modal('hide');
+                    $scope.addAuthmenuInput = {};
                 }, function (err) {
                     $scope.addSuccess = false;
-                    console.log(err)
+                    swal('',err.info,'error')
                 });
         },
         delete: function (authmenuId) {
