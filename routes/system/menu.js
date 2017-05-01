@@ -104,6 +104,19 @@ router.get('/unlock', function (req, res) {
     });
 });
 
+router.get('/authmenuList', function (req, res) {
+
+    console.log(req.query.menuId);
+    menuModel.authmenuList({menuId:req.query.menuId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if(error.statusCode=='400'){
+            console.log("获取菜单权限列表失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
 
 router.get('/top', function (req, res) {
 

@@ -107,6 +107,10 @@
                 <a class="btn btn-primary btn-xs" ng-if="m.sort!=1" ng-click="menuObject.moveTop(m.menuId)"><i
                         class="fa fa-toggle-off"></i></a>
 
+                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#configAuthmenuModal"
+                   ng-click="menuObject.openConfigAuthmenuModal(m.menuId)"><i
+                        class="fa fa-legal"></i></a>
+
                 <a class="btn btn-danger btn-xs" ng-if="m.locked==1" ng-click="menuObject.unlock(m.menuId)"><i
                         class="fa fa-lock"></i></a>
                 <a class="btn btn-success btn-xs" ng-if="m.locked==0" ng-click="menuObject.lock(m.menuId)"><i
@@ -165,7 +169,8 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
                                     <span class="input-group-addon">所属模块&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                                    <select ng-model="addMenuInput.moduleId" class="form-control" ng-change="menuObject.loadSelectMenuList()"
+                                    <select ng-model="addMenuInput.moduleId" class="form-control"
+                                            ng-change="menuObject.loadSelectMenuList()"
                                             ng-options="m.moduleId as '【'+m.name+'】' for m in moduleSelectList">
                                         <option value="">--请选择--</option>
                                     </select>
@@ -217,7 +222,7 @@
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="input-group">
-                                <!--<input class="input-group" type="radio" name="radio2" checked data-radio-all-off="true" data-on-text="解锁" data-size="small" data-off-text="锁定" data-on-color="success" data-off-color="warning" class="switch-radio2">-->
+                                    <!--<input class="input-group" type="radio" name="radio2" checked data-radio-all-off="true" data-on-text="解锁" data-size="small" data-off-text="锁定" data-on-color="success" data-off-color="warning" class="switch-radio2">-->
                                     <div class="btn-group col-lg-12 dencrypt" style="margin-left: 85px;">
                                         <label class="btn btn-success btn-sm active" onclick="makeMethod(this)">
                                             <input type="radio" ng-model="addMenuInput.locked" value="0" hidden>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解锁&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -227,7 +232,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                    <div class="col-sm-12 hint-color" style="padding-left: 100px;">
+                                <div class="col-sm-12 hint-color" style="padding-left: 100px;">
                                     注:锁定后无法进行敏感操作
                                 </div>
                             </div>
@@ -265,7 +270,8 @@
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="col-sm-4" style="color:darkseagreen">所属模块&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{menu.moduleName}}</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{menu.moduleName}}
+                                </div>
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="col-sm-4" style="color:darkseagreen">ui-sref</div>
@@ -320,18 +326,22 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="col-sm-4" style="color:darkseagreen">锁定状态&nbsp;&nbsp;&nbsp;&nbsp;</div>
                                 <div class="col-sm-8" style="color:darkblue;font-weight: bold;">
-                                    <span ng-if="menu.locked==0" class='badge badge-error'><span class="fa fa-unlock-alt"></span></span>
-                                    <span ng-if="menu.locked==1" class='badge badge-warning'><span class="fa fa-lock"></span></span>
+                                    <span ng-if="menu.locked==0" class='badge badge-error'><span
+                                            class="fa fa-unlock-alt"></span></span>
+                                    <span ng-if="menu.locked==1" class='badge badge-warning'><span
+                                            class="fa fa-lock"></span></span>
                                 </div>
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="col-sm-4" style="color:darkseagreen">创建时间&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{menu.createTime|date:'yyyy年MM月dd日HH点mm分ss秒'}}
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">
+                                    {{menu.createTime|date:'yyyy年MM月dd日HH点mm分ss秒'}}
                                 </div>
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="col-sm-4" style="color:darkseagreen">更新时间&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{menu.updateTime|date:'yyyy年MM月dd日HH点mm分ss秒'}}
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">
+                                    {{menu.updateTime|date:'yyyy年MM月dd日HH点mm分ss秒'}}
                                 </div>
                             </div>
                         </div>
@@ -442,14 +452,77 @@
             </div>
         </div>
     </div>
+    <!--配置权限模态框-->
+    <div class="modal fade modal-primary" id="configAuthmenuModal" tabindex="-1" role="dialog" aria-hidden="false"
+         aria-labelledby="myModalLabel4"
+         data-backdrop="static">
+        <div class="modal-dialog" style="left: 50px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel4">配置权限</h4>
+                </div>
+                <form role="form" name="addAuthmenuForm" ng-submit="menuObject.addAuthmenu()" novalidate>
+                    <div class="modal-body">
+                        <div ng-show="configSuccess==false" style="text-align: center;color:red;">温馨提示:配置失败</div>
+                        <div class="row">
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">菜单名称&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="configAuthmenuInput.name"
+                                           placeholder="请输入菜单名称" value="{{authmenuDetail.name}}" readonly/>
+                                </div>
+                            </div>
+                            <table>
+                                <tr ng-repeat="sub in entities">
+                                    <td>
+                                        <input type="checkbox" ng-model="entities[$index].checked" ng-click="updateSelection1($index, entities)"/>{{sub.name}}
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">赋予权限</span>
+                                    <div class="form-control" style="min-height:150px;overflow-y: scroll">
+                                        <label ng-repeat="am in authmenuList">
+                                            <label ng-show="am.menuId==authmenuDetail.menuId">
+                                                <input type="checkbox" ng-model="configAuthmenuInput.authIds[$index]"
+                                                       ng-true-value="{{am.authId}}"
+                                                       ng-checked="true"/>{{am.authName}}
+                                            </label>
+
+                                            <label ng-show="am.menuId!=authmenuDetail.menuId">
+                                                <input type="checkbox" ng-model="configAuthmenuInput.authIds[$index]"
+                                                       ng-true-value="{{am.authId}}"/>{{am.authName}}
+                                            </label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
+                                class="fa fa-times-circle"></i></button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="addAuthmenuForm.$invalid"><i
+                                class="fa fa-floppy-o"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
-//    $('input[name="radio2"]').bootstrapSwitch('state', true, true);
-function makeMethod(element) {
-    $(element).parent().find('label').removeClass('active');
-    $(element).addClass('active');
+    //    $('input[name="radio2"]').bootstrapSwitch('state', true, true);
+    function makeMethod(element) {
+        $(element).parent().find('label').removeClass('active');
+        $(element).addClass('active');
 
-    var radio=$(element).find("input[type=radio]");
-    $(radio).attr("checked", true);
-}
+        var radio = $(element).find("input[type=radio]");
+        $(radio).attr("checked", true);
+    }
 </script>

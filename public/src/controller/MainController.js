@@ -503,7 +503,7 @@ consoleApp.controller("ModuleController", function ($rootScope, $scope, $window,
 });
 
 /**********************************系统设置>菜单管理**************************************/
-consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, menu, modules) {
+consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $cookies, $cookieStore, menu, authmenu, modules) {
     $scope.addMenuInput = {
         name: '',
         className: '',
@@ -516,6 +516,39 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
         className: '',
         attrLink: '',
         sort: ''
+    }
+    $scope.configAuthmenuInput = {
+        menuId: '',
+        authIds: {}
+    }
+    $scope.entities = [{
+        name: '测试1',
+        checked: true
+    }, {
+        name: '测试2',
+        checked: false
+    }, {
+        name: '测试3',
+        checked: false
+    }, {
+        name: '测试4',
+        checked: false
+    }
+    ];
+    //前台选择后的一个交互事件（函数）
+    $scope.updateSelection1 = function (position, entities) {
+        // angular.forEach(entities, function (subscription, index) {
+        //     if (position == index) {
+        //         console.log(subscription.checked)
+        //         if(!subscription.checked){
+        //             subscription.checked = true;
+        //         }else{
+        //             subscription.checked = false ;
+        //         }
+        //         console.log(subscription.checked)
+        //     }
+        // });
+        console.log(JSON.stringify(entities))
     }
     $scope.menuObject = {
         pageMenus: function (page, pageSize) {
@@ -536,7 +569,6 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
             });
         },
         loadSelectMenuList: function (moduleId) {
-            alert(moduleId)
             menu.selectList(moduleId).then(function (data) {
                 $scope.menuSelectList = data.object;
             }, function (err) {
@@ -548,6 +580,13 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                 $scope.moduleSelectList = data.object;
             }, function (err) {
                 console.log("模块列表加载失败" + err);
+            });
+        },
+        authmenuList: function (menuId) {
+            menu.authmenuList(menuId).then(function (data) {
+                $scope.authmenuList = data.object;
+            }, function (err) {
+                console.log("菜单权限列表加载失败" + err);
             });
         },
         add: function () {
@@ -566,6 +605,21 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                     $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
                 }, function (err) {
                     $scope.addSuccess = false;
+                    console.log(err)
+                });
+        },
+        addAuthmenu: function () {
+            console.log(JSON.stringify($scope.configAuthmenuInput));
+            return;
+            authmenu.addAuthmenu($scope.configAuthmenuInput)
+                .then(function (data) {
+                    var mo = data.object;
+                    swal('', '菜单名:' + mo.name, 'success');
+                    $scope.configAuthmenuInput = {};
+                    $("#configAuthmenuModal").modal('hide');
+                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
+                }, function (err) {
+                    $scope.configSuccess = false;
                     console.log(err)
                 });
         },
@@ -606,6 +660,20 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                     $scope.updateMenuInput = data1.object;
                     //加载列表
                     $scope.menuObject.loadSelectModuleList();
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openConfigAuthmenuModal: function (menuId) {
+
+            $scope.menuObject.authmenuList(menuId);
+            _showMask();
+            menu.viewDetail(menuId)
+                .then(function (data) {
+                    $scope.authmenuDetail = data.object;
+                    $scope.configAuthmenuInput.menuId = data.object.menuId;
                     _hideMask();
                 }, function (err) {
                     console.log(err);
@@ -1413,17 +1481,6 @@ consoleApp.controller("AuthmenuController", function ($rootScope, $scope, $windo
         }
     }
     $scope.authmenuObject.pageAuthmenus(1, 5);
-    var arr = [2, 3, 4, 5];
-    var res = [];
-    for (var i = 0; i < arr.length; i++) {
-        res.push(createSubTree(arr[i], 1, arr, ""));
-    }
-    $scope.treedata = res;
-    console.log(JSON.stringify($scope.treedata))
-    $scope.showSelected = function (sel) {
-        $scope.selectedNode = sel;
-    };
-    $scope.authmenuObject.modulesWithMenus();
 });
 
 /**********************************系统设置>权限角色管理**************************************/

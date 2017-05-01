@@ -628,6 +628,15 @@
       "method": "get"
     },
     {
+      "name": "权限列表(含已配置的权限)",
+      "id": "menu.authmenuList",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/authmenu/list/:menuId",
+        "test": "http://localhost:28081/t6/system/authmenu/list/:menuId"
+      },
+      "method": "get"
+    },
+    {
       "name": "添加角色权限配置",
       "id": "config.addAuthRole",
       "urls": {

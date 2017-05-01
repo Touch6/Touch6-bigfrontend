@@ -373,6 +373,20 @@ consoleApp.factory("menu", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        authmenuList: function (menuId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/menu/authmenuList', {params: {menuId: menuId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 
