@@ -549,6 +549,34 @@ consoleApp.factory("role", function ($http, $q, $cookies) {
                 return deferred.reject(error);
             });
             return deferred.promise;
+        },
+        authroleList: function (roleId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/role/authrole/list', {params: {roleId: roleId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addAuthrole: function (authrole) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/role/authrole', {authrole: authrole}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
         }
     }
 
@@ -923,7 +951,7 @@ consoleApp.factory("authmenu", function ($http, $q, $cookies) {
         addAuthmenu: function (authmenu) {
             var deferred;
             deferred = $q.defer();
-            $http.post('/~/system/authmenu', {authmenu: authmenu}).success(function (data) {
+            $http.post('/~/system/menu/authmenu', {authmenu: authmenu}).success(function (data) {
                 if (data) {
                     return deferred.resolve(data);
                 } else {
@@ -1700,6 +1728,34 @@ consoleApp.factory("user", function ($http, $q, $cookies) {
 /********************usercenter模块****************************/
 consoleApp.factory("usercenter", function ($http, $q, $cookies) {
     return {
+        userroleList: function (userId) {
+            var deferred;
+            deferred = $q.defer();
+            $http.get('/~/system/usercenter/userrole/list', {params: {userId: userId}}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
+        addUserrole: function (userrole) {
+            var deferred;
+            deferred = $q.defer();
+            $http.post('/~/system/usercenter/userrole', {userrole: userrole}).success(function (data) {
+                if (data) {
+                    return deferred.resolve(data);
+                } else {
+                    return deferred.reject(data);
+                }
+            }).error(function (error) {
+                return deferred.reject(error);
+            });
+            return deferred.promise;
+        },
         pageUsers: function (page, pageSize) {
             var deferred;
             deferred = $q.defer();

@@ -102,4 +102,27 @@ router.get('/unlock', function (req, res) {
         }
     });
 });
+
+router.get('/authrole/list', function (req, res) {
+    roleModel.authroleList({roleId: req.query.roleId}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if (error.statusCode == '400') {
+            console.log("获取权限角色失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
+router.post('/authrole', function (req, res) {
+    roleModel.addAuthrole(req.body.authrole, {}).done(function (data) {
+        res.send(data);
+    }).error(function (error) {
+        if (error.statusCode == '400') {
+            console.log("配置权限角色失败,后端返回数据>>>" + error.responseText);
+            res.status(error.statusCode).send(error.responseText);
+        }
+    });
+});
+
 module.exports = router;

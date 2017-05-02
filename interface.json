@@ -352,6 +352,15 @@
       "method": "get"
     },
     {
+      "name": "权限列表(含已配置角色的权限)",
+      "id": "role.authroleList",
+      "urls": {
+        "development": "http://120.77.172.143:28081/t6/system/authrole/list/:roleId",
+        "test": "http://localhost:28081/t6/system/authrole/list/:roleId"
+      },
+      "method": "get"
+    },
+    {
       "name": "添加路由",
       "id": "route.addRoute",
       "urls": {
@@ -638,67 +647,27 @@
     },
     {
       "name": "添加角色权限配置",
-      "id": "config.addAuthRole",
+      "id": "role.addAuthrole",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/authrole",
         "test": "http://localhost:28081/t6/system/authrole"
       },
       "method": "post",
-      "contentType": "application/json"
-    },
-    {
-      "name": "修改角色权限配置",
-      "id": "config.updateAuthRole",
-      "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/authrole",
-        "test": "http://localhost:28081/t6/system/authrole"
-      },
-      "method": "put",
-      "contentType": "application/json"
-    },
-    {
-      "name": "删除角色权限配置",
-      "id": "config.deleteAuthRole",
-      "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/authrole",
-        "test": "http://localhost:28081/t6/system/authrole"
-      },
-      "method": "delete",
       "contentType": "application/json"
     },
     {
       "name": "添加菜单权限",
-      "id": "authmenu.addAuthmenu",
+      "id": "menu.addAuthmenu",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/authmenu",
         "test": "http://localhost:28081/t6/system/authmenu"
       },
       "method": "post",
-      "contentType": "application/json"
-    },
-    {
-      "name": "修改菜单权限",
-      "id": "authmenu.updateAuthmenu",
-      "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/authmenu",
-        "test": "http://localhost:28081/t6/system/authmenu"
-      },
-      "method": "put",
-      "contentType": "application/json"
-    },
-    {
-      "name": "删除菜单权限",
-      "id": "authmenu.deleteAuthmenu",
-      "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/authmenu",
-        "test": "http://localhost:28081/t6/system/authmenu"
-      },
-      "method": "delete",
       "contentType": "application/json"
     },
     {
       "name": "添加用户角色",
-      "id": "userrole.addUserRole",
+      "id": "usercenter.addUserrole",
       "urls": {
         "development": "http://120.77.172.143:28081/t6/system/userrole",
         "test": "http://localhost:28081/t6/system/userrole"
@@ -707,24 +676,13 @@
       "contentType": "application/json"
     },
     {
-      "name": "修改用户角色",
-      "id": "userrole.updateUserRole",
+      "name": "角色列表(含已配置用户的角色)",
+      "id": "usercenter.userroleList",
       "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/userrole",
-        "test": "http://localhost:28081/t6/system/userrole"
+        "development": "http://120.77.172.143:28081/t6/system/userrole/list/:userId",
+        "test": "http://localhost:28081/t6/system/userrole/list/:userId"
       },
-      "method": "put",
-      "contentType": "application/json"
-    },
-    {
-      "name": "删除用户角色",
-      "id": "userrole.deleteUserRole",
-      "urls": {
-        "development": "http://120.77.172.143:28081/t6/system/userrole",
-        "test": "http://localhost:28081/t6/system/userrole"
-      },
-      "method": "delete",
-      "contentType": "application/json"
+      "method": "get"
     },
     {
       "name": "系统管理模块列表",

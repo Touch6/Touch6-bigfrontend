@@ -635,18 +635,7 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                 });
         },
         openConfigAuthmenuModal: function (menuId) {
-
             $scope.menuObject.authmenuList(menuId);
-            _showMask();
-            menu.viewDetail(menuId)
-                .then(function (data) {
-                    $scope.authmenuDetail = data.object;
-                    $scope.configAuthmenuInput.menuId = data.object.menuId;
-                    _hideMask();
-                }, function (err) {
-                    console.log(err);
-                    _hideMask();
-                });
         },
         edit: function () {
             _showMask();
@@ -728,7 +717,7 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
 });
 
 /**********************************系统设置>角色管理**************************************/
-consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $cookies, $cookieStore, role) {
+consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $cookies, $cookieStore, role, authrole) {
     $scope.addRoleInput = {
         name: '',
         className: '',
@@ -820,6 +809,34 @@ consoleApp.controller("RoleController", function ($rootScope, $scope, $window, $
                 .then(function (data1) {
                     $scope.updateRoleInput = data1.object;
                     //加载列表
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        openConfigAuthroleModal: function (roleId) {
+            $scope.roleObject.authroleList(roleId);
+        },
+        authroleList: function (roleId) {
+            _showMask();
+            role.authroleList(roleId)
+                .then(function (data1) {
+                    $scope.authroleList = data1.object;
+                    //加载列表
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        addAuthrole: function () {
+            _showMask();
+            role.addAuthrole($scope.authroleList)
+                .then(function (data1) {
+                    //加载列表
+                    swal('', '配置成功', 'success');
+                    $('#configAuthroleModal').modal('hide');
                     _hideMask();
                 }, function (err) {
                     console.log(err);
@@ -1758,6 +1775,36 @@ consoleApp.controller("UsercenterController", function ($rootScope, $scope, $win
         $scope.user = null;
         delete $cookies.uid;
         $cookieStore.remove('user');
+    }
+    $scope.usercenterObject = {
+        openConfigUserroleModal: function (userId) {
+            $scope.usercenterObject.userroleList(userId);
+        },
+        userroleList: function (userId) {
+            _showMask();
+            usercenter.userroleList(userId)
+                .then(function (data1) {
+                    $scope.userroleList = data1.object;
+                    //加载列表
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
+        addUserrole: function () {
+            _showMask();
+            usercenter.addUserrole($scope.userroleList)
+                .then(function (data1) {
+                    //加载列表
+                    swal('', '配置成功', 'success');
+                    $('#configUserroleModal').modal('hide');
+                    _hideMask();
+                }, function (err) {
+                    console.log(err);
+                    _hideMask();
+                });
+        },
     }
     $scope.pageUsers = function (page, pageSize) {
         usercenter.pageUsers(page, pageSize).then(function (data) {

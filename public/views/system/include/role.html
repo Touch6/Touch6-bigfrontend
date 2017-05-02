@@ -35,6 +35,9 @@
                    ng-click="roleObject.openUpdateModal(role.roleId)"><i class="fa fa-edit"></i></a>
                 <a class="btn btn-danger btn-xs" ng-click="roleObject.delete(role.roleId)"><i
                         class="fa fa-minus-circle"></i></a>
+                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#configAuthroleModal"
+                   ng-click="roleObject.openConfigAuthroleModal(role.roleId)"><i
+                        class="fa fa-legal"></i></a>
 
                 <a class="btn btn-danger btn-xs" ng-if="role.locked==1" ng-click="roleObject.unlock(role.roleId)"><i
                         class="fa fa-lock"></i></a>
@@ -142,18 +145,23 @@
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="col-sm-4" style="color:darkseagreen">锁定状态&nbsp;&nbsp;&nbsp;&nbsp;</div>
                                 <div class="col-sm-8" style="color:darkblue;font-weight: bold;">
-                                    <span ng-if="role.locked==0" class='badge badge-error'><span class="fa fa-unlock-alt"></span></span>
-                                    <span ng-if="role.locked==1" class='badge badge-warning'><span class="fa fa-lock"></span></span>
+                                    <span ng-if="role.locked==0" class='badge badge-error'><span
+                                            class="fa fa-unlock-alt"></span></span>
+                                    <span ng-if="role.locked==1" class='badge badge-warning'><span
+                                            class="fa fa-lock"></span></span>
                                 </div>
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="col-sm-4" style="color:darkseagreen">创建时间&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{role.createTime|date:'yyyy年MM月dd日 HH点mm分ss秒'}}
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">
+                                    {{role.createTime|date:'yyyy年MM月dd日 HH点mm分ss秒'}}
                                 </div>
                             </div>
                             <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
                                 <div class="col-sm-4" style="color:darkseagreen">更新时间&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">{{role.updateTime|date:'yyyy年MM月dd日 HH点mm分ss秒'}}</div>
+                                <div class="col-sm-8" style="color:darkblue;font-weight: bold;">
+                                    {{role.updateTime|date:'yyyy年MM月dd日 HH点mm分ss秒'}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -220,6 +228,56 @@
             </div>
         </div>
     </div>
+    <!--配置权限模态框-->
+    <div class="modal fade modal-primary" id="configAuthroleModal" tabindex="-1" role="dialog" aria-hidden="false"
+         aria-labelledby="myModalLabel4"
+         data-backdrop="static">
+        <div class="modal-dialog" style="left: 50px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel4">配置权限</h4>
+                </div>
+                <form role="form" name="addAuthroleForm" ng-submit="roleObject.addAuthrole()" novalidate>
+                    <div class="modal-body">
+                        <div ng-show="configSuccess==false" style="text-align: center;color:red;">温馨提示:配置失败</div>
+                        <div class="row">
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">角色名称</span>
+                                    <input type="text" class="input-group form-control"
+                                           ng-model="authroleList.roleName"
+                                           placeholder="请输入角色名称" disabled/>
+                                </div>
+                            </div>
+                            <div class="col-sm-10 margin-top-20" style="padding-left: 50px;">
+                                <div class="input-group">
+                                    <span class="input-group-addon">赋予权限</span>
+                                    <div class="form-control" style="min-height:150px;overflow-y: scroll">
+                                        <label ng-repeat="auth in authroleList.authList">
+                                            <label>
+                                                <input type="checkbox"
+                                                       ng-model="authroleList.authList[$index].checked"/>{{auth.authName}}
+                                            </label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i
+                                class="fa fa-times-circle"></i></button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-disabled="addAuthroleForm.$invalid"><i
+                                class="fa fa-floppy-o"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
     //    $('input[name="radio2"]').bootstrapSwitch('state', true, true);
@@ -227,7 +285,7 @@
         $(element).parent().find('label').removeClass('active');
         $(element).addClass('active');
 
-        var radio=$(element).find("input[type=radio]");
+        var radio = $(element).find("input[type=radio]");
         $(radio).attr("checked", true);
     }
 </script>
