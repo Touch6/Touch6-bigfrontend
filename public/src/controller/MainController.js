@@ -521,35 +521,6 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
         menuId: '',
         authIds: {}
     }
-    $scope.entities = [{
-        name: '测试1',
-        checked: true
-    }, {
-        name: '测试2',
-        checked: false
-    }, {
-        name: '测试3',
-        checked: false
-    }, {
-        name: '测试4',
-        checked: false
-    }
-    ];
-    //前台选择后的一个交互事件（函数）
-    $scope.updateSelection1 = function (position, entities) {
-        // angular.forEach(entities, function (subscription, index) {
-        //     if (position == index) {
-        //         console.log(subscription.checked)
-        //         if(!subscription.checked){
-        //             subscription.checked = true;
-        //         }else{
-        //             subscription.checked = false ;
-        //         }
-        //         console.log(subscription.checked)
-        //     }
-        // });
-        console.log(JSON.stringify(entities))
-    }
     $scope.menuObject = {
         pageMenus: function (page, pageSize) {
             menu.pageMenus(page, pageSize).then(function (data) {
@@ -584,6 +555,7 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
         },
         authmenuList: function (menuId) {
             menu.authmenuList(menuId).then(function (data) {
+                console.log(data.object);
                 $scope.authmenuList = data.object;
             }, function (err) {
                 console.log("菜单权限列表加载失败" + err);
@@ -609,15 +581,11 @@ consoleApp.controller("MenuController", function ($rootScope, $scope, $window, $
                 });
         },
         addAuthmenu: function () {
-            console.log(JSON.stringify($scope.configAuthmenuInput));
-            return;
-            authmenu.addAuthmenu($scope.configAuthmenuInput)
+            console.log(JSON.stringify($scope.authmenuList));
+            authmenu.addAuthmenu($scope.authmenuList)
                 .then(function (data) {
-                    var mo = data.object;
-                    swal('', '菜单名:' + mo.name, 'success');
-                    $scope.configAuthmenuInput = {};
+                    swal('', '配置成功', 'success');
                     $("#configAuthmenuModal").modal('hide');
-                    $scope.menuObject.pageMenus($scope.currentPage, $scope.pageSize);
                 }, function (err) {
                     $scope.configSuccess = false;
                     console.log(err)
